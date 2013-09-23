@@ -45,5 +45,5 @@ of/apps/ProjectVictory/Test_VideoStreamer
 of/apps/ProjectVictory/Test_[your test]
 of/apps/ProjectVictory/Runtime_VideoStreamer
 of/apps/ProjectVictory/Runtime_VideoMixer
-of/apps/ProjectVictory/Rundime_[your app]
+of/apps/ProjectVictory/Runtime_[your app]
 ````
