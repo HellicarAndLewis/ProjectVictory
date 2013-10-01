@@ -1,5 +1,6 @@
 #pragma once
 #include "ofxUI.h"
+#include <memory>
 
 namespace ofxVMIG {
     class Module {
@@ -14,5 +15,6 @@ namespace ofxVMIG {
         // Called when a value is chaning in the inspector
 		virtual void inspectorCallback(ofxUIEventArgs &args) { };
     };
-    
+
+	typedef std::shared_ptr<Module> ModulePtr;
 }
