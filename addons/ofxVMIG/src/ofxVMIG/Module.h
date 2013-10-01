@@ -1,10 +1,9 @@
 #pragma once
+#include "ofxUI.h"
 
 namespace ofxVMIG {
-    
     class Module {
     public:
-        
         virtual void draw(float width, float height) = 0;
         
         // Called when module needs to populate an ofxUICanvas
@@ -12,7 +11,6 @@ namespace ofxVMIG {
         
         // Called when a value is chaning in the inspector
         virtual void inspectorCallback(ofxUIEventArgs &args) = 0;
-        
     };
     
 }
