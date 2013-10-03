@@ -3,7 +3,7 @@
 #include "ofxVMIG.h"
 #include "ofMain.h"
 
-class TestModule : public ofxVMIG::Module {
+class TestModule : public ofxVMIG::Module, public ofxVMIG::Inspectable {
 public:
 	void setup() override;
 	void draw(float width, float height) override;
