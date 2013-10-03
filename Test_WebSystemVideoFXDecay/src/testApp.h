@@ -15,7 +15,7 @@ class testApp : public ofBaseApp{
     
         int w, h;
     
-    ofxFluid fluid;
+        ofxFluid fluid;
     
         ofVideoGrabber videoGrabber;
         ofBaseVideoDraws *videoSource;
