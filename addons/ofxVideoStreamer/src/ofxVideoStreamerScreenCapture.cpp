@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ofxVideoStreamer/ofxVideoStreamerScreenCapture.h>
 
+
 ofxVideoStreamerScreenCapture::ofxVideoStreamerScreenCapture() 
   :has_new_frame(false)
 {

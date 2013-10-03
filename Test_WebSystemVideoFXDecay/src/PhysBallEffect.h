@@ -106,11 +106,20 @@ public:
         box2d.update();
         if ( amount > 0.0 && farneback->getWidth() != 0 && farneback->getHeight() != 0 ) {
             for ( int i=0; i<circles.size(); i++ ) {
+			
                 float scale = farneback->getWidth() / (float)this->getWidth();
                 ofxBox2dCircle &circle = circles[i];
+				
+				// roxlu: added a check so we don't get a sigabrt
+				ofVec2f pos = circle.getPosition();
+				if(pos.x != pos.x) {
+					printf("error: circle.pos.x is NAN\n");
+					continue;
+				}
+				
                 float radius = circle.getRadius() * scale;
                 // get force amt for circle
-                ofVec2f pos = circle.getPosition() * scale;
+				pos = pos * scale;
                 ofRectangle boundingRect = ofRectangle( pos.x - radius, pos.y - radius, radius * 2.0, radius * 2.0 );
                 ofVec2f flow = farneback->getAverageFlowInRegion( boundingRect );
                 
