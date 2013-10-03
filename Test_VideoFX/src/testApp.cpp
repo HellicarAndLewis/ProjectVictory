@@ -41,6 +41,8 @@ void testApp::setup(){
     
     big = &vfx1;
     small = &vfx2;
+    
+    videoFXExporter.setVideoFX( &vfx1 );
 }
 
 void testApp::setupGUI() {

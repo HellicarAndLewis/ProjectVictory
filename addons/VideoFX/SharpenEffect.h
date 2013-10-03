@@ -32,5 +32,12 @@ public:
         shader.setUniform1f( "theMix", theMix );
     }
     
+    ShaderMap getShaderMap() {
+        ShaderMap shaderMap;
+        shaderMap["weirdness"] = weirdness;
+        shaderMap["theMix"] = theMix;
+        return shaderMap;
+    }
+    
     
 };

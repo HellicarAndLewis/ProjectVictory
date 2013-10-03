@@ -79,4 +79,11 @@ public:
         pingPong.dst->end();
         ofPopStyle();
     }
+    
+    ShaderMap getShaderMap() {
+        ShaderMap shaderMap;
+        shaderMap["depthOffset"] = depthOffset;
+        shaderMap["magScaler"] = magScaler;
+        return shaderMap;
+    }
 };
