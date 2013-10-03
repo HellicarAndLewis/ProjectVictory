@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OFX_UI_WIDGET_CANVAS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>811.703796387</XPosition>
+    <YPosition>511.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTENSITY</Name>
+    <Value>10.433979988</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLORIZATION</Name>
+    <Value>0.689042747</Value>
+</Widget>
