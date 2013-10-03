@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OFX_UI_WIDGET_CANVAS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>281.292236328</XPosition>
+    <YPosition>411.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>AMOUNT</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STEP SIZE</Name>
+    <Value>4.503852844</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE SCALE</Name>
+    <Value>11.757538795</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD</Name>
+    <Value>2.000000000</Value>
+</Widget>
