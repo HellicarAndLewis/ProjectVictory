@@ -37,4 +37,11 @@ public:
         shader.setUniform1f( "rgbAmount", rgbAmount );
         shader.setUniform1f( "angle", angle );
     }
+    
+    ShaderMap getShaderMap() {
+        ShaderMap shaderMap;
+        shaderMap["amount"] = amount;
+        shaderMap["angle"] = angle;
+        return shaderMap;
+    }
 };

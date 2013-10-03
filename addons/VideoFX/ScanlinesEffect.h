@@ -41,4 +41,29 @@ public:
         shader.setUniform1f( "sCount", sCount );
     }
     
+    virtual ShaderMap getShaderMap() {
+        ShaderMap shaderMap;
+        shaderMap["amount"] = amount;
+        shaderMap["count"] = sCount;
+        shaderMap["sintensity"] = sIntensity;
+        shaderMap["nintensity"] = nIntensity;
+        return shaderMap;
+    }
+    
+    virtual ShaderMap getShaderDefaultMap() {
+        ShaderMap shaderMap;
+        shaderMap["amount"] = 0.0f;
+        shaderMap["count"] = 50.0f;
+        shaderMap["sintensity"] = 0.0f;
+        shaderMap["nintensity"] = 0.0f;
+        return shaderMap;
+    }
+    
+    virtual void applyShaderMap(ShaderMap shaderMap) {
+        if (shaderMap.isMember("amount"))                   { amount = shaderMap["amount"].asDouble(); }
+        if (shaderMap.isMember("count"))        { sCount = shaderMap["count"].asDouble(); }
+        if (shaderMap.isMember("sintensity"))   { sIntensity = shaderMap["sintensity"].asDouble(); }
+        if (shaderMap.isMember("nintensity"))   { nIntensity = shaderMap["nintensity"].asDouble(); }
+    }
+    
 };

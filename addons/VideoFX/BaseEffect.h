@@ -4,6 +4,9 @@
 #include "ofxFXObject.h"
 #include "ofxUI.h"
 #include "FarnebackPlus.h"
+#include "Json.h"
+
+typedef Json::Value ShaderMap;
 
 class BaseEffect : public ofxFXObject {
 
@@ -97,6 +100,23 @@ public:
         shader.end();
         pingPong.dst->end();
         ofPopStyle();
+    }
+    
+    // For exporting the shader uniforms
+    virtual ShaderMap getShaderMap() {
+        ShaderMap shaderMap;
+        return shaderMap;
+    }
+    
+    // For defineing shader default values 
+    virtual ShaderMap getShaderDefaultMap() {
+        ShaderMap shaderMap;
+        return shaderMap;
+    }
+    
+    // For applying a shader map
+    virtual void applyShaderMap(ShaderMap shaderMap) {
+        
     }
     
 protected:

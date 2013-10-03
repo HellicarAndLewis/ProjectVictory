@@ -37,4 +37,11 @@ public:
         shader.setUniform1f("colorization", colorization );
         shader.setUniform1f( "flowEffect", flowEffect );
     }
+    
+    ShaderMap getShaderMap() {
+        ShaderMap shaderMap;
+        shaderMap["intensity"] = intensity;
+        shaderMap["colorization"] = colorization;
+        return shaderMap;
+    }
 };
