@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofMain.h"
 #include "ofxVMIG.h"
+#include "ofMain.h"
 
 class TestModule : public ofxVMIG::Module {
 public:

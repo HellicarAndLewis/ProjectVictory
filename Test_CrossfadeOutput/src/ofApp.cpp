@@ -4,9 +4,8 @@ using namespace ofxCvGui;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	this->settings = ofPtr<ofxVMIG::Settings>(new ofxVMIG::Settings());
 	this->videoMatrix = ofPtr<ofxVMIG::Modules::VideoMatrix>(new ofxVMIG::Modules::VideoMatrix());
-	this->inspector = ofPtr<ofxVMIG::Inspector>(new ofxVMIG::Inspector());
+	this->crossfader = ofPtr<ofxVMIG::Modules::Crossfader>(new ofxVMIG::Modules::Crossfader(1920, 1080));
 
 	gui.init();
 
@@ -14,19 +13,12 @@ void ofApp::setup(){
 	rootGrid->setColsCount(1);
 	gui.add(rootGrid);
 
-	auto ABCDGrid = Builder::makeGrid();
-	ABCDGrid->add(ofxCvGui::Builder::makePanel(this->videoMatrix->getInput(0), "A"));
-	ABCDGrid->add(ofxCvGui::Builder::makePanel(this->videoMatrix->getInput(1), "B"));
-	ABCDGrid->add(ofxCvGui::Builder::makePanel(this->videoMatrix->getInput(2), "C"));
-	ABCDGrid->add(ofxCvGui::Builder::makePanel(this->videoMatrix->getInput(3), "D"));
+	auto resultPanel = Builder::makePanel(this->crossfader->getTarget().getTextureReference(), "Crossfader result");
+	rootGrid->add(resultPanel);
+	rootGrid->add(crossfader);
 
-	auto settingsGrid = Builder::makeGrid();
-	settingsGrid->add(this->settings);
-	settingsGrid->add(this->inspector);
-
-	rootGrid->add(this->videoMatrix);
-	rootGrid->add(ABCDGrid);
-	rootGrid->add(settingsGrid);
+	this->crossfader->setA(this->videoMatrix->getInput(0).getTextureReference());
+	this->crossfader->setB(this->videoMatrix->getInput(1).getTextureReference());
 
 	ofSetWindowPosition(1080, 0);
 	ofSetWindowShape(1920, 1080 * 2);
@@ -34,7 +26,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	
+	//we have to update manually for this example because we're not displaying the videoMatrix
+	this->videoMatrix->update();
 }
 
 //--------------------------------------------------------------

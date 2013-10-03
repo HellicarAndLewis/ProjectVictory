@@ -4,41 +4,31 @@ using namespace ofxCvGui;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	this->settings = ofPtr<ofxVMIG::Settings>(new ofxVMIG::Settings());
-	this->videoMatrix = ofPtr<ofxVMIG::Modules::VideoMatrix>(new ofxVMIG::Modules::VideoMatrix());
-	this->inspector = ofPtr<ofxVMIG::Inspector>(new ofxVMIG::Inspector());
+	//ofSetWindowPosition(1080, 0);
+	//ofSetWindowShape(1920, 1080 * 2);
 
-	gui.init();
+	this->hubControl.setup();
+	this->hubControl.setAddress("192.168.1.96");
 
-	auto rootGrid = Builder::makeGrid();
-	rootGrid->setColsCount(1);
-	gui.add(rootGrid);
-
-	auto ABCDGrid = Builder::makeGrid();
-	ABCDGrid->add(ofxCvGui::Builder::makePanel(this->videoMatrix->getInput(0), "A"));
-	ABCDGrid->add(ofxCvGui::Builder::makePanel(this->videoMatrix->getInput(1), "B"));
-	ABCDGrid->add(ofxCvGui::Builder::makePanel(this->videoMatrix->getInput(2), "C"));
-	ABCDGrid->add(ofxCvGui::Builder::makePanel(this->videoMatrix->getInput(3), "D"));
-
-	auto settingsGrid = Builder::makeGrid();
-	settingsGrid->add(this->settings);
-	settingsGrid->add(this->inspector);
-
-	rootGrid->add(this->videoMatrix);
-	rootGrid->add(ABCDGrid);
-	rootGrid->add(settingsGrid);
-
-	ofSetWindowPosition(1080, 0);
-	ofSetWindowShape(1920, 1080 * 2);
+	ofSetVerticalSync(true);
+	this->input = 0;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	
+	this->hubControl.update();
+
+	//do regularly
+	if (ofGetFrameNum() % (60*2) == 0) { // it takes approximately 2 seconds to get a signal onto a monitor from switching
+		input++;
+		input %= 4;
+		this->hubControl.setRoute(6, input + 9);
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	ofDrawBitmapString(ofToString(input), 20, 20);
 }
 
 //--------------------------------------------------------------
