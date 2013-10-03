@@ -2,28 +2,23 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>68.270263672</XPosition>
-    <YPosition>378.000000000</YPosition>
+    <XPosition>495.270263672</XPosition>
+    <YPosition>514.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
-    <Name>AMOUNT</Name>
-    <Value>0.496099710</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
     <Name>THICK DISTORT</Name>
-    <Value>3.803491592</Value>
+    <Value>3.181363106</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FINE DISTORT</Name>
-    <Value>0.496099710</Value>
+    <Value>5.461571693</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DISTORT SPEED</Name>
-    <Value>0.000000000</Value>
+    <Value>0.081925713</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
