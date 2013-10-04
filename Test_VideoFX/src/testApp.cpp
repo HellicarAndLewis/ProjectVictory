@@ -31,18 +31,27 @@ void testApp::setup(){
     vfx1.init();
     vfx1.setVideoSource( &videoGrabber );
     
-    vfx2.init();
-    vfx2.setOpticalFlowEnabled( false );
-    vfx2.hideGUI();
-    vfx2.setVideoSource( &videoPlayer );
+//    vfx2.init();
+//    vfx2.setOpticalFlowEnabled( false );
+//    vfx2.hideGUI();
+//    vfx2.setVideoSource( &videoPlayer );
     
     vfx1.setColor( colors[colorIndex] );
-    vfx2.setColor( colors[colorIndex] );
+//    vfx2.setColor( colors[colorIndex] );
     
     big = &vfx1;
-    small = &vfx2;
+//    small = &vfx2;
     
     videoFXExporter.setVideoFX( &vfx1 );
+    
+    // add some fake tweets to the crawl
+    crawl.init();
+    crawl.addCrawlItem( "aarontweets", "here is my message #shoutout" );
+    crawl.addCrawlItem( "somedude", "#shoutout omg im on tv" );
+    crawl.addCrawlItem( "nikefan", "i like shoes" );
+    crawl.addCrawlItem( "test_user", "im testing stuff" );
+    crawl.addCrawlItem( "hacker", "im hacking stuff" );
+    crawl.addCrawlItem( "social_media_pro", "im tweeting stuff" );
 }
 
 void testApp::setupGUI() {
@@ -105,18 +114,19 @@ void testApp::update(){
     
     videoGrabber.update();
     
-//    if ( videoGrabber.isFrameNew() )
-        vfx1.update( videoGrabber.isFrameNew() );
-//    if ( videoPlayer.isFrameNew() )
-        vfx2.update( videoPlayer.isFrameNew() );
+    vfx1.update( videoGrabber.isFrameNew() );
+//    vfx2.update( videoPlayer.isFrameNew() );
     
+    crawl.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
     big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
-    small->draw( ofGetWidth()*.75, ofGetHeight()*.75, ofGetWidth()*.25, ofGetHeight()*.25 );
+//    small->draw( ofGetWidth()*.75, ofGetHeight()*.75, ofGetWidth()*.25, ofGetHeight()*.25 );
+    
+    crawl.draw();
 }
 
 //--------------------------------------------------------------
@@ -136,12 +146,12 @@ void testApp::keyPressed(int key){
         big->showGUI();
         small->hideGUI();
     }
-    else if ( key == '2' ) {
-        big = &vfx2;
-        small = &vfx1;
-        big->showGUI();
-        small->hideGUI();
-    }
+//    else if ( key == '2' ) {
+//        big = &vfx2;
+//        small = &vfx1;
+//        big->showGUI();
+//        small->hideGUI();
+//    }
     else if ( key == 45 ) {
         if ( --colorIndex < 0 )
             colorIndex = 6;
@@ -196,6 +206,6 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 void testApp::exit() {
     vfx1.exit();
-    vfx2.exit();
+//    vfx2.exit();
     videoGUI->saveSettings("GUI/video.xml");
 }
