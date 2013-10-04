@@ -2,7 +2,6 @@
 #define ROXLU_OFXVIDEOSTREAMER_SCREEN_CAPTURE_H
 
 #include "ofMain.h"
-
 #include <streamer/videostreamer/VideoStreamer.h>
 #include <streamer/core/MemoryPool.h>
 #include <hwscale/opengl/YUV420PGrabber.h>
