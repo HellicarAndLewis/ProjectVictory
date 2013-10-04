@@ -8,6 +8,8 @@
 #include "KhronosEffect.h"
 #include "VideoFX.h"
 #include "VideoFXExporter.h"
+#include "Crawl.h"
+#include "VoteDisplay.h"
 
 class testApp : public ofBaseApp{
 
@@ -16,6 +18,8 @@ class testApp : public ofBaseApp{
         int w, h;
     
     ofxFluid fluid;
+        Crawl crawl;
+        VoteDisplay voteDisplay;
     
         ofColor colors[7] = {
             ofColor::red,

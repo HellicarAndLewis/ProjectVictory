@@ -12,6 +12,8 @@
 		9164C6A017FDFECB00508DC1 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9164C69F17FDFECB00508DC1 /* jsoncpp.cpp */; };
 		9164C6B117FDFEF400508DC1 /* VideoFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9164C6AD17FDFEF400508DC1 /* VideoFX.cpp */; };
 		9164C6B217FDFEF400508DC1 /* VideoFXExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9164C6AF17FDFEF400508DC1 /* VideoFXExporter.cpp */; };
+		930254C917FE0F38001907A0 /* Crawl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930254C717FE0F38001907A0 /* Crawl.cpp */; };
+		930254CC17FF0F14001907A0 /* VoteDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930254CA17FF0F14001907A0 /* VoteDisplay.cpp */; };
 		9308292217EB61E9006149AE /* emboss.frag in Sources */ = {isa = PBXBuildFile; fileRef = 9308292117EB61E9006149AE /* emboss.frag */; };
 		9308292617EB7C76006149AE /* sharpen.frag in Sources */ = {isa = PBXBuildFile; fileRef = 9308292517EB7C76006149AE /* sharpen.frag */; };
 		9308299917F389D0006149AE /* Box2D.h in Sources */ = {isa = PBXBuildFile; fileRef = 9308293417F389AC006149AE /* Box2D.h */; };
@@ -232,6 +234,10 @@
 		9164C6AE17FDFEF400508DC1 /* VideoFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoFX.h; path = ../../addons/VideoFX/VideoFX.h; sourceTree = "<group>"; };
 		9164C6AF17FDFEF400508DC1 /* VideoFXExporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VideoFXExporter.cpp; path = ../../addons/VideoFX/VideoFXExporter.cpp; sourceTree = "<group>"; };
 		9164C6B017FDFEF400508DC1 /* VideoFXExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoFXExporter.h; path = ../../addons/VideoFX/VideoFXExporter.h; sourceTree = "<group>"; };
+		930254C717FE0F38001907A0 /* Crawl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Crawl.cpp; path = ../addons/Crawl/Crawl.cpp; sourceTree = "<group>"; };
+		930254C817FE0F38001907A0 /* Crawl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Crawl.h; path = ../addons/Crawl/Crawl.h; sourceTree = "<group>"; };
+		930254CA17FF0F14001907A0 /* VoteDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VoteDisplay.cpp; path = ../addons/Crawl/VoteDisplay.cpp; sourceTree = "<group>"; };
+		930254CB17FF0F14001907A0 /* VoteDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoteDisplay.h; path = ../addons/Crawl/VoteDisplay.h; sourceTree = "<group>"; };
 		9308291D17EB4B0E006149AE /* oldvideo.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = oldvideo.frag; path = bin/data/shaders/oldvideo.frag; sourceTree = "<group>"; };
 		9308292117EB61E9006149AE /* emboss.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = emboss.frag; path = bin/data/shaders/emboss.frag; sourceTree = "<group>"; };
 		9308292517EB7C76006149AE /* sharpen.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = sharpen.frag; path = bin/data/shaders/sharpen.frag; sourceTree = "<group>"; };
@@ -645,6 +651,17 @@
 				9164C69E17FDFECB00508DC1 /* json.h */,
 			);
 			path = json;
+			sourceTree = "<group>";
+		};
+		930254C617FE0F0C001907A0 /* Crawl */ = {
+			isa = PBXGroup;
+			children = (
+				930254C717FE0F38001907A0 /* Crawl.cpp */,
+				930254C817FE0F38001907A0 /* Crawl.h */,
+				930254CA17FF0F14001907A0 /* VoteDisplay.cpp */,
+				930254CB17FF0F14001907A0 /* VoteDisplay.h */,
+			);
+			name = Crawl;
 			sourceTree = "<group>";
 		};
 		9308293117F38899006149AE /* ofxBox2d */ = {
@@ -1530,6 +1547,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				930254C617FE0F0C001907A0 /* Crawl */,
 				939E902017FA585C0067470B /* ofxFluid */,
 				931052D417F47DFC000D91C5 /* ofxMSAObjCPointer */,
 				931052D317F47DF5000D91C5 /* ofxMSACore */,
@@ -1791,6 +1809,7 @@
 				930829DF17F389D0006149AE /* b2WeldJoint.h in Sources */,
 				930829E017F389D0006149AE /* assert.hpp in Sources */,
 				930829E117F389D0006149AE /* del_impl.cpp in Sources */,
+				930254C917FE0F38001907A0 /* Crawl.cpp in Sources */,
 				930829E217F389D0006149AE /* del_interface.hpp in Sources */,
 				930829E317F389D0006149AE /* dpoint.hpp in Sources */,
 				930829E417F389D0006149AE /* triangle.h in Sources */,
@@ -1839,6 +1858,7 @@
 				93617F1217E7C1E800605C82 /* ofxFXObject.h in Sources */,
 				93617F1317E7C1E800605C82 /* ofxSwapBuffer.h in Sources */,
 				93617F1417E7C1E800605C82 /* ofxAbsDiff.h in Sources */,
+				930254CC17FF0F14001907A0 /* VoteDisplay.cpp in Sources */,
 				93617F1517E7C1E800605C82 /* ofxBounce.h in Sources */,
 				93617F1617E7C1E800605C82 /* ofxDisplacePixels.h in Sources */,
 				93617F1717E7C1E800605C82 /* ofxNormals.h in Sources */,
