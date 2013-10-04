@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>7.000000000</XPosition>
-    <YPosition>124.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>33.000000000</XPosition>
+    <YPosition>102.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -53,7 +53,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>PHYS BALL EFFECT</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

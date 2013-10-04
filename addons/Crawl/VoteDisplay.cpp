@@ -20,6 +20,8 @@ void VoteDisplay::addVote( string topic ) {
 
 void VoteDisplay::draw() {
     
+    if ( !visible )
+        return;
     
     
     float halfHeight = font.getStringBoundingBox( "1", 0, 0 ).getHeight() / 2.0;

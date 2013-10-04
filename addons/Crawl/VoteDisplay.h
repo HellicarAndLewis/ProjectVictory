@@ -7,6 +7,7 @@ public:
     
     ofTrueTypeFont font;
     ofVec2f pos;
+    bool visible = true;
     
     float margin = 30.0;
     

@@ -2,11 +2,10 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    // >:(
-//    ofEnableNormalizedTexCoords();
-//    ofDisableArbTex();
-//    ofEnableSmoothing();
     ofEnableAntiAliasing();
+    ofSetVerticalSync( true );
+    ofSetFrameRate( 60.0 );
+    
 
     ofSetLogLevel( OF_LOG_WARNING );
     w = 1280;
@@ -16,17 +15,17 @@ void testApp::setup(){
     
     ofSetWindowShape( 1280, 720 );
     
-    setupGUI();
+//    setupGUI();
     
 //    videoGrabber.setDeviceID( 1 );
     videoGrabber.initGrabber( w, h );
     videoSource = &videoGrabber;
     
-    videoPlayer.loadMovie( "going to the store.mp4" );
-    videoPlayer.setLoopState( OF_LOOP_NORMAL );
-    videoPlayer.play();
-    if ( ((ofxUIToggle*)videoGUI->getWidget("MUTE"))->getValue() )
-        videoPlayer.setVolume( 0.0 );
+//    videoPlayer.loadMovie( "going to the store.mp4" );
+//    videoPlayer.setLoopState( OF_LOOP_NORMAL );
+//    videoPlayer.play();
+//    if ( ((ofxUIToggle*)videoGUI->getWidget("MUTE"))->getValue() )
+//        videoPlayer.setVolume( 0.0 );
     
     vfx1.init();
     vfx1.setVideoSource( &videoGrabber );
@@ -55,6 +54,29 @@ void testApp::setup(){
     
     voteDisplay.init();
     voteDisplay.setTopics( "apples", "oranges" );
+    
+    overlayGUI = new ofxUISuperCanvas( "OVERLAYS", 0, 0, 200, 200 );
+    overlayGUI->addToggle( "DRAW CRAWL", &crawl.visible );
+    overlayGUI->addSlider( "CRAWL SPEED", 1.0, 10.0, &crawl.crawlSpeed );
+    overlayGUI->addSpacer();
+    overlayGUI->addToggle( "DRAW VOTING", &voteDisplay.visible );
+    overlayGUI->addSlider( "VOTING MIN SCALE", 0.0, 1.0, &voteDisplay.minScale );
+    overlayGUI->addSlider( "VOTING MAX SCALE", 0.0, 2.0, &voteDisplay.maxScale );
+    
+    vector<string> images;
+    images.push_back( "* 1280x720-FeelTV-Logo-01.png" );
+    images.push_back( "* dog.png" );
+    overlayGUI->addToggle( "DRAW OVERLAY", &drawOverlayImage );
+    overlayGUI->addSlider( "OVERLAY OPACITY", 0.0, 1.0, &overlayImageOpacity );
+    overlayGUI->addDropDownList( "OVERLAY IMAGE", images );
+    overlayImage.loadImage( images[0].substr(2,images[0].length()-2) );
+    
+    
+    overlayGUI->setColorBack( ofColor::grey );
+    overlayGUI->autoSizeToFitWidgets();
+    overlayGUI->loadSettings( "GUI/overlay.xml" );
+    ofAddListener( overlayGUI->newGUIEvent, this, &testApp::overlayGuiEvent );
+    
 }
 
 void testApp::setupGUI() {
@@ -72,6 +94,12 @@ void testApp::setupGUI() {
     // playhead always at 0
     ((ofxUISlider*)videoGUI->getWidget( "PLAYHEAD" ))->setValue(0.0);
 //    ((ofxUIToggle*)videoGUI->getWidget( "USE WEBCAM" ))->setValue( true );
+}
+
+void testApp::overlayGuiEvent( ofxUIEventArgs &e ) {
+    string name = e.widget->getName();
+    if ( name.substr(0,2) == "* " )
+        overlayImage.loadImage( name.substr( 2, name.length()-2 ) );
 }
 
 void testApp::guiEvent(ofxUIEventArgs &e) {
@@ -130,8 +158,17 @@ void testApp::draw(){
     big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
 //    small->draw( ofGetWidth()*.75, ofGetHeight()*.75, ofGetWidth()*.25, ofGetHeight()*.25 );
     
+    if ( drawOverlayImage ) {
+        ofPushStyle();
+        ofEnableBlendMode( OF_BLENDMODE_ALPHA );
+        ofSetColor( 255, (int)(255*overlayImageOpacity) );
+        overlayImage.draw( 0, 0 );
+        ofPopStyle();
+    }
+    
     crawl.draw();
     voteDisplay.draw();
+    
 }
 
 //--------------------------------------------------------------
@@ -219,5 +256,7 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 void testApp::exit() {
     vfx1.exit();
 //    vfx2.exit();
-    videoGUI->saveSettings("GUI/video.xml");
+//    videoGUI->saveSettings("GUI/video.xml");
+    videoFXExporter.exporterGUI->saveSettings("GUI/exporter.xml");
+    overlayGUI->saveSettings( "GUI/overlay.xml" );
 }

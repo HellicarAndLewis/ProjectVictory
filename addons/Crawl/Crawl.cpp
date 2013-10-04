@@ -60,6 +60,9 @@ void Crawl::update() {
 
 void Crawl::draw() {
     
+    if ( !visible )
+        return;
+    
     for ( int i=0; i<screenItems.size(); i++ ) {
         
         CrawlItem & item = screenItems[i];

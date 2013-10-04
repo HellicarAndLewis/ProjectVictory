@@ -17,9 +17,12 @@ class testApp : public ofBaseApp{
     
         int w, h;
     
-    ofxFluid fluid;
+        ofxUISuperCanvas * overlayGUI;
         Crawl crawl;
         VoteDisplay voteDisplay;
+        bool drawOverlayImage = true;
+        float overlayImageOpacity = 1.0;
+        ofImage overlayImage;
     
         ofColor colors[7] = {
             ofColor::red,
@@ -45,6 +48,7 @@ class testApp : public ofBaseApp{
         void setupGUI();
 		void update();
 		void draw();
+        void overlayGuiEvent( ofxUIEventArgs &e );
         void guiEvent(ofxUIEventArgs &e);
         void exit();
 

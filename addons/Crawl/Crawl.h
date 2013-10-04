@@ -21,7 +21,7 @@ public:
 class Crawl {
 public:
     
-    
+    bool visible = true;
     ofTrueTypeFont usernameFont, messageFont;
     
     float spaceBetweenItems = 30.0;

@@ -22,8 +22,23 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>RADIUS LOW</Name>
+    <Value>16.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RADIUS HIGH</Name>
+    <Value>32.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>FLUID DISSIPATION</Name>
-    <Value>0.857180297</Value>
+    <Value>0.966555297</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FLUID DISPLACEMENT</Name>
+    <Value>90.405532837</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
