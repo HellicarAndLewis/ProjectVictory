@@ -1,6 +1,7 @@
 #include "ofApp.h"
 
 using namespace ofxCvGui;
+using namespace ofxVMIG;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -14,7 +15,7 @@ void ofApp::setup(){
 	auto screen1Grid = Builder::makeGrid();
 	auto screen2Grid = Builder::makeGrid();
 	screen1Grid->setColsCount(1);
-	//screen2Grid->setColsCount(2);
+	screen2Grid->setColsCount(2);
 
 
 	//--
@@ -23,9 +24,13 @@ void ofApp::setup(){
 	auto AB0Grid = Builder::makeGrid();
 	AB0Grid->setColsCount(3);
 	AB0Grid->add(Builder::makePanel(this->videoMatrix->getInput(0).getTextureReference(), "A"));
-	AB0Grid->add(Builder::makePanel(this->crossfader->getTarget(), "Result"));
+	AB0Grid->add(Builder::makePanel(this->crossfader->getTarget(), "Result")); // add a screen for the target fbo of the crossfader
 	AB0Grid->add(Builder::makePanel(this->videoMatrix->getInput(1).getTextureReference(), "B"));
 	
+	this->videoMatrix->onSetInspectorFocus += [this] (Inspectable& module) {
+		this->inspector->setFocus(module);
+	};
+
 	{
 		vector<float> heights;
 		heights.push_back(1080 - 360);
@@ -41,11 +46,21 @@ void ofApp::setup(){
 
 	//--
 	//screen 2
-	//	
+	//
+
+	/* This sets the sources for the crossfader. 
+	This should be changed to take the textures from the target fbo's of Aaron's VideoFX
+	*/
 	this->crossfader->setA(this->videoMatrix->getInput(0).getTextureReference());
 	this->crossfader->setB(this->videoMatrix->getInput(1).getTextureReference());
 
+	/*
+	We'll add more controls to the control grid.
+	e.g. overlay images, twitter controls
+	These can also be on subgrids, as you like...
+	*/
 	auto controlsGrid = Builder::makeGrid();
+	controlsGrid->setColsCount(1);
 	controlsGrid->add(this->crossfader);
 
 	{
