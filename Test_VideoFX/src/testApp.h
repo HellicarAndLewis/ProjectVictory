@@ -9,6 +9,7 @@
 #include "VideoFX.h"
 #include "VideoFXExporter.h"
 #include "Crawl.h"
+#include "VoteDisplay.h"
 
 class testApp : public ofBaseApp{
 
@@ -18,6 +19,7 @@ class testApp : public ofBaseApp{
     
     ofxFluid fluid;
         Crawl crawl;
+        VoteDisplay voteDisplay;
     
         ofColor colors[7] = {
             ofColor::red,

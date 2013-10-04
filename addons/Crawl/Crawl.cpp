@@ -59,7 +59,6 @@ void Crawl::update() {
 }
 
 void Crawl::draw() {
-    usernameFont.drawString( "HI OMG HI", 100, 100 );
     
     for ( int i=0; i<screenItems.size(); i++ ) {
         

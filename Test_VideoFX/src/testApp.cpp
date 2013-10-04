@@ -52,6 +52,9 @@ void testApp::setup(){
     crawl.addCrawlItem( "test_user", "im testing stuff" );
     crawl.addCrawlItem( "hacker", "im hacking stuff" );
     crawl.addCrawlItem( "social_media_pro", "im tweeting stuff" );
+    
+    voteDisplay.init();
+    voteDisplay.setTopics( "apples", "oranges" );
 }
 
 void testApp::setupGUI() {
@@ -118,6 +121,7 @@ void testApp::update(){
 //    vfx2.update( videoPlayer.isFrameNew() );
     
     crawl.update();
+    voteDisplay.update();
 }
 
 //--------------------------------------------------------------
@@ -127,24 +131,32 @@ void testApp::draw(){
 //    small->draw( ofGetWidth()*.75, ofGetHeight()*.75, ofGetWidth()*.25, ofGetHeight()*.25 );
     
     crawl.draw();
+    voteDisplay.draw();
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
+    if ( key == 91 ) {
+        voteDisplay.addVote( voteDisplay.topic1 );
+    }
+    else if ( key == 93 ) {
+        voteDisplay.addVote( voteDisplay.topic2 );
+    }
+    
     if ( key == 'k' ) {
         vfx1.reloadShaders();
-        vfx2.reloadShaders();
+//        vfx2.reloadShaders();
     }
     else if ( key == 'h' ) {
         big->hideGUI();
-        small->hideGUI();
+//        small->hideGUI();
     }
     else if ( key == '1' ) {
         big = &vfx1;
-        small = &vfx2;
+//        small = &vfx2;
         big->showGUI();
-        small->hideGUI();
+//        small->hideGUI();
     }
 //    else if ( key == '2' ) {
 //        big = &vfx2;
@@ -156,13 +168,13 @@ void testApp::keyPressed(int key){
         if ( --colorIndex < 0 )
             colorIndex = 6;
         vfx1.setColor( colors[colorIndex] );
-        vfx2.setColor( colors[colorIndex] );
+//        vfx2.setColor( colors[colorIndex] );
     }
     else if ( key == 61 ) {
         if ( ++colorIndex > 6 )
             colorIndex = 0;
         vfx1.setColor( colors[colorIndex] );
-        vfx2.setColor( colors[colorIndex] );
+//        vfx2.setColor( colors[colorIndex] );
     }
 }
 
