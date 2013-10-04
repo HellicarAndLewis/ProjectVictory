@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4875273417FE1FE900E42F55 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875273317FE1FE900E42F55 /* libwebsockets.a */; };
+		5D4246E217FEDC60006695ED /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D4246E117FEDC60006695ED /* libwebsockets.a */; };
 		91059E6C17FED9980057B484 /* CircularTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91059E5517FED9980057B484 /* CircularTexture.cpp */; };
 		91059E6D17FED9980057B484 /* FarnebackPlus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91059E5917FED9980057B484 /* FarnebackPlus.cpp */; };
 		91059E6F17FED9980057B484 /* VideoFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91059E6817FED9980057B484 /* VideoFX.cpp */; };
@@ -221,7 +221,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4875273317FE1FE900E42F55 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebsockets.a; path = libs/libwebsockets/lib/osx/libwebsockets.a; sourceTree = "<group>"; };
+		5D4246E117FEDC60006695ED /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebsockets.a; path = libs/libwebsockets/lib/osx/libwebsockets.a; sourceTree = "<group>"; };
 		91059E5317FED9980057B484 /* BadTVEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadTVEffect.h; sourceTree = "<group>"; };
 		91059E5417FED9980057B484 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		91059E5517FED9980057B484 /* CircularTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircularTexture.cpp; sourceTree = "<group>"; };
@@ -733,7 +733,7 @@
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
-				4875273417FE1FE900E42F55 /* libwebsockets.a in Frameworks */,
+				5D4246E217FEDC60006695ED /* libwebsockets.a in Frameworks */,
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
@@ -812,7 +812,7 @@
 		9164C37B17FD6EBD00508DC1 /* ofxLibwebsockets */ = {
 			isa = PBXGroup;
 			children = (
-				4875273317FE1FE900E42F55 /* libwebsockets.a */,
+				5D4246E117FEDC60006695ED /* libwebsockets.a */,
 				9164C37C17FD6EBD00508DC1 /* .gitignore */,
 				9164C37D17FD6EBD00508DC1 /* addon_config.mk */,
 				9164C45817FD6EBF00508DC1 /* install.xml */,
@@ -2412,14 +2412,15 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/linux64\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/linuxarmv6l\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/win32/Debug\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/win32/Release\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/osx\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/win32\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/linux64\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/linuxarmv6l\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/win32/Debug\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/win32/Release\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/osx\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/win32\\\\\\\"",
 					"/Users/roxlu/Documents/programming/c++/nike/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx",
+					/Users/joel/Documents/Projects/HellicarAndLewis/nikeHyperFeelBroadcast2013/OF/openFrameworks/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -2516,14 +2517,15 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/linux64\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/linuxarmv6l\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/win32/Debug\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/win32/Release\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/osx\\\"",
-					"\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/win32\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/linux64\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/linuxarmv6l\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/win32/Debug\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/win32/Release\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/osx\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/../../../addons/ofxLibwebsockets/libs/openssl/lib/win32\\\\\\\"",
 					"/Users/roxlu/Documents/programming/c++/nike/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx",
+					/Users/joel/Documents/Projects/HellicarAndLewis/nikeHyperFeelBroadcast2013/OF/openFrameworks/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",

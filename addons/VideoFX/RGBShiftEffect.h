@@ -41,7 +41,29 @@ public:
     ShaderMap getShaderMap() {
         ShaderMap shaderMap;
         shaderMap["amount"] = amount;
+        shaderMap["rgbAmount"] = rgbAmount;
         shaderMap["angle"] = angle;
         return shaderMap;
+    }
+    
+//    virtual ShaderMap getShaderMap() {
+//        ShaderMap shaderMap;
+//        shaderMap["amount"] = amount;
+//
+//        return shaderMap;
+//    }
+    
+    ShaderMap getShaderDefaultMap() {
+        ShaderMap shaderMap;
+        shaderMap["amount"] = 0.0f;
+        shaderMap["rgbAmount"] = 0.0f;
+        shaderMap["angle"] = 0.0f;
+
+        return shaderMap;
+    }
+    
+    void applyShaderMap(ShaderMap shaderMap) {
+        if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble(); }
+        if (shaderMap.isMember("angle"))        { amount = shaderMap["angle"].asDouble(); }
     }
 };
