@@ -187,12 +187,16 @@ void testApp::keyPressed(int key){
     }
     else if ( key == 'h' ) {
         big->hideGUI();
+        videoFXExporter.exporterGUI->setVisible( false );
+        overlayGUI->setVisible( false );
 //        small->hideGUI();
     }
     else if ( key == '1' ) {
         big = &vfx1;
 //        small = &vfx2;
         big->showGUI();
+        videoFXExporter.exporterGUI->setVisible( true );
+        overlayGUI->setVisible( true );
 //        small->hideGUI();
     }
 //    else if ( key == '2' ) {
