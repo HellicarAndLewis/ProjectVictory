@@ -114,7 +114,7 @@ void testApp::draw(){
 
 void testApp::drawVideo() {
     
-    vfx1.draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
+    vfx1.draw( 0, 0, ofGetWidth(), ofGetHeight() );
     
     if ( drawOverlayImage ) {
         ofPushStyle();
