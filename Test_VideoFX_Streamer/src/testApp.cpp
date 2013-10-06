@@ -172,7 +172,9 @@ void testApp::draw(){
     streamer.beginGrab();
       drawVideo();
     streamer.endGrab();
+	
   }
+ drawVideo();
 
 }
 
