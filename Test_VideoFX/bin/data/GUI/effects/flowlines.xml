@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>281.292236328</XPosition>
-    <YPosition>411.000000000</YPosition>
+    <XPosition>11.292236328</XPosition>
+    <YPosition>538.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>4.503852844</Value>
+    <Value>9.472602844</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

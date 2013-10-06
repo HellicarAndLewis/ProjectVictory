@@ -146,8 +146,17 @@ public:
                 float scale = farneback->getWidth() / (float)this->getWidth();
                 ofxBox2dCircle &circle = circles[i];
                 float radius = circle.getRadius() * scale;
+
+                ofVec2f pos = circle.getPosition();
+                if(pos.x != pos.x) {
+#if !defined(NDEBUG)
+                  printf("Circle.getPosition() returned an invalid position in PhysBalEffect.h\n");
+#endif
+                  continue;
+                }
+
                 // get force amt for circle
-                ofVec2f pos = circle.getPosition() * scale;
+                pos *= scale;
                 ofRectangle boundingRect = ofRectangle( pos.x - radius, pos.y - radius, radius * 2.0, radius * 2.0 );
                 ofVec2f flow = farneback->getAverageFlowInRegion( boundingRect );
                 

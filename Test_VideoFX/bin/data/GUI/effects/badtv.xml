@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>68.270263672</XPosition>
-    <YPosition>378.000000000</YPosition>
+    <XPosition>475.270263672</XPosition>
+    <YPosition>505.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>AMOUNT</Name>
-    <Value>1.000000000</Value>
+    <Value>0.107967377</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

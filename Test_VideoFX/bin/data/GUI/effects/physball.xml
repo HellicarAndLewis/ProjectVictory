@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>553.421386719</XPosition>
-    <YPosition>385.000000000</YPosition>
+    <XPosition>1075.421386719</XPosition>
+    <YPosition>233.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -13,32 +13,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FORCE SCALE</Name>
-    <Value>55.954593658</Value>
+    <Value>100.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>NUM BALLS</Name>
-    <Value>87.625747681</Value>
+    <Value>200.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS LOW</Name>
-    <Value>16.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS HIGH</Name>
-    <Value>32.000000000</Value>
+    <Value>128.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLUID DISSIPATION</Name>
-    <Value>0.966555297</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FLUID DISPLACEMENT</Name>
-    <Value>90.405532837</Value>
+    <Value>100.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

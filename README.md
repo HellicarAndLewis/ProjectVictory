@@ -48,7 +48,8 @@ of/apps/ProjectVictory/Runtime_VideoMixer
 of/apps/ProjectVictory/Runtime_[your app]
 ````
 
-## Generic includes for the addons
+## Includes for the addons
 ````sh
-
+./../addons/ofxCv/libs/ofxCv/include/
+./../addons/ofxFluid/src/
 ````
