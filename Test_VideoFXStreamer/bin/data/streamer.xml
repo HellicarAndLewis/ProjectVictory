@@ -10,9 +10,7 @@
     <stream>
       <id>0</id>
       <server>
-        <url>rtmp://p.ep141936.i.akamaientrypoint.net/EntryPoint/Nike_3000@141936</url>
-        <username>123194</username>
-        <password>ROXLU</password>
+        <url>rtmp://test.home.roxlu.com/flvplayback/livestream</url>
       </server>
       <video>
         <width>640</width>
