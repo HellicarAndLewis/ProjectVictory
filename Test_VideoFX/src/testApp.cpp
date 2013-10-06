@@ -4,7 +4,7 @@
 void testApp::setup(){
     ofEnableAntiAliasing();
     ofSetVerticalSync( true );
-    ofSetFrameRate( 60.0 );
+    ofSetFrameRate( 30 );
     
 
     ofSetLogLevel( OF_LOG_WARNING );
@@ -13,12 +13,12 @@ void testApp::setup(){
     int flowW = w/4;
     int flowH = h/4;
     
-    ofSetWindowShape( 1280, 720 );
+    //ofSetWindowShape( 1280, 720 );
     
 //    setupGUI();
     
 //    videoGrabber.setDeviceID( 1 );
-    videoGrabber.initGrabber( w, h );
+    videoGrabber.initGrabber( 640, 480 );
     videoSource = &videoGrabber;
     
 //    videoPlayer.loadMovie( "going to the store.mp4" );

@@ -12,7 +12,7 @@ class BaseEffect : public ofxFXObject {
 
 public:
     string name;    
-    bool enabled;
+    bool enabled = false;
     
     ofxUISuperCanvas *settings;
     
