@@ -47,3 +47,8 @@ of/apps/ProjectVictory/Runtime_VideoStreamer
 of/apps/ProjectVictory/Runtime_VideoMixer
 of/apps/ProjectVictory/Runtime_[your app]
 ````
+
+## Generic includes for the addons
+````sh
+
+````
