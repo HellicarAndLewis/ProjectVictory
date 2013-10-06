@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5DA34C6D180176CC00190611 /* joellibx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C6C180176CC00190611 /* joellibx264.a */; };
-		5DA34C791801774300190611 /* joellibcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C701801774300190611 /* joellibcrypto.a */; };
-		5DA34C7A1801774300190611 /* joellibglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C711801774300190611 /* joellibglfw3.a */; };
-		5DA34C7B1801774300190611 /* joellibmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C721801774300190611 /* joellibmp3lame.a */; };
-		5DA34C7C1801774300190611 /* joellibnanomsg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C731801774300190611 /* joellibnanomsg.a */; };
-		5DA34C7D1801774300190611 /* joellibrtmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C741801774300190611 /* joellibrtmp.a */; };
-		5DA34C7E1801774300190611 /* joellibssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C751801774300190611 /* joellibssl.a */; };
-		5DA34C7F1801774300190611 /* joellibuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C761801774300190611 /* joellibuv.a */; };
-		5DA34C811801774300190611 /* joellibz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA34C781801774300190611 /* joellibz.a */; };
+		4298449418017F38004B6C62 /* joellibcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298448B18017F38004B6C62 /* joellibcrypto.a */; };
+		4298449518017F38004B6C62 /* joellibglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298448C18017F38004B6C62 /* joellibglfw3.a */; };
+		4298449618017F38004B6C62 /* joellibmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298448D18017F38004B6C62 /* joellibmp3lame.a */; };
+		4298449718017F38004B6C62 /* joellibnanomsg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298448E18017F38004B6C62 /* joellibnanomsg.a */; };
+		4298449818017F38004B6C62 /* joellibrtmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298448F18017F38004B6C62 /* joellibrtmp.a */; };
+		4298449918017F38004B6C62 /* joellibssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298449018017F38004B6C62 /* joellibssl.a */; };
+		4298449A18017F38004B6C62 /* joellibuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298449118017F38004B6C62 /* joellibuv.a */; };
+		4298449B18017F38004B6C62 /* joellibx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298449218017F38004B6C62 /* joellibx264.a */; };
+		4298449C18017F38004B6C62 /* joellibz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4298449318017F38004B6C62 /* joellibz.a */; };
 		9164C64517FD9A6A00508DC1 /* ResizerFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9164C60317FD9A6A00508DC1 /* ResizerFBO.cpp */; };
 		9164C64617FD9A6A00508DC1 /* YUV420PGrabber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9164C60417FD9A6A00508DC1 /* YUV420PGrabber.cpp */; };
 		9164C64717FD9A6A00508DC1 /* ofxVideoStreamerScreenCapture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9164C60517FD9A6A00508DC1 /* ofxVideoStreamerScreenCapture.cpp */; };
@@ -251,15 +251,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5DA34C6C180176CC00190611 /* joellibx264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibx264.a; sourceTree = "<group>"; };
-		5DA34C701801774300190611 /* joellibcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibcrypto.a; sourceTree = "<group>"; };
-		5DA34C711801774300190611 /* joellibglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibglfw3.a; sourceTree = "<group>"; };
-		5DA34C721801774300190611 /* joellibmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibmp3lame.a; sourceTree = "<group>"; };
-		5DA34C731801774300190611 /* joellibnanomsg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibnanomsg.a; sourceTree = "<group>"; };
-		5DA34C741801774300190611 /* joellibrtmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibrtmp.a; sourceTree = "<group>"; };
-		5DA34C751801774300190611 /* joellibssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibssl.a; sourceTree = "<group>"; };
-		5DA34C761801774300190611 /* joellibuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibuv.a; sourceTree = "<group>"; };
-		5DA34C781801774300190611 /* joellibz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibz.a; sourceTree = "<group>"; };
+		4298448B18017F38004B6C62 /* joellibcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibcrypto.a; sourceTree = "<group>"; };
+		4298448C18017F38004B6C62 /* joellibglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibglfw3.a; sourceTree = "<group>"; };
+		4298448D18017F38004B6C62 /* joellibmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibmp3lame.a; sourceTree = "<group>"; };
+		4298448E18017F38004B6C62 /* joellibnanomsg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibnanomsg.a; sourceTree = "<group>"; };
+		4298448F18017F38004B6C62 /* joellibrtmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibrtmp.a; sourceTree = "<group>"; };
+		4298449018017F38004B6C62 /* joellibssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibssl.a; sourceTree = "<group>"; };
+		4298449118017F38004B6C62 /* joellibuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibuv.a; sourceTree = "<group>"; };
+		4298449218017F38004B6C62 /* joellibx264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibx264.a; sourceTree = "<group>"; };
+		4298449318017F38004B6C62 /* joellibz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = joellibz.a; sourceTree = "<group>"; };
 		9164C60317FD9A6A00508DC1 /* ResizerFBO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResizerFBO.cpp; sourceTree = "<group>"; };
 		9164C60417FD9A6A00508DC1 /* YUV420PGrabber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YUV420PGrabber.cpp; sourceTree = "<group>"; };
 		9164C60517FD9A6A00508DC1 /* ofxVideoStreamerScreenCapture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoStreamerScreenCapture.cpp; sourceTree = "<group>"; };
@@ -686,30 +686,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DA34C7D1801774300190611 /* joellibrtmp.a in Frameworks */,
 				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
+				4298449C18017F38004B6C62 /* joellibz.a in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
-				5DA34C811801774300190611 /* joellibz.a in Frameworks */,
-				5DA34C7F1801774300190611 /* joellibuv.a in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
-				5DA34C7B1801774300190611 /* joellibmp3lame.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
 				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
+				4298449418017F38004B6C62 /* joellibcrypto.a in Frameworks */,
+				4298449918017F38004B6C62 /* joellibssl.a in Frameworks */,
+				4298449718017F38004B6C62 /* joellibnanomsg.a in Frameworks */,
 				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
+				4298449518017F38004B6C62 /* joellibglfw3.a in Frameworks */,
 				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
 				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
-				5DA34C6D180176CC00190611 /* joellibx264.a in Frameworks */,
+				4298449618017F38004B6C62 /* joellibmp3lame.a in Frameworks */,
+				4298449A18017F38004B6C62 /* joellibuv.a in Frameworks */,
 				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
+				4298449818017F38004B6C62 /* joellibrtmp.a in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
-				5DA34C7C1801774300190611 /* joellibnanomsg.a in Frameworks */,
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
-				5DA34C7A1801774300190611 /* joellibglfw3.a in Frameworks */,
-				5DA34C7E1801774300190611 /* joellibssl.a in Frameworks */,
-				5DA34C791801774300190611 /* joellibcrypto.a in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
+				4298449B18017F38004B6C62 /* joellibx264.a in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 			);
@@ -721,15 +721,15 @@
 		5DA34C62180175A500190611 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				5DA34C701801774300190611 /* joellibcrypto.a */,
-				5DA34C711801774300190611 /* joellibglfw3.a */,
-				5DA34C721801774300190611 /* joellibmp3lame.a */,
-				5DA34C731801774300190611 /* joellibnanomsg.a */,
-				5DA34C741801774300190611 /* joellibrtmp.a */,
-				5DA34C751801774300190611 /* joellibssl.a */,
-				5DA34C761801774300190611 /* joellibuv.a */,
-				5DA34C781801774300190611 /* joellibz.a */,
-				5DA34C6C180176CC00190611 /* joellibx264.a */,
+				4298448B18017F38004B6C62 /* joellibcrypto.a */,
+				4298448C18017F38004B6C62 /* joellibglfw3.a */,
+				4298448D18017F38004B6C62 /* joellibmp3lame.a */,
+				4298448E18017F38004B6C62 /* joellibnanomsg.a */,
+				4298448F18017F38004B6C62 /* joellibrtmp.a */,
+				4298449018017F38004B6C62 /* joellibssl.a */,
+				4298449118017F38004B6C62 /* joellibuv.a */,
+				4298449218017F38004B6C62 /* joellibx264.a */,
+				4298449318017F38004B6C62 /* joellibz.a */,
 			);
 			name = lib;
 			path = external/lib;
@@ -2298,9 +2298,10 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
-					"\\\"$(SRCROOT)/addons/ofxVideoStreamer/include/librtmp\\\"",
-					"\\\"$(SRCROOT)/addons/ofxVideoStreamer/lib\\\"",
+					"\\\\\\\"$(SRCROOT)/addons/ofxVideoStreamer/include/librtmp\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/addons/ofxVideoStreamer/lib\\\\\\\"",
 					/Users/joel/Documents/Projects/HellicarAndLewis/nikeHyperFeelBroadcast2013/OF/of_v0.8.0_osx_release/apps/ProjectVictory/Test_VideoFXStreamer/src/external/lib,
+					/Users/streaming/Documents/TheProjectOfVictory/of_v0.8.0_osx_release/apps/ProjectVictory/Test_VideoFXStreamer/src/external/lib,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -2402,9 +2403,10 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					"\\\"$(SRCROOT)/addons/ofxVideoStreamer/include/librtmp\\\"",
-					"\\\"$(SRCROOT)/addons/ofxVideoStreamer/lib\\\"",
+					"\\\\\\\"$(SRCROOT)/addons/ofxVideoStreamer/include/librtmp\\\\\\\"",
+					"\\\\\\\"$(SRCROOT)/addons/ofxVideoStreamer/lib\\\\\\\"",
 					/Users/joel/Documents/Projects/HellicarAndLewis/nikeHyperFeelBroadcast2013/OF/of_v0.8.0_osx_release/apps/ProjectVictory/Test_VideoFXStreamer/src/external/lib,
+					/Users/streaming/Documents/TheProjectOfVictory/of_v0.8.0_osx_release/apps/ProjectVictory/Test_VideoFXStreamer/src/external/lib,
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",

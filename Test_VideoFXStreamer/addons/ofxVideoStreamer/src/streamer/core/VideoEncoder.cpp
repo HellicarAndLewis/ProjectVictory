@@ -108,7 +108,7 @@ bool VideoEncoder::initializeX264() {
   p->rc.i_qp_constant = 25;
 #elif USE_BITRATE_QUALITY
   p->rc.i_rc_method = X264_RC_ABR;
-  p->rc.i_bitrate = 400;
+  p->rc.i_bitrate = 60;
 #endif
 
 #if 0
