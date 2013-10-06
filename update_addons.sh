@@ -2,6 +2,7 @@
 
 # addons directory
 ad=${PWD}/addons/  
+ofad=${PWD}/../../addons/
 
 if [ ! -d ${ad} ] ; then 
     mkdir ${ad}
@@ -21,6 +22,12 @@ function clone {
         mkdir ${ad}/${dir}
         cd ${ad}/${dir}
         git clone ${url} .
+    fi
+
+    if [ -d ${ofad}/${dir} ] ; then 
+        echo "********************************************************************************************************************************************************************"
+        echo "It looks like you cloned the ${url} already in the addons directory of OF. This might cause compile errors because XCode gets confused about what headers to include!"
+        echo "********************************************************************************************************************************************************************"
     fi
 
     cd ${ad}/${dir}
