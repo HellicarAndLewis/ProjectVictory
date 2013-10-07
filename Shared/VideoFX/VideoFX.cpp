@@ -5,15 +5,11 @@ int VideoFX::count = 0;
 void VideoFX::init() {
     
     effects.push_back( &khronosEffect );
-    effects.push_back( &sharpenEffect );
-    effects.push_back( &embossEffect );
     effects.push_back( &colorMapEffect );
-    effects.push_back( &oldVideoEffect );
     effects.push_back( &badTVEffect );
     effects.push_back( &scanlinesEffect );
     effects.push_back( &rgbShiftEffect );
     effects.push_back( &flowLinesEffect );
-    effects.push_back( &physBallEffect );
     effects.push_back( &gridDistortEffect );
     
     ramp.loadImage( "textures/ramp1.png" );

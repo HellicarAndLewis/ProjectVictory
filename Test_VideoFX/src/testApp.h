@@ -36,16 +36,12 @@ class testApp : public ofBaseApp{
         int colorIndex = 0;
     
         ofVideoGrabber videoGrabber;
-        ofVideoPlayer videoPlayer;
         ofBaseVideoDraws *videoSource;
     
         VideoFX vfx1, vfx2;
         VideoFX *big;
-        VideoFX *small;
-        ofxUICanvas *videoGUI;
     
 		void setup();
-        void setupGUI();
 		void update();
 		void draw();
         void overlayGuiEvent( ofxUIEventArgs &e );

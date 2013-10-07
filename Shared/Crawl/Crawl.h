@@ -10,7 +10,10 @@ public:
     CrawlItem( string username, string message, ofTrueTypeFont & usernameFont, ofTrueTypeFont & messageFont, float space ) {
         this->username = username;
         this->message = message;
-        
+        calculateRects( usernameFont, messageFont, space );
+    }
+    
+    void calculateRects( ofTrueTypeFont & usernameFont, ofTrueTypeFont & messageFont, float space ) {
         messageRect = messageFont.getStringBoundingBox( message, 0, 0 );
         usernameRect = usernameFont.getStringBoundingBox( username, messageRect.getLeft() + messageRect.getWidth() + space, 0 );
         boundingRect = ofRectangle( messageRect );
@@ -20,6 +23,8 @@ public:
 
 class Crawl {
 public:
+    
+    float fontSize = 16;
     
     bool visible = true;
     ofTrueTypeFont usernameFont, messageFont;
@@ -44,6 +49,7 @@ public:
     vector<CrawlItem> screenItems;
     
     void init();
+    void loadFonts();
     void addScreenItem();
     void update();
     void draw();

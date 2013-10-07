@@ -10,7 +10,6 @@
 #include "KhronosEffect.h"
 #include "BadTVEffect.h"
 #include "RGBShiftEffect.h"
-//#include "ofxFluid.h"
 #include "OldVideoEffect.h"
 #include "EmbossEffect.h"
 #include "SharpenEffect.h"
@@ -55,15 +54,11 @@ public:
     
     
     KhronosEffect khronosEffect;
-    OldVideoEffect oldVideoEffect;
     BadTVEffect badTVEffect;
     ScanlinesEffect scanlinesEffect;
     RGBShiftEffect  rgbShiftEffect;
-    EmbossEffect embossEffect;
-    SharpenEffect sharpenEffect;
     ColorMapEffect colorMapEffect;
     FlowLinesEffect flowLinesEffect;
-    PhysBallEffect physBallEffect;
     GridDistortEffect gridDistortEffect;
     // vector contains points to all effects
     vector<BaseEffect*> effects;

@@ -1,13 +1,21 @@
 #include "Crawl.h"
 
 void Crawl::init() {
-    usernameFont.loadFont( "NikeEnergy-Headline.ttf", 16 );
-    messageFont.loadFont( "Georgia Italic.ttf", 16 );
+    loadFonts();
+}
+
+void Crawl::loadFonts() {
+    usernameFont.loadFont( "NikeEnergy-Headline.ttf", fontSize );
+    messageFont.loadFont( "IT646___.TTF", fontSize );
+    for ( int i=0; i<items.size(); i++ ) {
+        items[i].calculateRects( usernameFont, messageFont, ((int)fontSize) / 2.0 );
+    }
+    screenItems.clear();
 }
 
 void Crawl::addCrawlItem( string username, string message ) {
     
-    CrawlItem item( "@" + ofToUpper( username ), message, usernameFont, messageFont, 5.0 );
+    CrawlItem item( "@" + ofToUpper( username ), message, usernameFont, messageFont, ((int)fontSize) / 2.0 );
     items.push_back( item );
     
     while ( items.size() > maxCrawlItems ) {
@@ -32,6 +40,11 @@ void Crawl::addScreenItem() {
 }
 
 void Crawl::update() {
+    
+    if ( usernameFont.getSize() != (int)fontSize ) {
+        cout << "loading fonts at " << fontSize << endl;
+        loadFonts();
+    }
     
     if ( screenItems.size() == 0 && items.size() == 0 )
         return;
@@ -66,7 +79,7 @@ void Crawl::draw() {
     for ( int i=0; i<screenItems.size(); i++ ) {
         
         CrawlItem & item = screenItems[i];
-        messageFont.drawString( item.message, item.messageRect.getLeft() + item.pos.x, item.messageRect.getTop() + item.pos.y );
+        messageFont.drawString( item.message, item.messageRect.getLeft() + item.pos.x, item.usernameRect.getTop() + item.pos.y );
         usernameFont.drawString( item.username, item.usernameRect.getLeft() + item.pos.x, item.usernameRect.getTop() + item.pos.y );
         
     }
