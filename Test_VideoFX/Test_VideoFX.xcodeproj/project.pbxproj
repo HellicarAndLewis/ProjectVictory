@@ -78,6 +78,8 @@
 		93397D8C17E2B2B70012EAE3 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397D8617E2B0120012EAE3 /* tinyxmlerror.cpp */; };
 		93397D8D17E2B2B80012EAE3 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397D8417E2B0120012EAE3 /* tinyxml.cpp */; };
 		93397D8E17E2B2BA0012EAE3 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397D8917E2B0120012EAE3 /* ofxXmlSettings.cpp */; };
+		93530A99180453F100840FFE /* TextOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93530A97180453F100840FFE /* TextOverlay.cpp */; };
+		93530A9C1804A73700840FFE /* Overlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93530A9A1804A73700840FFE /* Overlay.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -495,6 +497,10 @@
 		93397D8717E2B0120012EAE3 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		93397D8917E2B0120012EAE3 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		93397D8A17E2B0120012EAE3 /* ofxXmlSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		93530A97180453F100840FFE /* TextOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextOverlay.cpp; sourceTree = "<group>"; };
+		93530A98180453F100840FFE /* TextOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextOverlay.h; sourceTree = "<group>"; };
+		93530A9A1804A73700840FFE /* Overlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Overlay.cpp; sourceTree = "<group>"; };
+		93530A9B1804A73700840FFE /* Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Overlay.h; sourceTree = "<group>"; };
 		935F249417FDC4EA007A291B /* physball.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = physball.frag; path = bin/data/shaders/physball.frag; sourceTree = "<group>"; };
 		93617EF917E7BDB400605C82 /* khronos.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = khronos.frag; path = bin/data/shaders/khronos.frag; sourceTree = "<group>"; };
 		93617F2617E8D65A00605C82 /* badtv.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = badtv.frag; path = bin/data/shaders/badtv.frag; sourceTree = "<group>"; };
@@ -1132,6 +1138,10 @@
 				484B8BCC1801C44E0000D7F9 /* Crawl.h */,
 				484B8BCD1801C44E0000D7F9 /* VoteDisplay.cpp */,
 				484B8BCE1801C44E0000D7F9 /* VoteDisplay.h */,
+				93530A97180453F100840FFE /* TextOverlay.cpp */,
+				93530A98180453F100840FFE /* TextOverlay.h */,
+				93530A9A1804A73700840FFE /* Overlay.cpp */,
+				93530A9B1804A73700840FFE /* Overlay.h */,
 			);
 			name = Crawl;
 			path = ../../Shared/Crawl;
@@ -1724,9 +1734,11 @@
 				484B8B491801C3090000D7F9 /* b2Body.cpp in Sources */,
 				484B8B4A1801C3090000D7F9 /* b2ContactManager.cpp in Sources */,
 				484B8B4B1801C3090000D7F9 /* b2Fixture.cpp in Sources */,
+				93530A9C1804A73700840FFE /* Overlay.cpp in Sources */,
 				484B8B4C1801C3090000D7F9 /* b2Island.cpp in Sources */,
 				484B8B4D1801C3090000D7F9 /* b2World.cpp in Sources */,
 				484B8B4E1801C3090000D7F9 /* b2WorldCallbacks.cpp in Sources */,
+				93530A99180453F100840FFE /* TextOverlay.cpp in Sources */,
 				484B8B4F1801C3090000D7F9 /* del_impl.cpp in Sources */,
 				484B8B771801C31D0000D7F9 /* ofxFXObject.cpp in Sources */,
 				484B8BC51801C4450000D7F9 /* CircularTexture.cpp in Sources */,
