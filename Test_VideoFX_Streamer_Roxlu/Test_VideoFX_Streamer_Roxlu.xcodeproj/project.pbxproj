@@ -72,42 +72,43 @@
 		484B8BCF1801C44E0000D7F9 /* Crawl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BCB1801C44E0000D7F9 /* Crawl.cpp */; };
 		484B8BD01801C44E0000D7F9 /* VoteDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BCD1801C44E0000D7F9 /* VoteDisplay.cpp */; };
 		484B8BFC1801C5F90000D7F9 /* ofxFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BFA1801C5F90000D7F9 /* ofxFluid.cpp */; };
-		48567F6F1805E59300EAA8DB /* ofxVideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48567F6E1805E59300EAA8DB /* ofxVideoStreamer.cpp */; };
-		48602B39180577B90030D42A /* ResizerFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304AF180574B700B12333 /* ResizerFBO.cpp */; };
-		48602B3A180577B90030D42A /* YUV420PGrabber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304B0180574B700B12333 /* YUV420PGrabber.cpp */; };
-		48602B3C180577B90030D42A /* AMF0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304B4180574B700B12333 /* AMF0.cpp */; };
-		48602B3D180577B90030D42A /* AMF0Boolean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304B6180574B700B12333 /* AMF0Boolean.cpp */; };
-		48602B3E180577B90030D42A /* AMF0EcmaArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304B7180574B700B12333 /* AMF0EcmaArray.cpp */; };
-		48602B3F180577B90030D42A /* AMF0Number.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304B8180574B700B12333 /* AMF0Number.cpp */; };
-		48602B40180577B90030D42A /* AMF0Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304B9180574B700B12333 /* AMF0Object.cpp */; };
-		48602B41180577B90030D42A /* AMF0Property.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304BA180574B700B12333 /* AMF0Property.cpp */; };
-		48602B42180577B90030D42A /* AMF0String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304BB180574B700B12333 /* AMF0String.cpp */; };
-		48602B43180577B90030D42A /* AMFType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304BC180574B700B12333 /* AMFType.cpp */; };
-		48602B44180577B90030D42A /* AudioEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304BE180574B700B12333 /* AudioEncoder.cpp */; };
-		48602B45180577B90030D42A /* BitStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304BF180574B700B12333 /* BitStream.cpp */; };
-		48602B46180577B90030D42A /* Debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C0180574B700B12333 /* Debug.cpp */; };
-		48602B47180577B90030D42A /* Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C1180574B700B12333 /* Encoder.cpp */; };
-		48602B48180577B90030D42A /* EncoderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C2180574B700B12333 /* EncoderThread.cpp */; };
-		48602B49180577B90030D42A /* EncoderTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C3180574B700B12333 /* EncoderTypes.cpp */; };
-		48602B4A180577B90030D42A /* H264Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C4180574B700B12333 /* H264Parser.cpp */; };
-		48602B4B180577B90030D42A /* MemoryPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C5180574B700B12333 /* MemoryPool.cpp */; };
-		48602B4C180577B90030D42A /* RTMPThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C6180574B700B12333 /* RTMPThread.cpp */; };
-		48602B4D180577B90030D42A /* RTMPWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C7180574B700B12333 /* RTMPWriter.cpp */; };
-		48602B4E180577B90030D42A /* TestPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C8180574B700B12333 /* TestPattern.cpp */; };
-		48602B4F180577B90030D42A /* VideoEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304C9180574B700B12333 /* VideoEncoder.cpp */; };
-		48602B54180577B90030D42A /* FLV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304D0180574B700B12333 /* FLV.cpp */; };
-		48602B55180577B90030D42A /* FLVFileWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304D1180574B700B12333 /* FLVFileWriter.cpp */; };
-		48602B56180577B90030D42A /* FLVReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304D2180574B700B12333 /* FLVReader.cpp */; };
-		48602B57180577B90030D42A /* FLVTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304D3180574B700B12333 /* FLVTypes.cpp */; };
-		48602B58180577B90030D42A /* FLVWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304D4180574B700B12333 /* FLVWriter.cpp */; };
-		48602B59180577B90030D42A /* VideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304D6180574B700B12333 /* VideoStreamer.cpp */; };
-		48602B5A180577B90030D42A /* VideoStreamerConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304D7180574B700B12333 /* VideoStreamerConfig.cpp */; };
-		48602B5B180577B90030D42A /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48A304D9180574B700B12333 /* Config.cpp */; };
-		48602B5D18057D760030D42A /* ofxMultiVideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B5C18057D760030D42A /* ofxMultiVideoStreamer.cpp */; };
-		48602B5F18057E970030D42A /* MultiVideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B5E18057E970030D42A /* MultiVideoStreamer.cpp */; };
-		48602B6218057F810030D42A /* AudioEncoderFAAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B6018057F810030D42A /* AudioEncoderFAAC.cpp */; };
-		48602B6318057F810030D42A /* AudioEncoderMP3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B6118057F810030D42A /* AudioEncoderMP3.cpp */; };
-		48602B6518058C9A0030D42A /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B6418058C9A0030D42A /* Log.cpp */; };
+		486E68511805EBDB00F1722C /* ofxMultiVideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E684F1805EBC500F1722C /* ofxMultiVideoStreamer.cpp */; };
+		486E68521805EBDB00F1722C /* ofxVideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68501805EBC500F1722C /* ofxVideoStreamer.cpp */; };
+		486E68C01805EC0E00F1722C /* AMF0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68971805EC0E00F1722C /* AMF0.cpp */; };
+		486E68C11805EC0E00F1722C /* AMF0Boolean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68991805EC0E00F1722C /* AMF0Boolean.cpp */; };
+		486E68C21805EC0E00F1722C /* AMF0EcmaArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E689A1805EC0E00F1722C /* AMF0EcmaArray.cpp */; };
+		486E68C31805EC0E00F1722C /* AMF0Number.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E689B1805EC0E00F1722C /* AMF0Number.cpp */; };
+		486E68C41805EC0E00F1722C /* AMF0Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E689C1805EC0E00F1722C /* AMF0Object.cpp */; };
+		486E68C51805EC0E00F1722C /* AMF0Property.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E689D1805EC0E00F1722C /* AMF0Property.cpp */; };
+		486E68C61805EC0E00F1722C /* AMF0String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E689E1805EC0E00F1722C /* AMF0String.cpp */; };
+		486E68C71805EC0E00F1722C /* AMFType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E689F1805EC0E00F1722C /* AMFType.cpp */; };
+		486E68C81805EC0E00F1722C /* AudioEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A11805EC0E00F1722C /* AudioEncoder.cpp */; };
+		486E68C91805EC0E00F1722C /* AudioEncoderFAAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A21805EC0E00F1722C /* AudioEncoderFAAC.cpp */; };
+		486E68CA1805EC0E00F1722C /* AudioEncoderMP3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A31805EC0E00F1722C /* AudioEncoderMP3.cpp */; };
+		486E68CB1805EC0E00F1722C /* BitStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A41805EC0E00F1722C /* BitStream.cpp */; };
+		486E68CC1805EC0E00F1722C /* Debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A51805EC0E00F1722C /* Debug.cpp */; };
+		486E68CD1805EC0E00F1722C /* EncoderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A61805EC0E00F1722C /* EncoderThread.cpp */; };
+		486E68CE1805EC0E00F1722C /* EncoderTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A71805EC0E00F1722C /* EncoderTypes.cpp */; };
+		486E68CF1805EC0E00F1722C /* H264Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A81805EC0E00F1722C /* H264Parser.cpp */; };
+		486E68D01805EC0E00F1722C /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68A91805EC0E00F1722C /* Log.cpp */; };
+		486E68D11805EC0E00F1722C /* MemoryPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68AA1805EC0E00F1722C /* MemoryPool.cpp */; };
+		486E68D21805EC0E00F1722C /* RTMPThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68AB1805EC0E00F1722C /* RTMPThread.cpp */; };
+		486E68D31805EC0E00F1722C /* RTMPWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68AC1805EC0E00F1722C /* RTMPWriter.cpp */; };
+		486E68D41805EC0E00F1722C /* TestPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68AD1805EC0E00F1722C /* TestPattern.cpp */; };
+		486E68D51805EC0E00F1722C /* VideoEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68AE1805EC0E00F1722C /* VideoEncoder.cpp */; };
+		486E68DA1805EC0E00F1722C /* FLVFileWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68B51805EC0E00F1722C /* FLVFileWriter.cpp */; };
+		486E68DB1805EC0E00F1722C /* FLVReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68B61805EC0E00F1722C /* FLVReader.cpp */; };
+		486E68DC1805EC0E00F1722C /* FLVTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68B71805EC0E00F1722C /* FLVTypes.cpp */; };
+		486E68DD1805EC0E00F1722C /* FLVWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68B81805EC0E00F1722C /* FLVWriter.cpp */; };
+		486E68DF1805EC0E00F1722C /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68BB1805EC0E00F1722C /* Graph.cpp */; };
+		486E68E01805EC0E00F1722C /* MultiVideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68BD1805EC0E00F1722C /* MultiVideoStreamer.cpp */; };
+		486E68E11805EC0E00F1722C /* VideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68BE1805EC0E00F1722C /* VideoStreamer.cpp */; };
+		486E68E21805EC0E00F1722C /* VideoStreamerConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68BF1805EC0E00F1722C /* VideoStreamerConfig.cpp */; };
+		486E68ED1805EC2000F1722C /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E68EC1805EC2000F1722C /* Config.cpp */; };
+		486E690B1805ED4200F1722C /* ResizerFBO.h in Sources */ = {isa = PBXBuildFile; fileRef = 486E68FE1805EC2A00F1722C /* ResizerFBO.h */; };
+		486E690C1805ED4200F1722C /* YUV420PGrabber.h in Sources */ = {isa = PBXBuildFile; fileRef = 486E68FF1805EC2A00F1722C /* YUV420PGrabber.h */; };
+		486E690D1805ED4200F1722C /* ResizerFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E69031805EC2A00F1722C /* ResizerFBO.cpp */; };
+		486E690E1805ED4200F1722C /* YUV420PGrabber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 486E69041805EC2A00F1722C /* YUV420PGrabber.cpp */; };
 		9308292217EB61E9006149AE /* emboss.frag in Sources */ = {isa = PBXBuildFile; fileRef = 9308292117EB61E9006149AE /* emboss.frag */; };
 		9308292617EB7C76006149AE /* sharpen.frag in Sources */ = {isa = PBXBuildFile; fileRef = 9308292517EB7C76006149AE /* sharpen.frag */; };
 		93397D8B17E2B2B50012EAE3 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397D8717E2B0120012EAE3 /* tinyxmlparser.cpp */; };
@@ -420,42 +421,82 @@
 		484B8BCE1801C44E0000D7F9 /* VoteDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteDisplay.h; sourceTree = "<group>"; };
 		484B8BFA1801C5F90000D7F9 /* ofxFluid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFluid.cpp; sourceTree = "<group>"; };
 		484B8BFB1801C5F90000D7F9 /* ofxFluid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFluid.h; sourceTree = "<group>"; };
-		48567F6E1805E59300EAA8DB /* ofxVideoStreamer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoStreamer.cpp; sourceTree = "<group>"; };
-		48602B5C18057D760030D42A /* ofxMultiVideoStreamer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMultiVideoStreamer.cpp; sourceTree = "<group>"; };
-		48602B5E18057E970030D42A /* MultiVideoStreamer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MultiVideoStreamer.cpp; sourceTree = "<group>"; };
-		48602B6018057F810030D42A /* AudioEncoderFAAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEncoderFAAC.cpp; sourceTree = "<group>"; };
-		48602B6118057F810030D42A /* AudioEncoderMP3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEncoderMP3.cpp; sourceTree = "<group>"; };
-		48602B6418058C9A0030D42A /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
-		48A304AF180574B700B12333 /* ResizerFBO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResizerFBO.cpp; sourceTree = "<group>"; };
-		48A304B0180574B700B12333 /* YUV420PGrabber.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YUV420PGrabber.cpp; sourceTree = "<group>"; };
-		48A304B4180574B700B12333 /* AMF0.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0.cpp; sourceTree = "<group>"; };
-		48A304B6180574B700B12333 /* AMF0Boolean.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0Boolean.cpp; sourceTree = "<group>"; };
-		48A304B7180574B700B12333 /* AMF0EcmaArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0EcmaArray.cpp; sourceTree = "<group>"; };
-		48A304B8180574B700B12333 /* AMF0Number.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0Number.cpp; sourceTree = "<group>"; };
-		48A304B9180574B700B12333 /* AMF0Object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0Object.cpp; sourceTree = "<group>"; };
-		48A304BA180574B700B12333 /* AMF0Property.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0Property.cpp; sourceTree = "<group>"; };
-		48A304BB180574B700B12333 /* AMF0String.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0String.cpp; sourceTree = "<group>"; };
-		48A304BC180574B700B12333 /* AMFType.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AMFType.cpp; sourceTree = "<group>"; };
-		48A304BE180574B700B12333 /* AudioEncoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEncoder.cpp; sourceTree = "<group>"; };
-		48A304BF180574B700B12333 /* BitStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BitStream.cpp; sourceTree = "<group>"; };
-		48A304C0180574B700B12333 /* Debug.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Debug.cpp; sourceTree = "<group>"; };
-		48A304C1180574B700B12333 /* Encoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Encoder.cpp; sourceTree = "<group>"; };
-		48A304C2180574B700B12333 /* EncoderThread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EncoderThread.cpp; sourceTree = "<group>"; };
-		48A304C3180574B700B12333 /* EncoderTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EncoderTypes.cpp; sourceTree = "<group>"; };
-		48A304C4180574B700B12333 /* H264Parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = H264Parser.cpp; sourceTree = "<group>"; };
-		48A304C5180574B700B12333 /* MemoryPool.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MemoryPool.cpp; sourceTree = "<group>"; };
-		48A304C6180574B700B12333 /* RTMPThread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RTMPThread.cpp; sourceTree = "<group>"; };
-		48A304C7180574B700B12333 /* RTMPWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RTMPWriter.cpp; sourceTree = "<group>"; };
-		48A304C8180574B700B12333 /* TestPattern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestPattern.cpp; sourceTree = "<group>"; };
-		48A304C9180574B700B12333 /* VideoEncoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VideoEncoder.cpp; sourceTree = "<group>"; };
-		48A304D0180574B700B12333 /* FLV.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLV.cpp; sourceTree = "<group>"; };
-		48A304D1180574B700B12333 /* FLVFileWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLVFileWriter.cpp; sourceTree = "<group>"; };
-		48A304D2180574B700B12333 /* FLVReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLVReader.cpp; sourceTree = "<group>"; };
-		48A304D3180574B700B12333 /* FLVTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLVTypes.cpp; sourceTree = "<group>"; };
-		48A304D4180574B700B12333 /* FLVWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLVWriter.cpp; sourceTree = "<group>"; };
-		48A304D6180574B700B12333 /* VideoStreamer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VideoStreamer.cpp; sourceTree = "<group>"; };
-		48A304D7180574B700B12333 /* VideoStreamerConfig.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VideoStreamerConfig.cpp; sourceTree = "<group>"; };
-		48A304D9180574B700B12333 /* Config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		486E684F1805EBC500F1722C /* ofxMultiVideoStreamer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMultiVideoStreamer.cpp; sourceTree = "<group>"; };
+		486E68501805EBC500F1722C /* ofxVideoStreamer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoStreamer.cpp; sourceTree = "<group>"; };
+		486E68681805EC0D00F1722C /* AMF0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMF0.h; sourceTree = "<group>"; };
+		486E686A1805EC0D00F1722C /* AMF0Boolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMF0Boolean.h; sourceTree = "<group>"; };
+		486E686B1805EC0D00F1722C /* AMF0EcmaArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMF0EcmaArray.h; sourceTree = "<group>"; };
+		486E686C1805EC0D00F1722C /* AMF0Number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMF0Number.h; sourceTree = "<group>"; };
+		486E686D1805EC0D00F1722C /* AMF0Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMF0Object.h; sourceTree = "<group>"; };
+		486E686E1805EC0D00F1722C /* AMF0Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMF0Property.h; sourceTree = "<group>"; };
+		486E686F1805EC0D00F1722C /* AMF0String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMF0String.h; sourceTree = "<group>"; };
+		486E68701805EC0D00F1722C /* AMFType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMFType.h; sourceTree = "<group>"; };
+		486E68711805EC0D00F1722C /* AMFTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMFTypes.h; sourceTree = "<group>"; };
+		486E68731805EC0D00F1722C /* AudioEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEncoder.h; sourceTree = "<group>"; };
+		486E68741805EC0D00F1722C /* AudioEncoderFAAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEncoderFAAC.h; sourceTree = "<group>"; };
+		486E68751805EC0D00F1722C /* AudioEncoderMP3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEncoderMP3.h; sourceTree = "<group>"; };
+		486E68761805EC0D00F1722C /* BitStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitStream.h; sourceTree = "<group>"; };
+		486E68771805EC0E00F1722C /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		486E68781805EC0E00F1722C /* EncoderThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncoderThread.h; sourceTree = "<group>"; };
+		486E68791805EC0E00F1722C /* EncoderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncoderTypes.h; sourceTree = "<group>"; };
+		486E687A1805EC0E00F1722C /* Endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Endian.h; sourceTree = "<group>"; };
+		486E687B1805EC0E00F1722C /* H264Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264Parser.h; sourceTree = "<group>"; };
+		486E687C1805EC0E00F1722C /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		486E687D1805EC0E00F1722C /* MemoryPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryPool.h; sourceTree = "<group>"; };
+		486E687E1805EC0E00F1722C /* RTMPThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMPThread.h; sourceTree = "<group>"; };
+		486E687F1805EC0E00F1722C /* RTMPWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMPWriter.h; sourceTree = "<group>"; };
+		486E68801805EC0E00F1722C /* TestPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPattern.h; sourceTree = "<group>"; };
+		486E68811805EC0E00F1722C /* VideoEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoEncoder.h; sourceTree = "<group>"; };
+		486E68831805EC0E00F1722C /* Channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Channel.h; sourceTree = "<group>"; };
+		486E68841805EC0E00F1722C /* Daemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Daemon.h; sourceTree = "<group>"; };
+		486E68851805EC0E00F1722C /* DaemonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaemonConfig.h; sourceTree = "<group>"; };
+		486E68861805EC0E00F1722C /* Runner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Runner.h; sourceTree = "<group>"; };
+		486E68871805EC0E00F1722C /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		486E68891805EC0E00F1722C /* FLVFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVFileWriter.h; sourceTree = "<group>"; };
+		486E688A1805EC0E00F1722C /* FLVListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVListener.h; sourceTree = "<group>"; };
+		486E688B1805EC0E00F1722C /* FLVReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVReader.h; sourceTree = "<group>"; };
+		486E688C1805EC0E00F1722C /* FLVTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVTypes.h; sourceTree = "<group>"; };
+		486E688D1805EC0E00F1722C /* FLVWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVWriter.h; sourceTree = "<group>"; };
+		486E688F1805EC0E00F1722C /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
+		486E68911805EC0E00F1722C /* MultiVideoStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiVideoStreamer.h; sourceTree = "<group>"; };
+		486E68921805EC0E00F1722C /* VideoStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoStreamer.h; sourceTree = "<group>"; };
+		486E68931805EC0E00F1722C /* VideoStreamerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoStreamerConfig.h; sourceTree = "<group>"; };
+		486E68971805EC0E00F1722C /* AMF0.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0.cpp; sourceTree = "<group>"; };
+		486E68991805EC0E00F1722C /* AMF0Boolean.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0Boolean.cpp; sourceTree = "<group>"; };
+		486E689A1805EC0E00F1722C /* AMF0EcmaArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0EcmaArray.cpp; sourceTree = "<group>"; };
+		486E689B1805EC0E00F1722C /* AMF0Number.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0Number.cpp; sourceTree = "<group>"; };
+		486E689C1805EC0E00F1722C /* AMF0Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0Object.cpp; sourceTree = "<group>"; };
+		486E689D1805EC0E00F1722C /* AMF0Property.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0Property.cpp; sourceTree = "<group>"; };
+		486E689E1805EC0E00F1722C /* AMF0String.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AMF0String.cpp; sourceTree = "<group>"; };
+		486E689F1805EC0E00F1722C /* AMFType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AMFType.cpp; sourceTree = "<group>"; };
+		486E68A11805EC0E00F1722C /* AudioEncoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEncoder.cpp; sourceTree = "<group>"; };
+		486E68A21805EC0E00F1722C /* AudioEncoderFAAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEncoderFAAC.cpp; sourceTree = "<group>"; };
+		486E68A31805EC0E00F1722C /* AudioEncoderMP3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEncoderMP3.cpp; sourceTree = "<group>"; };
+		486E68A41805EC0E00F1722C /* BitStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BitStream.cpp; sourceTree = "<group>"; };
+		486E68A51805EC0E00F1722C /* Debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug.cpp; sourceTree = "<group>"; };
+		486E68A61805EC0E00F1722C /* EncoderThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EncoderThread.cpp; sourceTree = "<group>"; };
+		486E68A71805EC0E00F1722C /* EncoderTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EncoderTypes.cpp; sourceTree = "<group>"; };
+		486E68A81805EC0E00F1722C /* H264Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = H264Parser.cpp; sourceTree = "<group>"; };
+		486E68A91805EC0E00F1722C /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
+		486E68AA1805EC0E00F1722C /* MemoryPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemoryPool.cpp; sourceTree = "<group>"; };
+		486E68AB1805EC0E00F1722C /* RTMPThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RTMPThread.cpp; sourceTree = "<group>"; };
+		486E68AC1805EC0E00F1722C /* RTMPWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RTMPWriter.cpp; sourceTree = "<group>"; };
+		486E68AD1805EC0E00F1722C /* TestPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestPattern.cpp; sourceTree = "<group>"; };
+		486E68AE1805EC0E00F1722C /* VideoEncoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoEncoder.cpp; sourceTree = "<group>"; };
+		486E68B51805EC0E00F1722C /* FLVFileWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLVFileWriter.cpp; sourceTree = "<group>"; };
+		486E68B61805EC0E00F1722C /* FLVReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLVReader.cpp; sourceTree = "<group>"; };
+		486E68B71805EC0E00F1722C /* FLVTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLVTypes.cpp; sourceTree = "<group>"; };
+		486E68B81805EC0E00F1722C /* FLVWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLVWriter.cpp; sourceTree = "<group>"; };
+		486E68BB1805EC0E00F1722C /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
+		486E68BD1805EC0E00F1722C /* MultiVideoStreamer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MultiVideoStreamer.cpp; sourceTree = "<group>"; };
+		486E68BE1805EC0E00F1722C /* VideoStreamer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoStreamer.cpp; sourceTree = "<group>"; };
+		486E68BF1805EC0E00F1722C /* VideoStreamerConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoStreamerConfig.cpp; sourceTree = "<group>"; };
+		486E68E91805EC2000F1722C /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		486E68EC1805EC2000F1722C /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		486E68FE1805EC2A00F1722C /* ResizerFBO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResizerFBO.h; sourceTree = "<group>"; };
+		486E68FF1805EC2A00F1722C /* YUV420PGrabber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YUV420PGrabber.h; sourceTree = "<group>"; };
+		486E69031805EC2A00F1722C /* ResizerFBO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResizerFBO.cpp; sourceTree = "<group>"; };
+		486E69041805EC2A00F1722C /* YUV420PGrabber.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = YUV420PGrabber.cpp; sourceTree = "<group>"; };
 		48CAAC291801F3D9007944DC /* streamer.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = streamer.xml; path = bin/data/streamer.xml; sourceTree = SOURCE_ROOT; };
 		9308291D17EB4B0E006149AE /* oldvideo.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = oldvideo.frag; path = bin/data/shaders/oldvideo.frag; sourceTree = "<group>"; };
 		9308292117EB61E9006149AE /* emboss.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = emboss.frag; path = bin/data/shaders/emboss.frag; sourceTree = "<group>"; };
@@ -584,7 +625,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* Test_VideoFX_StreamerDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_VideoFX_StreamerDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* Test_VideoFX_Streamer_RoxluDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_VideoFX_Streamer_RoxluDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -1228,128 +1269,347 @@
 			path = ../addons/ofxFluid/src;
 			sourceTree = "<group>";
 		};
-		48A304AC180574B700B12333 /* src */ = {
+		486E684C1805EBBB00F1722C /* ofxVideoStreamer */ = {
 			isa = PBXGroup;
 			children = (
-				48602B5C18057D760030D42A /* ofxMultiVideoStreamer.cpp */,
-				48567F6E1805E59300EAA8DB /* ofxVideoStreamer.cpp */,
-				48A304AD180574B700B12333 /* hwscale */,
-				48A304B2180574B700B12333 /* streamer */,
-				48A304D8180574B700B12333 /* xmlconfig */,
+				486E68EE1805EC2A00F1722C /* hwscale */,
+				486E68E31805EC2000F1722C /* xmlconfig */,
+				486E68531805EC0D00F1722C /* streamer */,
+				486E684D1805EBC500F1722C /* src */,
 			);
-			path = src;
+			name = ofxVideoStreamer;
 			sourceTree = "<group>";
 		};
-		48A304AD180574B700B12333 /* hwscale */ = {
+		486E684D1805EBC500F1722C /* src */ = {
 			isa = PBXGroup;
 			children = (
-				48A304AE180574B700B12333 /* opengl */,
+				486E684E1805EBC500F1722C /* ofxVideoStreamer */,
 			);
-			path = hwscale;
+			name = src;
+			path = ../../../../cpp/video_streamer/thirdparty/openFrameworks/ofxVideoStreamer/src;
 			sourceTree = "<group>";
 		};
-		48A304AE180574B700B12333 /* opengl */ = {
+		486E684E1805EBC500F1722C /* ofxVideoStreamer */ = {
 			isa = PBXGroup;
 			children = (
-				48A304AF180574B700B12333 /* ResizerFBO.cpp */,
-				48A304B0180574B700B12333 /* YUV420PGrabber.cpp */,
+				486E684F1805EBC500F1722C /* ofxMultiVideoStreamer.cpp */,
+				486E68501805EBC500F1722C /* ofxVideoStreamer.cpp */,
 			);
-			path = opengl;
+			path = ofxVideoStreamer;
 			sourceTree = "<group>";
 		};
-		48A304B2180574B700B12333 /* streamer */ = {
+		486E68531805EC0D00F1722C /* streamer */ = {
 			isa = PBXGroup;
 			children = (
-				48A304B3180574B700B12333 /* amf */,
-				48A304BD180574B700B12333 /* core */,
-				48A304CF180574B700B12333 /* flv */,
-				48A304D5180574B700B12333 /* videostreamer */,
+				486E68651805EC0D00F1722C /* include */,
+				486E68941805EC0E00F1722C /* src */,
+			);
+			name = streamer;
+			path = ../../../../cpp/video_streamer/projects/streamer;
+			sourceTree = "<group>";
+		};
+		486E68651805EC0D00F1722C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				486E68661805EC0D00F1722C /* streamer */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		486E68661805EC0D00F1722C /* streamer */ = {
+			isa = PBXGroup;
+			children = (
+				486E68671805EC0D00F1722C /* amf */,
+				486E68721805EC0D00F1722C /* core */,
+				486E68821805EC0E00F1722C /* daemon */,
+				486E68881805EC0E00F1722C /* flv */,
+				486E688E1805EC0E00F1722C /* utils */,
+				486E68901805EC0E00F1722C /* videostreamer */,
 			);
 			path = streamer;
 			sourceTree = "<group>";
 		};
-		48A304B3180574B700B12333 /* amf */ = {
+		486E68671805EC0D00F1722C /* amf */ = {
 			isa = PBXGroup;
 			children = (
-				48A304B4180574B700B12333 /* AMF0.cpp */,
-				48A304B5180574B700B12333 /* types */,
+				486E68681805EC0D00F1722C /* AMF0.h */,
+				486E68691805EC0D00F1722C /* types */,
 			);
 			path = amf;
 			sourceTree = "<group>";
 		};
-		48A304B5180574B700B12333 /* types */ = {
+		486E68691805EC0D00F1722C /* types */ = {
 			isa = PBXGroup;
 			children = (
-				48A304B6180574B700B12333 /* AMF0Boolean.cpp */,
-				48A304B7180574B700B12333 /* AMF0EcmaArray.cpp */,
-				48A304B8180574B700B12333 /* AMF0Number.cpp */,
-				48A304B9180574B700B12333 /* AMF0Object.cpp */,
-				48A304BA180574B700B12333 /* AMF0Property.cpp */,
-				48A304BB180574B700B12333 /* AMF0String.cpp */,
-				48A304BC180574B700B12333 /* AMFType.cpp */,
+				486E686A1805EC0D00F1722C /* AMF0Boolean.h */,
+				486E686B1805EC0D00F1722C /* AMF0EcmaArray.h */,
+				486E686C1805EC0D00F1722C /* AMF0Number.h */,
+				486E686D1805EC0D00F1722C /* AMF0Object.h */,
+				486E686E1805EC0D00F1722C /* AMF0Property.h */,
+				486E686F1805EC0D00F1722C /* AMF0String.h */,
+				486E68701805EC0D00F1722C /* AMFType.h */,
+				486E68711805EC0D00F1722C /* AMFTypes.h */,
 			);
 			path = types;
 			sourceTree = "<group>";
 		};
-		48A304BD180574B700B12333 /* core */ = {
+		486E68721805EC0D00F1722C /* core */ = {
 			isa = PBXGroup;
 			children = (
-				48602B6418058C9A0030D42A /* Log.cpp */,
-				48A304BE180574B700B12333 /* AudioEncoder.cpp */,
-				48602B6018057F810030D42A /* AudioEncoderFAAC.cpp */,
-				48602B6118057F810030D42A /* AudioEncoderMP3.cpp */,
-				48A304BF180574B700B12333 /* BitStream.cpp */,
-				48A304C0180574B700B12333 /* Debug.cpp */,
-				48A304C1180574B700B12333 /* Encoder.cpp */,
-				48A304C2180574B700B12333 /* EncoderThread.cpp */,
-				48A304C3180574B700B12333 /* EncoderTypes.cpp */,
-				48A304C4180574B700B12333 /* H264Parser.cpp */,
-				48A304C5180574B700B12333 /* MemoryPool.cpp */,
-				48A304C6180574B700B12333 /* RTMPThread.cpp */,
-				48A304C7180574B700B12333 /* RTMPWriter.cpp */,
-				48A304C8180574B700B12333 /* TestPattern.cpp */,
-				48A304C9180574B700B12333 /* VideoEncoder.cpp */,
+				486E68731805EC0D00F1722C /* AudioEncoder.h */,
+				486E68741805EC0D00F1722C /* AudioEncoderFAAC.h */,
+				486E68751805EC0D00F1722C /* AudioEncoderMP3.h */,
+				486E68761805EC0D00F1722C /* BitStream.h */,
+				486E68771805EC0E00F1722C /* Debug.h */,
+				486E68781805EC0E00F1722C /* EncoderThread.h */,
+				486E68791805EC0E00F1722C /* EncoderTypes.h */,
+				486E687A1805EC0E00F1722C /* Endian.h */,
+				486E687B1805EC0E00F1722C /* H264Parser.h */,
+				486E687C1805EC0E00F1722C /* Log.h */,
+				486E687D1805EC0E00F1722C /* MemoryPool.h */,
+				486E687E1805EC0E00F1722C /* RTMPThread.h */,
+				486E687F1805EC0E00F1722C /* RTMPWriter.h */,
+				486E68801805EC0E00F1722C /* TestPattern.h */,
+				486E68811805EC0E00F1722C /* VideoEncoder.h */,
 			);
 			path = core;
 			sourceTree = "<group>";
 		};
-		48A304CF180574B700B12333 /* flv */ = {
+		486E68821805EC0E00F1722C /* daemon */ = {
 			isa = PBXGroup;
 			children = (
-				48A304D0180574B700B12333 /* FLV.cpp */,
-				48A304D1180574B700B12333 /* FLVFileWriter.cpp */,
-				48A304D2180574B700B12333 /* FLVReader.cpp */,
-				48A304D3180574B700B12333 /* FLVTypes.cpp */,
-				48A304D4180574B700B12333 /* FLVWriter.cpp */,
+				486E68831805EC0E00F1722C /* Channel.h */,
+				486E68841805EC0E00F1722C /* Daemon.h */,
+				486E68851805EC0E00F1722C /* DaemonConfig.h */,
+				486E68861805EC0E00F1722C /* Runner.h */,
+				486E68871805EC0E00F1722C /* Types.h */,
+			);
+			path = daemon;
+			sourceTree = "<group>";
+		};
+		486E68881805EC0E00F1722C /* flv */ = {
+			isa = PBXGroup;
+			children = (
+				486E68891805EC0E00F1722C /* FLVFileWriter.h */,
+				486E688A1805EC0E00F1722C /* FLVListener.h */,
+				486E688B1805EC0E00F1722C /* FLVReader.h */,
+				486E688C1805EC0E00F1722C /* FLVTypes.h */,
+				486E688D1805EC0E00F1722C /* FLVWriter.h */,
 			);
 			path = flv;
 			sourceTree = "<group>";
 		};
-		48A304D5180574B700B12333 /* videostreamer */ = {
+		486E688E1805EC0E00F1722C /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				48602B5E18057E970030D42A /* MultiVideoStreamer.cpp */,
-				48A304D6180574B700B12333 /* VideoStreamer.cpp */,
-				48A304D7180574B700B12333 /* VideoStreamerConfig.cpp */,
+				486E688F1805EC0E00F1722C /* Graph.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		486E68901805EC0E00F1722C /* videostreamer */ = {
+			isa = PBXGroup;
+			children = (
+				486E68911805EC0E00F1722C /* MultiVideoStreamer.h */,
+				486E68921805EC0E00F1722C /* VideoStreamer.h */,
+				486E68931805EC0E00F1722C /* VideoStreamerConfig.h */,
 			);
 			path = videostreamer;
 			sourceTree = "<group>";
 		};
-		48A304D8180574B700B12333 /* xmlconfig */ = {
+		486E68941805EC0E00F1722C /* src */ = {
 			isa = PBXGroup;
 			children = (
-				48A304D9180574B700B12333 /* Config.cpp */,
+				486E68951805EC0E00F1722C /* streamer */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		486E68951805EC0E00F1722C /* streamer */ = {
+			isa = PBXGroup;
+			children = (
+				486E68961805EC0E00F1722C /* amf */,
+				486E68A01805EC0E00F1722C /* core */,
+				486E68B41805EC0E00F1722C /* flv */,
+				486E68BA1805EC0E00F1722C /* utils */,
+				486E68BC1805EC0E00F1722C /* videostreamer */,
+			);
+			path = streamer;
+			sourceTree = "<group>";
+		};
+		486E68961805EC0E00F1722C /* amf */ = {
+			isa = PBXGroup;
+			children = (
+				486E68971805EC0E00F1722C /* AMF0.cpp */,
+				486E68981805EC0E00F1722C /* types */,
+			);
+			path = amf;
+			sourceTree = "<group>";
+		};
+		486E68981805EC0E00F1722C /* types */ = {
+			isa = PBXGroup;
+			children = (
+				486E68991805EC0E00F1722C /* AMF0Boolean.cpp */,
+				486E689A1805EC0E00F1722C /* AMF0EcmaArray.cpp */,
+				486E689B1805EC0E00F1722C /* AMF0Number.cpp */,
+				486E689C1805EC0E00F1722C /* AMF0Object.cpp */,
+				486E689D1805EC0E00F1722C /* AMF0Property.cpp */,
+				486E689E1805EC0E00F1722C /* AMF0String.cpp */,
+				486E689F1805EC0E00F1722C /* AMFType.cpp */,
+			);
+			path = types;
+			sourceTree = "<group>";
+		};
+		486E68A01805EC0E00F1722C /* core */ = {
+			isa = PBXGroup;
+			children = (
+				486E68A11805EC0E00F1722C /* AudioEncoder.cpp */,
+				486E68A21805EC0E00F1722C /* AudioEncoderFAAC.cpp */,
+				486E68A31805EC0E00F1722C /* AudioEncoderMP3.cpp */,
+				486E68A41805EC0E00F1722C /* BitStream.cpp */,
+				486E68A51805EC0E00F1722C /* Debug.cpp */,
+				486E68A61805EC0E00F1722C /* EncoderThread.cpp */,
+				486E68A71805EC0E00F1722C /* EncoderTypes.cpp */,
+				486E68A81805EC0E00F1722C /* H264Parser.cpp */,
+				486E68A91805EC0E00F1722C /* Log.cpp */,
+				486E68AA1805EC0E00F1722C /* MemoryPool.cpp */,
+				486E68AB1805EC0E00F1722C /* RTMPThread.cpp */,
+				486E68AC1805EC0E00F1722C /* RTMPWriter.cpp */,
+				486E68AD1805EC0E00F1722C /* TestPattern.cpp */,
+				486E68AE1805EC0E00F1722C /* VideoEncoder.cpp */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		486E68B41805EC0E00F1722C /* flv */ = {
+			isa = PBXGroup;
+			children = (
+				486E68B51805EC0E00F1722C /* FLVFileWriter.cpp */,
+				486E68B61805EC0E00F1722C /* FLVReader.cpp */,
+				486E68B71805EC0E00F1722C /* FLVTypes.cpp */,
+				486E68B81805EC0E00F1722C /* FLVWriter.cpp */,
+			);
+			path = flv;
+			sourceTree = "<group>";
+		};
+		486E68BA1805EC0E00F1722C /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				486E68BB1805EC0E00F1722C /* Graph.cpp */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		486E68BC1805EC0E00F1722C /* videostreamer */ = {
+			isa = PBXGroup;
+			children = (
+				486E68BD1805EC0E00F1722C /* MultiVideoStreamer.cpp */,
+				486E68BE1805EC0E00F1722C /* VideoStreamer.cpp */,
+				486E68BF1805EC0E00F1722C /* VideoStreamerConfig.cpp */,
+			);
+			path = videostreamer;
+			sourceTree = "<group>";
+		};
+		486E68E31805EC2000F1722C /* xmlconfig */ = {
+			isa = PBXGroup;
+			children = (
+				486E68E71805EC2000F1722C /* include */,
+				486E68EA1805EC2000F1722C /* src */,
+			);
+			name = xmlconfig;
+			path = ../../../../cpp/video_streamer/projects/xmlconfig;
+			sourceTree = "<group>";
+		};
+		486E68E71805EC2000F1722C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				486E68E81805EC2000F1722C /* xmlconfig */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		486E68E81805EC2000F1722C /* xmlconfig */ = {
+			isa = PBXGroup;
+			children = (
+				486E68E91805EC2000F1722C /* Config.h */,
 			);
 			path = xmlconfig;
 			sourceTree = "<group>";
 		};
-		48CAAAE01801EF87007944DC /* ofxVideoStreamer */ = {
+		486E68EA1805EC2000F1722C /* src */ = {
 			isa = PBXGroup;
 			children = (
-				48A304AC180574B700B12333 /* src */,
+				486E68EB1805EC2000F1722C /* xmlconfig */,
 			);
-			name = ofxVideoStreamer;
-			path = src/ofxVideoStreamer;
+			path = src;
+			sourceTree = "<group>";
+		};
+		486E68EB1805EC2000F1722C /* xmlconfig */ = {
+			isa = PBXGroup;
+			children = (
+				486E68EC1805EC2000F1722C /* Config.cpp */,
+			);
+			path = xmlconfig;
+			sourceTree = "<group>";
+		};
+		486E68EE1805EC2A00F1722C /* hwscale */ = {
+			isa = PBXGroup;
+			children = (
+				486E68FB1805EC2A00F1722C /* include */,
+				486E69001805EC2A00F1722C /* src */,
+			);
+			name = hwscale;
+			path = ../../../../cpp/video_streamer/projects/hwscale;
+			sourceTree = "<group>";
+		};
+		486E68FB1805EC2A00F1722C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				486E68FC1805EC2A00F1722C /* hwscale */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		486E68FC1805EC2A00F1722C /* hwscale */ = {
+			isa = PBXGroup;
+			children = (
+				486E68FD1805EC2A00F1722C /* opengl */,
+			);
+			path = hwscale;
+			sourceTree = "<group>";
+		};
+		486E68FD1805EC2A00F1722C /* opengl */ = {
+			isa = PBXGroup;
+			children = (
+				486E68FE1805EC2A00F1722C /* ResizerFBO.h */,
+				486E68FF1805EC2A00F1722C /* YUV420PGrabber.h */,
+			);
+			path = opengl;
+			sourceTree = "<group>";
+		};
+		486E69001805EC2A00F1722C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				486E69011805EC2A00F1722C /* hwscale */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		486E69011805EC2A00F1722C /* hwscale */ = {
+			isa = PBXGroup;
+			children = (
+				486E69021805EC2A00F1722C /* opengl */,
+			);
+			path = hwscale;
+			sourceTree = "<group>";
+		};
+		486E69021805EC2A00F1722C /* opengl */ = {
+			isa = PBXGroup;
+			children = (
+				486E69031805EC2A00F1722C /* ResizerFBO.cpp */,
+				486E69041805EC2A00F1722C /* YUV420PGrabber.cpp */,
+			);
+			path = opengl;
 			sourceTree = "<group>";
 		};
 		9339798917E2512B0012EAE3 /* shaders */ = {
@@ -1679,7 +1939,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				48CAAAE01801EF87007944DC /* ofxVideoStreamer */,
+				486E684C1805EBBB00F1722C /* ofxVideoStreamer */,
 				484B8BF81801C5F30000D7F9 /* ofxFluid */,
 				484B8B781801C32A0000D7F9 /* ofxUI */,
 				484B8B501801C3170000D7F9 /* ofxFX */,
@@ -1752,7 +2012,7 @@
 				BB4B014C10F69532006C3DED /* addons */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* Test_VideoFX_StreamerDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* Test_VideoFX_Streamer_RoxluDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1779,9 +2039,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* Test_VideoFX_Streamer */ = {
+		E4B69B5A0A3A1756003C02F2 /* Test_VideoFX_Streamer_Roxlu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Test_VideoFX_Streamer" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Test_VideoFX_Streamer_Roxlu" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1793,9 +2053,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = Test_VideoFX_Streamer;
+			name = Test_VideoFX_Streamer_Roxlu;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* Test_VideoFX_StreamerDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* Test_VideoFX_Streamer_RoxluDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1806,7 +2066,7 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Test_VideoFX_Streamer" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Test_VideoFX_Streamer_Roxlu" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1827,7 +2087,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* Test_VideoFX_Streamer */,
+				E4B69B5A0A3A1756003C02F2 /* Test_VideoFX_Streamer_Roxlu */,
 			);
 		};
 /* End PBXProject section */
@@ -1863,53 +2123,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48602B39180577B90030D42A /* ResizerFBO.cpp in Sources */,
-				48602B3A180577B90030D42A /* YUV420PGrabber.cpp in Sources */,
-				48602B3C180577B90030D42A /* AMF0.cpp in Sources */,
-				48602B3D180577B90030D42A /* AMF0Boolean.cpp in Sources */,
-				48602B3E180577B90030D42A /* AMF0EcmaArray.cpp in Sources */,
-				48602B3F180577B90030D42A /* AMF0Number.cpp in Sources */,
-				48602B40180577B90030D42A /* AMF0Object.cpp in Sources */,
-				48602B41180577B90030D42A /* AMF0Property.cpp in Sources */,
-				48602B42180577B90030D42A /* AMF0String.cpp in Sources */,
-				48602B43180577B90030D42A /* AMFType.cpp in Sources */,
-				48602B44180577B90030D42A /* AudioEncoder.cpp in Sources */,
-				48602B45180577B90030D42A /* BitStream.cpp in Sources */,
-				48602B46180577B90030D42A /* Debug.cpp in Sources */,
-				48602B47180577B90030D42A /* Encoder.cpp in Sources */,
-				48602B48180577B90030D42A /* EncoderThread.cpp in Sources */,
-				48602B49180577B90030D42A /* EncoderTypes.cpp in Sources */,
-				48602B4A180577B90030D42A /* H264Parser.cpp in Sources */,
-				48602B4B180577B90030D42A /* MemoryPool.cpp in Sources */,
-				48602B6218057F810030D42A /* AudioEncoderFAAC.cpp in Sources */,
-				48567F6F1805E59300EAA8DB /* ofxVideoStreamer.cpp in Sources */,
-				48602B4C180577B90030D42A /* RTMPThread.cpp in Sources */,
-				48602B4D180577B90030D42A /* RTMPWriter.cpp in Sources */,
-				48602B4E180577B90030D42A /* TestPattern.cpp in Sources */,
-				48602B4F180577B90030D42A /* VideoEncoder.cpp in Sources */,
-				48602B54180577B90030D42A /* FLV.cpp in Sources */,
-				48602B55180577B90030D42A /* FLVFileWriter.cpp in Sources */,
-				48602B56180577B90030D42A /* FLVReader.cpp in Sources */,
-				48602B57180577B90030D42A /* FLVTypes.cpp in Sources */,
-				48602B58180577B90030D42A /* FLVWriter.cpp in Sources */,
-				48602B59180577B90030D42A /* VideoStreamer.cpp in Sources */,
-				48602B5A180577B90030D42A /* VideoStreamerConfig.cpp in Sources */,
-				48602B6518058C9A0030D42A /* Log.cpp in Sources */,
-				48602B5B180577B90030D42A /* Config.cpp in Sources */,
+				486E690B1805ED4200F1722C /* ResizerFBO.h in Sources */,
+				486E690C1805ED4200F1722C /* YUV420PGrabber.h in Sources */,
+				486E690D1805ED4200F1722C /* ResizerFBO.cpp in Sources */,
+				486E690E1805ED4200F1722C /* YUV420PGrabber.cpp in Sources */,
+				486E68511805EBDB00F1722C /* ofxMultiVideoStreamer.cpp in Sources */,
+				486E68521805EBDB00F1722C /* ofxVideoStreamer.cpp in Sources */,
 				9308292617EB7C76006149AE /* sharpen.frag in Sources */,
+				486E68D51805EC0E00F1722C /* VideoEncoder.cpp in Sources */,
+				486E68E01805EC0E00F1722C /* MultiVideoStreamer.cpp in Sources */,
+				486E68C91805EC0E00F1722C /* AudioEncoderFAAC.cpp in Sources */,
 				9308292217EB61E9006149AE /* emboss.frag in Sources */,
 				93397D8C17E2B2B70012EAE3 /* tinyxmlerror.cpp in Sources */,
 				93397D8E17E2B2BA0012EAE3 /* ofxXmlSettings.cpp in Sources */,
+				486E68CB1805EC0E00F1722C /* BitStream.cpp in Sources */,
 				93397D8D17E2B2B80012EAE3 /* tinyxml.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				48602B5D18057D760030D42A /* ofxMultiVideoStreamer.cpp in Sources */,
 				93397D8B17E2B2B50012EAE3 /* tinyxmlparser.cpp in Sources */,
+				486E68DD1805EC0E00F1722C /* FLVWriter.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				484B8A6A1801BE6F0000D7F9 /* ETF.cpp in Sources */,
-				48602B5F18057E970030D42A /* MultiVideoStreamer.cpp in Sources */,
 				484B8A6B1801BE6F0000D7F9 /* fdog.cpp in Sources */,
+				486E68E11805EC0E00F1722C /* VideoStreamer.cpp in Sources */,
 				484B8A6C1801BE6F0000D7F9 /* Calibration.cpp in Sources */,
 				484B8A6D1801BE6F0000D7F9 /* ContourFinder.cpp in Sources */,
+				486E68DF1805EC0E00F1722C /* Graph.cpp in Sources */,
 				484B8A6E1801BE6F0000D7F9 /* Distance.cpp in Sources */,
 				484B8A6F1801BE6F0000D7F9 /* Flow.cpp in Sources */,
 				484B8A701801BE6F0000D7F9 /* Helpers.cpp in Sources */,
@@ -1922,22 +2160,32 @@
 				484B8AAD1801C2C70000D7F9 /* MSACoreGL.cpp in Sources */,
 				484B8AD01801C2FB0000D7F9 /* ofxBox2d.cpp in Sources */,
 				484B8AD11801C2FB0000D7F9 /* ofxBox2dBaseShape.cpp in Sources */,
+				486E68C41805EC0E00F1722C /* AMF0Object.cpp in Sources */,
 				484B8AD21801C2FB0000D7F9 /* ofxBox2dCircle.cpp in Sources */,
 				484B8AD31801C2FB0000D7F9 /* ofxBox2dJoint.cpp in Sources */,
 				484B8AD41801C2FB0000D7F9 /* ofxBox2dPolygon.cpp in Sources */,
+				486E68DC1805EC0E00F1722C /* FLVTypes.cpp in Sources */,
+				486E68D11805EC0E00F1722C /* MemoryPool.cpp in Sources */,
 				484B8AD51801C2FB0000D7F9 /* ofxBox2dRect.cpp in Sources */,
+				486E68DB1805EC0E00F1722C /* FLVReader.cpp in Sources */,
 				484B8B2C1801C3090000D7F9 /* b2CircleShape.cpp in Sources */,
+				486E68C61805EC0E00F1722C /* AMF0String.cpp in Sources */,
 				484B8B2D1801C3090000D7F9 /* b2PolygonShape.cpp in Sources */,
 				484B8B2E1801C3090000D7F9 /* b2BroadPhase.cpp in Sources */,
 				484B8B2F1801C3090000D7F9 /* b2CollideCircle.cpp in Sources */,
 				484B8B301801C3090000D7F9 /* b2CollidePolygon.cpp in Sources */,
-				48602B6318057F810030D42A /* AudioEncoderMP3.cpp in Sources */,
 				484B8B311801C3090000D7F9 /* b2Collision.cpp in Sources */,
 				484B8B321801C3090000D7F9 /* b2Distance.cpp in Sources */,
+				486E68CC1805EC0E00F1722C /* Debug.cpp in Sources */,
 				484B8B331801C3090000D7F9 /* b2DynamicTree.cpp in Sources */,
+				486E68C51805EC0E00F1722C /* AMF0Property.cpp in Sources */,
+				486E68C31805EC0E00F1722C /* AMF0Number.cpp in Sources */,
+				486E68CF1805EC0E00F1722C /* H264Parser.cpp in Sources */,
 				484B8B341801C3090000D7F9 /* b2TimeOfImpact.cpp in Sources */,
 				484B8B351801C3090000D7F9 /* b2BlockAllocator.cpp in Sources */,
 				484B8B361801C3090000D7F9 /* b2Math.cpp in Sources */,
+				486E68CE1805EC0E00F1722C /* EncoderTypes.cpp in Sources */,
+				486E68D01805EC0E00F1722C /* Log.cpp in Sources */,
 				484B8B371801C3090000D7F9 /* b2Settings.cpp in Sources */,
 				484B8B381801C3090000D7F9 /* b2StackAllocator.cpp in Sources */,
 				484B8B391801C3090000D7F9 /* b2CircleContact.cpp in Sources */,
@@ -1946,25 +2194,36 @@
 				484B8B3C1801C3090000D7F9 /* b2PolygonAndCircleContact.cpp in Sources */,
 				484B8B3D1801C3090000D7F9 /* b2PolygonContact.cpp in Sources */,
 				484B8B3E1801C3090000D7F9 /* b2TOISolver.cpp in Sources */,
+				486E68C01805EC0E00F1722C /* AMF0.cpp in Sources */,
 				484B8B3F1801C3090000D7F9 /* b2DistanceJoint.cpp in Sources */,
 				484B8B401801C3090000D7F9 /* b2FrictionJoint.cpp in Sources */,
 				484B8B411801C3090000D7F9 /* b2GearJoint.cpp in Sources */,
 				484B8B421801C3090000D7F9 /* b2Joint.cpp in Sources */,
 				484B8B431801C3090000D7F9 /* b2LineJoint.cpp in Sources */,
+				486E68C71805EC0E00F1722C /* AMFType.cpp in Sources */,
+				486E68DA1805EC0E00F1722C /* FLVFileWriter.cpp in Sources */,
+				486E68E21805EC0E00F1722C /* VideoStreamerConfig.cpp in Sources */,
 				484B8B441801C3090000D7F9 /* b2MouseJoint.cpp in Sources */,
 				484B8B451801C3090000D7F9 /* b2PrismaticJoint.cpp in Sources */,
 				484B8B461801C3090000D7F9 /* b2PulleyJoint.cpp in Sources */,
+				486E68D21805EC0E00F1722C /* RTMPThread.cpp in Sources */,
 				484B8B471801C3090000D7F9 /* b2RevoluteJoint.cpp in Sources */,
 				484B8B481801C3090000D7F9 /* b2WeldJoint.cpp in Sources */,
 				484B8B491801C3090000D7F9 /* b2Body.cpp in Sources */,
 				484B8B4A1801C3090000D7F9 /* b2ContactManager.cpp in Sources */,
+				486E68CA1805EC0E00F1722C /* AudioEncoderMP3.cpp in Sources */,
 				484B8B4B1801C3090000D7F9 /* b2Fixture.cpp in Sources */,
 				484B8B4C1801C3090000D7F9 /* b2Island.cpp in Sources */,
 				484B8B4D1801C3090000D7F9 /* b2World.cpp in Sources */,
+				486E68C21805EC0E00F1722C /* AMF0EcmaArray.cpp in Sources */,
 				484B8B4E1801C3090000D7F9 /* b2WorldCallbacks.cpp in Sources */,
 				484B8B4F1801C3090000D7F9 /* del_impl.cpp in Sources */,
+				486E68ED1805EC2000F1722C /* Config.cpp in Sources */,
 				484B8B771801C31D0000D7F9 /* ofxFXObject.cpp in Sources */,
 				484B8BC51801C4450000D7F9 /* CircularTexture.cpp in Sources */,
+				486E68D31805EC0E00F1722C /* RTMPWriter.cpp in Sources */,
+				486E68C11805EC0E00F1722C /* AMF0Boolean.cpp in Sources */,
+				486E68CD1805EC0E00F1722C /* EncoderThread.cpp in Sources */,
 				484B8BC61801C4450000D7F9 /* FarnebackPlus.cpp in Sources */,
 				484B8BC71801C4450000D7F9 /* VideoFX.cpp in Sources */,
 				484B8BC81801C4450000D7F9 /* VideoFXExporter.cpp in Sources */,
@@ -1972,6 +2231,8 @@
 				484B8BCF1801C44E0000D7F9 /* Crawl.cpp in Sources */,
 				484B8BD01801C44E0000D7F9 /* VoteDisplay.cpp in Sources */,
 				484B8BFC1801C5F90000D7F9 /* ofxFluid.cpp in Sources */,
+				486E68D41805EC0E00F1722C /* TestPattern.cpp in Sources */,
+				486E68C81805EC0E00F1722C /* AudioEncoder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2072,7 +2333,12 @@
 					"\"$(SRCROOT)/../../../addons/ofxCv/libs\"/**",
 					./../addons/ofxCv/libs/ofxCv/include/,
 					./../addons/ofxFluid/src/,
-					./src/ofxVideoStreamer/include/,
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/include\"",
+					"\"$(SRCROOT)/src\"",
+					"\"$(SRCROOT)/../../../../cpp/video_streamer/thirdparty/openFrameworks/ofxVideoStreamer/include\"",
+					"\"$(SRCROOT)/../../../../cpp/video_streamer/projects/streamer/include\"",
+					"\"$(SRCROOT)/../../../../cpp/video_streamer/projects/xmlconfig/include\"",
+					"\"$(SRCROOT)/../../../../cpp/video_streamer/projects/hwscale/include\"",
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -2081,20 +2347,21 @@
 				LIBRARY_SEARCH_PATHS = (
 					./src/,
 					"\"$(SRCROOT)/src/ofxVideoStreamer\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libcrypto.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libmp3lame.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/librtmp.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libssl.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libuv.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libx264.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libz.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libfaac.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libx264.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libfaac.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libz.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libuv.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libcrypto.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libssl.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libmp3lame.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/librtmp.a\"",
 				);
-				PRODUCT_NAME = Test_VideoFX_StreamerDebug;
+				PRODUCT_NAME = Test_VideoFX_Streamer_RoxluDebug;
 				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2123,7 +2390,12 @@
 					"\"$(SRCROOT)/../../../addons/ofxCv/libs\"/**",
 					./../addons/ofxCv/libs/ofxCv/include/,
 					./../addons/ofxFluid/src/,
-					./src/ofxVideoStreamer/include/,
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/include\"",
+					"\"$(SRCROOT)/src\"",
+					"\"$(SRCROOT)/../../../../cpp/video_streamer/thirdparty/openFrameworks/ofxVideoStreamer/include\"",
+					"\"$(SRCROOT)/../../../../cpp/video_streamer/projects/streamer/include\"",
+					"\"$(SRCROOT)/../../../../cpp/video_streamer/projects/xmlconfig/include\"",
+					"\"$(SRCROOT)/../../../../cpp/video_streamer/projects/hwscale/include\"",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -2132,20 +2404,21 @@
 				LIBRARY_SEARCH_PATHS = (
 					./src/,
 					"\"$(SRCROOT)/src/ofxVideoStreamer\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libcrypto.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libmp3lame.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/librtmp.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libssl.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libuv.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libx264.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libz.a\"",
-					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libfaac.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libx264.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libfaac.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libz.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libuv.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libcrypto.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libssl.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/libmp3lame.a\"",
+					"\"$(SRCROOT)/../../../../cpp/roxlu/extern/mac-clang-i386/lib/librtmp.a\"",
 				);
-				PRODUCT_NAME = Test_VideoFX_Streamer;
+				PRODUCT_NAME = Test_VideoFX_Streamer_Roxlu;
 				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2154,7 +2427,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Test_VideoFX_Streamer" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Test_VideoFX_Streamer_Roxlu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -2163,7 +2436,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Test_VideoFX_Streamer" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "Test_VideoFX_Streamer_Roxlu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

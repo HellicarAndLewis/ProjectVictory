@@ -78,7 +78,7 @@ bool VideoStreamer::loadSettings(std::string filepath) {
   }
 
   setStreamID(sc->id);
-
+  
   return true;
 }
 

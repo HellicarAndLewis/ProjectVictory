@@ -165,8 +165,9 @@ bool VideoEncoder::encodePacket(AVPacket* p, FLVTag& tag) {
   assert(encoder);
 
   if(stream_id >= 0) {
-
     MultiAVPacketInfo info = p->multi_info[stream_id];
+
+    //printf("info.strides[0]: %d\n", info.strides[2]);
     pic_in.img.i_stride[0] = info.strides[0];
     pic_in.img.i_stride[1] = info.strides[1];
     pic_in.img.i_stride[2] = info.strides[2];

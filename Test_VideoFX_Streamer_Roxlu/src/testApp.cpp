@@ -87,14 +87,21 @@ void testApp::setup(){
       printf("error: cannot setup the streamer.\n");
       ::exit(EXIT_FAILURE);
     }
-    
+
     if(!streamer.start()) {
       printf("error: cannot start the streamer.\n");
       ::exit(EXIT_FAILURE);
     }
 
+    int numframes = streamer.getNumSamplesNeededForAudioEncoding();
+    if(!numframes) {
+      printf("error: invalid amount of sample for audio encoding: %d\n", numframes);
+      ::exit(EXIT_FAILURE);
+    }
+    numframes /= 2; 
+
     sound_stream.listDevices();
-    sound_stream.setup(this, 0, 2, 44100, 1024, 4);
+    sound_stream.setup(this, 0, 2, 44100, numframes, 4);
 #endif
 
     // MULTI STREAMER 

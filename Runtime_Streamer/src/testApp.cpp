@@ -13,7 +13,7 @@ void testApp::setup(){
     int flowW = w/4;
     int flowH = h/4;
     
-//    videoGrabber.setDeviceID( 1 );
+    videoGrabber.setDeviceID( 1 );
     videoGrabber.initGrabber( 640, 480 );
     videoSource = &videoGrabber;
     
