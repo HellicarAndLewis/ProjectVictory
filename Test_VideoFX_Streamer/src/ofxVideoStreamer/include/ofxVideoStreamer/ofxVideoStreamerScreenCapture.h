@@ -1,6 +1,6 @@
 /*
 
---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
       
                                                oooo              
                                                `888              
@@ -14,7 +14,7 @@
                                              www.apollomedia.nl  
                                           www.twitter.com/roxlu
               
---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
  
 
   # ofxVideoStreamerScreenCapture
@@ -136,7 +136,7 @@ class ofxVideoStreamerScreenCapture {
   bool setup(std::string settingsFile, int winW, int winH, int vidW, int vidH);
   bool start();
 
-  bool hasNewFrame();
+  bool hasNewFrame(); // @todo - rename to "wantsNewFrame"
   void beginGrab();
   void endGrab();
   void draw();

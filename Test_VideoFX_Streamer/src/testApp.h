@@ -11,6 +11,7 @@
 #include "Crawl.h"
 #include "VoteDisplay.h"
 #include <ofxVideoStreamer/ofxVideoStreamerScreenCapture.h>
+#include <ofxVideoStreamer/ofxMultiVideoStreamer.h>
 
 class testApp : public ofBaseApp{
 
@@ -64,6 +65,7 @@ class testApp : public ofBaseApp{
 		
 
   VideoFXExporter videoFXExporter;
-  ofxVideoStreamerScreenCapture streamer;
+  //ofxVideoStreamerScreenCapture streamer;
+  ofxMultiVideoStreamer streamer;
   ofSoundStream sound_stream;
 };

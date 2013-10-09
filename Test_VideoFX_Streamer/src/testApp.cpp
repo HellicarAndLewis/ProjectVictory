@@ -17,7 +17,7 @@ void testApp::setup(){
     
 //    setupGUI();
     
-//    videoGrabber.setDeviceID( 1 );
+    videoGrabber.setDeviceID( 0 );
     videoGrabber.initGrabber( w, h );
     videoSource = &videoGrabber;
     
@@ -79,6 +79,7 @@ void testApp::setup(){
 
     // STREAMER
     // --------------------------------------------------
+    /*
     int video_w = 640;
     int video_h = 360;
 
@@ -94,9 +95,32 @@ void testApp::setup(){
 
     sound_stream.listDevices();
     sound_stream.setup(this, 0, 2, 44100, 1024, 4);
+    */
+
+    // MULTI STREAMER 
+    // --------------------------------------------------
+    int fps = 15;
+    if(!streamer.setup("streamer.xml", ofGetWidth(), ofGetHeight(), fps)) {
+      printf("error: cannot setup the streamer.\n");
+      ::exit(EXIT_FAILURE);
+    }
+
+    if(!streamer.start()) {
+      printf("error: cannot start the streamer.\n");
+      ::exit(EXIT_FAILURE);
+    }
+
+    sound_stream.listDevices();
+    sound_stream.setup(this, 0, 2, 44100, 1024, 4);
+
 }
 
 void testApp::audioIn(float* input, int nsize, int nchannels) {
+  size_t nsamples = nsize * nchannels;
+  for(size_t i = 0; i < nsamples; ++i) {
+    input[i] *= 32768.0f;
+  }
+
   streamer.addAudio(input, nsize, nchannels);
 }
 
@@ -175,12 +199,13 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-  if(streamer.hasNewFrame()) {
+
+  if(streamer.wantsNewFrame()) {
     streamer.beginGrab();
       drawVideo();
     streamer.endGrab();
-	
   }
+
   drawVideo();
 }
 

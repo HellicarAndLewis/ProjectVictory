@@ -1,15 +1,48 @@
+
+extern "C" {
+#  include <uv.h>
+}
+
 #include <assert.h>
 #include <streamer/core/VideoEncoder.h>
 #include <streamer/core/Debug.h>
+#include <streamer/core/Log.h>
+
 // @todo remove the USE_GRAPH and Graph include
 #if defined(USE_GRAPH)
 #  include <streamer/utils/Graph.h>
 #endif
 
+
+// --------------------------------------------------
+
+void videoencoder_x264_log(void* param, int level, const char* fmt, va_list arg) {
+
+  return ;  // @todo remove
+
+  char buf[1024 * 8]; 
+  vsprintf(buf, fmt, arg);
+
+  if(level == X264_LOG_ERROR) {
+    STREAMER_ERROR(buf);
+  }
+  else if(level == X264_LOG_WARNING) {
+    STREAMER_WARNING(buf);
+  }
+  else {
+    STREAMER_VERBOSE(buf);
+  }
+
+}
+
+// --------------------------------------------------
+
+
 VideoEncoder::VideoEncoder() 
   :encoder(NULL)
   ,vflip(true)
   ,frame_num(0)
+  ,stream_id(-1)
 {
 }
 
@@ -17,7 +50,6 @@ VideoEncoder::~VideoEncoder() {
 
   shutdown();
 
-  printf("error: need to x264_encoder_close etc. \n");
 }
 
 // @todo check if width / height are valid (multiples of 16 I believe)
@@ -49,6 +81,7 @@ bool VideoEncoder::initialize() {
 }
 
 // See https://gist.github.com/roxlu/0f61a499df75e64b764d for an older version of this, with some rate control tests
+// @todo - we should check if the supplied settings are valid for the current profile.. e.g. bframes are not supported by the baseline profile
 bool VideoEncoder::initializeX264() {
   assert(settings.width > 0);
   assert(settings.height > 0);
@@ -57,17 +90,17 @@ bool VideoEncoder::initializeX264() {
   int r = 0;
   x264_param_t* p = &params;
   
-  r = x264_param_default_preset(p, "faster", "zerolatency");
+  std::string preset = (settings.preset.size()) ? settings.preset : "superfast";
+  std::string tune = (settings.tune.size()) ? settings.tune : "zerolatency";
+  STREAMER_STATUS("x264 using preset: %s and tune: %s\n", preset.c_str(), tune.c_str());
+
+  r = x264_param_default_preset(p, preset.c_str(), tune.c_str());
   if(r != 0) {
-    printf("error: cannot set the default preset on x264.\n");
+    STREAMER_ERROR("error: cannot set the default preset on x264.\n");
     return false;
   }
 
-#if !defined(NDEBUG)
-  p->i_log_level = X264_LOG_DEBUG;
-#endif   
-
-  p->i_threads = 1;
+  p->i_threads = settings.threads;
   p->i_width = settings.width;
   p->i_height = settings.height;
   p->i_fps_num = settings.fps;
@@ -76,20 +109,37 @@ bool VideoEncoder::initializeX264() {
 
   p->rc.i_rc_method = X264_RC_ABR;  // when you're limited to bandwidth you set the vbv_buffer_size and vbv_max_bitrate using the X264_RC_ABR rate control method. The vbv_buffer_size is a decoder option and tells the decoder how much data must be buffered before playback can start. When vbv_max_bitrate == vbv_buffer_size, then it will take one second before the playback might start. when vbv_buffer_size == vbv_max_bitrate * 0.5, it might start in 0.5 sec. 
   p->rc.i_bitrate = settings.bitrate;
-  p->rc.i_vbv_buffer_size = p->rc.i_bitrate * 4; 
-  p->rc.i_vbv_max_bitrate = p->rc.i_bitrate;
+  p->rc.i_vbv_buffer_size = (settings.vbv_buffer_size < 0) ? p->rc.i_bitrate : settings.vbv_buffer_size; 
+  p->rc.i_vbv_max_bitrate = (settings.vbv_max_bitrate < 0) ? p->rc.i_bitrate : settings.vbv_max_bitrate;;
 
-#if 0
-  r = x264_param_apply_profile(p, "main");
-  if(r != 0) {
-    printf("error: cannot set the baseline profile on x264.\n");
-    return false;
+  if(settings.keyint_max > 0) {
+    p->i_keyint_max = settings.keyint_max;
   }
-#endif
+  
+  if(settings.bframe > 0) {
+    p->i_bframe = settings.bframe;
+  }
+
+  if(settings.level_idc > 0) {
+    p->i_level_idc = settings.level_idc;
+  }
+
+#if !defined(NDEBUG)
+  p->i_log_level = X264_LOG_DEBUG;
+  p->pf_log = videoencoder_x264_log;
+#endif   
+
+  if(settings.profile.size()) {
+    r = x264_param_apply_profile(p, settings.profile.c_str());
+    if(r != 0) {
+      STREAMER_ERROR("error: cannot set the baseline profile on x264.\n");
+      return false;
+    }
+  }
 
   encoder = x264_encoder_open(p);
   if(!encoder) {
-    printf("error: cannot create the encoder.\n");
+    STREAMER_ERROR("error: cannot create the encoder.\n");
     return false;
   }
 
@@ -114,16 +164,32 @@ bool VideoEncoder::encodePacket(AVPacket* p, FLVTag& tag) {
   assert(p);
   assert(encoder);
 
+  if(stream_id >= 0) {
+
+    MultiAVPacketInfo info = p->multi_info[stream_id];
+    pic_in.img.i_stride[0] = info.strides[0];
+    pic_in.img.i_stride[1] = info.strides[1];
+    pic_in.img.i_stride[2] = info.strides[2];
+
+    pic_in.img.plane[0] = info.planes[0];
+    pic_in.img.plane[1] = info.planes[1];
+    pic_in.img.plane[2] = info.planes[2];
+
+  }
+  else {
+
+    pic_in.img.i_stride[0] = p->strides[0];
+    pic_in.img.i_stride[1] = p->strides[1];
+    pic_in.img.i_stride[2] = p->strides[2];
+
+    pic_in.img.plane[0] = p->planes[0];
+    pic_in.img.plane[1] = p->planes[1];
+    pic_in.img.plane[2] = p->planes[2];
+
+  }
+
   size_t nbytes_y = settings.width * settings.height;
   size_t nbytes_uv = nbytes_y / 4;
-
-  pic_in.img.i_stride[0] = p->strides[0];
-  pic_in.img.i_stride[1] = p->strides[1];
-  pic_in.img.i_stride[2] = p->strides[2];
-
-  pic_in.img.plane[0] = p->planes[0];
-  pic_in.img.plane[1] = p->planes[1];
-  pic_in.img.plane[2] = p->planes[2];
 
   pic_in.i_pts = frame_num; 
 
@@ -144,7 +210,7 @@ bool VideoEncoder::encodePacket(AVPacket* p, FLVTag& tag) {
 #endif
 
   if(frame_size < 0) {
-    printf("error: x264_encoder_encode failed.\n");
+    STREAMER_ERROR("error: x264_encoder_encode failed.\n");
     return false;
   }
 
@@ -192,6 +258,13 @@ bool VideoEncoder::encodePacket(AVPacket* p, FLVTag& tag) {
   tag.setFrameType(pic_out.b_keyframe ? FLV_VIDEOFRAME_KEY_FRAME : FLV_VIDEOFRAME_INTER_FRAME);
   tag.setCompositionTime(offset);
 
+  // debuging buffer issue
+  if(pic_out.b_keyframe) {
+    static uint64_t kt = uv_hrtime();
+    double d = double(((uv_hrtime() - kt)) / 1000000000.0);
+    STREAMER_STATUS("------------------------ got a keyframe, took: %f s\n", d);
+    kt = uv_hrtime();
+  }
   return true;
 }
 
@@ -204,12 +277,12 @@ bool VideoEncoder::createDecoderConfigurationRecord(AVCDecoderConfigurationRecor
   x264_encoder_headers(encoder, &nals, &num_nals);
 
   if(!nals) {
-    printf("error: cannot get encoder headers from x264.\n");
+    STREAMER_ERROR("error: cannot get encoder headers from x264.\n");
     return false;
   }
 
   if(num_nals != 3) {
-    printf("warning: we expect number of nals from x264_encoder_headers to be 3.\n");
+    STREAMER_WARNING("warning: we expect number of nals from x264_encoder_headers to be 3.\n");
     return false;
   }
 
@@ -229,9 +302,9 @@ bool VideoEncoder::createDecoderConfigurationRecord(AVCDecoderConfigurationRecor
   std::copy(pps, pps+(pps_size-4), std::back_inserter(rec.pps));
   std::copy(sei, sei+(sei_size-4), std::back_inserter(rec.sei));
 
-  printf(">> nals[0].i_payload: %d, sps_size: %d, profile: %d\n", nals[0].i_payload, sps_size, sps[1]);
-  printf(">> nals[1].i_payload: %d, pps_size: %d\n", nals[1].i_payload, pps_size);
-  printf(">> nals[2].i_payload: %d, sei_size: %d / %ld\n", nals[2].i_payload, sei_size, rec.sei.size());
+  STREAMER_VERBOSE("nals[0].i_payload: %d, sps_size: %d, profile: %d\n", nals[0].i_payload, sps_size, sps[1]);
+  STREAMER_VERBOSE("nals[1].i_payload: %d, pps_size: %d\n", nals[1].i_payload, pps_size);
+  STREAMER_VERBOSE("nals[2].i_payload: %d, sei_size: %d / %ld\n", nals[2].i_payload, sei_size, rec.sei.size());
 
   return true;
 } 
@@ -239,13 +312,13 @@ bool VideoEncoder::createDecoderConfigurationRecord(AVCDecoderConfigurationRecor
 bool VideoEncoder::openFile(std::string filepath) {
 
   if(ofs.is_open()) {
-    printf("error: cannot open the video encoder output file becuase it's already open.\n");
+    STREAMER_ERROR("error: cannot open the video encoder output file becuase it's already open.\n");
     return false;
   }
   
   ofs.open(filepath.c_str(), std::ios::binary | std::ios::out);
   if(!ofs.is_open()) {
-    printf("error: cannot open the video encoder output file: %s\n", filepath.c_str());
+    STREAMER_ERROR("error: cannot open the video encoder output file: %s\n", filepath.c_str());
     return false;
   }
   
@@ -255,7 +328,7 @@ bool VideoEncoder::openFile(std::string filepath) {
 bool VideoEncoder::writeTagToFile(FLVTag& tag) {
 
   if(!ofs.is_open()) {
-    printf("error: cannot write the video tag to the encoder output file because the file hasn't been opened yet.\n");
+    STREAMER_ERROR("error: cannot write the video tag to the encoder output file because the file hasn't been opened yet.\n");
     return false;
   }
   
@@ -267,7 +340,7 @@ bool VideoEncoder::writeTagToFile(FLVTag& tag) {
 bool VideoEncoder::closeFile() {
 
   if(!ofs.is_open()) {
-    printf("error: cannot close the encoder file because it hasn't been opened yet.\n");
+    STREAMER_ERROR("error: cannot close the encoder file because it hasn't been opened yet.\n");
     return false;
   }
 
@@ -283,11 +356,11 @@ bool VideoEncoder::shutdown() {
   }
 
   if(!encoder) {
-    printf("error: encoder is not initialized.\n");
+    STREAMER_ERROR("error: encoder is not initialized.\n");
     return false;
   }
 
-  printf("Shutting down the video encoder.\n");
+  STREAMER_VERBOSE("Shutting down the video encoder.\n");
 
   x264_encoder_close(encoder);
   encoder = NULL;

@@ -1,5 +1,21 @@
 /*
 
+---------------------------------------------------------------------------------
+      
+                                               oooo              
+                                               `888              
+                oooo d8b  .ooooo.  oooo    ooo  888  oooo  oooo  
+                `888""8P d88' `88b  `88b..8P'   888  `888  `888  
+                 888     888   888    Y888'     888   888   888  
+                 888     888   888  .o8"'88b    888   888   888  
+                d888b    `Y8bod8P' o88'   888o o888o  `V88V"V8P' 
+                                                                 
+                                                  www.roxlu.com
+                                             www.apollomedia.nl  
+                                          www.twitter.com/roxlu
+              
+---------------------------------------------------------------------------------
+
   # YUV420PGrabber
 
   This class will grab the draw commands between `beginGrab()` and `endGrab()`, and
@@ -220,7 +236,7 @@ class YUV420PGrabber {
  public:
   YUV420PGrabber();
   ~YUV420PGrabber();
-  void addSize(int id, int w, int h); /* the id identifies this size and this id can be used with getImage(..) to retrieve pointers to this image */
+  bool addSize(int id, int w, int h); /* the id identifies this size and this id can be used with getImage(..) to retrieve pointers to this image */
   YUV420PSize getSize(int id); /* get the size info object for the given image ID, make sure you have called setup() fist! */
   bool setup(int winW, int winH, int fps); /* , int videoW, int videoH, int fps); */
   void beginGrab();
@@ -233,6 +249,7 @@ class YUV420PGrabber {
 
   /* getting the frame data */
   void assignFrame(size_t id, std::vector<uint8_t>& pixels, uint8_t* planes[], uint32_t* strides); /* moves over the current frame into the given vector and sets the plane pointers + strides. pixels MUST be big enough to handle the data! */
+  void assignPixels(std::vector<uint8_t>& pixels); /* this simple moves all the pixel data for all the added sizes into the given vector, we assume the vector has enough space */
   void assignPlanes(size_t id, std::vector<uint8_t>& pixels, uint8_t* planes[]); /* this function will assign the plane pointers into the given planes array. The pointers will point to the data in the given vector and for the given size ID. This is used to set the planes member of a AVPacket */
   void assignStrides(size_t id, uint32_t* strides); /* this function will assign the strides for the given size, this is used to setup the  strides member of the AVPacket.*/
   unsigned char* getPtr(); /* get ptr to the image data */
@@ -324,17 +341,23 @@ inline unsigned char* YUV420PGrabber::getPtr() {
   return image;
 }
 
-inline void YUV420PGrabber::addSize(int id, int w, int h) {
-  assert(w && h);
-  printf("- w: %d, h: %d\n", w, h);
+inline bool YUV420PGrabber::addSize(int id, int w, int h) {
+
+  if(!w || !h) {
+    printf("Cannot add the size in YUV420PGrabber::addSize(), because the width or height is invalid: %d x %d\n", w, h);
+    return false;
+  }
+
   YUV420PSize s;
   s.yw = w;
   s.yh = h;
-  s.uvw = w >> 1;
-  s.uvh = h >> 1;
+  s.uvw = w * 0.5;
+  s.uvh = h * 0.5;
 
   s.id = id;
   sizes.push_back(s);
+
+  return true;
 }
 
 inline YUV420PSize YUV420PGrabber::getSize(int id) {
@@ -344,7 +367,7 @@ inline YUV420PSize YUV420PGrabber::getSize(int id) {
       return s;
     }
   }
-  printf("error: size with id `%d` not found.\n", id);
+  printf("Size with id `%d` not found.\n", id);
   ::exit(EXIT_FAILURE);
 }
 

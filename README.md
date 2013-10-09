@@ -53,3 +53,34 @@ of/apps/ProjectVictory/Runtime_[your app]
 ./../addons/ofxCv/libs/ofxCv/include/
 ./../addons/ofxFluid/src/
 ````
+
+## Linker search paths for ofxVideoStreamer
+Add a linker search path to the "root" where the subdirectory of `ofxVideoStreamer` can be found.
+So if you put ofxVideoStreamer, inside addons/, then add a linker path to "addons". 
+
+## Preprocessor flags
+
+Make sure to add these to your OF projects
+
+_Debug preprocessor flags_
+````sh
+YUV420P_GRABBER_GLSL_VERSION=120
+VIDEO_STREAMER_LITTLE_ENDIAN
+````
+
+_Release preprocessor flags_
+````sh
+YUV420P_GRABBER_GLSL_VERSION=120
+VIDEO_STREAMER_LITTLE_ENDIAN
+NDEBUG
+````
+
+## Other linker flags
+
+````sh
+ofxVideoStreamer/lib/libx264.a
+ofxVideoStreamer/lib/librtmp.a
+ofxVideoStreamer/lib/libuv.a
+ofxVideoStreamer/lib/libmp3lame.a
+ofxVideoStreamer/lib/libfaac.a
+````
