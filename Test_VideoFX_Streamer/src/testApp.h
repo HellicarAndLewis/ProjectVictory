@@ -50,6 +50,8 @@ class testApp : public ofBaseApp{
   void setupGUI();
   void update();
   void draw();
+
+  
   void drawVideo();
   void overlayGuiEvent( ofxUIEventArgs &e );
   void guiEvent(ofxUIEventArgs &e);

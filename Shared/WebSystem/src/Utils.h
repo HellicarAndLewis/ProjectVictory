@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "Json.h"
+#include "json.h"
 #include "VideoFX.h"
 #include "BaseEffect.h"
 

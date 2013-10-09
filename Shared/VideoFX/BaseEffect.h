@@ -4,7 +4,7 @@
 #include "ofxFXObject.h"
 #include "ofxUI.h"
 #include "FarnebackPlus.h"
-#include "Json.h"
+#include "json.h"
 
 typedef Json::Value ShaderMap;
 
