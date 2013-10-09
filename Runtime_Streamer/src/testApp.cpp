@@ -33,6 +33,7 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+    if (ofGetElapsedTimef() < 4.0f) { return; }
     
     videoGrabber.update();
     
@@ -43,6 +44,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    if (ofGetElapsedTimef() < 4.0f) { return; }
     
     big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
     
