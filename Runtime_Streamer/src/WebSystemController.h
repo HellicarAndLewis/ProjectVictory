@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "WebSystem.h"
+#include "ofxUI.h"
 
 class VideoFX;
 class Overlay;
@@ -40,6 +41,13 @@ public:
     }
     
     void decayVideoFXToDefault();
+    
+    // VoteSystem
+    void initVotingGUI();
+    ofxUISuperCanvas *voteGUI;
+    ofxUITextInput *vote1TextInput;
+    ofxUITextInput *vote2TextInput;
+    void voteingGUIEvent(ofxUIEventArgs &e);
     
 private:
     

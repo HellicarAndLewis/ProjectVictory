@@ -11,6 +11,9 @@ void WebSystemController::init() {
     connection.addHashTagCountListener(this, &WebSystemController::onHashTagCount);
     connection.addShoutoutListener(this, &WebSystemController::onShoutout);
     connection.addCommandListener(this, &WebSystemController::onCommand);
+    
+    // Set up the voting GUI
+    initVotingGUI();
 }
 
 void WebSystemController::update() {
@@ -85,3 +88,35 @@ void WebSystemController::decayVideoFXToDefault() {
     lastUpdate = ofGetElapsedTimef();
     
 }
+
+#pragma mark - VoteSystem
+
+void WebSystemController::initVotingGUI() {
+    voteGUI = new ofxUISuperCanvas( "VOTEING SYSTEM", 300, 0, 200, 200 );
+    voteGUI->setColorBack(ofColor(ofColor::green, 125));
+    voteGUI->addLabel("TOPIC 1");
+    vote1TextInput = voteGUI->addTextInput("TOPIC 1", "");
+    voteGUI->addLabel("TOPIC 2");
+    vote2TextInput = voteGUI->addTextInput("TOPIC 2", "");
+    voteGUI->addButton("UPDATE TOPICS", false);
+    voteGUI->autoSizeToFitWidgets();
+    ofAddListener( voteGUI->newGUIEvent, this, &WebSystemController::voteingGUIEvent );
+    voteGUI->loadSettings("settings.voting.gui.xml");
+
+}
+
+void WebSystemController::voteingGUIEvent(ofxUIEventArgs &e) {
+    
+    if ( e.widget->getName() == "UPDATE TOPICS") {
+        ofxUIButton *button = (ofxUIButton *)e.widget;
+        if (button->getValue()) {
+            overlay->voteDisplay.topic1 = vote1TextInput->getTextString();
+            overlay->voteDisplay.topic2 = vote2TextInput->getTextString();
+            overlay->voteDisplay.resetVotes();
+        } else {
+            voteGUI->saveSettings("settings.voting.gui.xml");
+        }
+    }
+    
+}
+
