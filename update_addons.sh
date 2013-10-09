@@ -35,6 +35,7 @@ function clone {
     git reset --hard ${rev}
 }
 
+clone git@github.com:labatrockwell/ofxLibwebsockets.git ofxLibwebsockets d6e8bdaaab766887d256e52e76390c856f65b1de master
 clone git@github.com:kylemcdonald/ofxCv.git ofxCv ab8dfe5ccdd792c2ca50952ebee42bf4d60b5734 master
 clone git@github.com:patriciogonzalezvivo/ofxFluid.git ofxFluid 90d7b025988a85f3c3f338cf3fbab3cfd98cdebc master
 clone git@github.com:patriciogonzalezvivo/ofxFX.git ofxFX ecf974c87b3c0cf2cd15c4b21f98fa8afe83f559 master
