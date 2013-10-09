@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # addons directory
 ad=${PWD}/addons/  
 ofad=${PWD}/../../addons/

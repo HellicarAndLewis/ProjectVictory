@@ -59,7 +59,11 @@ class testApp : public ofBaseApp{
   void windowResized(int w, int h);
   void dragEvent(ofDragInfo dragInfo);
   void gotMessage(ofMessage msg);
+
+  void audioIn(float* input, int nsize, int nchannels);
 		
+
   VideoFXExporter videoFXExporter;
   ofxVideoStreamerScreenCapture streamer;
+  ofSoundStream sound_stream;
 };

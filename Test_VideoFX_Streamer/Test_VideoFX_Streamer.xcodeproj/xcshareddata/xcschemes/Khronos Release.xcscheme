@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "Test_VideoFX.app"
+               BuildableName = "Test_VideoFX_Streamer.app"
                BlueprintName = "Test_VideoFX_Streamer"
                ReferencedContainer = "container:Test_VideoFX_Streamer.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Test_VideoFX.app"
+            BuildableName = "Test_VideoFX_Streamer.app"
             BlueprintName = "Test_VideoFX_Streamer"
             ReferencedContainer = "container:Test_VideoFX_Streamer.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Test_VideoFX.app"
+            BuildableName = "Test_VideoFX_Streamer.app"
             BlueprintName = "Test_VideoFX_Streamer"
             ReferencedContainer = "container:Test_VideoFX_Streamer.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Test_VideoFX.app"
+            BuildableName = "Test_VideoFX_Streamer.app"
             BlueprintName = "Test_VideoFX_Streamer"
             ReferencedContainer = "container:Test_VideoFX_Streamer.xcodeproj">
          </BuildableReference>

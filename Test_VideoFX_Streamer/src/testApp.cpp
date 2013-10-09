@@ -91,6 +91,13 @@ void testApp::setup(){
       printf("error: cannot start the streamer.\n");
       ::exit(EXIT_FAILURE);
     }
+
+    sound_stream.listDevices();
+    sound_stream.setup(this, 0, 2, 44100, 1024, 4);
+}
+
+void testApp::audioIn(float* input, int nsize, int nchannels) {
+  streamer.addAudio(input, nsize, nchannels);
 }
 
 void testApp::setupGUI() {
@@ -173,7 +180,7 @@ void testApp::draw(){
       drawVideo();
     streamer.endGrab();
   }
-
+  drawVideo();
 }
 
 void testApp::drawVideo() {

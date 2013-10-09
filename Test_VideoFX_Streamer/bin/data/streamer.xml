@@ -19,6 +19,17 @@
         <bitrate>600</bitrate>
         <threads>4</threads>
       </video>
+
+      <audio>
+        <samplerate>44100</samplerate>            <!-- samplerate: 44100, 22050, 11025 -->
+        <mode>2</mode>                        <!-- mode: mono = 1, stereo = 2 -->
+        <bitsize>2</bitsize>                  <!-- bitsize: S8 = 0, S16 = 2, F32 = 3 -->
+        <bitrate>64</bitrate>                  <!-- in kbps -->
+        <quality>5</quality>                  <!-- quality to use, value between 0 and 9, 0 = best (slow), 9 = worst (fast), 5 is ok -->
+        <in_bitsize>3</in_bitsize>            <!-- we have basic support for conversion, set this to the input  bitsize, see bitsize above for the values you can use  -->
+        <in_interleaved>1</in_interleaved>    <!-- 0 = not using interleaved audio, 1 = using interleaved audio -->
+      </audio>
+
     </stream>
 
     <stream>
