@@ -33,6 +33,8 @@ public:
     }
     
     void addVote( string topic );
+    void setVote( string topic, int number );
+    void resetVotes( );
     
     void init();
     void update();
