@@ -15,7 +15,12 @@ public:
     overlay(0)
     {};
     
+    // Config
+    static const int UPDATE_VOTES_EVERY_MS = 300;
+    
+    // Lifecycle
     void init();
+    void update();
     
     WebSystem::Connection connection;
     

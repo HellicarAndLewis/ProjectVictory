@@ -2,6 +2,8 @@
 #include "Overlay.h"
 #include "Crawl.h"
 
+#pragma mark – Life Cycle
+
 void WebSystemController::init() {
     // Connect the websystem
     connection.setHost("projectvictory.hostfile", 80);
@@ -11,15 +13,28 @@ void WebSystemController::init() {
     connection.addCommandListener(this, &WebSystemController::onCommand);
 }
 
+void WebSystemController::update() {
+    float currentTime = ofGetElapsedTimef();
+    static float lastHashTagUpdate = 0.f;
+    if ( lastHashTagUpdate + (float(UPDATE_VOTES_EVERY_MS) / 1000) < currentTime && overlay ) {
+        connection.requestHashTagCount( overlay->voteDisplay.topic1 );
+        connection.requestHashTagCount( overlay->voteDisplay.topic2 );
+        lastHashTagUpdate = currentTime;
+    }
+}
+
 #pragma mark – Web System Connection
 
 void WebSystemController::onHashTagCount(Json::Value body) {
     
     // Do something with the incoming count
-    string hashTag = body["result"]["tag"].asString();
+    string hashTag = body["tag"].asString();
     // This will return the straight out number.
     // You can dig into  "result" to get an array with number of votes cast per minute for 120 minutes
     float numberOfShoutouts = WebSystem::Utils::countHashTagsInResult( body["result"] );
+    
+    overlay->voteDisplay.setVote(hashTag, numberOfShoutouts);
+    
 }
 
 void WebSystemController::onShoutout(Json::Value body) {

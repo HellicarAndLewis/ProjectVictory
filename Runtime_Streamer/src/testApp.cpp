@@ -39,6 +39,8 @@ void testApp::setup(){
 void testApp::update(){
     if (ofGetElapsedTimef() < 2.0f) { return; }
     
+    websystemController.update();
+    
     videoGrabber.update();
     
     vfx1.update( videoGrabber.isFrameNew() );
