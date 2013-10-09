@@ -13,7 +13,10 @@ class WebSystemController {
 public:
     WebSystemController()
     :videoFX(0),
-    overlay(0)
+    overlay(0),
+    webSystemIsEnabled(false),
+    shoutoutsAreEnabled(false),
+    commandsAreEnabled(false)
     {};
     
     // Config
@@ -23,7 +26,14 @@ public:
     void init();
     void update();
     
+    // Web system
     WebSystem::Connection connection;
+    ofxUISuperCanvas *websystemGUI;
+    void initWebSystemGUI();
+    // State
+    bool webSystemIsEnabled;
+    bool shoutoutsAreEnabled;
+    bool commandsAreEnabled;
     
     // Web system events
     void onHashTagCount(Json::Value body);

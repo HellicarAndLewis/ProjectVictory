@@ -14,21 +14,34 @@ void WebSystemController::init() {
     
     // Set up the voting GUI
     initVotingGUI();
+    initWebSystemGUI();
 }
 
 void WebSystemController::update() {
     float currentTime = ofGetElapsedTimef();
     static float lastHashTagUpdate = 0.f;
-    if ( lastHashTagUpdate + (float(UPDATE_VOTES_EVERY_MS) / 1000) < currentTime && overlay ) {
+    if ( lastHashTagUpdate + (float(UPDATE_VOTES_EVERY_MS) / 1000) < currentTime && overlay && webSystemIsEnabled ) {
         connection.requestHashTagCount( overlay->voteDisplay.topic1 );
         connection.requestHashTagCount( overlay->voteDisplay.topic2 );
         lastHashTagUpdate = currentTime;
     }
 }
 
+#pragma mark - VoteSystem
+
+void WebSystemController::initWebSystemGUI() {
+    websystemGUI = new ofxUISuperCanvas( "WEB SYSTEM", 400, 0, 200, 200 );
+    websystemGUI->addLabelToggle( "ENABLED", &webSystemIsEnabled );
+    websystemGUI->addLabelToggle( "SHOUTOUTS", &shoutoutsAreEnabled );
+    websystemGUI->addLabelToggle( "COMMANDS", &commandsAreEnabled );
+    websystemGUI->autoSizeToFitWidgets();
+}
+
 #pragma mark – Web System Connection
 
 void WebSystemController::onHashTagCount(Json::Value body) {
+    
+    if (!webSystemIsEnabled) { return; }
     
     // Do something with the incoming count
     string hashTag = body["tag"].asString();
@@ -46,6 +59,8 @@ void WebSystemController::onShoutout(Json::Value body) {
     string screenname = body["tweet"]["userScreenName"].asString();
     string tweetText = body["tweet"]["text"].asString();
     
+    if (!webSystemIsEnabled || !shoutoutsAreEnabled) { return; }
+    
     cout << "@" << screenname << ": " << tweetText << endl;
     
     overlay->crawl.addCrawlItem( screenname, tweetText );
@@ -53,6 +68,8 @@ void WebSystemController::onShoutout(Json::Value body) {
 }
 
 void WebSystemController::onCommand(Json::Value body) {
+    
+    if (!webSystemIsEnabled || !commandsAreEnabled) { return; }
     
     // p.s. if you want to know what is the body, you can send it to cout:
     // cout << body;
