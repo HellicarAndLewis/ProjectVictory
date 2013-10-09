@@ -3,12 +3,12 @@
 void Overlay::init() {
     // add some fake tweets to the crawl
     crawl.init();
-    crawl.addCrawlItem( "aarontweets", "here is my message #shoutout" );
-    crawl.addCrawlItem( "somedude", "#shoutout omg im on tv" );
-    crawl.addCrawlItem( "nikefan", "i like shoes" );
-    crawl.addCrawlItem( "test_user", "im testing stuff" );
-    crawl.addCrawlItem( "hacker", "im hacking stuff" );
-    crawl.addCrawlItem( "social_media_pro", "im tweeting stuff" );
+//    crawl.addCrawlItem( "aarontweets", "here is my message #shoutout" );
+//    crawl.addCrawlItem( "somedude", "#shoutout omg im on tv" );
+//    crawl.addCrawlItem( "nikefan", "i like shoes" );
+//    crawl.addCrawlItem( "test_user", "im testing stuff" );
+//    crawl.addCrawlItem( "hacker", "im hacking stuff" );
+//    crawl.addCrawlItem( "social_media_pro", "im tweeting stuff" );
     
     textOverlay.init();
     

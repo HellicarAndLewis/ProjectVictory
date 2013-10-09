@@ -22,7 +22,9 @@ public:
     }
     
     string topic1 = "TOPIC1", topic2 = "TOPIC2";
+    
     int topic1Votes = 0, topic2Votes = 0;
+    
     void setTopics( string topic1, string topic2 ) {
         this->topic1 = ofToUpper( topic1 );
         this->topic2 = ofToUpper( topic2 );
@@ -31,6 +33,8 @@ public:
     }
     
     void addVote( string topic );
+    void setVote( string topic, int number );
+    void resetVotes( );
     
     void init();
     void update();

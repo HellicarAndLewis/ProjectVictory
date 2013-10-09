@@ -18,6 +18,21 @@ void VoteDisplay::addVote( string topic ) {
     }
 }
 
+
+void VoteDisplay::setVote( string topic, int number ) {
+    if ( ofToUpper(topic) == topic1 ) {
+        topic1Votes = number;
+    }
+    else if ( ofToUpper(topic) == topic2 ) {
+        topic2Votes = number;
+    }
+}
+
+void VoteDisplay::resetVotes() {
+    topic1Votes = 0;
+    topic2Votes = 0;
+}
+
 void VoteDisplay::draw() {
     
     if ( !visible )
