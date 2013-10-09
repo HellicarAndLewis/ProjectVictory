@@ -28,12 +28,16 @@ void testApp::setup(){
     
     
     overlay.init();
+    
+    websystemController.setVideoFX( &vfx1 );
+    websystemController.setOverlay( &overlay );
+    websystemController.init();
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
-    if (ofGetElapsedTimef() < 4.0f) { return; }
+    if (ofGetElapsedTimef() < 2.0f) { return; }
     
     videoGrabber.update();
     
@@ -44,7 +48,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    if (ofGetElapsedTimef() < 4.0f) { return; }
+    if (ofGetElapsedTimef() < 2.0f) { return; }
     
     big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
     
@@ -54,10 +58,12 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key) {
     
-    if ( key == 91 ) {
+    cout << key << endl;
+    
+    if ( key == 'a' ) {
         overlay.voteDisplay.addVote( overlay.voteDisplay.topic1 );
     }
-    else if ( key == 93 ) {
+    else if ( key == 'b' ) {
         overlay.voteDisplay.addVote( overlay.voteDisplay.topic2 );
     }
     

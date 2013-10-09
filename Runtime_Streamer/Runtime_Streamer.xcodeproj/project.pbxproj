@@ -68,7 +68,6 @@
 		484B8BC61801C4450000D7F9 /* FarnebackPlus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BB21801C4450000D7F9 /* FarnebackPlus.cpp */; };
 		484B8BC71801C4450000D7F9 /* VideoFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BBC1801C4450000D7F9 /* VideoFX.cpp */; };
 		484B8BC81801C4450000D7F9 /* VideoFXExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BBE1801C4450000D7F9 /* VideoFXExporter.cpp */; };
-		484B8BC91801C4450000D7F9 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BC41801C4450000D7F9 /* jsoncpp.cpp */; };
 		484B8BCF1801C44E0000D7F9 /* Crawl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BCB1801C44E0000D7F9 /* Crawl.cpp */; };
 		484B8BD01801C44E0000D7F9 /* VoteDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8BCD1801C44E0000D7F9 /* VoteDisplay.cpp */; };
 		9308292217EB61E9006149AE /* emboss.frag in Sources */ = {isa = PBXBuildFile; fileRef = 9308292117EB61E9006149AE /* emboss.frag */; };
@@ -81,6 +80,16 @@
 		93530A9C1804A73700840FFE /* Overlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93530A9A1804A73700840FFE /* Overlay.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CA07C8AB18056DFA000EF8A3 /* ofxFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA07C8A918056DFA000EF8A3 /* ofxFluid.cpp */; };
+		CAAC013918057AD800BF6858 /* WebSystemController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC013718057AD800BF6858 /* WebSystemController.cpp */; };
+		CAAC0363180584BE00BF6858 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0362180584BE00BF6858 /* jsoncpp.cpp */; };
+		CAAC036A180584DF00BF6858 /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0364180584DF00BF6858 /* Client.cpp */; };
+		CAAC036B180584DF00BF6858 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0365180584DF00BF6858 /* Connection.cpp */; };
+		CAAC036C180584DF00BF6858 /* Events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0366180584DF00BF6858 /* Events.cpp */; };
+		CAAC036D180584DF00BF6858 /* Protocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0367180584DF00BF6858 /* Protocol.cpp */; };
+		CAAC036E180584DF00BF6858 /* Reactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0368180584DF00BF6858 /* Reactor.cpp */; };
+		CAAC036F180584DF00BF6858 /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0369180584DF00BF6858 /* Server.cpp */; };
+		CAAC037218058FAF00BF6858 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAC037118058FAF00BF6858 /* libwebsockets.a */; };
+		CAACFF95180576F300BF6858 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAACFF8E180576F300BF6858 /* Connection.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -377,9 +386,6 @@
 		484B8BBD1801C4450000D7F9 /* VideoFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoFX.h; sourceTree = "<group>"; };
 		484B8BBE1801C4450000D7F9 /* VideoFXExporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoFXExporter.cpp; sourceTree = "<group>"; };
 		484B8BBF1801C4450000D7F9 /* VideoFXExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoFXExporter.h; sourceTree = "<group>"; };
-		484B8BC21801C4450000D7F9 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
-		484B8BC31801C4450000D7F9 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		484B8BC41801C4450000D7F9 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
 		484B8BCB1801C44E0000D7F9 /* Crawl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Crawl.cpp; sourceTree = "<group>"; };
 		484B8BCC1801C44E0000D7F9 /* Crawl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crawl.h; sourceTree = "<group>"; };
 		484B8BCD1801C44E0000D7F9 /* VoteDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoteDisplay.cpp; sourceTree = "<group>"; };
@@ -507,6 +513,23 @@
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		CA07C8A918056DFA000EF8A3 /* ofxFluid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFluid.cpp; sourceTree = "<group>"; };
 		CA07C8AA18056DFA000EF8A3 /* ofxFluid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFluid.h; sourceTree = "<group>"; };
+		CAAC013718057AD800BF6858 /* WebSystemController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebSystemController.cpp; sourceTree = "<group>"; };
+		CAAC013818057AD800BF6858 /* WebSystemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSystemController.h; sourceTree = "<group>"; };
+		CAAC0362180584BE00BF6858 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = ../../../apps/ProjectVictory/addons/ofxLibwebsockets/libs/jsoncpp/jsoncpp.cpp; sourceTree = "<group>"; };
+		CAAC0364180584DF00BF6858 /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Client.cpp; path = ../../../apps/ProjectVictory/addons/ofxLibwebsockets/libs/ofxLibwebsockets/src/Client.cpp; sourceTree = "<group>"; };
+		CAAC0365180584DF00BF6858 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connection.cpp; path = ../../../apps/ProjectVictory/addons/ofxLibwebsockets/libs/ofxLibwebsockets/src/Connection.cpp; sourceTree = "<group>"; };
+		CAAC0366180584DF00BF6858 /* Events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Events.cpp; path = ../../../apps/ProjectVictory/addons/ofxLibwebsockets/libs/ofxLibwebsockets/src/Events.cpp; sourceTree = "<group>"; };
+		CAAC0367180584DF00BF6858 /* Protocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Protocol.cpp; path = ../../../apps/ProjectVictory/addons/ofxLibwebsockets/libs/ofxLibwebsockets/src/Protocol.cpp; sourceTree = "<group>"; };
+		CAAC0368180584DF00BF6858 /* Reactor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Reactor.cpp; path = ../../../apps/ProjectVictory/addons/ofxLibwebsockets/libs/ofxLibwebsockets/src/Reactor.cpp; sourceTree = "<group>"; };
+		CAAC0369180584DF00BF6858 /* Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Server.cpp; path = ../../../apps/ProjectVictory/addons/ofxLibwebsockets/libs/ofxLibwebsockets/src/Server.cpp; sourceTree = "<group>"; };
+		CAAC037118058FAF00BF6858 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebsockets.a; path = ../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx/libwebsockets.a; sourceTree = "<group>"; };
+		CAACFF8B180576F300BF6858 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		CAACFF8D180576F300BF6858 /* Callable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callable.h; sourceTree = "<group>"; };
+		CAACFF8E180576F300BF6858 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Connection.cpp; sourceTree = "<group>"; };
+		CAACFF8F180576F300BF6858 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
+		CAACFF90180576F300BF6858 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		CAACFF91180576F300BF6858 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		CAACFF92180576F300BF6858 /* WebSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSystem.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -550,6 +573,7 @@
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
+				CAAC037218058FAF00BF6858 /* libwebsockets.a in Frameworks */,
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
@@ -1077,6 +1101,7 @@
 		484B8BAA1801C43C0000D7F9 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CAACFF86180576F300BF6858 /* WebSystem */,
 				484B8BCA1801C44E0000D7F9 /* Crawl */,
 				484B8BAB1801C4450000D7F9 /* VideoFX */,
 			);
@@ -1107,28 +1132,9 @@
 				484B8BBD1801C4450000D7F9 /* VideoFX.h */,
 				484B8BBE1801C4450000D7F9 /* VideoFXExporter.cpp */,
 				484B8BBF1801C4450000D7F9 /* VideoFXExporter.h */,
-				484B8BC01801C4450000D7F9 /* jsoncpp */,
 			);
 			name = VideoFX;
 			path = ../../Shared/VideoFX;
-			sourceTree = "<group>";
-		};
-		484B8BC01801C4450000D7F9 /* jsoncpp */ = {
-			isa = PBXGroup;
-			children = (
-				484B8BC11801C4450000D7F9 /* json */,
-				484B8BC41801C4450000D7F9 /* jsoncpp.cpp */,
-			);
-			path = jsoncpp;
-			sourceTree = "<group>";
-		};
-		484B8BC11801C4450000D7F9 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				484B8BC21801C4450000D7F9 /* json-forwards.h */,
-				484B8BC31801C4450000D7F9 /* json.h */,
-			);
-			path = json;
 			sourceTree = "<group>";
 		};
 		484B8BCA1801C44E0000D7F9 /* Crawl */ = {
@@ -1492,6 +1498,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				CAAC02A218057BFD00BF6858 /* ofxLibwebsockets */,
 				484B8BF81801C5F30000D7F9 /* ofxFluid */,
 				484B8B781801C32A0000D7F9 /* ofxUI */,
 				484B8B501801C3170000D7F9 /* ofxFX */,
@@ -1536,6 +1543,77 @@
 			name = "3rd party frameworks";
 			sourceTree = "<group>";
 		};
+		CAAC02A218057BFD00BF6858 /* ofxLibwebsockets */ = {
+			isa = PBXGroup;
+			children = (
+				CAAC037118058FAF00BF6858 /* libwebsockets.a */,
+				CAAC02A318057C1000BF6858 /* libs */,
+			);
+			name = ofxLibwebsockets;
+			sourceTree = "<group>";
+		};
+		CAAC02A318057C1000BF6858 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				CAAC035118057FE200BF6858 /* ofxLibwebsockets */,
+				CAAC034D18057FC400BF6858 /* jsoncpp */,
+			);
+			name = libs;
+			path = ../../../addons/ofxLibwebsockets/src;
+			sourceTree = "<group>";
+		};
+		CAAC034D18057FC400BF6858 /* jsoncpp */ = {
+			isa = PBXGroup;
+			children = (
+				CAAC0362180584BE00BF6858 /* jsoncpp.cpp */,
+			);
+			name = jsoncpp;
+			sourceTree = "<group>";
+		};
+		CAAC035118057FE200BF6858 /* ofxLibwebsockets */ = {
+			isa = PBXGroup;
+			children = (
+				CAAC035218057FE800BF6858 /* src */,
+			);
+			name = ofxLibwebsockets;
+			sourceTree = "<group>";
+		};
+		CAAC035218057FE800BF6858 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CAAC0364180584DF00BF6858 /* Client.cpp */,
+				CAAC0365180584DF00BF6858 /* Connection.cpp */,
+				CAAC0366180584DF00BF6858 /* Events.cpp */,
+				CAAC0367180584DF00BF6858 /* Protocol.cpp */,
+				CAAC0368180584DF00BF6858 /* Reactor.cpp */,
+				CAAC0369180584DF00BF6858 /* Server.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		CAACFF86180576F300BF6858 /* WebSystem */ = {
+			isa = PBXGroup;
+			children = (
+				CAACFF8B180576F300BF6858 /* README.md */,
+				CAACFF8C180576F300BF6858 /* src */,
+			);
+			name = WebSystem;
+			path = ../../Shared/WebSystem;
+			sourceTree = "<group>";
+		};
+		CAACFF8C180576F300BF6858 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CAACFF8D180576F300BF6858 /* Callable.h */,
+				CAACFF8E180576F300BF6858 /* Connection.cpp */,
+				CAACFF8F180576F300BF6858 /* Connection.h */,
+				CAACFF90180576F300BF6858 /* Tweet.h */,
+				CAACFF91180576F300BF6858 /* Utils.h */,
+				CAACFF92180576F300BF6858 /* WebSystem.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E4328144138ABC890047C5CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1574,6 +1652,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				CAAC013818057AD800BF6858 /* WebSystemController.h */,
+				CAAC013718057AD800BF6858 /* WebSystemController.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1695,7 +1775,9 @@
 				484B8A741801BE6F0000D7F9 /* Utilities.cpp in Sources */,
 				484B8A751801BE6F0000D7F9 /* Wrappers.cpp in Sources */,
 				484B8AA31801C2AF0000D7F9 /* MSAObjCPointer.cpp in Sources */,
+				CAAC036F180584DF00BF6858 /* Server.cpp in Sources */,
 				484B8AAD1801C2C70000D7F9 /* MSACoreGL.cpp in Sources */,
+				CAAC036D180584DF00BF6858 /* Protocol.cpp in Sources */,
 				484B8AD01801C2FB0000D7F9 /* ofxBox2d.cpp in Sources */,
 				484B8AD11801C2FB0000D7F9 /* ofxBox2dBaseShape.cpp in Sources */,
 				484B8AD21801C2FB0000D7F9 /* ofxBox2dCircle.cpp in Sources */,
@@ -1708,11 +1790,13 @@
 				484B8B2F1801C3090000D7F9 /* b2CollideCircle.cpp in Sources */,
 				484B8B301801C3090000D7F9 /* b2CollidePolygon.cpp in Sources */,
 				484B8B311801C3090000D7F9 /* b2Collision.cpp in Sources */,
+				CAAC036A180584DF00BF6858 /* Client.cpp in Sources */,
 				484B8B321801C3090000D7F9 /* b2Distance.cpp in Sources */,
 				484B8B331801C3090000D7F9 /* b2DynamicTree.cpp in Sources */,
 				484B8B341801C3090000D7F9 /* b2TimeOfImpact.cpp in Sources */,
 				484B8B351801C3090000D7F9 /* b2BlockAllocator.cpp in Sources */,
 				484B8B361801C3090000D7F9 /* b2Math.cpp in Sources */,
+				CAAC036B180584DF00BF6858 /* Connection.cpp in Sources */,
 				484B8B371801C3090000D7F9 /* b2Settings.cpp in Sources */,
 				484B8B381801C3090000D7F9 /* b2StackAllocator.cpp in Sources */,
 				484B8B391801C3090000D7F9 /* b2CircleContact.cpp in Sources */,
@@ -1720,8 +1804,10 @@
 				484B8B3B1801C3090000D7F9 /* b2ContactSolver.cpp in Sources */,
 				484B8B3C1801C3090000D7F9 /* b2PolygonAndCircleContact.cpp in Sources */,
 				CA07C8AB18056DFA000EF8A3 /* ofxFluid.cpp in Sources */,
+				CAAC036E180584DF00BF6858 /* Reactor.cpp in Sources */,
 				484B8B3D1801C3090000D7F9 /* b2PolygonContact.cpp in Sources */,
 				484B8B3E1801C3090000D7F9 /* b2TOISolver.cpp in Sources */,
+				CAAC036C180584DF00BF6858 /* Events.cpp in Sources */,
 				484B8B3F1801C3090000D7F9 /* b2DistanceJoint.cpp in Sources */,
 				484B8B401801C3090000D7F9 /* b2FrictionJoint.cpp in Sources */,
 				484B8B411801C3090000D7F9 /* b2GearJoint.cpp in Sources */,
@@ -1730,12 +1816,14 @@
 				484B8B441801C3090000D7F9 /* b2MouseJoint.cpp in Sources */,
 				484B8B451801C3090000D7F9 /* b2PrismaticJoint.cpp in Sources */,
 				484B8B461801C3090000D7F9 /* b2PulleyJoint.cpp in Sources */,
+				CAACFF95180576F300BF6858 /* Connection.cpp in Sources */,
 				484B8B471801C3090000D7F9 /* b2RevoluteJoint.cpp in Sources */,
 				484B8B481801C3090000D7F9 /* b2WeldJoint.cpp in Sources */,
 				484B8B491801C3090000D7F9 /* b2Body.cpp in Sources */,
 				484B8B4A1801C3090000D7F9 /* b2ContactManager.cpp in Sources */,
 				484B8B4B1801C3090000D7F9 /* b2Fixture.cpp in Sources */,
 				93530A9C1804A73700840FFE /* Overlay.cpp in Sources */,
+				CAAC0363180584BE00BF6858 /* jsoncpp.cpp in Sources */,
 				484B8B4C1801C3090000D7F9 /* b2Island.cpp in Sources */,
 				484B8B4D1801C3090000D7F9 /* b2World.cpp in Sources */,
 				484B8B4E1801C3090000D7F9 /* b2WorldCallbacks.cpp in Sources */,
@@ -1744,9 +1832,9 @@
 				484B8B771801C31D0000D7F9 /* ofxFXObject.cpp in Sources */,
 				484B8BC51801C4450000D7F9 /* CircularTexture.cpp in Sources */,
 				484B8BC61801C4450000D7F9 /* FarnebackPlus.cpp in Sources */,
+				CAAC013918057AD800BF6858 /* WebSystemController.cpp in Sources */,
 				484B8BC71801C4450000D7F9 /* VideoFX.cpp in Sources */,
 				484B8BC81801C4450000D7F9 /* VideoFXExporter.cpp in Sources */,
-				484B8BC91801C4450000D7F9 /* jsoncpp.cpp in Sources */,
 				484B8BCF1801C44E0000D7F9 /* Crawl.cpp in Sources */,
 				484B8BD01801C44E0000D7F9 /* VoteDisplay.cpp in Sources */,
 			);
@@ -1843,6 +1931,14 @@
 					"\"$(SRCROOT)/../../../addons/ofxCv/libs\"/**",
 					./../addons/ofxCv/libs/ofxCv/include/,
 					./../addons/ofxFluid/src/,
+					./../addons/ofxLibwebsockets/libs/jsoncpp,
+					./../addons/ofxLibwebsockets/libs/jsoncpp/json,
+					./../addons/ofxLibwebsockets/libs/libwebsockets/include/,
+					./../addons/ofxLibwebsockets/libs/openssl/openssl,
+					./../addons/ofxLibwebsockets/libs/ofxLibwebsockets/include,
+					./../addons/ofxLibwebsockets/libs/ofxLibwebsockets/include/ofxLibwebsockets,
+					./../addons/ofxLibwebsockets/libs/ofxLibwebsockets/src,
+					./../addons/ofxLibwebsockets/src,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -1911,6 +2007,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+					/Users/sdstream/Desktop/of_projectvictory/apps/ProjectVictory/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
@@ -1919,6 +2016,7 @@
 				);
 				PRODUCT_NAME = Runtime_StreamerDebug;
 				SDKROOT = macosx10.8;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1941,6 +2039,14 @@
 					"\"$(SRCROOT)/../../../addons/ofxCv/libs\"/**",
 					./../addons/ofxCv/libs/ofxCv/include/,
 					./../addons/ofxFluid/src/,
+					./../addons/ofxLibwebsockets/libs/jsoncpp,
+					./../addons/ofxLibwebsockets/libs/jsoncpp/json,
+					./../addons/ofxLibwebsockets/libs/libwebsockets/include/,
+					./../addons/ofxLibwebsockets/libs/openssl/openssl,
+					./../addons/ofxLibwebsockets/libs/ofxLibwebsockets/include,
+					./../addons/ofxLibwebsockets/libs/ofxLibwebsockets/include/ofxLibwebsockets,
+					./../addons/ofxLibwebsockets/libs/ofxLibwebsockets/src,
+					./../addons/ofxLibwebsockets/src,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -2009,6 +2115,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					/Users/sdstream/Desktop/of_projectvictory/apps/ProjectVictory/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
@@ -2017,6 +2124,7 @@
 				);
 				PRODUCT_NAME = Runtime_Streamer;
 				SDKROOT = macosx10.8;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

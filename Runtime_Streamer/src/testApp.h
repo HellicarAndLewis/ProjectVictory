@@ -9,6 +9,7 @@
 #include "VideoFX.h"
 #include "VideoFXExporter.h"
 #include "Overlay.h"
+#include "WebSystemController.h"
 
 class testApp : public ofBaseApp{
 
@@ -46,5 +47,6 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-        VideoFXExporter videoFXExporter;    
+        VideoFXExporter videoFXExporter;
+        WebSystemController websystemController;
 };
