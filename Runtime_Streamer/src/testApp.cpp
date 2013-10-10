@@ -111,7 +111,12 @@ void testApp::drawInternal() {
     // Screen shot saving
     string nextScreenshotName = websystemController.getNextScreenShotFilename();
     if ( nextScreenshotName != "" ) {
-        ofSaveScreen( "screenshots/" + nextScreenshotName + ".png");
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glReadBuffer(GL_BACK);
+        glPixelStorei(GL_PACK_ALIGNMENT, 4);
+        //Saving
+        ofSaveViewport("screenshots/" + nextScreenshotName + ".png");
+        //ofSaveScreen( "screenshots/" + nextScreenshotName + ".png");
     }
 }
 
