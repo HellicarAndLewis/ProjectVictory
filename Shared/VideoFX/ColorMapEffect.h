@@ -32,4 +32,20 @@ public:
         shader.setUniformTexture( "colorMap", ramp.textureTarget, ramp.textureID, 1 );
         shader.setUniform2f( "colorMapSize", ramp.tex_w, ramp.tex_h );
     }
+    
+    ShaderMap getShaderMap() {
+        ShaderMap shaderMap;
+        shaderMap["amount"] = amount;
+        return shaderMap;
+    }
+    
+    ShaderMap getShaderDefaultMap() {
+        ShaderMap shaderMap;
+        shaderMap["amount"] = 0.0f;
+        return shaderMap;
+    }
+    
+    void applyShaderMap(ShaderMap shaderMap) {
+        if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble(); }
+    }
 };
