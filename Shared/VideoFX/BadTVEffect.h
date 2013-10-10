@@ -51,31 +51,19 @@ public:
         shader.setUniform1f( "distortion2", distortion2 );
     }
     
-    virtual ShaderMap getShaderMap() {
+    ShaderMap getShaderMap() {
         ShaderMap shaderMap;
         shaderMap["amount"] = amount;
-        shaderMap["thick distort"] = distortion;
-        shaderMap["fine distort"] = distortion2;
-        shaderMap["distort speed"] = speed;
-        shaderMap["roll speed"] = rollSpeed;
         return shaderMap;
     }
     
-    virtual ShaderMap getShaderDefaultMap() {
+    ShaderMap getShaderDefaultMap() {
         ShaderMap shaderMap;
         shaderMap["amount"] = 0.0f;
-        shaderMap["thick distort"] = 0.1f;
-        shaderMap["fine distort"] = 0.1f;
-        shaderMap["distort speed"] = 0.0f;
-        shaderMap["roll speed"] = 0.0f;
         return shaderMap;
     }
     
-    virtual void applyShaderMap(ShaderMap shaderMap) {
+    void applyShaderMap(ShaderMap shaderMap) {
         if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble(); }
-        if (shaderMap.isMember("thick distort")) { distortion = shaderMap["thick distort"].asDouble(); }
-        if (shaderMap.isMember("fine distort"))  { distortion2 = shaderMap["amount"].asDouble(); }
-        if (shaderMap.isMember("distort speed")) { speed = shaderMap["distort speed"].asDouble(); }
-        if (shaderMap.isMember("roll speed"))    { rollSpeed = shaderMap["roll speed"].asDouble(); }
     }
 };

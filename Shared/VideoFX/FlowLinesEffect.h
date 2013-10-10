@@ -75,4 +75,20 @@ public:
         pingPong.dst->end();
         ofPopStyle();
     }
+    
+    ShaderMap getShaderMap() {
+        ShaderMap shaderMap;
+        shaderMap["amount"] = amount;
+        return shaderMap;
+    }
+    
+    ShaderMap getShaderDefaultMap() {
+        ShaderMap shaderMap;
+        shaderMap["amount"] = 0.0f;
+        return shaderMap;
+    }
+    
+    void applyShaderMap(ShaderMap shaderMap) {
+        if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble(); }
+    }
 };
