@@ -6,6 +6,12 @@ void testApp::setup(){
     ofSetVerticalSync( true );
     ofSetFrameRate( 30 );
     
+    #ifdef DISABLE_STREAMING
+    cout << "Disabled streaming: compile with 'Release' to enable" << endl;
+    #else
+    cout << "Enabled streaming: compile with 'Release NoStream' to disable" << endl;
+    #endif
+    
 
     ofSetLogLevel( OF_LOG_WARNING );
     w = 1280;
@@ -33,8 +39,8 @@ void testApp::setup(){
     websystemController.setOverlay( &overlay );
     websystemController.init();
 
-
-    // MULTI STREAMER 
+#ifndef DISABLE_STREAMING
+    // MULTI STREAMER
     // --------------------------------------------------
     int fps = 15;
     if(!streamer.setup("streamer.xml", ofGetWidth(), ofGetHeight(), fps)) {
@@ -49,15 +55,20 @@ void testApp::setup(){
 
     sound_stream.listDevices();
     sound_stream.setup(this, 0, 2, 44100, 1024, 4);
+#endif
+    
 }
 
 void testApp::audioIn(float* input, int nsize, int nchannels) {
-  size_t nsamples = nsize * nchannels;
-  for(size_t i = 0; i < nsamples; ++i) {
-    input[i] *= 32768.0f;
-  }
+    
+#ifndef DISABLE_STREAMING
+    size_t nsamples = nsize * nchannels;
+    for(size_t i = 0; i < nsamples; ++i) {
+        input[i] *= 32768.0f;
+    }
 
-  streamer.addAudio(input, nsize, nchannels);
+    streamer.addAudio(input, nsize, nchannels);
+#endif
 }
 
 //--------------------------------------------------------------
@@ -75,15 +86,18 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-  if (ofGetElapsedTimef() < 2.0f) { return; }
+    if (ofGetElapsedTimef() < 2.0f) { return; }
     
-  if(streamer.wantsNewFrame()) {
-    streamer.beginGrab();
-      drawInternal();
-    streamer.endGrab();
-  }
+#ifndef DISABLE_STREAMING
+    if(streamer.wantsNewFrame()) {
+        streamer.beginGrab();
+            drawInternal();
+        streamer.endGrab();
+    }
+#endif
 
-  drawInternal();
+    drawInternal();
+        
 }
 
 void testApp::drawInternal() {

@@ -53,6 +53,10 @@ class testApp : public ofBaseApp{
 		
   VideoFXExporter videoFXExporter;
   WebSystemController websystemController;
+    
+#ifndef DISABLE_STREAMING
   ofxMultiVideoStreamer streamer; /* this is handling the video streaming */
   ofSoundStream sound_stream; /* we use a sound stream to get audio into the video stream */
+#endif
+    
 };
