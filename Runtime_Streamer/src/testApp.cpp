@@ -20,11 +20,6 @@ void testApp::setup(){
     
     videoFeedController.init();
     
-    //videoGrabber.setDeviceID( 1 );
-    //videoGrabber.initGrabber( 640, 480 );
-    
-    //videoSource = &videoFeedController.videoGrabber;
-    
     vfx1.init();
     vfx1.setVideoSource( videoFeedController.videoSource );
     
@@ -33,7 +28,6 @@ void testApp::setup(){
     big = &vfx1;
     
     videoFXExporter.setVideoFX( &vfx1 );
-    
     
     overlay.init();
     
@@ -109,6 +103,12 @@ void testApp::drawInternal() {
     big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
     
     overlay.draw();
+    
+    static bool hasSavedImage = false;
+    if (!hasSavedImage && ofGetElapsedTimef() > 4.0f) {
+        hasSavedImage = true;
+        ofSaveScreen("TestScreenShot.png");
+    }
 }
 
 //--------------------------------------------------------------
