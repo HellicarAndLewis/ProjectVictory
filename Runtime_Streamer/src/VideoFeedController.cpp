@@ -59,7 +59,6 @@ void VideoFeedController::init() {
     gui->addSlider(ofToUpper("Toggle Every Mins"), 0.01, 30.0f, &toggleEveryMins);
     gui->addLabelButton("TOGGLE NOW", false);
     ofAddListener( gui->newGUIEvent, this, &VideoFeedController::guiEvent );
-    
 
     gui->autoSizeToFitWidgets();
 

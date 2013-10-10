@@ -25,6 +25,13 @@ void WebSystemController::update() {
         connection.requestHashTagCount( overlay->voteDisplay.topic2 );
         lastHashTagUpdate = currentTime;
     }
+    
+    // only decay effects 10/sec
+    static float lastEffectsDecaySecs = 0.0f;
+    if ( shouldDecaysEffects && currentTime - lastEffectsDecaySecs > DECAY_EFFECT_EVERY_SEC) {
+        decayVideoFXToDefault();
+        lastEffectsDecaySecs = currentTime;
+    }
 }
 
 #pragma mark - VoteSystem
@@ -34,6 +41,7 @@ void WebSystemController::initWebSystemGUI() {
     websystemGUI->addLabelToggle( "ENABLED", &webSystemIsEnabled );
     websystemGUI->addLabelToggle( "SHOUTOUTS", &shoutoutsAreEnabled );
     websystemGUI->addLabelToggle( "COMMANDS", &commandsAreEnabled );
+    websystemGUI->addLabelToggle( "DECAYS", &shouldDecaysEffects );
     websystemGUI->autoSizeToFitWidgets();
 }
 
@@ -97,6 +105,7 @@ void WebSystemController::onCommand(Json::Value body) {
     // Apply the payload to the videofx. They need to be a decayer somewhere, so this may not be how it works.
     if (videoFX) {
         WebSystem::Utils::applyPayload( videoFX, body["payload"] );
+        cout << "should have applied payload" << endl;
     }
     
 }

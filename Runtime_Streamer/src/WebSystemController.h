@@ -18,11 +18,13 @@ public:
     overlay(0),
     webSystemIsEnabled(false),
     shoutoutsAreEnabled(false),
-    commandsAreEnabled(false)
+    commandsAreEnabled(false),
+    shouldDecaysEffects(false)
     {};
     
     // Config
     static const int UPDATE_VOTES_EVERY_MS = 300;
+    static const float DECAY_EFFECT_EVERY_SEC = 1.0f/15.0f;
     
     // Lifecycle
     void init();
@@ -36,6 +38,7 @@ public:
     bool webSystemIsEnabled;
     bool shoutoutsAreEnabled;
     bool commandsAreEnabled;
+    bool shouldDecaysEffects;
     
     // Web system events
     void onHashTagCount(Json::Value body);
