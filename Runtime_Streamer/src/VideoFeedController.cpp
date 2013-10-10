@@ -5,13 +5,15 @@
 // UI Button for the video device
 class VideoDeviceToggle : public ofxUIToggle {
 public:
-    VideoDeviceToggle(float x, float y, bool v, string n):ofxUIToggle(x,y,v,n){
+    VideoDeviceToggle(float x, float y, bool v, string n):ofxUIToggle(x,y,v,n),usesMoviePlayer(false){
         kind = KIND;
     }
     const static int KIND = 1928;
     ofVideoDevice videoDevice;
     // Is this ineffienct?
     ofVideoGrabber videoGrabber;
+    ofVideoPlayer videoPlayer;
+    bool usesMoviePlayer;
 };
 
 typedef vector<VideoDeviceToggle*> VideoDeviceToggles;
@@ -44,6 +46,14 @@ void VideoFeedController::init() {
         gui->addWidgetDown(videoToggle);
         videoToggles.push_back(videoToggle);
     }
+    
+    // Add in the video
+    VideoDeviceToggle *videoLooper = new VideoDeviceToggle(20.0f, 20.0f, true, ofToUpper("Looping video"));
+    videoLooper->usesMoviePlayer = true;
+	videoLooper->videoPlayer.loadMovie("2013_10_10_TimAndBarry5D_720p.MOV");
+    videoLooper->videoPlayer.play();
+    gui->addWidgetDown(videoLooper);
+    videoToggles.push_back(videoLooper);
     
     // Add a slider to change the time
     gui->addSlider(ofToUpper("Toggle Every Mins"), 0.01, 30.0f, &toggleEveryMins);
@@ -81,7 +91,11 @@ void VideoFeedController::update() {
         
         if (found) {
             currentVideoDeviceIt = possibleNewVideoDeviceIt;
-            videoSource = &(*currentVideoDeviceIt)->videoGrabber;
+            if ( (*currentVideoDeviceIt)->usesMoviePlayer ) {
+                videoSource = &(*currentVideoDeviceIt)->videoPlayer;
+            } else {
+                videoSource = &(*currentVideoDeviceIt)->videoGrabber;
+            }
         }
    
         lastSwitchTimeSecs = currentTime;
