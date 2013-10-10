@@ -104,10 +104,10 @@ void testApp::drawInternal() {
     
     overlay.draw();
     
-    static bool hasSavedImage = false;
-    if (!hasSavedImage && ofGetElapsedTimef() > 4.0f) {
-        hasSavedImage = true;
-        ofSaveScreen("TestScreenShot.png");
+    // Screen shot saving
+    string nextScreenshotName = websystemController.getNextScreenShotFilename();
+    if ( nextScreenshotName != "" ) {
+        ofSaveScreen( "screenshots/" + nextScreenshotName + ".png");
     }
 }
 

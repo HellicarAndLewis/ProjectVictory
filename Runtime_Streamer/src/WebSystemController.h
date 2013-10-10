@@ -2,9 +2,11 @@
 #include "ofMain.h"
 #include "WebSystem.h"
 #include "ofxUI.h"
-
 class VideoFX;
 class Overlay;
+
+typedef map<float, string> ScreenShotTriggers;
+typedef map<float, string>::iterator ScreenShotTriggersIt;
 
 // This is the example glue that connects the VideoFX to the WebSystem, and demo's some of the websystem utils.
 // It is not really to be used directly. For example, having to vfx's channels has not been considered (see: `decayVideoFXToDefault` comments)
@@ -40,7 +42,7 @@ public:
     void onShoutout(Json::Value body);
     void onCommand(Json::Value body);
     
-    // Vide0 effects
+    // Video effects
     void setVideoFX( VideoFX *vfx ) {
         videoFX = vfx;
     }
@@ -52,6 +54,9 @@ public:
     
     void decayVideoFXToDefault();
     
+    // Image saving
+    string getNextScreenShotFilename();
+    
     // VoteSystem
     void initVotingGUI();
     ofxUISuperCanvas *voteGUI;
@@ -59,7 +64,9 @@ public:
     ofxUITextInput *vote2TextInput;
     void voteingGUIEvent(ofxUIEventArgs &e);
     
-private:
+protected:
+    
+    ScreenShotTriggers screenShotTriggers;
     
     VideoFX *videoFX;
     Overlay *overlay;

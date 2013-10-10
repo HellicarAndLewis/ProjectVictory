@@ -26,7 +26,7 @@ public:
     ofBaseVideoDraws *videoSource;
     ofVideoDevices devices;
     
-private:
+protected:
     float toggleEveryMins;
     float lastSwitchTimeSecs;
     ofxUISuperCanvas *gui;

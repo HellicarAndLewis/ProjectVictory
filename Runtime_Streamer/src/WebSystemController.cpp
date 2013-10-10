@@ -85,6 +85,15 @@ void WebSystemController::onCommand(Json::Value body) {
     
     cout << "@" << screenname << " triggered " << command << endl;
     
+    // Store a trigger to save the image
+    
+    // This is dirty. Want tweet id as string.
+    stringstream s;
+    s << body["tweet"]["id"];
+    string tweetid = s.str();
+    tweetid.erase(tweetid.size() - 1);
+    screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
+    
     // Apply the payload to the videofx. They need to be a decayer somewhere, so this may not be how it works.
     if (videoFX) {
         WebSystem::Utils::applyPayload( videoFX, body["payload"] );
@@ -134,6 +143,33 @@ void WebSystemController::voteingGUIEvent(ofxUIEventArgs &e) {
             voteGUI->saveSettings("settings.voting.gui.xml");
         }
     }
+    
+}
+
+// Image saving
+string WebSystemController::getNextScreenShotFilename() {
+    float currentTime = ofGetElapsedTimef();
+    string filename = "";
+    
+    // find the first trigger needing to be saved
+    ScreenShotTriggersIt it = screenShotTriggers.begin();
+    
+    bool found = false;
+    while ( !found && it != screenShotTriggers.end()) {
+        
+        if ( it->first < currentTime + 1.0f) {
+            
+            found = true;
+            filename = it->second;
+            
+            cout << "should be saving file" << endl;
+            screenShotTriggers.erase(it);
+        }
+        
+        
+    }
+    
+    return filename;
     
 }
 
