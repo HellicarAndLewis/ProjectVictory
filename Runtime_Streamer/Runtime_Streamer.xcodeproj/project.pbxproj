@@ -86,7 +86,6 @@
 		48602BAA1805AFDA0030D42A /* AudioEncoderMP3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B7E1805AFA80030D42A /* AudioEncoderMP3.cpp */; };
 		48602BAB1805AFDA0030D42A /* BitStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B7F1805AFA80030D42A /* BitStream.cpp */; };
 		48602BAC1805AFDA0030D42A /* Debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B801805AFA80030D42A /* Debug.cpp */; };
-		48602BAD1805AFDA0030D42A /* Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B811805AFA80030D42A /* Encoder.cpp */; };
 		48602BAE1805AFDA0030D42A /* EncoderThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B821805AFA80030D42A /* EncoderThread.cpp */; };
 		48602BAF1805AFDA0030D42A /* EncoderTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B831805AFA80030D42A /* EncoderTypes.cpp */; };
 		48602BB01805AFDA0030D42A /* H264Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B841805AFA80030D42A /* H264Parser.cpp */; };
@@ -96,7 +95,6 @@
 		48602BB41805AFDA0030D42A /* RTMPWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B881805AFA80030D42A /* RTMPWriter.cpp */; };
 		48602BB51805AFDA0030D42A /* TestPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B891805AFA80030D42A /* TestPattern.cpp */; };
 		48602BB61805AFDA0030D42A /* VideoEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B8A1805AFA80030D42A /* VideoEncoder.cpp */; };
-		48602BBB1805AFDA0030D42A /* FLV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B911805AFA80030D42A /* FLV.cpp */; };
 		48602BBC1805AFDA0030D42A /* FLVFileWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B921805AFA80030D42A /* FLVFileWriter.cpp */; };
 		48602BBD1805AFDA0030D42A /* FLVReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B931805AFA80030D42A /* FLVReader.cpp */; };
 		48602BBE1805AFDA0030D42A /* FLVTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B941805AFA80030D42A /* FLVTypes.cpp */; };
@@ -441,7 +439,6 @@
 		48602B7E1805AFA80030D42A /* AudioEncoderMP3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEncoderMP3.cpp; sourceTree = "<group>"; };
 		48602B7F1805AFA80030D42A /* BitStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BitStream.cpp; sourceTree = "<group>"; };
 		48602B801805AFA80030D42A /* Debug.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Debug.cpp; sourceTree = "<group>"; };
-		48602B811805AFA80030D42A /* Encoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Encoder.cpp; sourceTree = "<group>"; };
 		48602B821805AFA80030D42A /* EncoderThread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EncoderThread.cpp; sourceTree = "<group>"; };
 		48602B831805AFA80030D42A /* EncoderTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EncoderTypes.cpp; sourceTree = "<group>"; };
 		48602B841805AFA80030D42A /* H264Parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = H264Parser.cpp; sourceTree = "<group>"; };
@@ -451,7 +448,6 @@
 		48602B881805AFA80030D42A /* RTMPWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RTMPWriter.cpp; sourceTree = "<group>"; };
 		48602B891805AFA80030D42A /* TestPattern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestPattern.cpp; sourceTree = "<group>"; };
 		48602B8A1805AFA80030D42A /* VideoEncoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VideoEncoder.cpp; sourceTree = "<group>"; };
-		48602B911805AFA80030D42A /* FLV.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLV.cpp; sourceTree = "<group>"; };
 		48602B921805AFA80030D42A /* FLVFileWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLVFileWriter.cpp; sourceTree = "<group>"; };
 		48602B931805AFA80030D42A /* FLVReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLVReader.cpp; sourceTree = "<group>"; };
 		48602B941805AFA80030D42A /* FLVTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FLVTypes.cpp; sourceTree = "<group>"; };
@@ -460,6 +456,7 @@
 		48602B981805AFA80030D42A /* VideoStreamer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VideoStreamer.cpp; sourceTree = "<group>"; };
 		48602B991805AFA80030D42A /* VideoStreamerConfig.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VideoStreamerConfig.cpp; sourceTree = "<group>"; };
 		48602B9B1805AFA80030D42A /* Config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		486E69111806F0F500F1722C /* streamer.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = streamer.xml; path = bin/data/streamer.xml; sourceTree = SOURCE_ROOT; };
 		9308291D17EB4B0E006149AE /* oldvideo.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = oldvideo.frag; path = bin/data/shaders/oldvideo.frag; sourceTree = "<group>"; };
 		9308292117EB61E9006149AE /* emboss.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = emboss.frag; path = bin/data/shaders/emboss.frag; sourceTree = "<group>"; };
 		9308292517EB7C76006149AE /* sharpen.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = sharpen.frag; path = bin/data/shaders/sharpen.frag; sourceTree = "<group>"; };
@@ -1320,7 +1317,6 @@
 				48602B7E1805AFA80030D42A /* AudioEncoderMP3.cpp */,
 				48602B7F1805AFA80030D42A /* BitStream.cpp */,
 				48602B801805AFA80030D42A /* Debug.cpp */,
-				48602B811805AFA80030D42A /* Encoder.cpp */,
 				48602B821805AFA80030D42A /* EncoderThread.cpp */,
 				48602B831805AFA80030D42A /* EncoderTypes.cpp */,
 				48602B841805AFA80030D42A /* H264Parser.cpp */,
@@ -1337,7 +1333,6 @@
 		48602B901805AFA80030D42A /* flv */ = {
 			isa = PBXGroup;
 			children = (
-				48602B911805AFA80030D42A /* FLV.cpp */,
 				48602B921805AFA80030D42A /* FLVFileWriter.cpp */,
 				48602B931805AFA80030D42A /* FLVReader.cpp */,
 				48602B941805AFA80030D42A /* FLVTypes.cpp */,
@@ -1842,6 +1837,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				486E69111806F0F500F1722C /* streamer.xml */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
@@ -1965,7 +1961,6 @@
 				48602BAA1805AFDA0030D42A /* AudioEncoderMP3.cpp in Sources */,
 				48602BAB1805AFDA0030D42A /* BitStream.cpp in Sources */,
 				48602BAC1805AFDA0030D42A /* Debug.cpp in Sources */,
-				48602BAD1805AFDA0030D42A /* Encoder.cpp in Sources */,
 				48602BAE1805AFDA0030D42A /* EncoderThread.cpp in Sources */,
 				48602BAF1805AFDA0030D42A /* EncoderTypes.cpp in Sources */,
 				48602BB01805AFDA0030D42A /* H264Parser.cpp in Sources */,
@@ -1975,7 +1970,6 @@
 				48602BB41805AFDA0030D42A /* RTMPWriter.cpp in Sources */,
 				48602BB51805AFDA0030D42A /* TestPattern.cpp in Sources */,
 				48602BB61805AFDA0030D42A /* VideoEncoder.cpp in Sources */,
-				48602BBB1805AFDA0030D42A /* FLV.cpp in Sources */,
 				48602BBC1805AFDA0030D42A /* FLVFileWriter.cpp in Sources */,
 				48602BBD1805AFDA0030D42A /* FLVReader.cpp in Sources */,
 				48602BBE1805AFDA0030D42A /* FLVTypes.cpp in Sources */,
@@ -2129,6 +2123,7 @@
 					"YUV420P_GRABBER_GLSL_VERSION=120",
 					VIDEO_STREAMER_LITTLE_ENDIAN,
 					DISABLE_STREAMING,
+					NDEBUG,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
@@ -2435,6 +2430,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"YUV420P_GRABBER_GLSL_VERSION=120",
 					VIDEO_STREAMER_LITTLE_ENDIAN,
+					NDEBUG,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",

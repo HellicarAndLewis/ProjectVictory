@@ -72,16 +72,17 @@ struct AVPacket {
   void makeAudioPacket();
   void setTimeStamp(uint32_t ts);
 
-  void makeMulti();  /* when on AVPacket contains the video data for multiple video streams, you can make it a multi video packet and set the multi strides/planes members so that the VideoEncoder will set the correct strides */
-  void clearMulti();         /* used by the multi video streamer - removes the currently set multi info members */
+  void makeMulti();                                         /* when on AVPacket contains the video data for multiple video streams, you can make it a multi video packet and set the multi strides/planes members so that the VideoEncoder will set the correct strides */
+  void clearMulti();                                        /* used by the multi video streamer - removes the currently set multi info members */
   void addMulti(uint32_t streamID, MultiAVPacketInfo info); /* used by the multi video streamer - add a new multi info for the given stream */
+  bool isMulti();                                           /* check wether this is a multi packet (meaning that AVPacket::data contains pixels for multiple video streams and the strides/offsets are used to point to the correct planes */
 
   void addRef(int count = 1); /* call addRef when you want to hold on to this data for a while, when ready call Release */
-  void release();  /* call Release when you don't use this packet anymore, so the memory pool can reuse  it */
+  void release();             /* call Release when you don't use this packet anymore, so the memory pool can reuse  it */
   
   void copy(uint8_t* buf, size_t nbytes); /* copy the given bytes to `data` */
-
   void allocate(size_t nbytes);  /* make sure that the data member can hold `nbytes` of data */
+
   uint8_t type;                  /* either AV_TYPE_VIDEO or AV_TYPE_AUDIO */
   uint32_t timestamp;            /* timestamp that will be used by the FLVTag; this is the timestamp on which the data for this packet was genearted in millis, started with 0 */
   std::vector<uint8_t> data;     /* the actual RAW video or audio data that will be encoded */
@@ -89,7 +90,6 @@ struct AVPacket {
   uint32_t strides[3];           /* strides of the Y,U,V planes in `data` */
   MemoryPool* memory_pool;       /* the memory pool to which this packet belongs */
   uint32_t refcount;             /* when addRef() is called this gets incremented, release() decrements it  (through memory pool) */
-
   bool is_multi;                 /* set to true when makeMultiVideoPacket() has been called, this is necessary for the multi video streamer */
   std::map<uint32_t, MultiAVPacketInfo> multi_info; /* used by the multi video streamer */
 };
@@ -185,6 +185,8 @@ inline void AVPacket::addMulti(uint32_t streamID, MultiAVPacketInfo info) {
   multi_info[streamID] = info;
 }
 
-
+inline bool AVPacket::isMulti() {
+  return is_multi;
+}
 
 #endif
