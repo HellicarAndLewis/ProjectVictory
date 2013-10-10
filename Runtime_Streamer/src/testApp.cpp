@@ -11,7 +11,6 @@ void testApp::setup(){
     #else
     cout << "Enabled streaming: compile with 'Release NoStream' to disable" << endl;
     #endif
-    
 
     ofSetLogLevel( OF_LOG_WARNING );
     w = 1280;
@@ -19,12 +18,15 @@ void testApp::setup(){
     int flowW = w/4;
     int flowH = h/4;
     
-    videoGrabber.setDeviceID( 1 );
-    videoGrabber.initGrabber( 640, 480 );
-    videoSource = &videoGrabber;
+    videoFeedController.init();
+    
+    //videoGrabber.setDeviceID( 1 );
+    //videoGrabber.initGrabber( 640, 480 );
+    
+    //videoSource = &videoFeedController.videoGrabber;
     
     vfx1.init();
-    vfx1.setVideoSource( &videoGrabber );
+    vfx1.setVideoSource( videoFeedController.videoSource );
     
     vfx1.setColor( colors[colorIndex] );
     
@@ -38,6 +40,7 @@ void testApp::setup(){
     websystemController.setVideoFX( &vfx1 );
     websystemController.setOverlay( &overlay );
     websystemController.init();
+    
 
 #ifndef DISABLE_STREAMING
     // MULTI STREAMER
@@ -77,9 +80,10 @@ void testApp::update(){
     
     websystemController.update();
     
-    videoGrabber.update();
+    videoFeedController.update();
     
-    vfx1.update( videoGrabber.isFrameNew() );
+    vfx1.setVideoSource( videoFeedController.videoSource );
+    vfx1.update( videoFeedController.videoSource->isFrameNew() );
     
     overlay.update();
 }
