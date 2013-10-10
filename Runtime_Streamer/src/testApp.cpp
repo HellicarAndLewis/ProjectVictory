@@ -95,7 +95,7 @@ void testApp::draw(){
 #endif
 
     drawInternal();
-        
+    cout << "framerate " << ofGetFrameRate() << endl;
 }
 
 void testApp::drawInternal() {

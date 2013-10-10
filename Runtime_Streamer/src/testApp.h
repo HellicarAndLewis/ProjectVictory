@@ -10,7 +10,11 @@
 #include "VideoFXExporter.h"
 #include "Overlay.h"
 #include "WebSystemController.h"
+
+#ifndef DISABLE_STREAMING
 #include <ofxVideoStreamer/ofxMultiVideoStreamer.h>
+#endif
+
 #include "VideoFeedController.h"
 
 class testApp : public ofBaseApp{
