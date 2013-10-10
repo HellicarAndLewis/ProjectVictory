@@ -34,9 +34,18 @@ void Overlay::init() {
     overlayGUI->addTextInput( "TEXT 4", "input text" )->setAutoClear( false );
     overlayGUI->addTextInput( "TEXT 5", "input text" )->setAutoClear( false );
     
+    // Add the images
     vector<string> images;
-    images.push_back( "* 1280x720-FeelTV-Logo-01.png" );
-    images.push_back( "* dog.png" );
+    
+    //get all the pngs in overlays
+    ofDirectory dir( ofToDataPath("./overlays/") );
+    dir.allowExt("png");
+    dir.listDir();
+    vector<ofFile>files = dir.getFiles();
+    for (vector<ofFile>::iterator it=files.begin(); it!=files.end(); ++it) {
+        images.push_back( "* " + it->getFileName() );
+    }
+    
     overlayGUI->addToggle( "DRAW OVERLAY", &drawOverlayImage );
     overlayGUI->addSlider( "OVERLAY OPACITY", 0.0, 1.0, &overlayImageOpacity );
     overlayGUI->addDropDownList( "OVERLAY IMAGE", images );
@@ -72,7 +81,7 @@ void Overlay::draw() {
 void Overlay::overlayGuiEvent( ofxUIEventArgs &e ) {
     string name = e.widget->getName();
     if ( name.substr(0,2) == "* " )
-        overlayImage.loadImage( name.substr( 2, name.length()-2 ) );
+        overlayImage.loadImage( ofToDataPath("./overlays/" + name.substr( 2, name.length()-2 )) );
     
     if ( name.substr(0,4) == "TEXT" ) {
         ofxUITextInput *textinput = (ofxUITextInput *) e.widget;
