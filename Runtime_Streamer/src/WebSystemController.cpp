@@ -158,14 +158,10 @@ string WebSystemController::getNextScreenShotFilename() {
     while ( !found && it != screenShotTriggers.end()) {
         
         if ( it->first < currentTime + 1.0f) {
-            
             found = true;
             filename = it->second;
-            
-            cout << "should be saving file" << endl;
             screenShotTriggers.erase(it);
         }
-        
         
     }
     
