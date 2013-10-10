@@ -72,6 +72,10 @@ void testApp::audioIn(float* input, int nsize, int nchannels) {
 void testApp::update(){
     if (ofGetElapsedTimef() < 2.0f) { return; }
     
+#ifndef DISABLE_STREAMING
+    streamer.update();
+#endif
+    
     websystemController.update();
     
     videoFeedController.update();
