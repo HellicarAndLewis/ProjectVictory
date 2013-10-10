@@ -13,8 +13,8 @@ void testApp::setup(){
     #endif
 
     ofSetLogLevel( OF_LOG_WARNING );
-    w = 1280;
-    h = 720;
+    w = 640;
+    h = 480;
     int flowW = w/4;
     int flowH = h/4;
     
@@ -64,7 +64,7 @@ void testApp::audioIn(float* input, int nsize, int nchannels) {
         input[i] *= 32768.0f;
     }
 
-    streamer.addAudio(input, nsize, nchannels);
+    //streamer.addAudio(input, nsize, nchannels);
 #endif
 }
 

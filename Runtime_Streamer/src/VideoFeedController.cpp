@@ -39,7 +39,7 @@ void VideoFeedController::init() {
         
         videoToggle->videoDevice = *it;
         videoToggle->videoGrabber.setDeviceID(it->id);
-        videoToggle->videoGrabber.initGrabber(1280, 720);
+        videoToggle->videoGrabber.initGrabber(640, 480);
         
         videoSource = &videoToggle->videoGrabber;
         
@@ -50,7 +50,7 @@ void VideoFeedController::init() {
     // Add in the video
     VideoDeviceToggle *videoLooper = new VideoDeviceToggle(20.0f, 20.0f, true, ofToUpper("Looping video"));
     videoLooper->usesMoviePlayer = true;
-	videoLooper->videoPlayer.loadMovie("2013_10_10_TimAndBarry5D_720p.MOV");
+	videoLooper->videoPlayer.loadMovie("TimBarry_640_480.MOV");
     videoLooper->videoPlayer.play();
     gui->addWidgetDown(videoLooper);
     videoToggles.push_back(videoLooper);
