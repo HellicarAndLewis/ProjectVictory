@@ -28,6 +28,7 @@ public:
         passes = 1;
         internalFormat = GL_RGBA;
         name = "griddistort";
+        initMesh();
     }
     
     void initMesh() {
