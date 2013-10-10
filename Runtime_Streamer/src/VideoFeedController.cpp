@@ -98,8 +98,6 @@ void VideoFeedController::guiEvent(ofxUIEventArgs &e) {
     
     if ( e.widget->getName() == "TOGGLE NOW" && ((ofxUIButton*)e.widget)->getValue() ) {
         
-        cout << "toggling now" << endl;
-        
         lastSwitchTimeSecs = -100000.0f;
         
     }
