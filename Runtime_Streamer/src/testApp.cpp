@@ -74,9 +74,11 @@ void testApp::update(){
     
     websystemController.update();
     
-    videoFeedController.update();
+    if ( videoFeedController.update() ) {
+        vfx1.setVideoSource( videoFeedController.videoSource );
+    }
     
-    vfx1.setVideoSource( videoFeedController.videoSource );
+    
     vfx1.update( videoFeedController.videoSource->isFrameNew() );
     
     overlay.update();

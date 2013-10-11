@@ -16,7 +16,8 @@ public:
     
     // Lifecycle
     void init();
-    void update();
+    // Returns true if the video source did change
+    bool update();
     
     // UI
     void guiEvent(ofxUIEventArgs &e);

@@ -75,9 +75,10 @@ void VideoFeedController::init() {
 
 }
 
-void VideoFeedController::update() {
+bool VideoFeedController::update() {
     
-    
+    bool didChange = false;
+
     float currentTime = ofGetElapsedTimef();
     
     // Switch between devices
@@ -106,6 +107,8 @@ void VideoFeedController::update() {
             } else {
                 videoSource = &(*currentVideoDeviceIt)->videoGrabber;
             }
+            
+            didChange = true;
         }
    
         lastSwitchTimeSecs = currentTime;
@@ -113,7 +116,8 @@ void VideoFeedController::update() {
     
     
     videoSource->update();
-    videoSource->isFrameNew();
+    
+    return didChange;
 }
 
 #pragma mark - UI
