@@ -44,7 +44,7 @@ public:
     void setup();
     void update();
     void draw();
-    void drawInternal();
+    void drawInternal();    
     void exit();
 
     void keyPressed(int key);
