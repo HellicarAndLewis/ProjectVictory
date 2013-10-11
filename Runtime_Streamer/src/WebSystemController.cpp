@@ -128,7 +128,7 @@ void WebSystemController::decayVideoFXToDefault() {
 #pragma mark - VoteSystem
 
 void WebSystemController::initVotingGUI() {
-    voteGUI = new ofxUISuperCanvas( "VOTEING SYSTEM", 20, 340, 200, 200 );
+    voteGUI = new ofxUISuperCanvas( "VOTEING SYSTEM", 20, 180, 200, 200 );
     voteGUI->setColorBack(ofColor(ofColor::thistle, 125));
     voteGUI->addLabel("TOPIC 1");
     vote1TextInput = voteGUI->addTextInput("TOPIC 1", "");
