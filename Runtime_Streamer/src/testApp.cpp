@@ -13,10 +13,6 @@ void testApp::setup(){
     #endif
 
     ofSetLogLevel( OF_LOG_WARNING );
-    w = 640;
-    h = 480;
-    int flowW = w/4;
-    int flowH = h/4;
     
     videoFeedController.init();
     
