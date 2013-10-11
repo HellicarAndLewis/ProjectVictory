@@ -37,7 +37,8 @@ void WebSystemController::update() {
 #pragma mark - VoteSystem
 
 void WebSystemController::initWebSystemGUI() {
-    websystemGUI = new ofxUISuperCanvas( "WEB SYSTEM", 400, 0, 200, 200 );
+    websystemGUI = new ofxUISuperCanvas( "WEB SYSTEM", 20, 20, 200, 200 );
+    websystemGUI->setColorBack( ofColor(ofColor::green, 125) );
     websystemGUI->addLabelToggle( "ENABLED", &webSystemIsEnabled );
     websystemGUI->addLabelToggle( "SHOUTOUTS", &shoutoutsAreEnabled );
     websystemGUI->addLabelToggle( "COMMANDS", &commandsAreEnabled );
@@ -127,8 +128,8 @@ void WebSystemController::decayVideoFXToDefault() {
 #pragma mark - VoteSystem
 
 void WebSystemController::initVotingGUI() {
-    voteGUI = new ofxUISuperCanvas( "VOTEING SYSTEM", 300, 0, 200, 200 );
-    voteGUI->setColorBack(ofColor(ofColor::green, 125));
+    voteGUI = new ofxUISuperCanvas( "VOTEING SYSTEM", 20, 340, 200, 200 );
+    voteGUI->setColorBack(ofColor(ofColor::thistle, 125));
     voteGUI->addLabel("TOPIC 1");
     vote1TextInput = voteGUI->addTextInput("TOPIC 1", "");
     voteGUI->addLabel("TOPIC 2");

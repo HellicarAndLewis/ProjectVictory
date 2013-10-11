@@ -25,7 +25,8 @@ void VideoFeedController::init() {
     
     // Create the canvas
     
-    gui = new ofxUISuperCanvas( "VIDEO SWITCHING", 500, 0, 200, 200 );
+    gui = new ofxUISuperCanvas( "VIDEO SWITCHING", 20, 180, 200, 200 );
+    gui->setColorBack( ofColor(ofColor::turquoise, 200) );
     
     // List and create UI for devices
     

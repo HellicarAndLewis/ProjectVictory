@@ -10,7 +10,7 @@ void VideoFXExporter::createGUI() {
     hasCreatedGUI = true;
 
     // Create the GUI
-    exporterGUI = new ofxUISuperCanvas( "VFX EXPORTER", 230, 23, 300, 200 );
+    exporterGUI = new ofxUISuperCanvas( "VFX EXPORTER", 520, 20, 300, 200 );
     exporterGUI->setColorBack( ofColor( ofColor::blue, 150 ) );
     exporterGUI->addSpacer();
     
@@ -53,11 +53,10 @@ void VideoFXExporter::createGUI() {
     
     // Fit it
     exporterGUI->autoSizeToFitWidgets();
+    exporterGUI->setMinified(true);
     
     // Add the event
     ofAddListener( exporterGUI->newGUIEvent, this, &VideoFXExporter::guiEvent );
-
-    exporterGUI->loadSettings("GUI/exporter.xml");
 }
 
 void VideoFXExporter::guiEvent(ofxUIEventArgs &e) {
@@ -82,7 +81,6 @@ void VideoFXExporter::guiEvent(ofxUIEventArgs &e) {
         return;
     }
     
-    exporterGUI->saveSettings("GUI/exporter.xml");
 }
 
 #pragma mark - Saving
