@@ -1839,10 +1839,10 @@
 			children = (
 				486E69111806F0F500F1722C /* streamer.xml */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
-				CA3852361806A80C00E1F8A5 /* VideoFeedController.cpp */,
+				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				CA3852371806A80C00E1F8A5 /* VideoFeedController.h */,
+				CA3852361806A80C00E1F8A5 /* VideoFeedController.cpp */,
 				CAAC013818057AD800BF6858 /* WebSystemController.h */,
 				CAAC013718057AD800BF6858 /* WebSystemController.cpp */,
 			);
