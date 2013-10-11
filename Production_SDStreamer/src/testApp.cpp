@@ -12,28 +12,8 @@ void testApp::setup(){
     cout << "Enabled streaming: compile with 'Release NoStream' to disable" << endl;
     #endif
 
-    ofSetLogLevel( OF_LOG_WARNING );
-    w = 640;
-    h = 480;
-    int flowW = w/4;
-    int flowH = h/4;
-    
     videoFeedController.init();
-    
-    vfx1.init();
-    vfx1.setVideoSource( videoFeedController.videoSource );
-    
-    vfx1.setColor( colors[colorIndex] );
-    
-    big = &vfx1;
-    
-    videoFXExporter.setVideoFX( &vfx1 );
-    
     overlay.init();
-    
-    websystemController.setVideoFX( &vfx1 );
-    websystemController.setOverlay( &overlay );
-    websystemController.init();
     
 
 #ifndef DISABLE_STREAMING
@@ -72,16 +52,7 @@ void testApp::audioIn(float* input, int nsize, int nchannels) {
 void testApp::update(){
     if (ofGetElapsedTimef() < 2.0f) { return; }
     
-#ifndef DISABLE_STREAMING
-    streamer.update();
-#endif
-    
-    websystemController.update();
-    
     videoFeedController.update();
-    
-    vfx1.setVideoSource( videoFeedController.videoSource );
-    vfx1.update( videoFeedController.videoSource->isFrameNew() );
     
     overlay.update();
 }
@@ -99,63 +70,22 @@ void testApp::draw(){
 #endif
 
     drawInternal();
-    cout << "framerate " << ofGetFrameRate() << endl;
 }
 
 void testApp::drawInternal() {
     
-    big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
+    if ( videoFeedController.videoSource ) {
+        videoFeedController.videoSource->draw(0, 0, 1280, 720);
+    }
     
     overlay.draw();
-    
-    // Screen shot saving
-    string nextScreenshotName = websystemController.getNextScreenShotFilename();
-    if ( nextScreenshotName != "" ) {
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        glReadBuffer(GL_BACK);
-        glPixelStorei(GL_PACK_ALIGNMENT, 4);
-        //Saving
-        ofSaveViewport("screenshots/" + nextScreenshotName + ".png");
-        //ofSaveScreen( "screenshots/" + nextScreenshotName + ".png");
-    }
+
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key) {
     
-    cout << key << endl;
-    
-    if ( key == 'a' ) {
-        overlay.voteDisplay.addVote( overlay.voteDisplay.topic1 );
-    }
-    else if ( key == 'b' ) {
-        overlay.voteDisplay.addVote( overlay.voteDisplay.topic2 );
-    }
-    
-    if ( key == 'k' ) {
-        vfx1.reloadShaders();
-    }
-    else if ( key == 161 ) { // tilda key
-        big->hideGUI();
-        videoFXExporter.exporterGUI->setVisible( false );
-        overlay.overlayGUI->setVisible( false );
-    }
-    else if ( key == '1' ) {
-        big = &vfx1;
-        big->showGUI();
-        videoFXExporter.exporterGUI->setVisible( true );
-        overlay.overlayGUI->setVisible( true );
-    }
-    else if ( key == 45 ) {
-        if ( --colorIndex < 0 )
-            colorIndex = 6;
-        vfx1.setColor( colors[colorIndex] );
-    }
-    else if ( key == 61 ) {
-        if ( ++colorIndex > 6 )
-            colorIndex = 0;
-        vfx1.setColor( colors[colorIndex] );
-    }
+
 }
 
 //--------------------------------------------------------------
@@ -179,7 +109,6 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 }
 
 void testApp::exit() {
-    vfx1.exit();
-    videoFXExporter.exporterGUI->saveSettings("GUI/exporter.xml");
+    videoFeedController.gui->saveSettings( "GUI/video.xml" );
     overlay.overlayGUI->saveSettings( "GUI/overlay.xml" );
 }

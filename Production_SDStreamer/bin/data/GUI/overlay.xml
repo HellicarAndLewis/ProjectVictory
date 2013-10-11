@@ -1,0 +1,25 @@
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW OVERLAY</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>* AboutToStart_sd.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>* Ended_sd.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>* FeelTV_overlay_sd.png</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>* RightBack_sd.png</Name>
+    <Value>0</Value>
+</Widget>

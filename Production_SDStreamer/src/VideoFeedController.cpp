@@ -6,9 +6,9 @@
 class VideoDeviceToggle : public ofxUIToggle {
 public:
     VideoDeviceToggle(float x, float y, bool v, string n):ofxUIToggle(x,y,v,n),usesMoviePlayer(false){
-        kind = KIND;
+        //kind = KIND;
     }
-    const static int KIND = 1928;
+    // const static int KIND = 1928;
     ofVideoDevice videoDevice;
     // Is this ineffienct?
     ofVideoGrabber videoGrabber;
@@ -25,40 +25,59 @@ void VideoFeedController::init() {
     
     // Create the canvas
     
-    gui = new ofxUISuperCanvas( "VIDEO SWITCHING", 500, 0, 200, 200 );
+    gui = new ofxUISuperCanvas( "VIDEO SWITCHING", 220, 20, 200, 200 );
     
-    // List and create UI for devices
+    // List and create UI for devices (excluding any facetime camera )
     
     ofVideoGrabber videoGrabber;
     devices = videoGrabber.listDevices();
     int i = 0;
     for ( ofVideoDevicesIt it = devices.begin(); it != devices.end(); ++it ) {
-        VideoDeviceToggle *videoToggle = new VideoDeviceToggle(20.0f, 20.0f, true, ofToUpper(ofToString(++i)+" "+ it->deviceName));
         
-        cout << "Creating video device (id:" << ofToString((it)->id) << " name:" << (it->deviceName) << ")" << endl;
-        
-        videoToggle->videoDevice = *it;
-        videoToggle->videoGrabber.setDeviceID(it->id);
-        videoToggle->videoGrabber.initGrabber(640, 480);
-        
-        videoSource = &videoToggle->videoGrabber;
-        
-        gui->addWidgetDown(videoToggle);
-        videoToggles.push_back(videoToggle);
+        if (ofToUpper(it->deviceName).find("FACETIME") == std::string::npos) {
+            VideoDeviceToggle *videoToggle = new VideoDeviceToggle(20.0f, 20.0f, true, ofToUpper(ofToString(++i)+" "+ it->deviceName));
+            
+            cout << "Creating video device (id:" << ofToString((it)->id) << " name:" << (it->deviceName) << ")" << endl;
+            
+            videoToggle->videoDevice = *it;
+            videoToggle->videoGrabber.setDeviceID(it->id);
+            videoToggle->videoGrabber.initGrabber(640, 480);
+            
+            videoSource = &videoToggle->videoGrabber;
+            
+            gui->addWidgetDown(videoToggle);
+            videoToggles.push_back(videoToggle);
+        }
+
     }
     
-    // Add in the video
-    VideoDeviceToggle *videoLooper = new VideoDeviceToggle(20.0f, 20.0f, true, ofToUpper("Looping video"));
-    videoLooper->usesMoviePlayer = true;
-	videoLooper->videoPlayer.loadMovie("TimBarry_640_480.MOV");
-    videoLooper->videoPlayer.play();
-    gui->addWidgetDown(videoLooper);
-    videoToggles.push_back(videoLooper);
+    //get all the pngs in overlays
+    ofDirectory dir( ofToDataPath("./videos/") );
+    dir.allowExt("mov");
+    dir.listDir();
+    vector<ofFile>files = dir.getFiles();
+    for (vector<ofFile>::iterator it=files.begin(); it!=files.end(); ++it) {
+        
+        // Add in the video
+        VideoDeviceToggle *videoLooper = new VideoDeviceToggle(20.0f, 20.0f, true, ofToUpper(it->getFileName()));
+        videoLooper->usesMoviePlayer = true;
+        videoLooper->videoPlayer.loadMovie( "./videos/"+it->getFileName() );
+        videoLooper->videoPlayer.play();
+        gui->addWidgetDown(videoLooper);
+        videoToggles.push_back(videoLooper);
+        
+        videoSource = &videoLooper->videoPlayer;
+    }
+    
+
     
     // Add a slider to change the time
     gui->addSlider(ofToUpper("Toggle Every Mins"), 0.01, 30.0f, &toggleEveryMins);
     gui->addLabelButton("TOGGLE NOW", false);
+    
     ofAddListener( gui->newGUIEvent, this, &VideoFeedController::guiEvent );
+    
+    gui->loadSettings( "GUI/video.xml" );
 
     gui->autoSizeToFitWidgets();
 
@@ -100,14 +119,18 @@ void VideoFeedController::update() {
         lastSwitchTimeSecs = currentTime;
     }
     
-    
-    videoSource->update();
-    videoSource->isFrameNew();
+    if (videoSource) {
+        videoSource->update();
+        videoSource->isFrameNew();
+    }
 }
 
 #pragma mark - UI
 
 void VideoFeedController::guiEvent(ofxUIEventArgs &e) {
+    
+    
+    cout << "e: videoFeedController" << e.widget->getName() << endl;
     
     if ( e.widget->getName() == "TOGGLE NOW" && ((ofxUIButton*)e.widget)->getValue() ) {
         
