@@ -18,7 +18,7 @@ void VideoFX::init() {
     num = ++count;
     opticalFlowEnabled = true;
     
-    vfxGUI = new ofxUISuperCanvas( "VFX" + ofToString(num), 0, 0, 200, 200 );
+    vfxGUI = new ofxUISuperCanvas( "VFX" + ofToString(num), 840, 20, 200, 200 );
     vfxGUI->setColorBack( ofColor( ofColor::red, 150 ) );
     // SETUP GUI FOR ALL EFFECTS
     for ( int i=0; i<effects.size(); i++ ) {
