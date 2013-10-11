@@ -125,6 +125,30 @@ void testApp::keyPressed(int key) {
     
     cout << key << endl;
     
+    // Toggle all UI's with space bar
+    if ( key == ' ' ) {
+        static bool showingGUI = true;
+        showingGUI = !showingGUI;
+        if (showingGUI) {
+            vfx1.showGUI();
+        } else {
+            vfx1.hideGUI();
+        }
+        
+        videoFXExporter.exporterGUI->setVisible( showingGUI );
+        overlay.overlayGUI->setVisible( showingGUI );
+        websystemController.websystemGUI->setVisible(showingGUI);
+        websystemController.voteGUI->setVisible(showingGUI);
+        videoFeedController.gui->setVisible(showingGUI);
+    }
+    
+    //
+    if ( key == 'f' ) {
+        
+        ofToggleFullscreen();
+        
+    }
+    
     if ( key == 'a' ) {
         overlay.voteDisplay.addVote( overlay.voteDisplay.topic1 );
     }

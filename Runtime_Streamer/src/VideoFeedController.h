@@ -21,6 +21,7 @@ public:
     // UI
     void guiEvent(ofxUIEventArgs &e);
     vector<VideoDeviceToggle *>videoToggles;
+    ofxUISuperCanvas *gui;
     
     // Video
     ofBaseVideoDraws *videoSource;
@@ -29,5 +30,4 @@ public:
 protected:
     float toggleEveryMins;
     float lastSwitchTimeSecs;
-    ofxUISuperCanvas *gui;
 };
