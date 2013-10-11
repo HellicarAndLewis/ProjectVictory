@@ -49,7 +49,7 @@ void WebSystemController::initWebSystemGUI() {
 #pragma mark – Web System Connection
 
 void WebSystemController::onHashTagCount(Json::Value body) {
-    
+
     if (!webSystemIsEnabled) { return; }
     
     // Do something with the incoming count
@@ -167,7 +167,7 @@ string WebSystemController::getNextScreenShotFilename() {
     bool found = false;
     while ( !found && it != screenShotTriggers.end()) {
         
-        if ( it->first < currentTime + 1.0f) {
+        if ( it->first < currentTime + 5.0f) {
             found = true;
             filename = it->second;
             screenShotTriggers.erase(it);
