@@ -6,9 +6,7 @@
 class VideoDeviceToggle : public ofxUIToggle {
 public:
     VideoDeviceToggle(float x, float y, bool v, string n):ofxUIToggle(x,y,v,n),usesMoviePlayer(false){
-        kind = KIND;
     }
-    const static int KIND = 1928;
     ofVideoDevice videoDevice;
     // Is this ineffienct?
     ofVideoGrabber videoGrabber;
@@ -25,7 +23,7 @@ void VideoFeedController::init() {
     
     // Create the canvas
     
-    gui = new ofxUISuperCanvas( "VIDEO SWITCHING", 20, 180, 200, 200 );
+    gui = new ofxUISuperCanvas( "VIDEO SWITCHING", 20, 340, 200, 200 );
     gui->setColorBack( ofColor(ofColor::turquoise, 200) );
     
     // List and create UI for devices
@@ -48,18 +46,30 @@ void VideoFeedController::init() {
         videoToggles.push_back(videoToggle);
     }
     
-    // Add in the video
-    VideoDeviceToggle *videoLooper = new VideoDeviceToggle(20.0f, 20.0f, true, ofToUpper("Looping video"));
-    videoLooper->usesMoviePlayer = true;
-	videoLooper->videoPlayer.loadMovie("TimBarry_640_480.MOV");
-    videoLooper->videoPlayer.play();
-    gui->addWidgetDown(videoLooper);
-    videoToggles.push_back(videoLooper);
+    //get all the videos in videos
+    ofDirectory dir( ofToDataPath("./videos/") );
+    dir.allowExt("mov");
+    dir.listDir();
+    vector<ofFile>files = dir.getFiles();
+    for (vector<ofFile>::iterator it=files.begin(); it!=files.end(); ++it) {
+        
+        // Add in the video
+        VideoDeviceToggle *videoLooper = new VideoDeviceToggle(20.0f, 20.0f, true, ofToUpper(it->getFileName()));
+        videoLooper->usesMoviePlayer = true;
+        videoLooper->videoPlayer.loadMovie( "./videos/"+it->getFileName() );
+        videoLooper->videoPlayer.play();
+        gui->addWidgetDown(videoLooper);
+        videoToggles.push_back(videoLooper);
+        
+        videoSource = &videoLooper->videoPlayer;
+    }
     
     // Add a slider to change the time
     gui->addSlider(ofToUpper("Toggle Every Mins"), 0.01, 30.0f, &toggleEveryMins);
     gui->addLabelButton("TOGGLE NOW", false);
     ofAddListener( gui->newGUIEvent, this, &VideoFeedController::guiEvent );
+    
+    gui->loadSettings( "GUI/video.xml" );
 
     gui->autoSizeToFitWidgets();
 
