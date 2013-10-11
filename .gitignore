@@ -34,3 +34,12 @@ Release/
 
 
 *~.xml
+
+# Setting for Production Streamer
+# Include data folder
+# Excludes videos
+# Excludes fonts
+!Production_SDStreamer/bin/
+Production_SDStreamer/bin/data/*.ttf
+Production_SDStreamer/bin/data/videos/*
+!Production_SDStreamer/bin/data/videos/.gitkeep
