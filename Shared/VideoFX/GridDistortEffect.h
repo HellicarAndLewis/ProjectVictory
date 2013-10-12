@@ -110,8 +110,9 @@ public:
     
     void update() {
         
-        if ( xSteps != (int)(getWidth() / stepSize) || ySteps != (int)(getHeight() / stepSize) )
+      if ( xSteps != (int)(getWidth() / stepSize) || ySteps != (int)(getHeight() / stepSize) ) {
             initMesh();
+      }
         
         ofPushStyle();
         ofSetColor( 255, 255 );
@@ -124,8 +125,9 @@ public:
         mesh.draw();
         glDisable( diffuseTexture.textureTarget );
         
-        if ( showGrid || ofGetMousePressed() )
+        if ( showGrid || ofGetMousePressed() ) {
             mesh.drawWireframe();
+        }
         
         ofSetColor( ofColor::red );
         
@@ -146,6 +148,7 @@ public:
                     mesh.setVertex( i/2, tether->getPosition().interpolated( p->getPosition(), amount ) );
                 }
             }
+            printf("update grid distort.\n");
             physics.update();
         }
         

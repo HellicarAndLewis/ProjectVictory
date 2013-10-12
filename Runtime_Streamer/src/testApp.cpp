@@ -14,10 +14,18 @@ void testApp::setup(){
 
     ofSetLogLevel( OF_LOG_WARNING );
     
-    videoFeedController.init();
+    //    videoFeedController.init();
 
     vfx1.init();
-    vfx1.setVideoSource( videoFeedController.videoSource );
+    // vfx1.setVideoSource( videoFeedController.videoSource );
+#if !defined(DISABLE_STREAMING)
+    vfx1.setVideoSource(&ldeck_img);
+#else 
+    video_grabber.setDeviceID(0);
+    video_grabber.setDesiredFrameRate(60);
+    video_grabber.initGrabber(640,480);
+    vfx1.setVideoSource(&video_grabber);
+#endif
     
     vfx1.setColor( colors[colorIndex] );
 
@@ -31,7 +39,6 @@ void testApp::setup(){
     websystemController.setOverlay( &overlay );
     websystemController.init();
     
-
 #ifndef DISABLE_STREAMING
     // MULTI STREAMER
     // --------------------------------------------------
@@ -64,6 +71,7 @@ void testApp::setup(){
       ::exit(EXIT_FAILURE);
     }
 
+    ldeck_started = false;
     ldeck_new_img = false;
     ldeck_img.allocate(lw, lh, OF_IMAGE_COLOR);
 
@@ -100,27 +108,45 @@ void testApp::audioIn(float* input, int nsize, int nchannels) {
 //--------------------------------------------------------------
 void testApp::update(){
     if (ofGetElapsedTimef() < 2.0f) { return; }
-    
 
-#ifndef DISABLE_STREAMING
+#if defined(DISABLE_STREAMING)
+    video_grabber.update();
+    if(video_grabber.isFrameNew()) {
+      vfx1.update(true);
+    }
+    else {
+      vfx1.update(false);
+    }
+#else
     streamer.update();
+    if(ldeck.hasNewFrame()) {
+      vfx1.update(true);
+    }
+    else {
+      vfx1.update(false);
+    }
 #endif
     
     websystemController.update();
     
 #if defined(DISABLE_STREAMING) 
+    /*
     if ( videoFeedController.update() ) {
         vfx1.setVideoSource( videoFeedController.videoSource );
     }
+    */
 #else
     if(ldeck_new_img) {
-      vfx1.setVideoSource(&ldeck_img);
+      if(!ldeck_started) {
+        vfx1.setVideoSource(&ldeck_img);
+        ldeck_started = true;
+      }
       ldeck_new_img = false;
     }
+
 #endif    
     
-    vfx1.update( videoFeedController.videoSource->isFrameNew() );
-
+    
     overlay.update();
 
 
@@ -181,7 +207,6 @@ void testApp::drawInternal() {
     
     // Screen shot saving
 #if 0
-
     string nextScreenshotName = websystemController.getNextScreenShotFilename();
     if ( nextScreenshotName != "" ) {
         float now = ofGetElapsedTimef();
@@ -228,7 +253,7 @@ void testApp::keyPressed(int key) {
         overlay.overlayGUI->setVisible( showingGUI );
         websystemController.websystemGUI->setVisible(showingGUI);
         websystemController.voteGUI->setVisible(showingGUI);
-        videoFeedController.gui->setVisible(showingGUI);
+        //videoFeedController.gui->setVisible(showingGUI);
     }
     
     if ( key == 'a' ) {
