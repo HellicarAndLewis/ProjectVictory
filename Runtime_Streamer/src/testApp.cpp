@@ -106,15 +106,19 @@ void testApp::drawInternal() {
     
     overlay.draw();
     
+    
     // Screen shot saving
     string nextScreenshotName = websystemController.getNextScreenShotFilename();
     if ( nextScreenshotName != "" ) {
+        
+        float now = ofGetElapsedTimef();
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glReadBuffer(GL_BACK);
         glPixelStorei(GL_PACK_ALIGNMENT, 4);
         //Saving
         ofSaveViewport("screenshots/" + nextScreenshotName + ".png");
         //ofSaveScreen( "screenshots/" + nextScreenshotName + ".png");
+        cout << "screen grab took " << ofToString(ofGetElapsedTimef()-now) << "seconds" << endl;
     }
 }
 
