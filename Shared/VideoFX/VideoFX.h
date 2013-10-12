@@ -38,20 +38,13 @@ public:
     int num;
     
     bool opticalFlowEnabled;
-    
-    // current video source
-    ofBaseImage *videoSource;
-    // an image to store a downsampled version of the curent frame
-    ofImage downsampledFrame;
-    // does optical flow and provides a floating point vector field texture for use in shaders
-    FarnebackPlus farneback;
-    // a circular texture buffer that successive frames from the video source are read into
-    CircularTexture circularTexture;
-    // some fluid
-    ofxFluid fluid;
-    
+
+    ofBaseImage *videoSource;  // current video source
+    ofImage downsampledFrame;  // an image to store a downsampled version of the curent frame
+    FarnebackPlus farneback;    // does optical flow and provides a floating point vector field texture for use in shaders
+    CircularTexture circularTexture;  // a circular texture buffer that successive frames from the video source are read into
+    ofxFluid fluid;     // some fluid
     ofImage ramp;
-    
     
     KhronosEffect khronosEffect;
     BadTVEffect badTVEffect;
@@ -60,15 +53,15 @@ public:
     ColorMapEffect colorMapEffect;
     FlowLinesEffect flowLinesEffect;
     GridDistortEffect gridDistortEffect;
-    // vector contains points to all effects
-    vector<BaseEffect*> effects;
-    // a pointer to the final effect of the chain. this is what gets drawn back to the screen
-    BaseEffect *finalEffect;
+
+    vector<BaseEffect*> effects;    // vector contains points to all effects
+
+    BaseEffect *finalEffect;     // a pointer to the final effect of the chain. this is what gets drawn back to the screen
+
     // gui
     ofxUISuperCanvas *vfxGUI;
     ofxUICanvas *presetGUI;
     ofxUIDropDownList *presetWidget;
-    
     
     void presetEvent( ofxUIEventArgs &e );
     void guiEvent(ofxUIEventArgs &e);

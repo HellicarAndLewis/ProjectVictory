@@ -4,7 +4,7 @@
 void testApp::setup(){
     ofEnableAntiAliasing();
     ofSetVerticalSync( true );
-    ofSetFrameRate( 30 );
+    ofSetFrameRate( 60 );
     
     #ifdef DISABLE_STREAMING
     cout << "Disabled streaming: compile with 'Release' to enable" << endl;
@@ -15,12 +15,12 @@ void testApp::setup(){
     ofSetLogLevel( OF_LOG_WARNING );
     
     videoFeedController.init();
-    
+
     vfx1.init();
     vfx1.setVideoSource( videoFeedController.videoSource );
     
     vfx1.setColor( colors[colorIndex] );
-    
+
     big = &vfx1;
     
     videoFXExporter.setVideoFX( &vfx1 );
@@ -45,6 +45,27 @@ void testApp::setup(){
       printf("error: cannot start the streamer.\n");
       ::exit(EXIT_FAILURE);
     }
+  
+    if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
+      ///    if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
+      printf("error: cannot get decklink setup.\n");
+      ::exit(EXIT_FAILURE);
+    }
+  
+    if(!ldeck.start()) {
+      printf("error: cannot start the decklink device.\n");
+      ::exit(EXIT_FAILURE);
+    }
+
+    int lw = ldeck.getWidth();
+    int lh = ldeck.getHeight();
+    if(lw < 0 || lh < 0) {
+      printf("error: cannot get the correct width and height from the decklink device for the current format.\n");
+      ::exit(EXIT_FAILURE);
+    }
+
+    ldeck_new_img = false;
+    ldeck_img.allocate(lw, lh, OF_IMAGE_COLOR);
 
     sound_stream.listDevices();
     sound_stream.setup(this, 0, 2, 44100, 1024, 4);
@@ -59,13 +80,13 @@ void testApp::audioIn(float* input, int nsize, int nchannels) {
     for(size_t i = 0; i < nsamples; ++i) {
         input[i] *= 32768.0f;
     }
-
-    //streamer.addAudio(input, nsize, nchannels);
+    streamer.addAudio(input, nsize, nchannels);
 #endif
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+#if 1
     if (ofGetElapsedTimef() < 2.0f) { return; }
     
 #ifndef DISABLE_STREAMING
@@ -74,29 +95,62 @@ void testApp::update(){
     
     websystemController.update();
     
+#if defined(DISABLE_STREAMING) 
     if ( videoFeedController.update() ) {
         vfx1.setVideoSource( videoFeedController.videoSource );
     }
-    
+#else
+    if(ldeck_new_img) {
+      vfx1.setVideoSource(&ldeck_img);
+      ldeck_new_img = false;
+    }
+#endif    
     
     vfx1.update( videoFeedController.videoSource->isFrameNew() );
+
     
     overlay.update();
+#endif
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+#if 1
     if (ofGetElapsedTimef() < 2.0f) { return; }
     
 #ifndef DISABLE_STREAMING
+
+    // get decklink image.
+    if(ldeck.hasNewFrame()) {
+
+      ldeck.lock();
+      {
+        unsigned char* ptr = ldeck.getPixels();
+        if(ptr) {
+          ldeck_img.setFromPixels(ptr, ldeck.getWidth(), ldeck.getHeight(), OF_IMAGE_COLOR);
+        }
+        else {
+          printf("error: we're getting an invalid pixel pointer from the ldeck addon.\n");
+        }
+      }
+      ldeck.unlock();
+      ldeck.resetHasNewFrame();
+      ldeck_new_img = true;
+    }
+
+    // do we need to stream?
     if(streamer.wantsNewFrame()) {
         streamer.beginGrab();
             drawInternal();
         streamer.endGrab();
     }
+
 #endif
 
     drawInternal();
+
+    //ldeck_img.draw(0,0,ofGetWidth(), ofGetHeight());
+#endif
     cout << "framerate " << ofGetFrameRate() << endl;
 }
 

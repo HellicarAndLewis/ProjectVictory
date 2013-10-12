@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4291A7D718089CAC0004A319 /* DeckLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D218089CAC0004A319 /* DeckLink.cpp */; };
+		4291A7D918089CAC0004A319 /* DeckLinkCaptureCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D418089CAC0004A319 /* DeckLinkCaptureCallback.cpp */; };
+		4291A7DA18089CAC0004A319 /* DeckLinkCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D518089CAC0004A319 /* DeckLinkCard.cpp */; };
+		4291A7DB18089CAC0004A319 /* ofxLinkDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D618089CAC0004A319 /* ofxLinkDeck.cpp */; };
+		4291A7DE18089CC50004A319 /* DeckLinkAPIDispatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7DD18089CC50004A319 /* DeckLinkAPIDispatch.cpp */; };
 		484B8A6A1801BE6F0000D7F9 /* ETF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8A501801BE6F0000D7F9 /* ETF.cpp */; };
 		484B8A6B1801BE6F0000D7F9 /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8A511801BE6F0000D7F9 /* fdog.cpp */; };
 		484B8A6C1801BE6F0000D7F9 /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8A601801BE6F0000D7F9 /* Calibration.cpp */; };
@@ -175,6 +180,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4291A7D218089CAC0004A319 /* DeckLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeckLink.cpp; sourceTree = "<group>"; };
+		4291A7D418089CAC0004A319 /* DeckLinkCaptureCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeckLinkCaptureCallback.cpp; sourceTree = "<group>"; };
+		4291A7D518089CAC0004A319 /* DeckLinkCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeckLinkCard.cpp; sourceTree = "<group>"; };
+		4291A7D618089CAC0004A319 /* ofxLinkDeck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLinkDeck.cpp; path = src/ofxLinkDeck/src/ofxLinkDeck.cpp; sourceTree = "<group>"; };
+		4291A7DD18089CC50004A319 /* DeckLinkAPIDispatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeckLinkAPIDispatch.cpp; path = src/ofxLinkDeck/include/DeckLinkAPIDispatch.cpp; sourceTree = SOURCE_ROOT; };
 		484B8A451801BE610000D7F9 /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
 		484B8A4B1801BE6F0000D7F9 /* ETF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETF.h; sourceTree = "<group>"; };
 		484B8A4C1801BE6F0000D7F9 /* fdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fdog.h; sourceTree = "<group>"; };
@@ -651,6 +661,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4291A7D018089C5B0004A319 /* ofxLinkDeck */ = {
+			isa = PBXGroup;
+			children = (
+				4291A7DC18089CAF0004A319 /* src */,
+			);
+			name = ofxLinkDeck;
+			sourceTree = "<group>";
+		};
+		4291A7D118089CAC0004A319 /* decklink */ = {
+			isa = PBXGroup;
+			children = (
+				4291A7D218089CAC0004A319 /* DeckLink.cpp */,
+				4291A7D418089CAC0004A319 /* DeckLinkCaptureCallback.cpp */,
+				4291A7D518089CAC0004A319 /* DeckLinkCard.cpp */,
+			);
+			name = decklink;
+			path = src/ofxLinkDeck/src/decklink;
+			sourceTree = "<group>";
+		};
+		4291A7DC18089CAF0004A319 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4291A7DF18089CCC0004A319 /* sdk */,
+				4291A7D118089CAC0004A319 /* decklink */,
+				4291A7D618089CAC0004A319 /* ofxLinkDeck.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		4291A7DF18089CCC0004A319 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				4291A7DD18089CC50004A319 /* DeckLinkAPIDispatch.cpp */,
+			);
+			name = sdk;
+			sourceTree = "<group>";
+		};
 		484B8A431801BE580000D7F9 /* ofxCv */ = {
 			isa = PBXGroup;
 			children = (
@@ -1686,6 +1733,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				4291A7D018089C5B0004A319 /* ofxLinkDeck */,
 				48602B681805AF990030D42A /* ofxVideoStreamer */,
 				CAAC02A218057BFD00BF6858 /* ofxLibwebsockets */,
 				484B8BF81801C5F30000D7F9 /* ofxFluid */,
@@ -1963,6 +2011,7 @@
 				48602BAC1805AFDA0030D42A /* Debug.cpp in Sources */,
 				48602BAE1805AFDA0030D42A /* EncoderThread.cpp in Sources */,
 				48602BAF1805AFDA0030D42A /* EncoderTypes.cpp in Sources */,
+				4291A7D918089CAC0004A319 /* DeckLinkCaptureCallback.cpp in Sources */,
 				48602BB01805AFDA0030D42A /* H264Parser.cpp in Sources */,
 				48602BB11805AFDA0030D42A /* Log.cpp in Sources */,
 				48602BB21805AFDA0030D42A /* MemoryPool.cpp in Sources */,
@@ -1970,7 +2019,9 @@
 				48602BB41805AFDA0030D42A /* RTMPWriter.cpp in Sources */,
 				48602BB51805AFDA0030D42A /* TestPattern.cpp in Sources */,
 				48602BB61805AFDA0030D42A /* VideoEncoder.cpp in Sources */,
+				4291A7DB18089CAC0004A319 /* ofxLinkDeck.cpp in Sources */,
 				48602BBC1805AFDA0030D42A /* FLVFileWriter.cpp in Sources */,
+				4291A7DE18089CC50004A319 /* DeckLinkAPIDispatch.cpp in Sources */,
 				48602BBD1805AFDA0030D42A /* FLVReader.cpp in Sources */,
 				48602BBE1805AFDA0030D42A /* FLVTypes.cpp in Sources */,
 				48602BBF1805AFDA0030D42A /* FLVWriter.cpp in Sources */,
@@ -1980,11 +2031,13 @@
 				48602BC31805AFDA0030D42A /* Config.cpp in Sources */,
 				9308292617EB7C76006149AE /* sharpen.frag in Sources */,
 				9308292217EB61E9006149AE /* emboss.frag in Sources */,
+				4291A7DA18089CAC0004A319 /* DeckLinkCard.cpp in Sources */,
 				93397D8C17E2B2B70012EAE3 /* tinyxmlerror.cpp in Sources */,
 				93397D8E17E2B2BA0012EAE3 /* ofxXmlSettings.cpp in Sources */,
 				93397D8D17E2B2B80012EAE3 /* tinyxml.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				93397D8B17E2B2B50012EAE3 /* tinyxmlparser.cpp in Sources */,
+				4291A7D718089CAC0004A319 /* DeckLink.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				484B8A6A1801BE6F0000D7F9 /* ETF.cpp in Sources */,
 				484B8A6B1801BE6F0000D7F9 /* fdog.cpp in Sources */,
@@ -2140,76 +2193,13 @@
 					./../addons/ofxLibwebsockets/src,
 					./src/ofxVideoStreamer/include/,
 					./../addons/ofxLibwebsockets/libs/jsoncpp/json,
+					./src/ofxLinkDeck/include,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					/Users/sdstream/Desktop/of_projectvictory/apps/ProjectVictory/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
-				);
+				LIBRARY_SEARCH_PATHS = ./src/ofxLinkDeck/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -2223,6 +2213,8 @@
 					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libx264.a\"",
 					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libz.a\"",
 					./../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx/libwebsockets.a,
+					"-lswscale",
+					"-lavutil",
 				);
 				PRODUCT_NAME = Runtime_Streamer;
 				SDKROOT = macosx10.8;
@@ -2324,76 +2316,13 @@
 					./../addons/ofxLibwebsockets/src,
 					./src/ofxVideoStreamer/include/,
 					./../addons/ofxLibwebsockets/libs/jsoncpp/json,
+					./src/ofxLinkDeck/include,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
-					/Users/sdstream/Desktop/of_projectvictory/apps/ProjectVictory/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
-				);
+				LIBRARY_SEARCH_PATHS = ./src/ofxLinkDeck/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -2407,6 +2336,8 @@
 					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libx264.a\"",
 					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libz.a\"",
 					./../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx/libwebsockets.a,
+					"-lswscale",
+					"-lavutil",
 				);
 				PRODUCT_NAME = Runtime_StreamerDebug;
 				SDKROOT = macosx10.8;
@@ -2447,76 +2378,13 @@
 					./../addons/ofxLibwebsockets/src,
 					./src/ofxVideoStreamer/include/,
 					./../addons/ofxLibwebsockets/libs/jsoncpp/json,
+					./src/ofxLinkDeck/include,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					/Users/sdstream/Desktop/of_projectvictory/apps/ProjectVictory/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
-				);
+				LIBRARY_SEARCH_PATHS = ./src/ofxLinkDeck/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -2530,6 +2398,8 @@
 					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libx264.a\"",
 					"\"$(SRCROOT)/src/ofxVideoStreamer/lib/libz.a\"",
 					./../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx/libwebsockets.a,
+					"-lswscale",
+					"-lavutil",
 				);
 				PRODUCT_NAME = Runtime_Streamer;
 				SDKROOT = macosx10.8;

@@ -20,6 +20,7 @@ void VideoFX::init() {
     
     vfxGUI = new ofxUISuperCanvas( "VFX" + ofToString(num), 840, 20, 200, 200 );
     vfxGUI->setColorBack( ofColor( ofColor::red, 150 ) );
+    
     // SETUP GUI FOR ALL EFFECTS
     for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->farneback = &farneback;
@@ -43,7 +44,6 @@ void VideoFX::init() {
     cout << presetWidget->getToggles().size() << endl;
     
     updateGUI();
-
 }
 
 void VideoFX::fillPresets() {
@@ -54,9 +54,11 @@ void VideoFX::fillPresets() {
     dir.listDir();
     vector<ofFile> files = dir.getFiles();
     vector<string> presets;
-    for ( int i=0; i<files.size(); i++ )
-        if ( files[i].isDirectory() )
+    for ( int i=0; i<files.size(); i++ ) {
+      if ( files[i].isDirectory() ) {
             presetWidget->addToggle( files[i].getFileName() );
+      }
+    }
 }
 
 void VideoFX::updateGUI() {
@@ -65,7 +67,6 @@ void VideoFX::updateGUI() {
     for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->settings->setVisible( effects[i]->enabled );
     }
-    
     
     return;
     
@@ -143,20 +144,26 @@ void VideoFX::guiEvent(ofxUIEventArgs &e) {
 }
 
 void VideoFX::setVideoSource( ofBaseImage *source ) {
+  static bool is_allocated = false;
+
+  int w = source->getWidth();
+  int h = source->getHeight();
     
-    int w = source->getWidth();
-    int h = source->getHeight();
+  videoSource = source;
+
+  // allocate the circular texture
+  circularTexture.allocate( w, h, 20 );
+
+  // allocate a downsampled texture to run through optical flow
+  downsampledFrame.allocate( w/4, h/4, OF_IMAGE_COLOR );
     
-    videoSource = source;
-    // allocate the circular texture
-    circularTexture.allocate( w, h, 20 );
-    // allocate a downsampled texture to run through optical flow
-    downsampledFrame.allocate( w/4, h/4, OF_IMAGE_COLOR );
-    
-    // allocate the effects
-    for ( int i=0; i<effects.size(); i++ )
-        effects[i]->allocate( w, h );
-    
+  // allocate the effects
+  for ( int i=0; i<effects.size(); i++ ) {
+    if(!effects[i]->compiled()) {
+      effects[i]->allocate( w, h );
+    }
+  }
+
 }
 
 void VideoFX::update( bool isFrameNew ) {
