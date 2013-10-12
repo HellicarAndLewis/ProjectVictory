@@ -24,7 +24,7 @@ public:
 class Crawl {
 public:
     
-    float fontSize = 16;
+    float fontSize = 26 ;
     
     bool visible = true;
     ofTrueTypeFont usernameFont, messageFont;
