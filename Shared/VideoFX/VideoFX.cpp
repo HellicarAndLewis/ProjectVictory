@@ -3,7 +3,7 @@
 int VideoFX::count = 0;
 
 void VideoFX::init() {
-    
+    videoSource = NULL;    
     effects.push_back( &khronosEffect );
     effects.push_back( &colorMapEffect );
     effects.push_back( &badTVEffect );
@@ -42,8 +42,9 @@ void VideoFX::init() {
     ofAddListener( presetGUI->newGUIEvent, this, &VideoFX::presetEvent );
     
     cout << presetWidget->getToggles().size() << endl;
-    
+
     updateGUI();
+    
 }
 
 void VideoFX::fillPresets() {
@@ -168,7 +169,10 @@ void VideoFX::setVideoSource( ofBaseImage *source ) {
 
 void VideoFX::update( bool isFrameNew ) {
     
-    
+  if(!videoSource) {
+    return;
+  }
+
     // if the video source has a new frame, run it through optical flow and add it to the circularTexture
 //    if ( videoSource->isFrameNew() ) {
     if ( isFrameNew ) {
@@ -229,7 +233,14 @@ void VideoFX::updateEffect( BaseEffect *effect ) {
 }
 
 void VideoFX::draw( float posX, float posY, float width, float height ) {
-    
+
+#if !defined(NDEBUG)
+  if(!videoSource) {
+    printf("error: videoSource is null in VideoFX.\n");
+    return;
+  }
+#endif  
+
     if ( finalEffect != 0 ) {
 //        finalEffect->draw( posX, posY, width, height );
         finalEffect->getTextureReference().draw( posX, posY, width, height );
