@@ -183,10 +183,10 @@ void testApp::drawInternal() {
 #else
     std::string screenshot_name = websystemController.getNextScreenShotFilename();
     if(screenshot_name.size()) {
-      if(!screen_grab.grab(screenshot_name)) {
-        printf("error: cannot grab - this may not happen! - allocate a bigger buffer in ScreenGrabSaver.\n");
-        ::exit(EXIT_FAILURE);
-      }
+//      if(!screen_grab.grab(screenshot_name)) {
+//        printf("error: cannot grab - this may not happen! - allocate a bigger buffer in ScreenGrabSaver.\n");
+//        ::exit(EXIT_FAILURE);
+//      }
       printf("save! %s\n", screenshot_name.c_str());
       
     }
