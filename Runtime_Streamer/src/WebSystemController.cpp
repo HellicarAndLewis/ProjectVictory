@@ -20,7 +20,7 @@ void WebSystemController::init() {
 void WebSystemController::update() {
     float currentTime = ofGetElapsedTimef();
     static float lastHashTagUpdate = 0.f;
-    if ( lastHashTagUpdate + (float(UPDATE_VOTES_EVERY_MS) / 1000) < currentTime && overlay && webSystemIsEnabled ) {
+    if ( lastHashTagUpdate + (float(UPDATE_VOTES_EVERY_MS) / 1000) < currentTime && overlay && webSystemIsEnabled && countHashTags ) {
         connection.requestHashTagCount( overlay->voteDisplay.topic1 );
         connection.requestHashTagCount( overlay->voteDisplay.topic2 );
         lastHashTagUpdate = currentTime;
@@ -43,6 +43,7 @@ void WebSystemController::initWebSystemGUI() {
     websystemGUI->addLabelToggle( "SHOUTOUTS", &shoutoutsAreEnabled );
     websystemGUI->addLabelToggle( "COMMANDS", &commandsAreEnabled );
     websystemGUI->addLabelToggle( "DECAYS", &shouldDecaysEffects );
+    websystemGUI->addLabelToggle( "COUNT HASH TAGS", &countHashTags );
     websystemGUI->autoSizeToFitWidgets();
 }
 
@@ -101,6 +102,8 @@ void WebSystemController::onCommand(Json::Value body) {
     s << body["tweet"]["id"];
     string tweetid = s.str();
     tweetid.erase(tweetid.size() - 1);
+    
+    
     screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
     
     // Apply the payload to the videofx. They need to be a decayer somewhere, so this may not be how it works.

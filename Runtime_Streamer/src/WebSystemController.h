@@ -18,6 +18,7 @@ public:
     overlay(0),
     webSystemIsEnabled(false),
     shoutoutsAreEnabled(false),
+    countHashTags(false),
     commandsAreEnabled(false),
     shouldDecaysEffects(false)
     {};
@@ -39,6 +40,7 @@ public:
     bool shoutoutsAreEnabled;
     bool commandsAreEnabled;
     bool shouldDecaysEffects;
+    bool countHashTags;
     
     // Web system events
     void onHashTagCount(Json::Value body);
