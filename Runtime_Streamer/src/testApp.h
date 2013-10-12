@@ -11,8 +11,10 @@
 #include "Overlay.h"
 #include "WebSystemController.h"
 
+//#define DISABLE_STREAMING 1
 #ifndef DISABLE_STREAMING
 #include <ofxVideoStreamer/ofxMultiVideoStreamer.h>
+#include <ofxLinkDeck/ofxLinkDeck.h>
 #endif
 
 #include "VideoFeedController.h"
@@ -60,8 +62,11 @@ public:
     VideoFeedController videoFeedController;
     
 #ifndef DISABLE_STREAMING
-  ofxMultiVideoStreamer streamer; /* this is handling the video streaming */
-  ofSoundStream sound_stream; /* we use a sound stream to get audio into the video stream */
+    bool ldeck_new_img;
+    ofImage ldeck_img;
+    ofxLinkDeck ldeck;
+    ofxMultiVideoStreamer streamer; /* this is handling the video streaming */
+    ofSoundStream sound_stream; /* we use a sound stream to get audio into the video stream */
 #endif
     
 };
