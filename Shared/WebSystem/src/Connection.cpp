@@ -46,7 +46,8 @@ string Connection::requestHashTagCount(string tag, hashTagResolution resolution)
         
         // Get request as a string
         Json::StyledWriter writer;
-        wsClient.send( writer.write( jsonRequest ) );
+        string message = writer.write( jsonRequest );
+        wsClient.send( message );
     }
 
     return token;
@@ -91,7 +92,7 @@ void Connection::onIdle( ofxLibwebsockets::Event& args ) {
 }
 
 void Connection::onMessage( ofxLibwebsockets::Event& args ) {
-    
+
     // A new commands message
     if ( args.json["resource"] == "/command/new/" ) {
         // Trigger all the listeners
@@ -116,8 +117,7 @@ void Connection::onMessage( ofxLibwebsockets::Event& args ) {
                 (**it)( args.json["body"] );
             }
         }
-    }
-    
+    }    
 }
 
 void Connection::onBroadcast( ofxLibwebsockets::Event& args ) {
