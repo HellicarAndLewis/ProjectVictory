@@ -12,6 +12,7 @@
 		4291A7DA18089CAC0004A319 /* DeckLinkCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D518089CAC0004A319 /* DeckLinkCard.cpp */; };
 		4291A7DB18089CAC0004A319 /* ofxLinkDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D618089CAC0004A319 /* ofxLinkDeck.cpp */; };
 		4291A7DE18089CC50004A319 /* DeckLinkAPIDispatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7DD18089CC50004A319 /* DeckLinkAPIDispatch.cpp */; };
+		42A728D718096576006FC6DC /* ScreenGrabSaver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42A728D518096576006FC6DC /* ScreenGrabSaver.cpp */; };
 		484B8A6A1801BE6F0000D7F9 /* ETF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8A501801BE6F0000D7F9 /* ETF.cpp */; };
 		484B8A6B1801BE6F0000D7F9 /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8A511801BE6F0000D7F9 /* fdog.cpp */; };
 		484B8A6C1801BE6F0000D7F9 /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484B8A601801BE6F0000D7F9 /* Calibration.cpp */; };
@@ -185,6 +186,8 @@
 		4291A7D518089CAC0004A319 /* DeckLinkCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeckLinkCard.cpp; sourceTree = "<group>"; };
 		4291A7D618089CAC0004A319 /* ofxLinkDeck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLinkDeck.cpp; path = src/ofxLinkDeck/src/ofxLinkDeck.cpp; sourceTree = "<group>"; };
 		4291A7DD18089CC50004A319 /* DeckLinkAPIDispatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeckLinkAPIDispatch.cpp; path = src/ofxLinkDeck/include/DeckLinkAPIDispatch.cpp; sourceTree = SOURCE_ROOT; };
+		42A728D518096576006FC6DC /* ScreenGrabSaver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenGrabSaver.cpp; sourceTree = "<group>"; };
+		42A728D618096576006FC6DC /* ScreenGrabSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenGrabSaver.h; sourceTree = "<group>"; };
 		484B8A451801BE610000D7F9 /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
 		484B8A4B1801BE6F0000D7F9 /* ETF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETF.h; sourceTree = "<group>"; };
 		484B8A4C1801BE6F0000D7F9 /* fdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fdog.h; sourceTree = "<group>"; };
@@ -1840,6 +1843,8 @@
 		CAACFF8C180576F300BF6858 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				42A728D518096576006FC6DC /* ScreenGrabSaver.cpp */,
+				42A728D618096576006FC6DC /* ScreenGrabSaver.h */,
 				CAACFF8D180576F300BF6858 /* Callable.h */,
 				CAACFF8E180576F300BF6858 /* Connection.cpp */,
 				CAACFF8F180576F300BF6858 /* Connection.h */,
@@ -2109,6 +2114,7 @@
 				484B8B4F1801C3090000D7F9 /* del_impl.cpp in Sources */,
 				484B8B771801C31D0000D7F9 /* ofxFXObject.cpp in Sources */,
 				484B8BC51801C4450000D7F9 /* CircularTexture.cpp in Sources */,
+				42A728D718096576006FC6DC /* ScreenGrabSaver.cpp in Sources */,
 				484B8BC61801C4450000D7F9 /* FarnebackPlus.cpp in Sources */,
 				CAAC013918057AD800BF6858 /* WebSystemController.cpp in Sources */,
 				484B8BC71801C4450000D7F9 /* VideoFX.cpp in Sources */,

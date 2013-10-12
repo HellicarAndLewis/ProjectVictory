@@ -10,6 +10,7 @@
 #include "VideoFXExporter.h"
 #include "Overlay.h"
 #include "WebSystemController.h"
+#include "ScreenGrabSaver.h"
 
 //#define DISABLE_STREAMING 1
 #ifndef DISABLE_STREAMING
@@ -60,6 +61,7 @@ public:
     VideoFXExporter videoFXExporter;
     WebSystemController websystemController;
     VideoFeedController videoFeedController;
+    ScreenGrabSaver grab_saver;
     
 #ifndef DISABLE_STREAMING
     bool ldeck_new_img;

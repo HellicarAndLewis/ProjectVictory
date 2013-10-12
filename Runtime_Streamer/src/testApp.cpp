@@ -70,6 +70,11 @@ void testApp::setup(){
     sound_stream.listDevices();
     sound_stream.setup(this, 0, 2, 44100, 1024, 4);
 #endif
+
+    if(!grab_saver.setup(ofGetWidth(), ofGetHeight())) {
+      printf("error: cannot start the screen grab saver.\n");
+      ::exit(EXIT_FAILURE);
+    }
     
 }
 
@@ -162,6 +167,7 @@ void testApp::drawInternal() {
     
     
     // Screen shot saving
+#if 0
     string nextScreenshotName = websystemController.getNextScreenShotFilename();
     if ( nextScreenshotName != "" ) {
         
@@ -174,7 +180,19 @@ void testApp::drawInternal() {
         //ofSaveScreen( "screenshots/" + nextScreenshotName + ".png");
         cout << "screen grab took " << ofToString(ofGetElapsedTimef()-now) << "seconds" << endl;
     }
+#else
+    std::string screenshot_name = websystemController.getNextScreenShotFilename();
+    if(screenshot_name.size()) {
+      if(!screen_grab.grab(screenshot_name)) {
+        printf("error: cannot grab - this may not happen! - allocate a bigger buffer in ScreenGrabSaver.\n");
+        ::exit(EXIT_FAILURE);
+      }
+      printf("save! %s\n", screenshot_name.c_str());
+      
+    }
+#endif
 }
+
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key) {
