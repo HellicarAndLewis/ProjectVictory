@@ -20,6 +20,8 @@ public:
     bool update();
     
     // UI
+    void disableGuiEvents();
+    void drawGUI();
     void guiEvent(ofxUIEventArgs &e);
     vector<VideoDeviceToggle *>videoToggles;
     ofxUISuperCanvas *gui;
@@ -27,8 +29,23 @@ public:
     // Video
     ofBaseVideoDraws *videoSource;
     ofVideoDevices devices;
+
+
     
 protected:
     float toggleEveryMins;
     float lastSwitchTimeSecs;
 };
+
+inline void VideoFeedController::disableGuiEvents() {
+  if(gui) {
+    //gui->disableAppEventCallbacks();
+    gui->disableAppDrawCallback();
+  }
+}
+
+inline void VideoFeedController::drawGUI() {
+  if(gui) {
+    gui->draw();
+  }
+}

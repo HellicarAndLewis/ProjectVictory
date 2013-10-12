@@ -68,7 +68,9 @@ public:
     ofxUITextInput *vote1TextInput;
     ofxUITextInput *vote2TextInput;
     void voteingGUIEvent(ofxUIEventArgs &e);
-    
+    void disableGuiEvents();
+    void drawGUI();
+
 protected:
     
     ScreenShotTriggers screenShotTriggers;
@@ -77,3 +79,29 @@ protected:
     Overlay *overlay;
     
 };
+
+inline void WebSystemController::disableGuiEvents() {
+
+  if(voteGUI) {
+    // voteGUI->disableAppEventCallbacks();
+    voteGUI->disableAppDrawCallback();
+  }
+
+  if(websystemGUI) {
+    //websystemGUI->disableAppEventCallbacks();
+    websystemGUI->disableAppDrawCallback();
+  }
+  
+}
+
+inline void WebSystemController::drawGUI() {
+
+  if(websystemGUI) {
+    websystemGUI->draw();
+  }
+
+  if(voteGUI) {
+    voteGUI->draw();
+  }
+
+}

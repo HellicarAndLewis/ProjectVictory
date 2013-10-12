@@ -46,8 +46,8 @@ void testApp::setup(){
       ::exit(EXIT_FAILURE);
     }
   
-    if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
-      ///    if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
+    //if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
+    if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
       printf("error: cannot get decklink setup.\n");
       ::exit(EXIT_FAILURE);
     }
@@ -71,11 +71,19 @@ void testApp::setup(){
     sound_stream.setup(this, 0, 2, 44100, 1024, 4);
 #endif
 
-    if(!grab_saver.setup(ofGetWidth(), ofGetHeight())) {
+    if(!grab_saver.setup(ofGetWidth(), ofGetHeight(), 20)) {
       printf("error: cannot start the screen grab saver.\n");
       ::exit(EXIT_FAILURE);
     }
     
+    // we don't want the gui to be drawn on the draw event
+    /*
+    vfx1.disableGuiEvents();
+    websystemController.disableGuiEvents();
+    overlay.disableGuiEvents();
+    videoFXExporter.disableGuiEvents();
+    videoFeedController.disableGuiEvents();
+    */
 }
 
 void testApp::audioIn(float* input, int nsize, int nchannels) {
@@ -91,9 +99,9 @@ void testApp::audioIn(float* input, int nsize, int nchannels) {
 
 //--------------------------------------------------------------
 void testApp::update(){
-#if 1
     if (ofGetElapsedTimef() < 2.0f) { return; }
     
+
 #ifndef DISABLE_STREAMING
     streamer.update();
 #endif
@@ -113,14 +121,14 @@ void testApp::update(){
     
     vfx1.update( videoFeedController.videoSource->isFrameNew() );
 
-    
     overlay.update();
-#endif
+
+
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-#if 1
+
     if (ofGetElapsedTimef() < 2.0f) { return; }
     
 #ifndef DISABLE_STREAMING
@@ -145,51 +153,60 @@ void testApp::draw(){
 
     // do we need to stream?
     if(streamer.wantsNewFrame()) {
-        streamer.beginGrab();
-            drawInternal();
-        streamer.endGrab();
+      streamer.beginGrab();
+        drawInternal();
+      streamer.endGrab();
     }
 
 #endif
 
     drawInternal();
 
-    //ldeck_img.draw(0,0,ofGetWidth(), ofGetHeight());
-#endif
+    //ldeck_img.draw(0,0,ofGetWidth(), ofGetHeight()); // just testing the output of the decklink 
+    /*
+    videoFXExporter.drawGUI();
+    overlay.drawGUI();
+    websystemController.drawGUI();
+    vfx1.drawGUI();
+    videoFeedController.drawGUI();
+    */
     cout << "framerate " << ofGetFrameRate() << endl;
 }
 
 void testApp::drawInternal() {
     
-    big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
-    
+  //big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
+    big->draw(0, 0, ofGetWidth(), ofGetHeight());
     overlay.draw();
-    
     
     // Screen shot saving
 #if 0
+
     string nextScreenshotName = websystemController.getNextScreenShotFilename();
     if ( nextScreenshotName != "" ) {
-        
         float now = ofGetElapsedTimef();
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glReadBuffer(GL_BACK);
         glPixelStorei(GL_PACK_ALIGNMENT, 4);
         //Saving
         ofSaveViewport("screenshots/" + nextScreenshotName + ".png");
+
         //ofSaveScreen( "screenshots/" + nextScreenshotName + ".png");
         cout << "screen grab took " << ofToString(ofGetElapsedTimef()-now) << "seconds" << endl;
     }
 #else
-    std::string screenshot_name = websystemController.getNextScreenShotFilename();
+
+    screenshot_name = websystemController.getNextScreenShotFilename();
     if(screenshot_name.size()) {
-      if(!screen_grab.grab(screenshot_name)) {
+      vfx1.hideGUI(); // <-- does 
+      if(!grab_saver.grab(screenshot_name)) {
         printf("error: cannot grab - this may not happen! - allocate a bigger buffer in ScreenGrabSaver.\n");
         ::exit(EXIT_FAILURE);
       }
-      printf("save! %s\n", screenshot_name.c_str());
-      
+      vfx1.showGUI();
+      screenshot_name.clear();
     }
+
 #endif
 }
 
@@ -236,14 +253,22 @@ void testApp::keyPressed(int key) {
         overlay.overlayGUI->setVisible( true );
     }
     else if ( key == 45 ) {
-        if ( --colorIndex < 0 )
+      if ( --colorIndex < 0 ) {
             colorIndex = 6;
-        vfx1.setColor( colors[colorIndex] );
+      }
+      vfx1.setColor( colors[colorIndex] );
     }
     else if ( key == 61 ) {
-        if ( ++colorIndex > 6 )
+      if ( ++colorIndex > 6 ) {
             colorIndex = 0;
-        vfx1.setColor( colors[colorIndex] );
+      }
+      vfx1.setColor( colors[colorIndex] );
+    }
+    else if(key == 'f') {
+      ofToggleFullscreen();
+      static bool is_fs = false;
+      is_fs = !is_fs;
+      //     ofSetFullScreen(is_fs);
     }
 }
 

@@ -41,7 +41,7 @@ public:
     //ofVideoGrabber videoGrabber;
     ofBaseVideoDraws *videoSource;
 
-    VideoFX vfx1, vfx2;
+    VideoFX vfx1;
     VideoFX *big;
 
     void setup();
@@ -62,6 +62,7 @@ public:
     WebSystemController websystemController;
     VideoFeedController videoFeedController;
     ScreenGrabSaver grab_saver;
+    std::string screenshot_name;
     
 #ifndef DISABLE_STREAMING
     bool ldeck_new_img;

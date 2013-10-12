@@ -190,8 +190,9 @@ void VideoFX::update( bool isFrameNew ) {
     
     deque<BaseEffect*> enabledEffects;
     for ( int i=0; i<effects.size(); i++ ) {
-        if ( effects[i]->enabled && effects[i] != &khronosEffect )
+      if ( effects[i]->enabled && effects[i] != &khronosEffect ) {
             enabledEffects.push_back( effects[i] );
+      }
     }
     sort( enabledEffects.begin(), enabledEffects.end(), CompareBaseEffects );
     if ( khronosEffect.enabled )
@@ -233,8 +234,9 @@ void VideoFX::draw( float posX, float posY, float width, float height ) {
 //        finalEffect->draw( posX, posY, width, height );
         finalEffect->getTextureReference().draw( posX, posY, width, height );
     }
-    else
+    else {
         videoSource->draw( posX, posY, width, height );
+    }
     
 }
 

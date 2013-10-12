@@ -14,8 +14,8 @@ ofxVideoStreamer::~ofxVideoStreamer() {
 }
 
 bool ofxVideoStreamer::setup(std::string filename, 
-                                          int winW, int winH, 
-                                          int vidW, int vidH) 
+                             int winW, int winH, 
+                             int vidW, int vidH) 
 {
 
   if(!streamer.loadSettings(ofToDataPath(filename))) {

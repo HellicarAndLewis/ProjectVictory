@@ -22,4 +22,19 @@ public:
     void update();
     void draw();
     void overlayGuiEvent( ofxUIEventArgs &e );
+    void disableGuiEvents();
+    void drawGUI();
 };
+
+inline void Overlay::disableGuiEvents() {
+  if(overlayGUI) {
+    //overlayGUI->disableAppEventCallbacks();
+    overlayGUI->disableAppDrawCallback();
+  }
+}
+
+inline void Overlay::drawGUI() {
+  if(overlayGUI) {
+    overlayGUI->draw();
+  }
+}

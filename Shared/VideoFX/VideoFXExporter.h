@@ -11,49 +11,66 @@ class EffectMapToggle;
 // Example: in testApp::setup vfxExporter.setVideoFX(&vfx1);
 
 class VideoFXExporter {
-public:
+ public:
 
-	VideoFXExporter():videoFx(0){}
+ VideoFXExporter():videoFx(0){}
 	virtual ~VideoFXExporter(){}
 
-    // Sets the pointer to the active VideoFX
+  // Sets the pointer to the active VideoFX
 	void setVideoFX(VideoFX *vfx) { videoFx = vfx; createGUI(); }
 
 	// GUI
-    void createGUI();
+  void createGUI();
+  void disableGuiEvents();
+  void drawGUI();
 	void guiEvent(ofxUIEventArgs &e);
 	ofxUISuperCanvas *exporterGUI;
-    map<string, map<string, EffectMapToggle *> > effectToggles;
+  map<string, map<string, EffectMapToggle *> > effectToggles;
     
-    // Saving
-    static string exportDirectory;
-    enum exportType {
-        EXPORT_ALL,
-        EXPORT_SELECTED,
-        EXPORT_DEFAULT,
-    };
-    void saveToFile(string payloadName, exportType type = EXPORT_ALL, string command = "");
+  // Saving
+  static string exportDirectory;
+  enum exportType {
+    EXPORT_ALL,
+    EXPORT_SELECTED,
+    EXPORT_DEFAULT,
+  };
+  void saveToFile(string payloadName, exportType type = EXPORT_ALL, string command = "");
 
 	// JSON Utils
-    // Gets json effect maps for all BaseEffects
+  // Gets json effect maps for all BaseEffects
 	Json::Value getEffectsAsJson(string payloadName, exportType type = EXPORT_ALL);
 	Json::Value getEffectAsJson(BaseEffect *effect, exportType type = EXPORT_ALL);
-    string getJsonAsString(Json::Value json);
+  string getJsonAsString(Json::Value json);
 
-protected:
+
+
+ protected:
     
-    ofxUITextInput * payloadNameTextInput;
-    ofxUITextInput * commandTextInput;
+  ofxUITextInput * payloadNameTextInput;
+  ofxUITextInput * commandTextInput;
 	VideoFX *videoFx;
 
 };
 
 // toggle button
 class EffectMapToggle : public ofxUIToggle {
-public:
-    EffectMapToggle(string effectName, string mapName)
-    :effectName(effectName),mapName(mapName),
+ public:
+ EffectMapToggle(string effectName, string mapName)
+   :effectName(effectName),mapName(mapName),
     ofxUIToggle(10.0f, 10.0f, true, ofToUpper(mapName), OFX_UI_FONT_SMALL){};
-    string effectName;
-    string mapName;
+  string effectName;
+  string mapName;
 };
+
+inline void VideoFXExporter::disableGuiEvents() {
+  if(exporterGUI) {
+    //exporterGUI->disableAppEventCallbacks();
+    exporterGUI->disableAppDrawCallback();
+  }
+}
+
+inline void VideoFXExporter::drawGUI() {
+  if(exporterGUI) {
+    exporterGUI->draw();
+  }
+}
