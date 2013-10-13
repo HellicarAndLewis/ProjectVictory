@@ -18,7 +18,7 @@ void Overlay::init() {
     
     overlayGUI = new ofxUISuperCanvas( "OVERLAYS", 290, 20, 200, 200 );
     overlayGUI->addToggle( "DRAW CRAWL", &crawl.visible );
-    overlayGUI->addSlider( "FONT SIZE", 8.0, 64.0, &crawl.fontSize );
+    //overlayGUI->addSlider( "FONT SIZE", 8.0, 64.0, &crawl.fontSize );
     overlayGUI->addSlider( "CRAWL SPEED", 1.0, 20.0, &crawl.crawlSpeed );
     overlayGUI->addSpacer();
     overlayGUI->addToggle( "DRAW VOTING", &voteDisplay.visible );
