@@ -70,7 +70,7 @@ public:
     void showGUI();
     void disableGuiEvents();
     void drawGUI();
-    void setVideoSource( ofBaseImage * source );
+    bool setVideoSource( ofBaseImage * source );
     void init();
     void update( bool isFrameNew );
     void updateEffect( BaseEffect * effect );

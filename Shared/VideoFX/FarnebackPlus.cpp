@@ -24,9 +24,15 @@ void FarnebackPlus::updateVectorFieldTexture() {
     
     if ( vf.getWidth() != w || vf.getHeight() != h ) {
         cout << "allocating vector field texture and pixels" << endl;
+        
         vf.allocate( w, h, OF_IMAGE_COLOR );
+
+        /*
+        float* pix = new float[w * h * 3];
+        memset((char*)pix, 0x00, w * h * 3 * sizeof(float));
+        vf.setFromPixels(pix, w, h, OF_IMAGE_COLOR);
+        */
     }
-    
     
     ofVec2f v;
     
@@ -43,6 +49,7 @@ void FarnebackPlus::updateVectorFieldTexture() {
                 max = v.y;
 //            vf.getPixels()[index+0] = ofMap( v.x, -100.0f, 100.0f, 0, 1.0, true );
 //            vf.getPixels()[index+1] = ofMap( v.y, -100.0f, 100.0f, 0, 1.0, true );
+
             vf.getPixels()[index+0] = v.x;
             vf.getPixels()[index+1] = v.y;
             vf.getPixels()[index+2] = 0;

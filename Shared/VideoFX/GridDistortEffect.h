@@ -48,16 +48,19 @@ public:
                 mesh.addVertex(ofVec2f(x * xStepSize, y * yStepSize));
                 mesh.addTexCoord(ofVec2f(x * xStepSize, y * yStepSize));
                 
-                Particle2D *particle    = physics.makeParticle( ofVec2f( x * xStepSize, y * yStepSize ) );
+                ofVec2f position(x * xStepSize, y * yStepSize);
+                Particle2D *particle = physics.makeParticle( position );
                 particle->moveBy( ofVec2f( ofRandom(-10.0,10.0), ofRandom(-10.0,10.0 ) ) );
+
                 Particle2D *tether      = physics.makeParticle( ofVec2f( x * xStepSize, y * yStepSize ) );
+
                 // tether is fixed
                 tether->makeFixed();
                 if ( x==0 || x==xSteps-1 || y==0 || y==ySteps-1 )
                     particle->makeFixed();
-                else
+                else {
                     physics.makeSpring( particle, tether, springStrength, 0 );
-                
+                }
             }
         }
         for(int y = 0; y + 1 < ySteps; y++) {
@@ -109,7 +112,7 @@ public:
     }
     
     void update() {
-        
+
       if ( xSteps != (int)(getWidth() / stepSize) || ySteps != (int)(getHeight() / stepSize) ) {
             initMesh();
       }
@@ -136,24 +139,45 @@ public:
             float radius = particleRadius * scale;
             for ( int i=0; i<physics.numberOfParticles(); i++ ) {
                 Particle2D *p = physics.getParticle(i);
-                if ( p->isFixed() )
+                if ( p->isFixed() ) {
                     continue;
+                }
                 else {
                     Particle2D *tether = physics.getParticle(i+1);
                     // get force where this particle is
-                    ofVec2f pos = p->getPosition() * scale;
+                    ofVec2f pos = p->getPosition();
+                    printf(">>>> %f - %f\n", pos.x, pos.y);
+
+                    if(pos.x != pos.x) {
+                      printf("...- continue\n");
+                      continue;
+                    }
+
+                    pos *= scale;
+
+
                     ofVec2f farnCoord( (int)ofClamp(pos.x,0,farneback->getWidth()-1), (int)ofClamp(pos.y,0,farneback->getHeight()-1) );
+
+                    //ofVec2f ff = farneback->getFlowPosition( farnCoord.x, farnCoord.y );
+                    //printf("farneback.w = %d, h = %d, farn: %f, %f, fff: %f, %f\n", farneback->getWidth(), farneback->getHeight(), farnCoord.x, farnCoord.y, ff.x, ff.y);
                     ofVec2f flow = (farneback->getFlowPosition( farnCoord.x, farnCoord.y ) - farnCoord );
+                    if(flow.x != flow.x || flow.y != flow.y) {
+                      printf("warning: the farneback values are invalid.\n");
+                      continue;
+                    }
+                    //printf("%f, %f, %f\n", forceScale, flow.x, flow.y);
                     p->addVelocity( flow * forceScale );
                     mesh.setVertex( i/2, tether->getPosition().interpolated( p->getPosition(), amount ) );
                 }
             }
             printf("update grid distort.\n");
             physics.update();
+            //            ::exit(0);
         }
-        
+        printf("...\n");
         pingPong.dst->end();
         ofPopStyle();
+
     }
     
     ShaderMap getShaderMap() {

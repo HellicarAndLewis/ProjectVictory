@@ -6,6 +6,9 @@ void testApp::setup(){
     ofSetVerticalSync( true );
     ofSetFrameRate( 60 );
     
+    ofPixels pix;
+    
+    
     #ifdef DISABLE_STREAMING
     cout << "Disabled streaming: compile with 'Release' to enable" << endl;
     #else
@@ -18,14 +21,6 @@ void testApp::setup(){
 
     vfx1.init();
     // vfx1.setVideoSource( videoFeedController.videoSource );
-#if !defined(DISABLE_STREAMING)
-    vfx1.setVideoSource(&ldeck_img);
-#else 
-    video_grabber.setDeviceID(0);
-    video_grabber.setDesiredFrameRate(60);
-    video_grabber.initGrabber(640,480);
-    vfx1.setVideoSource(&video_grabber);
-#endif
     
     vfx1.setColor( colors[colorIndex] );
 
@@ -39,7 +34,7 @@ void testApp::setup(){
     websystemController.setOverlay( &overlay );
     websystemController.init();
     
-#ifndef DISABLE_STREAMING
+#if !defined(DISABLE_STREAMING)
     // MULTI STREAMER
     // --------------------------------------------------
     int fps = 15;
@@ -53,8 +48,8 @@ void testApp::setup(){
       ::exit(EXIT_FAILURE);
     }
   
-    //if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
-    if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
+    if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
+      //if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
       printf("error: cannot get decklink setup.\n");
       ::exit(EXIT_FAILURE);
     }
@@ -74,6 +69,10 @@ void testApp::setup(){
     ldeck_started = false;
     ldeck_new_img = false;
     ldeck_img.allocate(lw, lh, OF_IMAGE_COLOR);
+    //unsigned char* p = new unsigned char[lw * lh * 3];
+    //memset((char*)p, 0x00, (lw * lh * 3));
+    //ldeck_img.setFromPixels(p, lw, lh, OF_IMAGE_COLOR);
+    printf("%d x %d\n", lw, lh);
 
     sound_stream.listDevices();
     sound_stream.setup(this, 0, 2, 44100, 1024, 4);
@@ -83,6 +82,23 @@ void testApp::setup(){
       printf("error: cannot start the screen grab saver.\n");
       ::exit(EXIT_FAILURE);
     }
+
+#if !defined(DISABLE_STREAMING)
+    if(!vfx1.setVideoSource(&ldeck_img)) {
+      printf("error: cannot set video source.\n");
+      ::exit(EXIT_FAILURE);
+    }
+#else 
+    video_grabber.setDeviceID(0);
+    video_grabber.setDesiredFrameRate(60);
+    video_grabber.initGrabber(640,480);
+
+    if(!vfx1.setVideoSource(&video_grabber)) {
+      printf("error: cannot set the video source.\n");
+      ::exit(EXIT_FAILURE);
+    }
+#endif
+
     
     // we don't want the gui to be drawn on the draw event
     /*
@@ -154,11 +170,10 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
+  //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     if (ofGetElapsedTimef() < 2.0f) { return; }
     
 #ifndef DISABLE_STREAMING
-
     // get decklink image.
     if(ldeck.hasNewFrame()) {
 
@@ -176,7 +191,7 @@ void testApp::draw(){
       ldeck.resetHasNewFrame();
       ldeck_new_img = true;
     }
-
+   
     // do we need to stream?
     if(streamer.wantsNewFrame()) {
       streamer.beginGrab();

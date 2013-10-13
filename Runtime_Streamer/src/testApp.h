@@ -12,7 +12,7 @@
 #include "WebSystemController.h"
 #include "ScreenGrabSaver.h"
 
-#define DISABLE_STREAMING 1
+//#define DISABLE_STREAMING 1
 #ifndef DISABLE_STREAMING
 #include <ofxVideoStreamer/ofxMultiVideoStreamer.h>
 #include <ofxLinkDeck/ofxLinkDeck.h>

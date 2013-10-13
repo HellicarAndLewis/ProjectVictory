@@ -144,11 +144,22 @@ void VideoFX::guiEvent(ofxUIEventArgs &e) {
     updateGUI();
 }
 
-void VideoFX::setVideoSource( ofBaseImage *source ) {
+bool VideoFX::setVideoSource( ofBaseImage *source ) {
+
+  if(!source) {
+    printf("error: invalid source in VideoFX.\n");
+    return false;
+  }
+
   static bool is_allocated = false;
 
   int w = source->getWidth();
   int h = source->getHeight();
+
+  if(!w || !h || w < 0 || h < 0) {
+    printf("error: invalid width / height of the base image: %d x %d.\n", w, h);
+    return false;
+  }
     
   videoSource = source;
 
@@ -165,6 +176,7 @@ void VideoFX::setVideoSource( ofBaseImage *source ) {
     }
   }
 
+  return true;
 }
 
 void VideoFX::update( bool isFrameNew ) {
@@ -216,7 +228,7 @@ void VideoFX::update( bool isFrameNew ) {
                 khronosEffect.setVideo3D( circularTexture.texData );
             }
             else
-                effect->setDiffuseTexture( videoSource->getTextureReference().texData );
+              effect->setDiffuseTexture( videoSource->getTextureReference().texData );
         }
         else {
             effect->setDiffuseTexture( *texData );
