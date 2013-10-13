@@ -18,8 +18,6 @@
 #include <ofxLinkDeck/ofxLinkDeck.h>
 #endif
 
-#include "VideoFeedController.h"
-
 class testApp : public ofBaseApp{
 public:
 
