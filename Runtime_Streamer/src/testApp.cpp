@@ -304,12 +304,12 @@ void testApp::keyPressed(int key) {
       }
       vfx1.setColor( colors[colorIndex] );
     }
-    else if(key == 'f') {
-      ofToggleFullscreen();
-      static bool is_fs = false;
-      is_fs = !is_fs;
-      //     ofSetFullScreen(is_fs);
-    }
+//    else if(key == 'f') {
+//      ofToggleFullscreen();
+//      static bool is_fs = false;
+//      is_fs = !is_fs  ;
+//      //     ofSetFullScreen(is_fs);
+//    }
 }
 
 //--------------------------------------------------------------

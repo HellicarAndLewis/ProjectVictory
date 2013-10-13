@@ -119,7 +119,6 @@
 		93530A9C1804A73700840FFE /* Overlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93530A9A1804A73700840FFE /* Overlay.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CA07C8AB18056DFA000EF8A3 /* ofxFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA07C8A918056DFA000EF8A3 /* ofxFluid.cpp */; };
-		CA3852381806A80C00E1F8A5 /* VideoFeedController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA3852361806A80C00E1F8A5 /* VideoFeedController.cpp */; };
 		CAAC013918057AD800BF6858 /* WebSystemController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC013718057AD800BF6858 /* WebSystemController.cpp */; };
 		CAAC0363180584BE00BF6858 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0362180584BE00BF6858 /* jsoncpp.cpp */; };
 		CAAC036A180584DF00BF6858 /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAAC0364180584DF00BF6858 /* Client.cpp */; };
@@ -593,8 +592,6 @@
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		CA07C8A918056DFA000EF8A3 /* ofxFluid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFluid.cpp; sourceTree = "<group>"; };
 		CA07C8AA18056DFA000EF8A3 /* ofxFluid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFluid.h; sourceTree = "<group>"; };
-		CA3852361806A80C00E1F8A5 /* VideoFeedController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoFeedController.cpp; sourceTree = "<group>"; };
-		CA3852371806A80C00E1F8A5 /* VideoFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoFeedController.h; sourceTree = "<group>"; };
 		CAAC013718057AD800BF6858 /* WebSystemController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebSystemController.cpp; sourceTree = "<group>"; };
 		CAAC013818057AD800BF6858 /* WebSystemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSystemController.h; sourceTree = "<group>"; };
 		CAAC0362180584BE00BF6858 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = ../../../apps/ProjectVictory/addons/ofxLibwebsockets/libs/jsoncpp/jsoncpp.cpp; sourceTree = "<group>"; };
@@ -1257,8 +1254,8 @@
 		484B8BCA1801C44E0000D7F9 /* Crawl */ = {
 			isa = PBXGroup;
 			children = (
-				484B8BCB1801C44E0000D7F9 /* Crawl.cpp */,
 				484B8BCC1801C44E0000D7F9 /* Crawl.h */,
+				484B8BCB1801C44E0000D7F9 /* Crawl.cpp */,
 				484B8BCD1801C44E0000D7F9 /* VoteDisplay.cpp */,
 				484B8BCE1801C44E0000D7F9 /* VoteDisplay.h */,
 				93530A97180453F100840FFE /* TextOverlay.cpp */,
@@ -1894,8 +1891,6 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
-				CA3852371806A80C00E1F8A5 /* VideoFeedController.h */,
-				CA3852361806A80C00E1F8A5 /* VideoFeedController.cpp */,
 				CAAC013818057AD800BF6858 /* WebSystemController.h */,
 				CAAC013718057AD800BF6858 /* WebSystemController.cpp */,
 			);
@@ -2092,7 +2087,6 @@
 				CAAC036C180584DF00BF6858 /* Events.cpp in Sources */,
 				484B8B3F1801C3090000D7F9 /* b2DistanceJoint.cpp in Sources */,
 				484B8B401801C3090000D7F9 /* b2FrictionJoint.cpp in Sources */,
-				CA3852381806A80C00E1F8A5 /* VideoFeedController.cpp in Sources */,
 				484B8B411801C3090000D7F9 /* b2GearJoint.cpp in Sources */,
 				484B8B421801C3090000D7F9 /* b2Joint.cpp in Sources */,
 				484B8B431801C3090000D7F9 /* b2LineJoint.cpp in Sources */,
