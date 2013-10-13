@@ -92,7 +92,7 @@ public:
         return shaderMap;
     }
     
-    void applyShaderMap(ShaderMap shaderMap) {
-        if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble(); }
+    void applyShaderMap(ShaderMap shaderMap, float multiplier) {
+        if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble() * multiplier; }
     }
 };

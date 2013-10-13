@@ -16,6 +16,8 @@ public:
     WebSystemController()
     :videoFX(0),
     overlay(0),
+    decayRate(0.3f),
+    effectImpact(1.0f),
     webSystemIsEnabled(false),
     shoutoutsAreEnabled(false),
     countHashTags(false),
@@ -77,6 +79,10 @@ protected:
     
     VideoFX *videoFX;
     Overlay *overlay;
+    
+    // The precentage of decay per second (e.g. 0.1 == 10%)
+    float decayRate;
+    float effectImpact;
     
 };
 
