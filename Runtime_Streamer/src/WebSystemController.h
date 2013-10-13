@@ -16,6 +16,8 @@ public:
     WebSystemController()
     :videoFX(0),
     overlay(0),
+    decayRate(0.3f),
+    effectImpact(1.0f),
     webSystemIsEnabled(false),
     shoutoutsAreEnabled(false),
     countHashTags(false),
@@ -68,7 +70,9 @@ public:
     ofxUITextInput *vote1TextInput;
     ofxUITextInput *vote2TextInput;
     void voteingGUIEvent(ofxUIEventArgs &e);
-    
+    void disableGuiEvents();
+    void drawGUI();
+
 protected:
     
     ScreenShotTriggers screenShotTriggers;
@@ -76,4 +80,34 @@ protected:
     VideoFX *videoFX;
     Overlay *overlay;
     
+    // The precentage of decay per second (e.g. 0.1 == 10%)
+    float decayRate;
+    float effectImpact;
+    
 };
+
+inline void WebSystemController::disableGuiEvents() {
+
+  if(voteGUI) {
+    // voteGUI->disableAppEventCallbacks();
+    voteGUI->disableAppDrawCallback();
+  }
+
+  if(websystemGUI) {
+    //websystemGUI->disableAppEventCallbacks();
+    websystemGUI->disableAppDrawCallback();
+  }
+  
+}
+
+inline void WebSystemController::drawGUI() {
+
+  if(websystemGUI) {
+    websystemGUI->draw();
+  }
+
+  if(voteGUI) {
+    voteGUI->draw();
+  }
+
+}

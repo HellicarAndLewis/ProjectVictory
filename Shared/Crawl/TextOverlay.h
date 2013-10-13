@@ -7,6 +7,7 @@ public:
     
     bool visible = false;
     float fontScale = 1.0;
+    float lineSpacing = 20.0;
     string text = "test";
     ofVec2f pos;
     ofTrueTypeFont font;

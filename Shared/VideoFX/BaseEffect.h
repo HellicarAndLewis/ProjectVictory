@@ -24,6 +24,18 @@ public:
             widgets[i]->setVisible( visible );
         }
     }
+
+    #if 1
+    void disableGuiEvents() {
+      /*
+      for(std::vector<ofxUIWidget*>::iterator it = widgets.begin(); it != widgets.end(); ++it) {
+        (*it)->disableAppDrawCallback();
+      }
+      */
+      //settings->disableAppEventCallbacks();
+      settings->disableAppDrawCallback();
+    }
+    #endif
     
     string getPathToShader() {
         return pathToShader;
@@ -115,7 +127,7 @@ public:
     }
     
     // For applying a shader map
-    virtual void applyShaderMap(ShaderMap shaderMap) {
+    virtual void applyShaderMap(ShaderMap shaderMap, float multiplier = 1.0f) {
         
     }
     

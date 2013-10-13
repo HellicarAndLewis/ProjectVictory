@@ -68,6 +68,8 @@ public:
     void updateGUI();
     void hideGUI();
     void showGUI();
+    void disableGuiEvents();
+    void drawGUI();
     void setVideoSource( ofBaseImage * source );
     void init();
     void update( bool isFrameNew );
@@ -82,6 +84,30 @@ public:
     
 };
 
+inline void VideoFX::disableGuiEvents() {
+#if 0  
+  vfxGUI->disableAppEventCallbacks();
+  presetGUI->disableAppEventCallbacks();
+#else
+  vfxGUI->disableAppDrawCallback();
+  presetGUI->disableAppDrawCallback();
+#endif  
+  for(std::vector<BaseEffect*>::iterator it = effects.begin(); it != effects.end(); ++it) {
+    BaseEffect* fx = *it;
+    fx->disableGuiEvents();
+  }
+}
+
+inline void VideoFX::drawGUI() {
+  vfxGUI->draw();
+  presetGUI->draw();
+
+  for(std::vector<BaseEffect*>::iterator it = effects.begin(); it != effects.end(); ++it) {
+    BaseEffect* fx = *it;
+    fx->draw();
+  }
+
+}
 
 bool CompareBaseEffects( BaseEffect * a, BaseEffect * b );
 

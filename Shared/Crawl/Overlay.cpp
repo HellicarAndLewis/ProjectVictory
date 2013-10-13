@@ -28,6 +28,7 @@ void Overlay::init() {
     overlayGUI->addSpacer();
     overlayGUI->addToggle( "DRAW TITLE", &textOverlay.visible );
     overlayGUI->addSlider( "TITLE SCALE", .5, 5.0, &textOverlay.fontScale );
+    overlayGUI->addSlider( "LINE SPACING", 0.0, 100.0, &textOverlay.lineSpacing );
     overlayGUI->addTextInput( "TEXT 1", "input text" )->setAutoClear( false );
     overlayGUI->addTextInput( "TEXT 2", "input text" )->setAutoClear( false );
     overlayGUI->addTextInput( "TEXT 3", "input text" )->setAutoClear( false );

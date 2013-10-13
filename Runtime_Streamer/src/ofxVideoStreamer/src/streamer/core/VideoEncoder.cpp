@@ -18,6 +18,8 @@ extern "C" {
 
 void videoencoder_x264_log(void* param, int level, const char* fmt, va_list arg) {
 
+  return; // disabled for a sec.
+
 #if !defined(NDEBUG)
   char buf[1024 * 8]; 
   vsprintf(buf, fmt, arg);

@@ -12,13 +12,11 @@
 #include "WebSystemController.h"
 #include "ScreenGrabSaver.h"
 
-//#define DISABLE_STREAMING 1
+#define DISABLE_STREAMING 1
 #ifndef DISABLE_STREAMING
 #include <ofxVideoStreamer/ofxMultiVideoStreamer.h>
 #include <ofxLinkDeck/ofxLinkDeck.h>
 #endif
-
-#include "VideoFeedController.h"
 
 class testApp : public ofBaseApp{
 public:
@@ -41,7 +39,7 @@ public:
     //ofVideoGrabber videoGrabber;
     ofBaseVideoDraws *videoSource;
 
-    VideoFX vfx1, vfx2;
+    VideoFX vfx1;
     VideoFX *big;
 
     void setup();
@@ -60,15 +58,19 @@ public:
         
     VideoFXExporter videoFXExporter;
     WebSystemController websystemController;
-    VideoFeedController videoFeedController;
+    //    VideoFeedController videoFeedController;
     ScreenGrabSaver grab_saver;
+    std::string screenshot_name;
     
 #ifndef DISABLE_STREAMING
+    bool ldeck_started;
     bool ldeck_new_img;
     ofImage ldeck_img;
     ofxLinkDeck ldeck;
     ofxMultiVideoStreamer streamer; /* this is handling the video streaming */
     ofSoundStream sound_stream; /* we use a sound stream to get audio into the video stream */
+#else 
+    ofVideoGrabber video_grabber;
 #endif
     
 };
