@@ -12,11 +12,16 @@ void ofApp::setup(){
 
 	gui.init();
 
+	auto screen0 = Builder::makeBlank();
 	auto screen1Grid = Builder::makeGrid();
 	auto screen2Grid = Builder::makeGrid();
 	screen1Grid->setColsCount(1);
 	screen2Grid->setColsCount(2);
 
+	//screen 0 by JGL + EW
+	screen0->onDraw += [this] (DrawArguments& args) {
+		this->crossfader->getTarget().draw(0,0,args.parentBounds.getWidth(), args.parentBounds.getHeight());
+	};
 
 	//--
 	//screen 1
@@ -79,17 +84,19 @@ void ofApp::setup(){
 	auto rootGrid = Builder::makeGrid();
 	rootGrid->setColsCount(1);
 	gui.add(rootGrid);
+	rootGrid->add(screen0); //<output screen
 	rootGrid->add(screen1Grid);
 	rootGrid->add(screen2Grid);
 	{
 		vector<float> heights;
 		heights.push_back(1080);
 		heights.push_back(1080);
+		heights.push_back(1080);
 		rootGrid->setHeights(heights);
 	}
 
-	ofSetWindowPosition(1080, 0);
-	ofSetWindowShape(1920, 1080 * 2);
+	ofSetWindowPosition(0, -1080);
+	ofSetWindowShape(1920, 1080 * 3);
 }
 
 //--------------------------------------------------------------
