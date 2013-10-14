@@ -52,8 +52,12 @@ public:
     }
     
     float amount;
-    void setAmount( float amount ) {
-        this->amount = amount;
+    void setAmount( float v ) {
+        static float guiV = numeric_limits<float>::min();
+        if ( v != guiV ) {
+            amount = v;
+            guiV = v;
+        }
     }
     
     ofColor color;

@@ -58,9 +58,6 @@ public:
 
     // GUI
     // -----------------------------
-    void setAmount(float v) {
-      amount = v;
-    }
     
     void setRGBAmount(float v) {
       rgbAmount = v;
