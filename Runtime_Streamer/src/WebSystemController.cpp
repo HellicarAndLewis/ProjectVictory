@@ -13,8 +13,8 @@ void WebSystemController::init() {
     connection.addCommandListener(this, &WebSystemController::onCommand);
     
     // Set up the voting GUI
-    initVotingGUI();
-    initWebSystemGUI();
+    //initVotingGUI();
+    //initWebSystemGUI();
 }
 
 void WebSystemController::update() {
@@ -35,19 +35,23 @@ void WebSystemController::update() {
 }
 
 #pragma mark - VoteSystem
-
-void WebSystemController::initWebSystemGUI() {
   /*
+void WebSystemController::initWebSystemGUI() {
+
     websystemGUI = new ofxUISuperCanvas( "WEB SYSTEM", 20, 20, 200, 200 );
     websystemGUI->setColorBack( ofColor(ofColor::green, 125) );
-    websystemGUI->addLabelToggle( "ENABLED", &webSystemIsEnabled );
+    websystemGUI->addLabelToggle( "IS ENABLED", &webSystemIsEnabled );
     websystemGUI->addLabelToggle( "SHOUTOUTS", &shoutoutsAreEnabled );
     websystemGUI->addLabelToggle( "COMMANDS", &commandsAreEnabled );
-    websystemGUI->addLabelToggle( "DECAYS", &shouldDecaysEffects );
     websystemGUI->addLabelToggle( "COUNT HASH TAGS", &countHashTags );
+    websystemGUI->addSpacer();
+    websystemGUI->addLabelToggle( "DECAYS", &shouldDecaysEffects );
+    websystemGUI->addSlider( "DECAY SPEED", 0.001f, 0.5f, &decayRate);
+    websystemGUI->addSlider( "COMMAND IMPACT", 0.001f, 1.0f, &effectImpact);
     websystemGUI->autoSizeToFitWidgets();
-  */
+
 }
+  */
 
 #pragma mark – Web System Connection
 
@@ -105,12 +109,11 @@ void WebSystemController::onCommand(Json::Value body) {
     string tweetid = s.str();
     tweetid.erase(tweetid.size() - 1);
     
-    
     screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
     
     // Apply the payload to the videofx. They need to be a decayer somewhere, so this may not be how it works.
     if (videoFX) {
-        WebSystem::Utils::applyPayload( videoFX, body["payload"] );
+        WebSystem::Utils::applyPayload( videoFX, body["payload"], effectImpact );
         cout << "should have applied payload" << endl;
     }
     
@@ -123,17 +126,17 @@ void WebSystemController::decayVideoFXToDefault() {
     // store the last time on first run (this won't work if using multiple effects)
     static float lastUpdate = ofGetElapsedTimef();
     
-    // I think, the 0.3 means that each effect will decay by 30% every second
-    WebSystem::Utils::decayEffects( videoFX, lastUpdate, 0.3f );
+    // decayRate: I think, the 0.3 means that each effect will decay by 30% every second
+    WebSystem::Utils::decayEffects( videoFX, lastUpdate, decayRate );
     
     lastUpdate = ofGetElapsedTimef();
     
 }
 
 #pragma mark - VoteSystem
-
+/*
 void WebSystemController::initVotingGUI() {
-    voteGUI = new ofxUISuperCanvas( "VOTEING SYSTEM", 20, 180, 200, 200 );
+    voteGUI = new ofxUISuperCanvas( "VOTEING SYSTEM", 20, 280, 200, 200 );
     voteGUI->setColorBack(ofColor(ofColor::thistle, 125));
     voteGUI->addLabel("TOPIC 1");
     vote1TextInput = voteGUI->addTextInput("TOPIC 1", "");
@@ -160,6 +163,7 @@ void WebSystemController::voteingGUIEvent(ofxUIEventArgs &e) {
     }
     
 }
+*/
 
 // Image saving
 string WebSystemController::getNextScreenShotFilename() {
@@ -171,13 +175,11 @@ string WebSystemController::getNextScreenShotFilename() {
     
     bool found = false;
     while ( !found && it != screenShotTriggers.end()) {
-        
         if ( it->first < currentTime + 5.0f) {
             found = true;
             filename = it->second;
             screenShotTriggers.erase(it);
         }
-        
     }
     
     return filename;

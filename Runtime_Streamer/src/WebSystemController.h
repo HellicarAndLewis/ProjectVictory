@@ -16,6 +16,8 @@ public:
     WebSystemController()
     :videoFX(0),
     overlay(0),
+    decayRate(0.3f),
+    effectImpact(1.0f),
     webSystemIsEnabled(false),
     shoutoutsAreEnabled(false),
     countHashTags(false),
@@ -73,13 +75,17 @@ public:
     string getNextScreenShotFilename();
     
     // VoteSystem
+    /*
     void initVotingGUI();
+
     ofxUISuperCanvas *voteGUI;
     ofxUITextInput *vote1TextInput;
     ofxUITextInput *vote2TextInput;
+
     void voteingGUIEvent(ofxUIEventArgs &e);
     void disableGuiEvents();
     void drawGUI();
+    */
 
 protected:
     
@@ -88,8 +94,13 @@ protected:
     VideoFX *videoFX;
     Overlay *overlay;
     
+    // The precentage of decay per second (e.g. 0.1 == 10%)
+    float decayRate;
+    float effectImpact;
+    
 };
 
+/*
 inline void WebSystemController::disableGuiEvents() {
 
   if(voteGUI) {
@@ -115,6 +126,7 @@ inline void WebSystemController::drawGUI() {
   }
 
 }
+*/
 
 inline void WebSystemController::setEnabled(bool f) {
   webSystemIsEnabled = f;

@@ -19,7 +19,11 @@
 #include <ofxLinkDeck/ofxLinkDeck.h>
 #endif
 
+
+
 //#include "VideoFeedController.h"
+
+
 
 class testApp : public ofBaseApp{
 public:
@@ -50,6 +54,7 @@ public:
     void updateGUI();
     void draw();
     void drawInternal();    
+    void takeScreenGrab();
     void exit();
 
     void keyPressed(int key);
@@ -60,7 +65,7 @@ public:
 
     void audioIn(float* input, int nsize, int nchannels); /* the audio input for the video streamer */
         
-    VideoFXExporter videoFXExporter;
+    // VideoFXExporter videoFXExporter;
     WebSystemController websystemController;
     //    VideoFeedController videoFeedController;
     ScreenGrabSaver grab_saver;

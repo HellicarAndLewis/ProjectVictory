@@ -127,7 +127,7 @@ public:
     }
     
     // For applying a shader map
-    virtual void applyShaderMap(ShaderMap shaderMap) {
+    virtual void applyShaderMap(ShaderMap shaderMap, float multiplier = 1.0f) {
         
     }
     

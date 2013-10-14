@@ -61,9 +61,9 @@ public:
     BaseEffect *finalEffect;     // a pointer to the final effect of the chain. this is what gets drawn back to the screen
 
     // gui
-    ofxUISuperCanvas *vfxGUI;
-    ofxUICanvas *presetGUI;
-    ofxUIDropDownList *presetWidget;
+    //    ofxUISuperCanvas *vfxGUI;
+    //    ofxUICanvas *presetGUI;
+    //ofxUIDropDownList *presetWidget;
 
     // new gui
     void setKhronosEnabled(bool f);
@@ -96,6 +96,7 @@ public:
 };
 
 inline void VideoFX::disableGuiEvents() {
+  /*
 #if 0  
   vfxGUI->disableAppEventCallbacks();
   presetGUI->disableAppEventCallbacks();
@@ -107,9 +108,11 @@ inline void VideoFX::disableGuiEvents() {
     BaseEffect* fx = *it;
     fx->disableGuiEvents();
   }
+  */
 }
 
 inline void VideoFX::drawGUI() {
+  /*
   vfxGUI->draw();
   presetGUI->draw();
 
@@ -117,6 +120,7 @@ inline void VideoFX::drawGUI() {
     BaseEffect* fx = *it;
     fx->draw();
   }
+  */
 
 }
 

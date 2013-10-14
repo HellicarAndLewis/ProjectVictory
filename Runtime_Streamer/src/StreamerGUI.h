@@ -22,11 +22,23 @@ extern "C" {
 #  include <uv.h>
 }
 
-/*
-void streamer_gui_thread(void* user);
-struct GUITask {
+// -----------------------------------------------------
+
+void streamer_gui_cleanup_name(std::string& fix); /* ofxGui has a bug with names that have certain characters ...*/
+
+class StreamerGUI;
+
+class OverlayImage {
+ public:
+  OverlayImage(StreamerGUI* gui);
+  void onPressed(bool& v);
+  
+  StreamerGUI* gui;
+  ofFile file;
+  ofxToggle toggle;
 };
-*/
+
+// -----------------------------------------------------
 
 class StreamerGUI {
  public:
@@ -35,15 +47,19 @@ class StreamerGUI {
   bool setup();
   void update();
   void draw();
+  void save(); /* saves the current state */
+  void load(); /* loads the last saved state */
+  void show(); /* show the gui */
+  void hide(); /* hide the gui */
   bool onKeyPressed(int key); /* used to toggle the effect on or off (1-...), returns true when it's handled */
+  bool didOverlayImageChange(); /* returns true when the overlay image should be drawn/updated - call resetOverlayImageChanged() after handling this */
+  void resetOverlayImageChanged(); /* after  you've checked which overlay image should be should you need to call this */
  public:
-  void onClickedTopicA();
-  void onClickedTopicB();
-  void lock(); /* lock mutex */
-  void unlock(); /* unlock mutex */
-                  
+  void setupOverlay(); /* sets up the overlay gui */
 
  public:
+  /* general stuff */
+  bool is_visible;
 
   /* fx panel */
   ofxPanel fx_panel;
@@ -110,32 +126,42 @@ class StreamerGUI {
   ofxToggle web_decay_effects;
   ofxToggle web_count_hash_tags;
 
-  /* voting */
-  ofxPanel vote_panel;
-  ofxLabel vote_topic_a;
-  ofxLabel vote_topic_b;
-  ofxButton vote_button_a;
-  ofxButton vote_button_b;
+  /* overlay panel */
+  ofxPanel overlay_panel;
+  ofxToggle overlay_image_enabled;
+  ofxFloatSlider overlay_image_opacity;
+  std::vector<OverlayImage*> overlay_images;
+  size_t overlay_dx; 
+  bool overlay_changed;
 
-  /* text is received from another app because it stops the event loop */
-  ofxOscReceiver receiver;
+  /* crawl panel */
+  ofxPanel crawl_panel;
+  ofxToggle crawl_enabled;
+  ofxFloatSlider crawl_speed;
 
-  /* we dispatch a thread in which we show the input popup, else it blocks .. */
-  /*
-  std::vector<GUITask*> work;
-  uv_thread_t thread;
-  uv_mutex_t mutex;
-  uv_cond_t cv;
-  */
+  /* text overlay panel */
+  ofxPanel text_panel;
+  ofxToggle text_enabled;
+  ofxFloatSlider text_scale;
+  ofxFloatSlider text_spacing;
+  ofxOscReceiver receiver;   /* text is received from another app because it stops the event loop */
+  std::string overlay_text;
 };
 
-/*
-inline void StreamerGUI::lock() {
-  uv_mutex_lock(&mutex);
+inline bool StreamerGUI::didOverlayImageChange() {
+  return overlay_changed;
 }
 
-inline void StreamerGUI::unlock() {
-  uv_mutex_unlock(&mutex);
+inline void StreamerGUI::resetOverlayImageChanged() {
+  overlay_changed = false;
 }
-*/
+
+inline void StreamerGUI::show() {
+  is_visible = true;
+}
+
+inline void StreamerGUI::hide() {
+  is_visible = false;
+}
+
 #endif

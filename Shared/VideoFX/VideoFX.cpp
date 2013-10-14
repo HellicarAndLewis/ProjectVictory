@@ -21,23 +21,23 @@ void VideoFX::init() {
     num = ++count;
     opticalFlowEnabled = true;
     
-    vfxGUI = new ofxUISuperCanvas( "VFX" + ofToString(num), 840, 20, 200, 200 );
-    vfxGUI->setColorBack( ofColor( ofColor::red, 150 ) );
+    //    vfxGUI = new ofxUISuperCanvas( "VFX" + ofToString(num), 840, 20, 200, 200 );
+    //    vfxGUI->setColorBack( ofColor( ofColor::red, 150 ) );
     
     // SETUP GUI FOR ALL EFFECTS
     for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->farneback = &farneback;
-        effects[i]->setupGUI( vfxGUI );
+        //        effects[i]->setupGUI( vfxGUI );
     }
     
-    ofAddListener( vfxGUI->newGUIEvent, this, &VideoFX::guiEvent );
-    vfxGUI->autoSizeToFitWidgets();
-    vfxGUI->loadSettings( "GUI/vfx" + ofToString(num) + ".xml" );
+    //    ofAddListener( vfxGUI->newGUIEvent, this, &VideoFX::guiEvent );
+    //    vfxGUI->autoSizeToFitWidgets();
+    //    vfxGUI->loadSettings( "GUI/vfx" + ofToString(num) + ".xml" );
     
-    presetGUI = new ofxUICanvas( ofGetWidth() - 200, 58, 200, 200 );
-    presetGUI->setColorBack( ofColor( ofColor::yellowGreen, 150 ) );
-    presetGUI->addLabelButton( "SAVE", false );
-    
+    //   presetGUI = new ofxUICanvas( ofGetWidth() - 200, 58, 200, 200 );
+    //    presetGUI->setColorBack( ofColor( ofColor::yellowGreen, 150 ) );
+    //    presetGUI->addLabelButton( "SAVE", false );
+    /*
     vector<string> presets;
     presetWidget = presetGUI->addDropDownList( "PRESETS", presets );
     fillPresets();
@@ -45,15 +45,17 @@ void VideoFX::init() {
     ofAddListener( presetGUI->newGUIEvent, this, &VideoFX::presetEvent );
     
     cout << presetWidget->getToggles().size() << endl;
+    */
 
     updateGUI();
 
 
     
+//    disableGuiEvents();
 }
 
 void VideoFX::fillPresets() {
-    
+  /*
     presetWidget->clearToggles();
     
     ofDirectory dir("presets");
@@ -65,6 +67,7 @@ void VideoFX::fillPresets() {
             presetWidget->addToggle( files[i].getFileName() );
       }
     }
+  */
 }
 
 void VideoFX::updateGUI() {
@@ -75,43 +78,34 @@ void VideoFX::updateGUI() {
     for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->settings->setVisible( effects[i]->enabled );
     }
-    
-    return;
-    
-    ofxUIWidget *lastWidget = 0;
-    float widgetSpacing = vfxGUI->getWidgetSpacing();
-    ofxUIRectangle *rect = vfxGUI->getRect();
-    vector<ofxUIWidget*> widgets = vfxGUI->getWidgets();
-    for ( int i=0; i<widgets.size(); i++ ) {
-        if ( lastWidget && widgets[i]->isVisible() ) {
-            ofxUIRectangle *lastPaddedRect = lastWidget->getPaddingRect();
-            ofxUIRectangle *widgetRect = widgets[i]->getRect();
-            widgetRect->y = lastPaddedRect->getY()+lastPaddedRect->getHeight()-rect->getY()+widgetSpacing;
-        }
-        lastWidget = widgets[i];
-    }
-    
-    vfxGUI->autoSizeToFitWidgets();
-    
 }
 
 void VideoFX::hideGUI() {
+
+  return; // roxlu - replacing with ofxGui
+  /*
     vfxGUI->setVisible( false );
     for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->settings->setVisible( false );
     }
     presetGUI->setVisible( false );
+  */
+
 }
 
 void VideoFX::showGUI() {
+  return; // roxlu - replacing with ofxGui
+  /*
     vfxGUI->setVisible( true );
     for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->settings->setVisible( effects[i]->enabled );
     }
     presetGUI->setVisible( true );
+  */
 }
 
 void VideoFX::presetEvent( ofxUIEventArgs &e ) {
+  /*
     string name = e.widget->getName();
     if ( name == "PRESETS" ) {
         
@@ -128,7 +122,7 @@ void VideoFX::presetEvent( ofxUIEventArgs &e ) {
                 for ( int i=0; i<effects.size(); i++ ) {
                     effects[i]->saveSettings( presetPath );
                 }
-                vfxGUI->saveSettings( presetPath + "vfx.xml" );
+                //                vfxGUI->saveSettings( presetPath + "vfx.xml" );
                 fillPresets();
             }
         }
@@ -141,13 +135,14 @@ void VideoFX::presetEvent( ofxUIEventArgs &e ) {
             for ( int i=0; i<effects.size(); i++ ) {
                 effects[i]->loadSettings( presetPath );
             }
-            vfxGUI->loadSettings( presetPath + "vfx.xml" );
+            //  vfxGUI->loadSettings( presetPath + "vfx.xml" );
         }
     }
-    
+  */
 }
 
 void VideoFX::guiEvent(ofxUIEventArgs &e) {
+  return;
     string name = e.widget->getName();
     updateGUI();
 }

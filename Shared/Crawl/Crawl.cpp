@@ -33,7 +33,7 @@ void Crawl::addScreenItem() {
     screenItems.push_back( items[ itemIndex ] );
     CrawlItem & item = *(screenItems.end()-1);
     item.pos.x = ofGetWidth();
-    item.pos.y = ofGetHeight();
+    item.pos.y = ofGetHeight() + 12.0f;
     
     if ( ++itemIndex == items.size() )
         itemIndex = 0;

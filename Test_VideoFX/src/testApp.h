@@ -16,6 +16,8 @@ class testApp : public ofBaseApp{
     
         int w, h;
     
+        ofFbo fbo;
+    
         Overlay overlay;
     
         ofColor colors[7] = {

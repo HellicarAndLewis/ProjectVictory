@@ -21,7 +21,7 @@ void testApp::setup(){
     vfx1.setColor( colors[colorIndex] );
     big = &vfx1;
     
-    videoFXExporter.setVideoFX( &vfx1 );
+    // videoFXExporter.setVideoFX( &vfx1 );
     
     overlay.init();
     
@@ -150,7 +150,15 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
   //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    
+  /*
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  glDrawBuffer(GL_BACK);
+  glClear(GL_COLOR_BUFFER_BIT);
+  glViewport(0, 0, ofGetWidth(), ofGetHeight());
+  */
+
+  screenshot_name = websystemController.getNextScreenShotFilename();
+  
 #ifndef DISABLE_STREAMING
     // get decklink image.
     if(ldeck.hasNewFrame()) {
@@ -175,6 +183,7 @@ void testApp::draw(){
     else {
       vfx1.update(false);
     }
+
     // do we need to stream?
     if(streamer.wantsNewFrame()) {
       streamer.beginGrab();
@@ -184,7 +193,13 @@ void testApp::draw(){
 
 #endif
 
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glDrawBuffer(GL_BACK);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glViewport(0, 0, ofGetWidth(), ofGetHeight());
     drawInternal();
+    takeScreenGrab();
+
     //ldeck_img.draw(0,0,ofGetWidth(), ofGetHeight()); // just testing the output of the decklink 
     /*
     videoFXExporter.drawGUI();
@@ -200,10 +215,14 @@ void testApp::draw(){
 }
 
 void testApp::drawInternal() {
-    
+
     big->draw(0, 0, ofGetWidth(), ofGetHeight());
     overlay.draw();
     
+
+}
+
+void testApp::takeScreenGrab() {
     // Screen shot saving
 #if 0
     string nextScreenshotName = websystemController.getNextScreenShotFilename();
@@ -220,14 +239,16 @@ void testApp::drawInternal() {
     }
 #else
 
-    screenshot_name = websystemController.getNextScreenShotFilename();
+    // screenshot_name = websystemController.getNextScreenShotFilename();
     if(screenshot_name.size()) {
       vfx1.hideGUI(); // <-- does 
+   
       if(!grab_saver.grab(screenshot_name)) {
         printf("error: cannot grab - this may not happen! - allocate a bigger buffer in ScreenGrabSaver.\n");
         ::exit(EXIT_FAILURE);
       }
       vfx1.showGUI();
+   
       screenshot_name.clear();
     }
 
@@ -250,6 +271,7 @@ void testApp::keyPressed(int key) {
   */
     // Toggle all UI's with space bar
     if ( key == ' ' ) {
+
         static bool showingGUI = true;
         showingGUI = !showingGUI;
         if (showingGUI) {
@@ -258,11 +280,12 @@ void testApp::keyPressed(int key) {
             vfx1.hideGUI();
         }
         
-        videoFXExporter.exporterGUI->setVisible( showingGUI );
+        //videoFXExporter.exporterGUI->setVisible( showingGUI );
         overlay.overlayGUI->setVisible( showingGUI );
         websystemController.websystemGUI->setVisible(showingGUI);
-        websystemController.voteGUI->setVisible(showingGUI);
+        // websystemController.voteGUI->setVisible(showingGUI);
         //videoFeedController.gui->setVisible(showingGUI);
+
     }
     
     if ( key == 'a' ) {
@@ -277,7 +300,7 @@ void testApp::keyPressed(int key) {
     }
     else if ( key == 161 ) { // tilda key
         big->hideGUI();
-        videoFXExporter.exporterGUI->setVisible( false );
+        // videoFXExporter.exporterGUI->setVisible( false );
         overlay.overlayGUI->setVisible( false );
     }
     else if ( key == '1' ) {
@@ -299,6 +322,18 @@ void testApp::keyPressed(int key) {
             colorIndex = 0;
       }
       vfx1.setColor( colors[colorIndex] );
+    }
+    else if(key == 's') {
+      gui.save();
+    }
+    else if(key == 'l') {
+      gui.load();
+    }
+    else if(key == ',') {
+      gui.show();
+    }
+    else if(key == '.') {
+      gui.hide();
     }
 //    else if(key == 'f') {
 //      ofToggleFullscreen();
@@ -330,8 +365,10 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 void testApp::exit() {
     vfx1.exit();
+    /*
     videoFXExporter.exporterGUI->saveSettings("GUI/exporter.xml");
     overlay.overlayGUI->saveSettings( "GUI/overlay.xml" );
+    */
 }
 
 void testApp::updateGUI() {
@@ -398,6 +435,7 @@ void testApp::updateGUI() {
     vfx1.badTVEffect.setRollSpeed(gui.btv_roll_speed);
   }
 
+  /* grid effect */
   if(gui.fx_grid_distort_enabled) {
     vfx1.gridDistortEffect.setAmount(gui.grid_amount);
     vfx1.gridDistortEffect.setStepSize(gui.grid_step_size);
@@ -407,4 +445,34 @@ void testApp::updateGUI() {
     vfx1.gridDistortEffect.setDrag(gui.grid_drag);
     vfx1.gridDistortEffect.setShowGrid(gui.grid_show_grid);
   }
+
+  /* overlay text */
+  if(gui.overlay_text.size()) {
+    overlay.textOverlay.text = gui.overlay_text;
+    gui.overlay_text.clear();
+  }
+
+  /* overlay images */
+  overlay.setDrawOverlayImage(gui.overlay_image_enabled);
+  overlay.setOverlayImageOpacity(gui.overlay_image_opacity);
+
+  if(gui.didOverlayImageChange()) {
+
+    if(gui.overlay_dx >= gui.overlay_images.size()) {
+      printf("error: overlay_dx is bigger then the number of overlay images. something went wrong.. stopping now.\n");
+      ::exit(EXIT_FAILURE);
+    }
+    
+    overlay.loadAndShowImage(gui.overlay_images[gui.overlay_dx]->file);
+    gui.resetOverlayImageChanged();
+  }
+
+  /* crawl */
+  overlay.setCrawlSpeed(gui.crawl_speed);
+  overlay.setCrawEnabled(gui.crawl_enabled);
+
+  /* text overlay */
+  overlay.setTextEnabled(gui.text_enabled);
+  overlay.setTextSpacing(gui.text_spacing);
+  overlay.setTextScale(gui.text_scale);
 }

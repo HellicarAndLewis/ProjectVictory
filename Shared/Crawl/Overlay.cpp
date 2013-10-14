@@ -11,14 +11,15 @@ void Overlay::init() {
 //    crawl.addCrawlItem( "social_media_pro", "im tweeting stuff" );
     
     textOverlay.init();
-    
-    
+
+    /*
     voteDisplay.init();
     voteDisplay.setTopics( "apples", "oranges" );
-    
+
+
     overlayGUI = new ofxUISuperCanvas( "OVERLAYS", 290, 20, 200, 200 );
     overlayGUI->addToggle( "DRAW CRAWL", &crawl.visible );
-    overlayGUI->addSlider( "FONT SIZE", 8.0, 64.0, &crawl.fontSize );
+    //overlayGUI->addSlider( "FONT SIZE", 8.0, 64.0, &crawl.fontSize );
     overlayGUI->addSlider( "CRAWL SPEED", 1.0, 20.0, &crawl.crawlSpeed );
     overlayGUI->addSpacer();
     overlayGUI->addToggle( "DRAW VOTING", &voteDisplay.visible );
@@ -34,6 +35,7 @@ void Overlay::init() {
     overlayGUI->addTextInput( "TEXT 3", "input text" )->setAutoClear( false );
     overlayGUI->addTextInput( "TEXT 4", "input text" )->setAutoClear( false );
     overlayGUI->addTextInput( "TEXT 5", "input text" )->setAutoClear( false );
+
     
     // Add the images
     vector<string> images;
@@ -56,11 +58,14 @@ void Overlay::init() {
     overlayGUI->autoSizeToFitWidgets();
     ofAddListener( overlayGUI->newGUIEvent, this, &Overlay::overlayGuiEvent );
     overlayGUI->loadSettings( "GUI/overlay.xml" );
+    */
 }
 
 void Overlay::update() {
-    crawl.update();
+  crawl.update();
+  /*
     voteDisplay.update();
+  */
 }
 
 void Overlay::draw() {
@@ -74,11 +79,12 @@ void Overlay::draw() {
     }
     
     crawl.draw();
-    voteDisplay.draw();
+    /*    voteDisplay.draw(); */
     textOverlay.draw();
 }
 
 void Overlay::overlayGuiEvent( ofxUIEventArgs &e ) {
+  /*
     string name = e.widget->getName();
     if ( name.substr(0,2) == "* " ) {
 
@@ -97,4 +103,16 @@ void Overlay::overlayGuiEvent( ofxUIEventArgs &e ) {
             textOverlay.text = output;
         }
     }
+  */
+}
+
+void Overlay::loadAndShowImage(ofFile& file) {
+
+  if(!file.exists()) {
+    printf("error: the given file for the overlay does not exist. stopping  now.\n");
+    ::exit(EXIT_FAILURE);
+  }
+
+  overlayImage.loadImage(file.getAbsolutePath());
+
 }
