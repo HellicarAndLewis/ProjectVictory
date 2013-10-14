@@ -45,6 +45,7 @@ void VideoFX::init() {
 
     updateGUI();
     
+//    disableGuiEvents();
 }
 
 void VideoFX::fillPresets() {
@@ -68,24 +69,6 @@ void VideoFX::updateGUI() {
     for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->settings->setVisible( effects[i]->enabled );
     }
-    
-    return;
-    
-    ofxUIWidget *lastWidget = 0;
-    float widgetSpacing = vfxGUI->getWidgetSpacing();
-    ofxUIRectangle *rect = vfxGUI->getRect();
-    vector<ofxUIWidget*> widgets = vfxGUI->getWidgets();
-    for ( int i=0; i<widgets.size(); i++ ) {
-        if ( lastWidget && widgets[i]->isVisible() ) {
-            ofxUIRectangle *lastPaddedRect = lastWidget->getPaddingRect();
-            ofxUIRectangle *widgetRect = widgets[i]->getRect();
-            widgetRect->y = lastPaddedRect->getY()+lastPaddedRect->getHeight()-rect->getY()+widgetSpacing;
-        }
-        lastWidget = widgets[i];
-    }
-    
-    vfxGUI->autoSizeToFitWidgets();
-    
 }
 
 void VideoFX::hideGUI() {

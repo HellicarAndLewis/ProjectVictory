@@ -26,6 +26,7 @@ void testApp::setup(){
     
     videoFXExporter.setVideoFX( &vfx1 );
     
+    fbo.allocate( 1280,  720 );
     
     overlay.init();
 }
@@ -44,9 +45,15 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
+    fbo.begin();
+    
     big->draw( ofGetWidth(), 0, -ofGetWidth(), ofGetHeight() );
     
     overlay.draw();
+    
+    fbo.end();
+    
+    fbo.draw( 0, 0 );
 }
 
 //--------------------------------------------------------------
@@ -61,6 +68,11 @@ void testApp::keyPressed(int key) {
     
     if ( key == 'k' ) {
         vfx1.reloadShaders();
+    }
+    if ( key == '0' ) {
+        ofPixels pixels;
+        fbo.readToPixels( pixels );
+        ofSaveImage( pixels, ofGetTimestampString() + ".png" );
     }
     else if ( key == 161 ) { // tilda key
         big->hideGUI();
