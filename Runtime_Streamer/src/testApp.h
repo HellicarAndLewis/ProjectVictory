@@ -19,36 +19,8 @@
 #include <ofxLinkDeck/ofxLinkDeck.h>
 #endif
 
-
-
-//#include "VideoFeedController.h"
-
-
-
 class testApp : public ofBaseApp{
 public:
-
-    int w, h;
-
-    Overlay overlay;
-
-    ofColor colors[7] = {
-        ofColor::red,
-        ofColor::orange,
-        ofColor::yellow,
-        ofColor::green,
-        ofColor::blue,
-        ofColor::indigo,
-        ofColor::violet
-    };
-    int colorIndex = 0;
-
-    //ofVideoGrabber videoGrabber;
-    ofBaseVideoDraws *videoSource;
-
-    VideoFX vfx1;
-    VideoFX *big;
-
     void setup();
     void update();
     void updateGUI();
@@ -64,12 +36,26 @@ public:
     void gotMessage(ofMessage msg);
 
     void audioIn(float* input, int nsize, int nchannels); /* the audio input for the video streamer */
-        
-    // VideoFXExporter videoFXExporter;
+
+    int w, h;
+    Overlay overlay;
+    ofColor colors[7] = {
+        ofColor::red,
+        ofColor::orange,
+        ofColor::yellow,
+        ofColor::green,
+        ofColor::blue,
+        ofColor::indigo,
+        ofColor::violet
+    };
+    int colorIndex = 0;
+
+    ofBaseVideoDraws *videoSource;
+    VideoFX vfx;
     WebSystemController websystemController;
-    //    VideoFeedController videoFeedController;
     ScreenGrabSaver grab_saver;
     std::string screenshot_name;
+    StreamerGUI gui;
     
 #ifndef DISABLE_STREAMING
     bool ldeck_started;
@@ -81,10 +67,6 @@ public:
 #else 
     ofVideoGrabber video_grabber;
 #endif
-    
-    ofImage farne_img1; // testing ..
-    ofImage farne_img2; // testing ..
-    ofImage* farne_img; 
 
-    StreamerGUI gui;
+
 };

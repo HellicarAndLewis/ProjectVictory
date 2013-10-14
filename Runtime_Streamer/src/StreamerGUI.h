@@ -51,6 +51,7 @@ class StreamerGUI {
   void load(); /* loads the last saved state */
   void show(); /* show the gui */
   void hide(); /* hide the gui */
+  void toggle(); /* toggle visibility */
   bool onKeyPressed(int key); /* used to toggle the effect on or off (1-...), returns true when it's handled */
   bool didOverlayImageChange(); /* returns true when the overlay image should be drawn/updated - call resetOverlayImageChanged() after handling this */
   void resetOverlayImageChanged(); /* after  you've checked which overlay image should be should you need to call this */
@@ -162,6 +163,10 @@ inline void StreamerGUI::show() {
 
 inline void StreamerGUI::hide() {
   is_visible = false;
+}
+
+inline void StreamerGUI::toggle() {
+  is_visible = !is_visible;
 }
 
 #endif
