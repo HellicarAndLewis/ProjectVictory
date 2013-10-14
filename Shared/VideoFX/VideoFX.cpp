@@ -5,146 +5,28 @@
 int VideoFX::count = 0;
 
 void VideoFX::init() {
-  num_frames = 0;
-    videoSource = NULL;    
-    effects.push_back( &khronosEffect );
-    effects.push_back( &colorMapEffect );
-    effects.push_back( &badTVEffect );
-    effects.push_back( &scanlinesEffect );
-    effects.push_back( &rgbShiftEffect );
-    effects.push_back( &flowLinesEffect );
-    effects.push_back( &gridDistortEffect );
+
+  videoSource = NULL;    
+
+  effects.push_back( &khronosEffect );
+  effects.push_back( &colorMapEffect );
+  effects.push_back( &badTVEffect );
+  effects.push_back( &scanlinesEffect );
+  effects.push_back( &rgbShiftEffect );
+  effects.push_back( &flowLinesEffect );
+  effects.push_back( &gridDistortEffect );
     
-    ramp.loadImage( "textures/ramp1.png" );
-    colorMapEffect.setRamp( ramp.getTextureReference().texData );
+  ramp.loadImage( "textures/ramp1.png" );
+  colorMapEffect.setRamp( ramp.getTextureReference().texData );
     
-    num = ++count;
-    opticalFlowEnabled = true;
+  num = ++count;
+  opticalFlowEnabled = true;
     
-    //    vfxGUI = new ofxUISuperCanvas( "VFX" + ofToString(num), 840, 20, 200, 200 );
-    //    vfxGUI->setColorBack( ofColor( ofColor::red, 150 ) );
-    
-    // SETUP GUI FOR ALL EFFECTS
-    for ( int i=0; i<effects.size(); i++ ) {
-        effects[i]->farneback = &farneback;
-        //        effects[i]->setupGUI( vfxGUI );
-    }
-    
-    //    ofAddListener( vfxGUI->newGUIEvent, this, &VideoFX::guiEvent );
-    //    vfxGUI->autoSizeToFitWidgets();
-    //    vfxGUI->loadSettings( "GUI/vfx" + ofToString(num) + ".xml" );
-    
-    //   presetGUI = new ofxUICanvas( ofGetWidth() - 200, 58, 200, 200 );
-    //    presetGUI->setColorBack( ofColor( ofColor::yellowGreen, 150 ) );
-    //    presetGUI->addLabelButton( "SAVE", false );
-    /*
-    vector<string> presets;
-    presetWidget = presetGUI->addDropDownList( "PRESETS", presets );
-    fillPresets();
-    presetGUI->autoSizeToFitWidgets();
-    ofAddListener( presetGUI->newGUIEvent, this, &VideoFX::presetEvent );
-    
-    cout << presetWidget->getToggles().size() << endl;
-    */
+  // SETUP GUI FOR ALL EFFECTS
+  for ( int i=0; i<effects.size(); i++ ) {
+    effects[i]->farneback = &farneback;
+  }
 
-    updateGUI();
-
-
-    
-//    disableGuiEvents();
-}
-
-void VideoFX::fillPresets() {
-  /*
-    presetWidget->clearToggles();
-    
-    ofDirectory dir("presets");
-    dir.listDir();
-    vector<ofFile> files = dir.getFiles();
-    vector<string> presets;
-    for ( int i=0; i<files.size(); i++ ) {
-      if ( files[i].isDirectory() ) {
-            presetWidget->addToggle( files[i].getFileName() );
-      }
-    }
-  */
-}
-
-void VideoFX::updateGUI() {
-  
-  return; // roxlu - replacing with ofxGui
-
-    // go through effects and turn off visibility on canvases that aren't enabled
-    for ( int i=0; i<effects.size(); i++ ) {
-        effects[i]->settings->setVisible( effects[i]->enabled );
-    }
-}
-
-void VideoFX::hideGUI() {
-
-  return; // roxlu - replacing with ofxGui
-  /*
-    vfxGUI->setVisible( false );
-    for ( int i=0; i<effects.size(); i++ ) {
-        effects[i]->settings->setVisible( false );
-    }
-    presetGUI->setVisible( false );
-  */
-
-}
-
-void VideoFX::showGUI() {
-  return; // roxlu - replacing with ofxGui
-  /*
-    vfxGUI->setVisible( true );
-    for ( int i=0; i<effects.size(); i++ ) {
-        effects[i]->settings->setVisible( effects[i]->enabled );
-    }
-    presetGUI->setVisible( true );
-  */
-}
-
-void VideoFX::presetEvent( ofxUIEventArgs &e ) {
-  /*
-    string name = e.widget->getName();
-    if ( name == "PRESETS" ) {
-        
-    }
-    else if ( name == "SAVE" ) {
-        if ( e.getButton()->getValue() ) {
-            cout << "do a save" << endl;
-            string presetName = ofSystemTextBoxDialog( "CHOOSE A NAME FOR THIS PRESET" );
-            if ( presetName != "" ) {
-                string presetPath = "presets/" + presetName + "/";
-                ofDirectory dir;
-                if ( !dir.doesDirectoryExist( presetPath ) )
-                    dir.createDirectory( presetPath );
-                for ( int i=0; i<effects.size(); i++ ) {
-                    effects[i]->saveSettings( presetPath );
-                }
-                //                vfxGUI->saveSettings( presetPath + "vfx.xml" );
-                fillPresets();
-            }
-        }
-    }
-    else {
-        // might be a preset. check first
-        string presetPath = "presets/" + name + "/";
-        ofDirectory dir( presetPath );
-        if ( dir.exists() ) {
-            for ( int i=0; i<effects.size(); i++ ) {
-                effects[i]->loadSettings( presetPath );
-            }
-            //  vfxGUI->loadSettings( presetPath + "vfx.xml" );
-        }
-    }
-  */
-}
-
-void VideoFX::guiEvent(ofxUIEventArgs &e) {
-  return;
-    string name = e.widget->getName();
-    updateGUI();
 }
 
 bool VideoFX::setVideoSource( ofBaseImage *source ) {
@@ -193,13 +75,9 @@ void VideoFX::update( bool isFrameNew ) {
   }
 
   // if the video source has a new frame, run it through optical flow and add it to the circularTexture
-  if(isFrameNew) {
-    //    num_frames++;
-  }
 
   if(isFrameNew) { 
 
-    /*
 #if !defined(NDEBUG)
     int w = videoSource->getWidth();
     int h = videoSource->getHeight();
@@ -208,7 +86,7 @@ void VideoFX::update( bool isFrameNew ) {
       ::exit(0);
     }
 #endif  
-    */
+
 
     // resample for optical flow
     if(opticalFlowEnabled) {
@@ -269,8 +147,8 @@ void VideoFX::update( bool isFrameNew ) {
 }
 
 void VideoFX::updateEffect( BaseEffect *effect ) {
-    effect->update();
-    finalEffect = effect;
+  effect->update();
+  finalEffect = effect;
 }
 
 void VideoFX::draw( float posX, float posY, float width, float height ) {
@@ -282,40 +160,29 @@ void VideoFX::draw( float posX, float posY, float width, float height ) {
   }
 #endif  
 
-    if ( finalEffect != 0 ) {
-//        finalEffect->draw( posX, posY, width, height );
-        finalEffect->getTextureReference().draw( posX, posY, width, height );
-    }
-    else {
-        videoSource->draw( posX, posY, width, height );
-    }
+  if ( finalEffect != 0 ) {
+    finalEffect->getTextureReference().draw( posX, posY, width, height );
+  }
+  else {
+    videoSource->draw( posX, posY, width, height );
+  }
     
 }
 
 void VideoFX::reloadShaders() {
-    for ( int i=0; i<effects.size(); i++ ) {
-        if ( effects[i]->getPathToShader() != "" )
-            effects[i]->reloadShader();
-    }
+  for ( int i=0; i<effects.size(); i++ ) {
+    if ( effects[i]->getPathToShader() != "" )
+      effects[i]->reloadShader();
+  }
 }
 
 void VideoFX::exit() {
-  // roxlu: replacing gui with ofxGui
-  /*
-    vfxGUI->saveSettings( "GUI/vfx" + ofToString(num) + ".xml" );
-    if ( num == 1 ) {
-        for ( int i=0; i<effects.size(); i++ ) {
-            effects[i]->saveSettings( "GUI/effects/" );
-        }
-    }
-  */
-  
 }
 
 void VideoFX::setOpticalFlowEnabled( bool enabled ) {
-    opticalFlowEnabled = enabled;
+  opticalFlowEnabled = enabled;
 }
 
 bool CompareBaseEffects( BaseEffect * a, BaseEffect * b ) {
-    return a->settings->getRect()->getX() < b->settings->getRect()->getX();
+  return a->settings->getRect()->getX() < b->settings->getRect()->getX();
 }

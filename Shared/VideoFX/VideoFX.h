@@ -60,11 +60,6 @@ public:
 
     BaseEffect *finalEffect;     // a pointer to the final effect of the chain. this is what gets drawn back to the screen
 
-    // gui
-    //    ofxUISuperCanvas *vfxGUI;
-    //    ofxUICanvas *presetGUI;
-    //ofxUIDropDownList *presetWidget;
-
     // new gui
     void setKhronosEnabled(bool f);
     void setBadTVEnabled(bool f);
@@ -74,55 +69,24 @@ public:
     void setFlowLinesEnabled(bool f);
     void setGridDistortEnabled(bool f);
     
-    void presetEvent( ofxUIEventArgs &e );
-    void guiEvent(ofxUIEventArgs &e);
-    void updateGUI();
-    void hideGUI();
-    void showGUI();
-    void disableGuiEvents();
-    void drawGUI();
+    // void presetEvent( ofxUIEventArgs &e );
+    //void guiEvent(ofxUIEventArgs &e);
+    //    void updateGUI();
+    //    void hideGUI();
+    //    void showGUI();
+
     bool setVideoSource( ofBaseImage * source );
     void init();
     void update( bool isFrameNew );
     void updateEffect( BaseEffect * effect );
     void draw( float posX, float posY, float width, float height );
     void reloadShaders();
-    void fillPresets();
+    //  void fillPresets();
     void exit();
     
     void setOpticalFlowEnabled( bool enabled );
     
-    uint64_t num_frames;
 };
-
-inline void VideoFX::disableGuiEvents() {
-  /*
-#if 0  
-  vfxGUI->disableAppEventCallbacks();
-  presetGUI->disableAppEventCallbacks();
-#else
-  vfxGUI->disableAppDrawCallback();
-  presetGUI->disableAppDrawCallback();
-#endif  
-  for(std::vector<BaseEffect*>::iterator it = effects.begin(); it != effects.end(); ++it) {
-    BaseEffect* fx = *it;
-    fx->disableGuiEvents();
-  }
-  */
-}
-
-inline void VideoFX::drawGUI() {
-  /*
-  vfxGUI->draw();
-  presetGUI->draw();
-
-  for(std::vector<BaseEffect*>::iterator it = effects.begin(); it != effects.end(); ++it) {
-    BaseEffect* fx = *it;
-    fx->draw();
-  }
-  */
-
-}
 
 // GUI
 // ------------------------------------------------
