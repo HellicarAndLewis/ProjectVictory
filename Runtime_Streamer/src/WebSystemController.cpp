@@ -37,6 +37,7 @@ void WebSystemController::update() {
 #pragma mark - VoteSystem
 
 void WebSystemController::initWebSystemGUI() {
+  /*
     websystemGUI = new ofxUISuperCanvas( "WEB SYSTEM", 20, 20, 200, 200 );
     websystemGUI->setColorBack( ofColor(ofColor::green, 125) );
     websystemGUI->addLabelToggle( "ENABLED", &webSystemIsEnabled );
@@ -45,6 +46,7 @@ void WebSystemController::initWebSystemGUI() {
     websystemGUI->addLabelToggle( "DECAYS", &shouldDecaysEffects );
     websystemGUI->addLabelToggle( "COUNT HASH TAGS", &countHashTags );
     websystemGUI->autoSizeToFitWidgets();
+  */
 }
 
 #pragma mark – Web System Connection

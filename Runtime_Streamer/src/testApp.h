@@ -11,6 +11,7 @@
 #include "Overlay.h"
 #include "WebSystemController.h"
 #include "ScreenGrabSaver.h"
+#include "StreamerGUI.h"
 
 //#define DISABLE_STREAMING 1
 #ifndef DISABLE_STREAMING
@@ -18,7 +19,7 @@
 #include <ofxLinkDeck/ofxLinkDeck.h>
 #endif
 
-#include "VideoFeedController.h"
+//#include "VideoFeedController.h"
 
 class testApp : public ofBaseApp{
 public:
@@ -46,6 +47,7 @@ public:
 
     void setup();
     void update();
+    void updateGUI();
     void draw();
     void drawInternal();    
     void exit();
@@ -75,4 +77,9 @@ public:
     ofVideoGrabber video_grabber;
 #endif
     
+    ofImage farne_img1; // testing ..
+    ofImage farne_img2; // testing ..
+    ofImage* farne_img; 
+
+    StreamerGUI gui;
 };

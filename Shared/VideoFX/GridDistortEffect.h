@@ -31,6 +31,40 @@ public:
         initMesh();
     }
     
+    // GUI 
+    // ---------------------------------------
+    void setStepSize(float v) {
+      stepSize = v;
+    }
+
+    void setParticleRadius(float v) {
+      particleRadius = v;
+    }
+
+    void setForceScale(float v) {
+      forceScale = v;
+    }
+
+    void setSpringStrength(float v) {
+      springStrength = v;
+
+      for(int i = 0; i < physics.numberOfSprings(); i++){
+        Spring2D *spring = physics.getSpring(i);
+        spring->setStrength(springStrength);
+      }
+    }
+    
+    void setDrag(float v) {
+      drag = v;
+      physics.setDrag(drag);
+    }
+
+    void setShowGrid(bool v) {
+      showGrid = v;
+    }
+
+    // ---------------------------------------
+    
     void initMesh() {
         
         mesh.clear();
@@ -80,7 +114,7 @@ public:
     }
     
     void setupGUI( ofxUISuperCanvas * gui ) {
-        
+      /*
         gui->addSpacer();
         gui->addToggle( "GRID DISTORT EFFECT", &enabled );
         
@@ -96,9 +130,11 @@ public:
         settings->autoSizeToFitWidgets();
         settings->loadSettings( "GUI/effects/" + name + ".xml" );
         ofAddListener( settings->newGUIEvent, this, &GridDistortEffect::guiEvent );
+      */
     }
     
     void guiEvent( ofxUIEventArgs &e ) {
+      /* 
         string name = e.widget->getName();
         if ( name == "SPRING STRENGTH" ) {
             for ( int i=0; i<physics.numberOfSprings(); i++ ) {
@@ -109,75 +145,84 @@ public:
         else if ( name == "DRAG" ) {
             physics.setDrag( drag );
         }
+      */
     }
     
     void update() {
+      //printf("------- update grid\n");
 
-      if ( xSteps != (int)(getWidth() / stepSize) || ySteps != (int)(getHeight() / stepSize) ) {
-            initMesh();
+      int w_steps = (int)(getWidth()/stepSize);
+      int h_steps = (int)(getHeight() / stepSize);
+
+      if (xSteps != w_steps || ySteps != h_steps) {
+        //printf("----- init mesh\n");
+        initMesh();
       }
         
-        ofPushStyle();
-        ofSetColor( 255, 255 );
-        pingPong.dst->begin();
-        ofClear(0);
+      ofPushStyle();
+      ofSetColor( 255, 255 );
+      pingPong.dst->begin();
+      ofClear(0);
         
-        glEnable( diffuseTexture.textureTarget );
-        glBindTexture( diffuseTexture.textureTarget, diffuseTexture.textureID );
-//        renderFrame();
-        mesh.draw();
-        glDisable( diffuseTexture.textureTarget );
+      glEnable(diffuseTexture.textureTarget);
+      glBindTexture(diffuseTexture.textureTarget, diffuseTexture.textureID);
+      
+      //printf("---- bind diffuse texture: %d\n", diffuseTexture.textureID);
+
+      mesh.draw();
+
+      glDisable(diffuseTexture.textureTarget);
         
-        if ( showGrid || ofGetMousePressed() ) {
-            mesh.drawWireframe();
-        }
+      if (showGrid || ofGetMousePressed()){
+        mesh.drawWireframe();
+      }
         
-        ofSetColor( ofColor::red );
+      ofSetColor(ofColor::red);
         
-        if ( farneback->getWidth() != 0 && farneback->getHeight() != 0 ) {
-            float scale = farneback->getWidth() / (float)this->getWidth();
-            float radius = particleRadius * scale;
-            for ( int i=0; i<physics.numberOfParticles(); i++ ) {
-                Particle2D *p = physics.getParticle(i);
-                if ( p->isFixed() ) {
-                    continue;
-                }
-                else {
-                    Particle2D *tether = physics.getParticle(i+1);
-                    // get force where this particle is
-                    ofVec2f pos = p->getPosition();
-                    printf(">>>> %f - %f\n", pos.x, pos.y);
+      if(farneback->getWidth() != 0 && farneback->getHeight() != 0) {
 
-                    if(pos.x != pos.x) {
-                      printf("...- continue\n");
-                      continue;
-                    }
+        float scale = farneback->getWidth() / (float)this->getWidth();
+        float radius = particleRadius * scale;
 
-                    pos *= scale;
+        for (int i=0; i<physics.numberOfParticles(); i++){
 
+          Particle2D *p = physics.getParticle(i);
 
-                    ofVec2f farnCoord( (int)ofClamp(pos.x,0,farneback->getWidth()-1), (int)ofClamp(pos.y,0,farneback->getHeight()-1) );
+          if ( p->isFixed() ) {
+            continue;
+          }
+          else {
+            Particle2D *tether = physics.getParticle(i+1);
 
-                    //ofVec2f ff = farneback->getFlowPosition( farnCoord.x, farnCoord.y );
-                    //printf("farneback.w = %d, h = %d, farn: %f, %f, fff: %f, %f\n", farneback->getWidth(), farneback->getHeight(), farnCoord.x, farnCoord.y, ff.x, ff.y);
-                    ofVec2f flow = (farneback->getFlowPosition( farnCoord.x, farnCoord.y ) - farnCoord );
-                    if(flow.x != flow.x || flow.y != flow.y) {
-                      printf("warning: the farneback values are invalid.\n");
-                      continue;
-                    }
-                    //printf("%f, %f, %f\n", forceScale, flow.x, flow.y);
-                    p->addVelocity( flow * forceScale );
-                    mesh.setVertex( i/2, tether->getPosition().interpolated( p->getPosition(), amount ) );
-                }
+            // get force where this particle is
+            ofVec2f pos = p->getPosition();
+            //printf("----- particle position: %f - %f\n", pos.x, pos.y);
+            if(pos.x != pos.x) {
+              continue;
             }
-            printf("update grid distort.\n");
-            physics.update();
-            //            ::exit(0);
-        }
-        printf("...\n");
-        pingPong.dst->end();
-        ofPopStyle();
 
+            pos *= scale;
+
+            int farn_x = (int)ofClamp(pos.x,0,farneback->getWidth()-1);
+            int farn_y = (int)ofClamp(pos.y,0,farneback->getHeight()-1);
+
+            ofVec2f farnCoord(farn_x, farn_y);
+            ofVec2f flow = farneback->getFlowPosition(farnCoord.x, farnCoord.y ) - farnCoord ;
+
+            if(flow.x != flow.x || flow.y != flow.y) {
+              //printf("----- warning: the farneback values are invalid.\n");
+              continue;
+            }
+
+            p->addVelocity( flow * forceScale );
+            mesh.setVertex( i/2, tether->getPosition().interpolated( p->getPosition(), amount ) );
+          }
+        }
+        physics.update();
+      }
+
+      pingPong.dst->end();
+      ofPopStyle();
     }
     
     ShaderMap getShaderMap() {

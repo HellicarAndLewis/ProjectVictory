@@ -18,6 +18,7 @@ public:
     }
     
     void setupGUI( ofxUISuperCanvas *gui ) {
+      /*
         gui->addSpacer();
         gui->addToggle( "RGB SHIFT EFFECT", &enabled );
 //        addWidget( gui->addSlider( "RGB AMOUNT", 0.0, 0.1, &amount ) );
@@ -30,6 +31,7 @@ public:
         settings->addSlider( "RGB ANGLE", 0.0, 2.0, &angle );
         settings->autoSizeToFitWidgets();
         settings->loadSettings( "GUI/effects/" + name + ".xml" );
+      */
     }
     
     void setCustomUniforms() {
@@ -52,5 +54,19 @@ public:
     
     void applyShaderMap(ShaderMap shaderMap) {
         if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble(); }
+    }
+
+    // GUI
+    // -----------------------------
+    void setAmount(float v) {
+      amount = v;
+    }
+    
+    void setRGBAmount(float v) {
+      rgbAmount = v;
+    }
+    
+    void setAngle(float v) {
+      angle = v;
     }
 };

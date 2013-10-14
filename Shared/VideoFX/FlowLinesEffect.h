@@ -13,8 +13,21 @@ public:
         internalFormat = GL_RGBA;
         name = "flowlines";
     }
+
+    void setStepSize(float v) {
+      stepSize = v;
+    }
+
+    void setLineScale(float v) {
+      lineScale = v;
+    }
+    
+    void setThreshold(float v) {
+      threshold = v;
+    }
     
     void setupGUI( ofxUISuperCanvas *gui ) {
+      /*
         gui->addSpacer();
         gui->addToggle( "FLOW LINES EFFECT", &enabled );
         
@@ -26,6 +39,7 @@ public:
         settings->addSlider( "THRESHOLD", .1, 2.0, &threshold );
         settings->autoSizeToFitWidgets();
         settings->loadSettings( "GUI/effects/" + name + ".xml" );
+      */
     }
     
     void update() {

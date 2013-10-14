@@ -140,7 +140,6 @@ void ofx_linkdeck_frame(IDeckLinkVideoInputFrame* vframe, IDeckLinkAudioInputPac
     unsigned char* dest_planes[1] = { ld->pixels } ;
     int in_stride = stride;
     int dest_stride = ld->w * 3;
-
     int sr = sws_scale(ld->sws, 
                        (uint8_t**)&uyvy422, 
                        &in_stride,
@@ -148,6 +147,7 @@ void ofx_linkdeck_frame(IDeckLinkVideoInputFrame* vframe, IDeckLinkAudioInputPac
                        h, 
                        dest_planes, 
                        &dest_stride);
+    //printf("%02X, %02X, %02X, %02X\n", ld->pixels[0], ld->pixels[1], ld->pixels[2], ld->pixels[2]);
     if(sr != h) {
       printf("error: the scaling went wrong...\n");
     }

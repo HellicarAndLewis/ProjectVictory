@@ -1,8 +1,11 @@
+#include <uv.h>
 #include "VideoFX.h"
+
 
 int VideoFX::count = 0;
 
 void VideoFX::init() {
+  num_frames = 0;
     videoSource = NULL;    
     effects.push_back( &khronosEffect );
     effects.push_back( &colorMapEffect );
@@ -44,6 +47,8 @@ void VideoFX::init() {
     cout << presetWidget->getToggles().size() << endl;
 
     updateGUI();
+
+
     
 }
 
@@ -63,7 +68,9 @@ void VideoFX::fillPresets() {
 }
 
 void VideoFX::updateGUI() {
-    
+  
+  return; // roxlu - replacing with ofxGui
+
     // go through effects and turn off visibility on canvases that aren't enabled
     for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->settings->setVisible( effects[i]->enabled );
@@ -98,8 +105,9 @@ void VideoFX::hideGUI() {
 
 void VideoFX::showGUI() {
     vfxGUI->setVisible( true );
-    for ( int i=0; i<effects.size(); i++ )
+    for ( int i=0; i<effects.size(); i++ ) {
         effects[i]->settings->setVisible( effects[i]->enabled );
+    }
     presetGUI->setVisible( true );
 }
 
@@ -167,8 +175,12 @@ bool VideoFX::setVideoSource( ofBaseImage *source ) {
   circularTexture.allocate( w, h, 20 );
 
   // allocate a downsampled texture to run through optical flow
-  downsampledFrame.allocate( w/4, h/4, OF_IMAGE_COLOR );
-    
+  //downsampledFrame.allocate( w/4, h/4, OF_IMAGE_COLOR );
+  downsampledFrame.allocate(320, 240, OF_IMAGE_COLOR );
+  //downsampledFrame.allocate(320, 140, OF_IMAGE_COLOR );
+  //downsampledFrame.allocate(240, 140, OF_IMAGE_COLOR );
+  //downsampledFrame.allocate(240, 140, OF_IMAGE_COLOR );
+      
   // allocate the effects
   for ( int i=0; i<effects.size(); i++ ) {
     if(!effects[i]->compiled()) {
@@ -185,58 +197,80 @@ void VideoFX::update( bool isFrameNew ) {
     return;
   }
 
-    // if the video source has a new frame, run it through optical flow and add it to the circularTexture
-//    if ( videoSource->isFrameNew() ) {
-    if ( isFrameNew ) {
-    
-        // resample for optical flow
-        if ( opticalFlowEnabled ) {
-            ofxCv::resize( *videoSource, downsampledFrame );
-            downsampledFrame.update();
-            farneback.calcOpticalFlow( downsampledFrame );
-            farneback.updateVectorFieldTexture();
-        }
-        
-        if ( khronosEffect.enabled ) {
-            // pack into circular texture
-            unsigned char * pixels = videoSource->getPixels();
-            circularTexture.addData( pixels, videoSource->getWidth(), videoSource->getHeight() );
-        }
+  // if the video source has a new frame, run it through optical flow and add it to the circularTexture
+  if(isFrameNew) {
+    //    num_frames++;
+  }
+
+  if(isFrameNew) { 
+
+    /*
+#if !defined(NDEBUG)
+    int w = videoSource->getWidth();
+    int h = videoSource->getHeight();
+    if(w < 0 || w > 1024 * 2 || h < 0 || h > 1024 * 2) {
+      printf("error: video srouce has an invalid size.\n");
+      ::exit(0);
     }
+#endif  
+    */
+
+    // resample for optical flow
+    if(opticalFlowEnabled) {
+      ofxCv::resize(*videoSource, downsampledFrame);
+      downsampledFrame.update();
+      farneback.calcOpticalFlow(downsampledFrame);
+      farneback.updateVectorFieldTexture();
+    }
+
+    // pack into circular texture
+    if(khronosEffect.enabled){
+      unsigned char * pixels = videoSource->getPixels();
+      circularTexture.addData( pixels, videoSource->getWidth(), videoSource->getHeight() );
+    }
+
+  }
+
+  deque<BaseEffect*> enabledEffects;
+  for(int i = 0; i < effects.size(); i++){
+    if(effects[i]->enabled && effects[i] != &khronosEffect){
+      enabledEffects.push_back(effects[i]);
+    }
+  }
+
+  // roxlu: commented this sort
+  //sort(enabledEffects.begin(), enabledEffects.end(), CompareBaseEffects);
+
+  if (khronosEffect.enabled) {
+    enabledEffects.push_front( &khronosEffect );
+  }
     
-    deque<BaseEffect*> enabledEffects;
-    for ( int i=0; i<effects.size(); i++ ) {
-      if ( effects[i]->enabled && effects[i] != &khronosEffect ) {
-            enabledEffects.push_back( effects[i] );
+  finalEffect = 0;
+  ofTextureData *texData = 0;
+
+  for (int i = 0; i < enabledEffects.size(); i++){
+        
+    BaseEffect *effect = enabledEffects[i];
+    effect->setVectorField(farneback.vf.getTextureReference().texData);
+
+    if(texData == 0){
+
+      // special circumstances for khronos effect
+      if(effect == &khronosEffect) {
+        khronosEffect.setDepthOffset(circularTexture.offset / (float)circularTexture.depth);
+        khronosEffect.setVideo3D(circularTexture.texData);
+      }
+      else {
+        effect->setDiffuseTexture(videoSource->getTextureReference().texData);
       }
     }
-    sort( enabledEffects.begin(), enabledEffects.end(), CompareBaseEffects );
-    if ( khronosEffect.enabled )
-        enabledEffects.push_front( &khronosEffect );
-    
-    finalEffect = 0;
-    ofTextureData *texData = 0;
-    for ( int i=0; i<enabledEffects.size(); i++ ) {
-        
-        BaseEffect *effect = enabledEffects[i];
-        effect->setVectorField( farneback.vf.getTextureReference().texData );
-        
-        if ( texData == 0 ) {
-            if ( effect == &khronosEffect ) {
-                // special circumstances for khronos effect
-                khronosEffect.setDepthOffset( circularTexture.offset / (float)circularTexture.depth );
-                khronosEffect.setVideo3D( circularTexture.texData );
-            }
-            else
-              effect->setDiffuseTexture( videoSource->getTextureReference().texData );
-        }
-        else {
-            effect->setDiffuseTexture( *texData );
-        }
-            
-        updateEffect( effect );
-        texData = &effect->getTextureReference().texData;
+    else {
+      effect->setDiffuseTexture(*texData);
     }
+            
+    updateEffect(effect);
+    texData = &effect->getTextureReference().texData;
+  }
 }
 
 void VideoFX::updateEffect( BaseEffect *effect ) {
@@ -271,12 +305,16 @@ void VideoFX::reloadShaders() {
 }
 
 void VideoFX::exit() {
+  // roxlu: replacing gui with ofxGui
+  /*
     vfxGUI->saveSettings( "GUI/vfx" + ofToString(num) + ".xml" );
     if ( num == 1 ) {
         for ( int i=0; i<effects.size(); i++ ) {
             effects[i]->saveSettings( "GUI/effects/" );
         }
     }
+  */
+  
 }
 
 void VideoFX::setOpticalFlowEnabled( bool enabled ) {

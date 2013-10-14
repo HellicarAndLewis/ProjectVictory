@@ -35,13 +35,23 @@ public:
     WebSystem::Connection connection;
     ofxUISuperCanvas *websystemGUI;
     void initWebSystemGUI();
+
+ public:
+    void setEnabled(bool f);
+    void setShoutOutsEnabled(bool f);
+    void setCommandsEnabled(bool f);
+    void setShouldDecayEffects(bool f);
+    void setCountHashTags(bool f);
+
+ public: // @todo should be made private .... 
     // State
     bool webSystemIsEnabled;
     bool shoutoutsAreEnabled;
     bool commandsAreEnabled;
     bool shouldDecaysEffects;
     bool countHashTags;
-    
+
+ public:
     // Web system events
     void onHashTagCount(Json::Value body);
     void onShoutout(Json::Value body);
@@ -105,3 +115,24 @@ inline void WebSystemController::drawGUI() {
   }
 
 }
+
+inline void WebSystemController::setEnabled(bool f) {
+  webSystemIsEnabled = f;
+}
+
+inline void WebSystemController::setShoutOutsEnabled(bool f) {
+  shoutoutsAreEnabled = f;
+}
+
+inline void WebSystemController::setCommandsEnabled(bool f) {
+  commandsAreEnabled = f;
+}
+
+inline void WebSystemController::setShouldDecayEffects(bool f) {
+  shouldDecaysEffects = f;
+}
+
+inline void WebSystemController::setCountHashTags(bool f) {
+  countHashTags = f;
+}
+

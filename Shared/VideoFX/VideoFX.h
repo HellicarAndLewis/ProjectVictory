@@ -33,7 +33,7 @@ public:
             effects[i]->setColor( color );
         }
     }
-    
+
     static int count;
     int num;
     
@@ -42,10 +42,12 @@ public:
     ofBaseImage *videoSource;  // current video source
     ofImage downsampledFrame;  // an image to store a downsampled version of the curent frame
     FarnebackPlus farneback;    // does optical flow and provides a floating point vector field texture for use in shaders
+
     CircularTexture circularTexture;  // a circular texture buffer that successive frames from the video source are read into
     ofxFluid fluid;     // some fluid
     ofImage ramp;
-    
+
+    /* roxlu: these are accessed from testApp::updateGUI */
     KhronosEffect khronosEffect;
     BadTVEffect badTVEffect;
     ScanlinesEffect scanlinesEffect;
@@ -62,6 +64,15 @@ public:
     ofxUISuperCanvas *vfxGUI;
     ofxUICanvas *presetGUI;
     ofxUIDropDownList *presetWidget;
+
+    // new gui
+    void setKhronosEnabled(bool f);
+    void setBadTVEnabled(bool f);
+    void setScanLinesEnabled(bool f);
+    void setRGBShiftEnabled(bool f);
+    void setColorMapEnabled(bool f);
+    void setFlowLinesEnabled(bool f);
+    void setGridDistortEnabled(bool f);
     
     void presetEvent( ofxUIEventArgs &e );
     void guiEvent(ofxUIEventArgs &e);
@@ -81,7 +92,7 @@ public:
     
     void setOpticalFlowEnabled( bool enabled );
     
-    
+    uint64_t num_frames;
 };
 
 inline void VideoFX::disableGuiEvents() {
@@ -107,6 +118,36 @@ inline void VideoFX::drawGUI() {
     fx->draw();
   }
 
+}
+
+// GUI
+// ------------------------------------------------
+inline void VideoFX::setKhronosEnabled(bool f) {
+  khronosEffect.enabled = f;
+}
+
+inline void VideoFX::setBadTVEnabled(bool f) {
+  badTVEffect.enabled = f;
+}
+
+inline void VideoFX::setScanLinesEnabled(bool f) {
+  scanlinesEffect.enabled = f;
+}
+
+inline void VideoFX::setRGBShiftEnabled(bool f) {
+  rgbShiftEffect.enabled = f;
+}
+
+inline void VideoFX::setColorMapEnabled(bool f) {
+  colorMapEffect.enabled = f;
+}
+
+inline void VideoFX::setFlowLinesEnabled(bool f) {
+  flowLinesEffect.enabled = f;
+}
+
+inline void VideoFX::setGridDistortEnabled(bool f) {
+  gridDistortEffect.enabled = f;
 }
 
 bool CompareBaseEffects( BaseEffect * a, BaseEffect * b );

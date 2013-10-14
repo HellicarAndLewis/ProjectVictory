@@ -35,6 +35,7 @@ public:
     }
     
     void setupGUI( ofxUISuperCanvas *gui ) {
+      /*
         gui->addSpacer();
         gui->addToggle( "KHRONOS EFFECT", &enabled );
 //        addWidget( gui->addSlider( "MAG SCALER", 1.0, 10.0, &magScaler ) );
@@ -45,6 +46,7 @@ public:
         settings->addSlider( "MAG SCALER", 1.0, 10.0, &magScaler );
         settings->autoSizeToFitWidgets();
         settings->loadSettings( "GUI/effects/"+name+".xml" );
+      */
     }
     
     void update() {

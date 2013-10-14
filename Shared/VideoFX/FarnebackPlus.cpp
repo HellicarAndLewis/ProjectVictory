@@ -19,9 +19,8 @@
 //}
 
 void FarnebackPlus::updateVectorFieldTexture() {
-    
     int w = this->flow.cols, h = this->flow.rows;
-    
+
     if ( vf.getWidth() != w || vf.getHeight() != h ) {
         cout << "allocating vector field texture and pixels" << endl;
         
@@ -33,6 +32,7 @@ void FarnebackPlus::updateVectorFieldTexture() {
         vf.setFromPixels(pix, w, h, OF_IMAGE_COLOR);
         */
     }
+    
     
     ofVec2f v;
     

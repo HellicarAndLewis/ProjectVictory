@@ -19,6 +19,7 @@ public:
     }
     
     void setupGUI( ofxUISuperCanvas *gui ) {
+      /*
         gui->addSpacer();
         gui->addToggle( "SCANLINES EFFECT", &enabled );
 //        addWidget( gui->addSlider( "COUNT", 50, 1000, &sCount ) );
@@ -32,7 +33,7 @@ public:
         settings->addSlider( "nINTENSITY", 0, 2, &nIntensity );
         settings->autoSizeToFitWidgets();
         settings->loadSettings( "GUI/effects/" + name + ".xml" );
-
+      */
     }
     
     void setCustomUniforms() {
@@ -55,6 +56,18 @@ public:
     
     void applyShaderMap(ShaderMap shaderMap) {
         if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble(); }
+    }
+    
+    void setCount(float c) {
+      sCount = c;
+    }
+
+    void setSIntensity(float s) {
+      sIntensity = s;
+    }
+
+    void setNIntensity(float n) {
+      nIntensity = n;
     }
     
 };

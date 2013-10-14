@@ -31,6 +31,7 @@ public:
     }
     
     void setupGUI( ofxUISuperCanvas *gui ) {
+      /*
         gui->addSpacer();
         gui->addToggle( "BAD TV EFFECT", &enabled );
         settings = new ofxUISuperCanvas( "BAD TV EFFECT", ofRandom(ofGetWidth()), 0, 200, 200 );
@@ -42,6 +43,7 @@ public:
         settings->addSlider( "ROLL SPEED", 0.0, 1.0, &rollSpeed );
         settings->autoSizeToFitWidgets();
         settings->loadSettings( "GUI/effects/"+name+".xml" );
+      */
     }
     
     void setCustomUniforms() {
@@ -65,5 +67,24 @@ public:
     
     void applyShaderMap(ShaderMap shaderMap) {
         if (shaderMap.isMember("amount"))        { amount = shaderMap["amount"].asDouble(); }
+    }
+
+
+    // GUI 
+    // -------------------------------------
+    void setAmount(float v) {
+      amount = v;
+    }
+
+    void setThickDistort(float v) {
+      distortion = v;
+    }
+
+    void setFineDistort(float v) {
+      distortion2 = v;
+    }
+
+    void setDistortSpeed(float v) {
+      speed = v;
     }
 };
