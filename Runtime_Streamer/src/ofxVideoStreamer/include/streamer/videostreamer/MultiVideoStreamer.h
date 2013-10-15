@@ -112,6 +112,7 @@ inline MultiStreamerInfo* MultiVideoStreamer::operator[](unsigned int dx) {
 }
 
 inline void MultiVideoStreamer::update() {
+
   for(std::vector<MultiStreamerInfo*>::iterator it = streamers.begin(); it != streamers.end(); ++it) {
     MultiStreamerInfo* msi = *it;
     msi->streamer->update();

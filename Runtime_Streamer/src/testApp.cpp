@@ -6,7 +6,9 @@ void testApp::setup(){
   ofSetVerticalSync( true );
   ofSetFrameRate(60);
   ofSetWindowTitle("Victory Visualizer");
-    
+
+  is_fullscreen = false;
+
 #if !USE_STREAMING
   cout << "Disabled streaming: compile with 'Release' to enable" << endl;
 #else
@@ -43,14 +45,14 @@ void testApp::setup(){
   sound_stream.setup(this, 0, 2, 44100, 1024, 4);
 #endif
 
-  if(!grab_saver.setup(ofGetWidth(), ofGetHeight(), 20)) {
+  if(!grab_saver.setup(ofGetWidth(), ofGetHeight(), 200)) { // last params is number of preallocated frames
     printf("error: cannot start the screen grab saver.\n");
     ::exit(EXIT_FAILURE);
   }
 
 #if USE_DECKLINK
-  //if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
-  if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
+  if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
+    //if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
     printf("error: cannot get decklink setup.\n");
     ::exit(EXIT_FAILURE);
   }
@@ -94,9 +96,7 @@ void testApp::setup(){
 
 void testApp::audioIn(float* input, int nsize, int nchannels) {
 
-  return;
-
-#if USE_STREAMING
+#if USE_STREAMING && USE_AUDIO
   size_t nsamples = nsize * nchannels;
   for(size_t i = 0; i < nsamples; ++i) {
     input[i] *= 32768.0f;
@@ -110,20 +110,20 @@ void testApp::audioIn(float* input, int nsize, int nchannels) {
 void testApp::update(){
 
   updateGUI();
-  
+
 #if USE_STREAMING
   streamer.update();
 #endif
 
 #if USE_CAM
   video_grabber.update();
-    
   if(video_grabber.isFrameNew()) {
     vfx.update(true);
   }
   else {
     vfx.update(false);
-  }    
+  } 
+
 #endif
 
   websystemController.update();
@@ -137,6 +137,7 @@ void testApp::draw(){
   screenshot_name = websystemController.getNextScreenShotFilename();
   
 #if USE_DECKLINK
+
   // get decklink image.
   if(ldeck.hasNewFrame()) {
 
@@ -160,6 +161,7 @@ void testApp::draw(){
   else {
     vfx.update(false);
   }
+
 #endif
 
 #if USE_STREAMING
@@ -228,7 +230,21 @@ void testApp::keyPressed(int key) {
     vfx.setColor( colors[colorIndex] );
   }
   else if(key == 'f') {
-    ofToggleFullscreen();
+    is_fullscreen = !is_fullscreen;
+    ofSetFullscreen(is_fullscreen);
+
+    if(is_fullscreen) {
+      ofHideCursor();
+#ifdef __APPLE__
+    CGDisplayHideCursor(NULL); 
+#endif
+    }
+    else {
+      ofShowCursor();
+#ifdef __APPLE__
+    CGDisplayShowCursor(NULL); 
+#endif
+    }
   }
   else if (key == 'g') {
     websystemController.triggerFakeScreenGrab();
@@ -363,4 +379,5 @@ void testApp::updateGUI() {
   overlay.setTextEnabled(gui.text_enabled);
   overlay.setTextSpacing(gui.text_spacing);
   overlay.setTextScale(gui.text_scale);
+  overlay.setTextOpacity(gui.text_opacity);
 }

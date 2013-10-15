@@ -13,9 +13,10 @@
 #include "ScreenGrabSaver.h"
 #include "StreamerGUI.h"
 
-#define USE_DECKLINK 0
-#define USE_CAM 1
+#define USE_DECKLINK 1
+#define USE_CAM 0
 #define USE_STREAMING 1
+#define USE_AUDIO 1
 
 #if USE_CAM && USE_DECKLINK
 #  error "No no... don't use both a webcam and decklink. Choose one."
@@ -63,6 +64,7 @@ public:
     ScreenGrabSaver grab_saver;
     std::string screenshot_name;
     StreamerGUI gui;
+    bool is_fullscreen;
 
 #if USE_DECKLINK
     ofxLinkDeck ldeck;    

@@ -33,6 +33,7 @@ public:
     void setCrawlSpeed(float s);
     void setTextScale(float s);
     void setTextSpacing(float s);
+    void setTextOpacity(float o);
 };
 
 inline void Overlay::disableGuiEvents() {
@@ -68,6 +69,10 @@ inline void Overlay::setOverlayImageOpacity(float f) {
     f = 1.0f;
   }
   overlayImageOpacity = f;
+}
+
+inline void Overlay::setTextOpacity(float o) {
+  textOverlay.setTextOpacity(o);
 }
 
 inline void Overlay::setCrawEnabled(bool e) {

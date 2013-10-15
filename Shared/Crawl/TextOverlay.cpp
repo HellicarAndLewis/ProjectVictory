@@ -1,6 +1,7 @@
 #include "TextOverlay.h"
 
 void TextOverlay::init() {
+  textOpacity = 1.0f;
   font.loadFont( "NikeEnergy-Headline.ttf", 100, true, false, true );
   pos.set( ofGetWidth() / 2.0, ofGetHeight() / 2.0 );
 }
@@ -10,6 +11,8 @@ void TextOverlay::draw() {
   if(!visible){
     return;
   }
+
+  ofSetColor(255, 255, 255, textOpacity * 255);
 
   // break text up into individual lines
   string delimiter = ",";
@@ -51,4 +54,6 @@ void TextOverlay::draw() {
     }
   }
   ofPopMatrix();
+
+  ofSetColor(255, 255, 255, 255);
 }

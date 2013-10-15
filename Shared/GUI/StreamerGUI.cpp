@@ -149,6 +149,7 @@ bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
   text_panel.add(text_add_text.setup("Set the text"));
   text_panel.add(text_scale.setup("Scale", 0.5f, 0.5f, 5.0f));
   text_panel.add(text_spacing.setup("Spacing", 0.0f, 0.0f, 100.0f));
+  text_panel.add(text_opacity.setup("Opacity", 1.0f, 0.0f, 1.0f));
   text_panel.loadFromFile("ofxgui/text.xml");
 
   text_add_text.addListener(this, &StreamerGUI::onSetOverlayText);

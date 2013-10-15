@@ -26,6 +26,15 @@
   of the complete system. 
 
 
+  This GUI is synced using the osc sync feature of OF. Make sure
+  to create a XML file with the info of the remote GUI. 
+  
+  ````xml
+  <settings>
+     <receiver_ip>127.0.0.1</receiver_ip>
+  </settings>
+  ````
+
  */
 #ifndef ROXLU_STREAMER_GUI_H
 #define ROXLU_STREAMER_GUI_H
@@ -163,6 +172,7 @@ class StreamerGUI {
   ofxButton text_add_text;
   ofxFloatSlider text_scale;
   ofxFloatSlider text_spacing;
+  ofxFloatSlider text_opacity;
   std::string overlay_text;
 
   /* sync */

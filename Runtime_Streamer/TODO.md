@@ -6,3 +6,4 @@
 [ ] - presets
 [ ] - sensorship
 [ ] - image uploads
+[ ] - fonts correct
