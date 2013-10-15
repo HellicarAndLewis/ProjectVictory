@@ -235,9 +235,11 @@ void testApp::keyPressed(int key) {
   else if(key == ',') {
     //gui.toggle();
   }
-
   else if(key == 'f') {
     ofToggleFullscreen();
+  }
+  else if (key == 'g') {
+    websystemController.triggerFakeScreenGrab();
   }
 }
 
