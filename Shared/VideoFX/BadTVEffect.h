@@ -72,9 +72,6 @@ public:
 
     // GUI 
     // -------------------------------------
-    void setAmount(float v) {
-      amount = v;
-    }
 
     void setThickDistort(float v) {
       distortion = v;

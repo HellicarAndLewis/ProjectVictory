@@ -119,6 +119,8 @@ bool StreamerGUI::setup() {
   web_panel.add(web_commands_enabled.setup("Enable Commands", true));
   web_panel.add(web_decay_effects.setup("Decay Effects", true));
   web_panel.add(web_count_hash_tags.setup("Count Hash Tags", true));
+  web_panel.add(web_decay_speed.setup("Decay Speed", 0.3f, 0.0001f, 1.0f));
+  web_panel.add(web_command_impact.setup("Command Impact", 1.0f, 0.0001f, 1.0f));
   web_panel.loadFromFile("ofxgui/websystem.xml");
 
   /* overlay panel - images */

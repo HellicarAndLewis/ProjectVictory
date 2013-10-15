@@ -126,6 +126,8 @@ class StreamerGUI {
   ofxToggle web_shoutouts_enabled;
   ofxToggle web_decay_effects;
   ofxToggle web_count_hash_tags;
+  ofxFloatSlider web_decay_speed;
+  ofxFloatSlider web_command_impact;
 
   /* overlay panel */
   ofxPanel overlay_panel;
