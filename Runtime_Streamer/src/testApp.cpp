@@ -286,6 +286,8 @@ void testApp::updateGUI() {
   websystemController.setCommandsEnabled(gui.web_commands_enabled);
   websystemController.setShouldDecayEffects(gui.web_decay_effects);
   websystemController.setCountHashTags(gui.web_count_hash_tags);
+  websystemController.setDecayRate(gui.web_decay_speed);
+  websystemController.setEffectImpact(gui.web_command_impact);
 
   /* update effects */
   vfx.setKhronosEnabled(gui.fx_khronos_enabled);
@@ -298,18 +300,30 @@ void testApp::updateGUI() {
 
   /* khronos */
   if(gui.fx_khronos_enabled) {
-    vfx.khronosEffect.setAmount(gui.khronos_amount);
+    if (!gui.web_commands_enabled) { 
+      vfx.khronosEffect.setAmount(gui.khronos_amount); 
+    } else { 
+      gui.khronos_amount = vfx.khronosEffect.amount;  
+    }
     vfx.khronosEffect.setMagScaler(gui.khronos_mag_scaler);
   }
   
   /* color map */
   if(gui.fx_color_map_enabled) {
-    vfx.colorMapEffect.setAmount(gui.colmap_amount);
+    if (!gui.web_commands_enabled) { 
+      vfx.colorMapEffect.setAmount(gui.colmap_amount); 
+    } else { 
+      gui.colmap_amount = vfx.colorMapEffect.amount;  
+    }
   }
 
   /* scan lines */
   if(gui.fx_scanlines_enabled) {
-    vfx.scanlinesEffect.setAmount(gui.sl_amount);
+    if (!gui.web_commands_enabled) { 
+      vfx.scanlinesEffect.setAmount(gui.sl_amount); 
+    } else { 
+      gui.sl_amount = vfx.scanlinesEffect.amount;  
+    }
     vfx.scanlinesEffect.setCount(gui.sl_count);
     vfx.scanlinesEffect.setSIntensity(gui.sl_s_intensity);
     vfx.scanlinesEffect.setNIntensity(gui.sl_n_intensity);
@@ -317,7 +331,11 @@ void testApp::updateGUI() {
 
   /* flow lines */
   if(gui.fx_flow_lines_enabled) {
-    vfx.flowLinesEffect.setAmount(gui.flow_amount);
+    if (!gui.web_commands_enabled) { 
+      vfx.flowLinesEffect.setAmount(gui.flow_amount); 
+    } else { 
+      gui.flow_amount = vfx.flowLinesEffect.amount;  
+    }
     vfx.flowLinesEffect.setStepSize(gui.flow_step_size);
     vfx.flowLinesEffect.setLineScale(gui.flow_line_scale);
     vfx.flowLinesEffect.setThreshold(gui.flow_threshold);
@@ -325,14 +343,22 @@ void testApp::updateGUI() {
 
   /* rgb shift */
   if(gui.fx_rgb_shift_enabled) {
-    vfx.rgbShiftEffect.setAmount(gui.rgb_amount);
+    if (!gui.web_commands_enabled) { 
+      vfx.rgbShiftEffect.setAmount(gui.rgb_amount); 
+    } else { 
+      gui.rgb_amount = vfx.rgbShiftEffect.amount;  
+    }
     vfx.rgbShiftEffect.setRGBAmount(gui.rgb_rgb_amount);
     vfx.rgbShiftEffect.setAngle(gui.rgb_angle);
   }
 
   /* bad tv efect */
   if(gui.fx_bad_tv_enabled) {
-    vfx.badTVEffect.setAmount(gui.btv_amount);
+    if (!gui.web_commands_enabled) { 
+      vfx.badTVEffect.setAmount(gui.btv_amount); 
+    } else { 
+      gui.btv_amount = vfx.badTVEffect.amount;  
+    }
     vfx.badTVEffect.setThickDistort(gui.btv_thick_distort);
     vfx.badTVEffect.setFineDistort(gui.btv_fine_distort);
     vfx.badTVEffect.setDistortSpeed(gui.btv_distort_speed);
@@ -341,7 +367,11 @@ void testApp::updateGUI() {
 
   /* grid effect */
   if(gui.fx_grid_distort_enabled) {
-    vfx.gridDistortEffect.setAmount(gui.grid_amount);
+    if (!gui.web_commands_enabled) { 
+      vfx.gridDistortEffect.setAmount(gui.grid_amount); 
+    } else { 
+      gui.grid_amount = vfx.gridDistortEffect.amount;  
+    }
     vfx.gridDistortEffect.setStepSize(gui.grid_step_size);
     vfx.gridDistortEffect.setParticleRadius(gui.grid_particle_radius);
     vfx.gridDistortEffect.setForceScale(gui.grid_force_scale);
@@ -351,7 +381,7 @@ void testApp::updateGUI() {
   }
 
   /* overlay text */
-  if(gui.overlay_text.size()) {
+  if(!gui.overlay_text.size()) {
     overlay.textOverlay.text = gui.overlay_text;
     gui.overlay_text.clear();
   }
@@ -360,7 +390,7 @@ void testApp::updateGUI() {
   overlay.setDrawOverlayImage(gui.overlay_image_enabled);
   overlay.setOverlayImageOpacity(gui.overlay_image_opacity);
 
-  if(gui.didOverlayImageChange()) {
+  if(!gui.didOverlayImageChange()) {
 
     if(gui.overlay_dx >= gui.overlay_images.size()) {
       printf("error: overlay_dx is bigger then the number of overlay images. something went wrong.. stopping now.\n");

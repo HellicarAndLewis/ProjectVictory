@@ -45,6 +45,8 @@ public:
     void setCommandsEnabled(bool f);
     void setShouldDecayEffects(bool f);
     void setCountHashTags(bool f);
+    void setDecayRate(float f);
+    void setEffectImpact(float f);
     void triggerFakeScreenGrab(); /* this will make sure that "getNextScreenShotFilename()" returns a value so you can test it */
 
  public: // @todo should be made private .... 
@@ -108,6 +110,14 @@ inline void WebSystemController::setShouldDecayEffects(bool f) {
 
 inline void WebSystemController::setCountHashTags(bool f) {
   countHashTags = f;
+}
+
+inline void WebSystemController::setDecayRate(float f) {
+  decayRate = f;
+}
+
+inline void WebSystemController::setEffectImpact(float f) {
+  effectImpact = f;
 }
 
 inline void WebSystemController::triggerFakeScreenGrab() {
