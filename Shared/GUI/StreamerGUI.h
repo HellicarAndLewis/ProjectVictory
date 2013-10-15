@@ -1,7 +1,20 @@
-#ifndef ROXLU_STREAMER_GUI_H
-#define ROXLU_STREAMER_GUI_H
-
 /*
+
+---------------------------------------------------------------------------------
+
+                                               oooo
+                                               `888
+                oooo d8b  .ooooo.  oooo    ooo  888  oooo  oooo
+                `888""8P d88' `88b  `88b..8P'   888  `888  `888
+                 888     888   888    Y888'     888   888   888
+                 888     888   888  .o8"'88b    888   888   888
+                d888b    `Y8bod8P' o88'   888o o888o  `V88V"V8P'
+
+                                                  www.roxlu.com
+                                             www.apollomedia.nl
+                                          www.twitter.com/roxlu
+
+---------------------------------------------------------------------------------
 
   # StreamerGIU
 
@@ -12,15 +25,16 @@
   Therefore I'm using one class that controls all the parameters
   of the complete system. 
 
+
  */
+#ifndef ROXLU_STREAMER_GUI_H
+#define ROXLU_STREAMER_GUI_H
 
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "ofxOSC.h" /* we're using OSC to receive text input because it was stopping the main event loop .. arg... */
-
-extern "C" {
-#  include <uv.h>
-}
+#include "ofxOscParameterSync.h"
+#include "ofxXmlSettings.h"
 
 // -----------------------------------------------------
 
@@ -44,9 +58,9 @@ class StreamerGUI {
  public:
   StreamerGUI();
   ~StreamerGUI();
-  bool setup();
-  void update();
-  void draw();
+  bool setup(std::string settingsFile, bool isSender); /* isSender should be true for the remote gui not for the receiver */
+  void update(); /* call this regularly, is used to sync the remote gui */
+  void draw(); /* draws all the panels (and only the enabled fx panels */
   void save(); /* saves the current state */
   void load(); /* loads the last saved state */
   void show(); /* show the gui */
@@ -55,16 +69,19 @@ class StreamerGUI {
   bool onKeyPressed(int key); /* used to toggle the effect on or off (1-...), returns true when it's handled */
   bool didOverlayImageChange(); /* returns true when the overlay image should be drawn/updated - call resetOverlayImageChanged() after handling this */
   void resetOverlayImageChanged(); /* after  you've checked which overlay image should be should you need to call this */
+  void onSetOverlayText(); /* gets called when the button is pressed to set the overlay text, use commas for each line */
  public:
   void setupOverlay(); /* sets up the overlay gui */
+  void setupSync(std::string ip, bool isSender); /* sets up the syncing */
 
  public:
   /* general stuff */
   bool is_visible;
+  bool is_sync_sender;
 
   /* fx panel */
   ofxPanel fx_panel;
-  ofxToggle fx_khronos_enabled;
+  ofParameter<bool> fx_khronos_enabled;
   ofxToggle fx_color_map_enabled;
   ofxToggle fx_bad_tv_enabled;
   ofxToggle fx_scanlines_enabled;
@@ -145,10 +162,15 @@ class StreamerGUI {
   /* text overlay panel */
   ofxPanel text_panel;
   ofxToggle text_enabled;
+  ofxButton text_add_text;
   ofxFloatSlider text_scale;
   ofxFloatSlider text_spacing;
-  ofxOscReceiver receiver;   /* text is received from another app because it stops the event loop */
   std::string overlay_text;
+
+  /* sync */
+  std::vector<ofxOscParameterSync*> sync; /* syncs all panels */
+  ofxOscSender osc_sender; /* to sync the text messages */
+  ofxOscReceiver osc_receiver; /* to sync the text messages ... */
 };
 
 inline bool StreamerGUI::didOverlayImageChange() {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		422CECE7180BFDC1003657C2 /* StreamerGUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 422CECE5180BFDC1003657C2 /* StreamerGUI.cpp */; };
 		422CECFB180BFE17003657C2 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 422CECEA180BFDE7003657C2 /* ofxBaseGui.cpp */; };
 		422CECFC180BFE17003657C2 /* ofxBaseGui.h in Sources */ = {isa = PBXBuildFile; fileRef = 422CECEB180BFDE7003657C2 /* ofxBaseGui.h */; };
 		422CECFD180BFE17003657C2 /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 422CECEC180BFDE7003657C2 /* ofxButton.cpp */; };
@@ -159,6 +158,8 @@
 		48602BC11805AFDA0030D42A /* VideoStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B981805AFA80030D42A /* VideoStreamer.cpp */; };
 		48602BC21805AFDA0030D42A /* VideoStreamerConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B991805AFA80030D42A /* VideoStreamerConfig.cpp */; };
 		48602BC31805AFDA0030D42A /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48602B9B1805AFA80030D42A /* Config.cpp */; };
+		48E9A4C7180CB48B00120E24 /* StreamerGUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A4C1180CB0D600120E24 /* StreamerGUI.cpp */; };
+		48E9A4C8180CB48B00120E24 /* StreamerGUI.h in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A4C2180CB0D600120E24 /* StreamerGUI.h */; };
 		9308292217EB61E9006149AE /* emboss.frag in Sources */ = {isa = PBXBuildFile; fileRef = 9308292117EB61E9006149AE /* emboss.frag */; };
 		9308292617EB7C76006149AE /* sharpen.frag in Sources */ = {isa = PBXBuildFile; fileRef = 9308292517EB7C76006149AE /* sharpen.frag */; };
 		93397D8B17E2B2B50012EAE3 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397D8717E2B0120012EAE3 /* tinyxmlparser.cpp */; };
@@ -230,8 +231,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		422CECE5180BFDC1003657C2 /* StreamerGUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StreamerGUI.cpp; sourceTree = "<group>"; };
-		422CECE6180BFDC1003657C2 /* StreamerGUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamerGUI.h; sourceTree = "<group>"; };
 		422CECEA180BFDE7003657C2 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
 		422CECEB180BFDE7003657C2 /* ofxBaseGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
 		422CECEC180BFDE7003657C2 /* ofxButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
@@ -570,6 +569,8 @@
 		48602B991805AFA80030D42A /* VideoStreamerConfig.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VideoStreamerConfig.cpp; sourceTree = "<group>"; };
 		48602B9B1805AFA80030D42A /* Config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		486E69111806F0F500F1722C /* streamer.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = streamer.xml; path = bin/data/streamer.xml; sourceTree = SOURCE_ROOT; };
+		48E9A4C1180CB0D600120E24 /* StreamerGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StreamerGUI.cpp; sourceTree = "<group>"; };
+		48E9A4C2180CB0D600120E24 /* StreamerGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamerGUI.h; sourceTree = "<group>"; };
 		9308291D17EB4B0E006149AE /* oldvideo.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = oldvideo.frag; path = bin/data/shaders/oldvideo.frag; sourceTree = "<group>"; };
 		9308292117EB61E9006149AE /* emboss.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = emboss.frag; path = bin/data/shaders/emboss.frag; sourceTree = "<group>"; };
 		9308292517EB7C76006149AE /* sharpen.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = sharpen.frag; path = bin/data/shaders/sharpen.frag; sourceTree = "<group>"; };
@@ -1446,6 +1447,7 @@
 		484B8BAA1801C43C0000D7F9 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				48E9A4C0180CB0D600120E24 /* GUI */,
 				CAACFF86180576F300BF6858 /* WebSystem */,
 				484B8BCA1801C44E0000D7F9 /* Crawl */,
 				484B8BAB1801C4450000D7F9 /* VideoFX */,
@@ -1635,6 +1637,16 @@
 				48602B9B1805AFA80030D42A /* Config.cpp */,
 			);
 			path = xmlconfig;
+			sourceTree = "<group>";
+		};
+		48E9A4C0180CB0D600120E24 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				48E9A4C1180CB0D600120E24 /* StreamerGUI.cpp */,
+				48E9A4C2180CB0D600120E24 /* StreamerGUI.h */,
+			);
+			name = GUI;
+			path = ../../Shared/GUI;
 			sourceTree = "<group>";
 		};
 		9339798917E2512B0012EAE3 /* shaders */ = {
@@ -2120,8 +2132,6 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				422CECE5180BFDC1003657C2 /* StreamerGUI.cpp */,
-				422CECE6180BFDC1003657C2 /* StreamerGUI.h */,
 				486E69111806F0F500F1722C /* streamer.xml */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
@@ -2228,6 +2238,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E9A4C7180CB48B00120E24 /* StreamerGUI.cpp in Sources */,
+				48E9A4C8180CB48B00120E24 /* StreamerGUI.h in Sources */,
 				422CEDAC180C3605003657C2 /* IpEndpointName.cpp in Sources */,
 				422CEDAD180C3605003657C2 /* IpEndpointName.h in Sources */,
 				422CEDAE180C3605003657C2 /* NetworkingUtils.h in Sources */,
@@ -2308,7 +2320,6 @@
 				4291A7DE18089CC50004A319 /* DeckLinkAPIDispatch.cpp in Sources */,
 				48602BBD1805AFDA0030D42A /* FLVReader.cpp in Sources */,
 				48602BBE1805AFDA0030D42A /* FLVTypes.cpp in Sources */,
-				422CECE7180BFDC1003657C2 /* StreamerGUI.cpp in Sources */,
 				48602BBF1805AFDA0030D42A /* FLVWriter.cpp in Sources */,
 				48602BC01805AFDA0030D42A /* MultiVideoStreamer.cpp in Sources */,
 				48602BC11805AFDA0030D42A /* VideoStreamer.cpp in Sources */,

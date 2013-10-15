@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "Runtime_Streamer_GUI.app"
-               BlueprintName = "Runtime_Streamer_GUI"
-               ReferencedContainer = "container:Runtime_Streamer_GUI.xcodeproj">
+               BuildableName = "Runtime_Streamer_Gui.app"
+               BlueprintName = "Runtime_Streamer_Gui"
+               ReferencedContainer = "container:Runtime_Streamer_Gui.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Runtime_Streamer_GUI.app"
-            BlueprintName = "Runtime_Streamer_GUI"
-            ReferencedContainer = "container:Runtime_Streamer_GUI.xcodeproj">
+            BuildableName = "Runtime_Streamer_Gui.app"
+            BlueprintName = "Runtime_Streamer_Gui"
+            ReferencedContainer = "container:Runtime_Streamer_Gui.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Runtime_Streamer_GUI.app"
-            BlueprintName = "Runtime_Streamer_GUI"
-            ReferencedContainer = "container:Runtime_Streamer_GUI.xcodeproj">
+            BuildableName = "Runtime_Streamer_Gui.app"
+            BlueprintName = "Runtime_Streamer_Gui"
+            ReferencedContainer = "container:Runtime_Streamer_Gui.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "Runtime_Streamer_GUI.app"
-            BlueprintName = "Runtime_Streamer_GUI"
-            ReferencedContainer = "container:Runtime_Streamer_GUI.xcodeproj">
+            BuildableName = "Runtime_Streamer_Gui.app"
+            BlueprintName = "Runtime_Streamer_Gui"
+            ReferencedContainer = "container:Runtime_Streamer_Gui.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

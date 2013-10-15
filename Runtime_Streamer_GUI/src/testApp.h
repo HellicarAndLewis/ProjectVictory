@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "RemoteStreamerGUI.h"
+#include "ofxGui.h"
+#include "ofxOscParameterSync.h"
+#include "StreamerGUI.h"
 
 class testApp : public ofBaseApp{
  public:
@@ -20,5 +22,5 @@ class testApp : public ofBaseApp{
   void gotMessage(ofMessage msg);
 
  public:
-  RemoteStreamerGUI gui;
+  StreamerGUI gui;
 };

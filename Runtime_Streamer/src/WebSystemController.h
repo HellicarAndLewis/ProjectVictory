@@ -22,7 +22,8 @@ public:
     shoutoutsAreEnabled(false),
     countHashTags(false),
     commandsAreEnabled(false),
-    shouldDecaysEffects(false)
+    shouldDecaysEffects(false),
+    shouldTriggerFakeScreenshot(false)
     {};
     
     // Config
@@ -37,7 +38,7 @@ public:
     WebSystem::Connection connection;
     ofxUISuperCanvas *websystemGUI;
     void initWebSystemGUI();
-
+    
  public:
     void setEnabled(bool f);
     void setShoutOutsEnabled(bool f);
@@ -46,6 +47,7 @@ public:
     void setCountHashTags(bool f);
     void setDecayRate(float f);
     void setEffectImpact(float f);
+    void triggerFakeScreenGrab(); /* this will make sure that "getNextScreenShotFilename()" returns a value so you can test it */
 
  public: // @todo should be made private .... 
     // State
@@ -75,19 +77,6 @@ public:
     
     // Image saving
     string getNextScreenShotFilename();
-    
-    // VoteSystem
-    /*
-    void initVotingGUI();
-
-    ofxUISuperCanvas *voteGUI;
-    ofxUITextInput *vote1TextInput;
-    ofxUITextInput *vote2TextInput;
-
-    void voteingGUIEvent(ofxUIEventArgs &e);
-    void disableGuiEvents();
-    void drawGUI();
-    */
 
 protected:
     
@@ -99,36 +88,9 @@ protected:
     // The precentage of decay per second (e.g. 0.1 == 10%)
     float decayRate;
     float effectImpact;
-    
+
+    bool shouldTriggerFakeScreenshot; /* used while testing, calling triggerFakeScreenGrab() will set this to true. */
 };
-
-/*
-inline void WebSystemController::disableGuiEvents() {
-
-  if(voteGUI) {
-    // voteGUI->disableAppEventCallbacks();
-    voteGUI->disableAppDrawCallback();
-  }
-
-  if(websystemGUI) {
-    //websystemGUI->disableAppEventCallbacks();
-    websystemGUI->disableAppDrawCallback();
-  }
-  
-}
-
-inline void WebSystemController::drawGUI() {
-
-  if(websystemGUI) {
-    websystemGUI->draw();
-  }
-
-  if(voteGUI) {
-    voteGUI->draw();
-  }
-
-}
-*/
 
 inline void WebSystemController::setEnabled(bool f) {
   webSystemIsEnabled = f;
@@ -158,3 +120,6 @@ inline void WebSystemController::setEffectImpact(float f) {
   effectImpact = f;
 }
 
+inline void WebSystemController::triggerFakeScreenGrab() {
+  shouldTriggerFakeScreenshot = true;
+}
