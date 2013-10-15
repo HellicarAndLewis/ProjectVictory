@@ -381,7 +381,7 @@ void testApp::updateGUI() {
   }
 
   /* overlay text */
-  if(!gui.overlay_text.size()) {
+  if(gui.overlay_text.size()) {
     overlay.textOverlay.text = gui.overlay_text;
     gui.overlay_text.clear();
   }
@@ -390,7 +390,7 @@ void testApp::updateGUI() {
   overlay.setDrawOverlayImage(gui.overlay_image_enabled);
   overlay.setOverlayImageOpacity(gui.overlay_image_opacity);
 
-  if(!gui.didOverlayImageChange()) {
+  if(gui.didOverlayImageChange()) {
 
     if(gui.overlay_dx >= gui.overlay_images.size()) {
       printf("error: overlay_dx is bigger then the number of overlay images. something went wrong.. stopping now.\n");
