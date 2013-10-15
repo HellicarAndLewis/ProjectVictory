@@ -133,40 +133,23 @@ void WebSystemController::decayVideoFXToDefault() {
     
 }
 
-#pragma mark - VoteSystem
-/*
-void WebSystemController::initVotingGUI() {
-    voteGUI = new ofxUISuperCanvas( "VOTEING SYSTEM", 20, 280, 200, 200 );
-    voteGUI->setColorBack(ofColor(ofColor::thistle, 125));
-    voteGUI->addLabel("TOPIC 1");
-    vote1TextInput = voteGUI->addTextInput("TOPIC 1", "");
-    voteGUI->addLabel("TOPIC 2");
-    vote2TextInput = voteGUI->addTextInput("TOPIC 2", "");
-    voteGUI->addButton("UPDATE TOPICS", false);
-    voteGUI->autoSizeToFitWidgets();
-    ofAddListener( voteGUI->newGUIEvent, this, &WebSystemController::voteingGUIEvent );
-    voteGUI->loadSettings("settings.voting.gui.xml");
-
-}
-
-void WebSystemController::voteingGUIEvent(ofxUIEventArgs &e) {
-    
-    if ( e.widget->getName() == "UPDATE TOPICS") {
-        ofxUIButton *button = (ofxUIButton *)e.widget;
-        if (button->getValue()) {
-            overlay->voteDisplay.topic1 = vote1TextInput->getTextString();
-            overlay->voteDisplay.topic2 = vote2TextInput->getTextString();
-            overlay->voteDisplay.resetVotes();
-        } else {
-            voteGUI->saveSettings("settings.voting.gui.xml");
-        }
-    }
-    
-}
-*/
-
 // Image saving
 string WebSystemController::getNextScreenShotFilename() {
+
+  if(shouldTriggerFakeScreenshot) {
+    shouldTriggerFakeScreenshot = false;
+
+    ofDirectory dir(ofToDataPath("./screenshots/"));
+    dir.allowExt("jpg");
+    dir.listDir();
+    vector<ofFile> files = dir.getFiles();
+
+    char buf[512];
+    sprintf(buf, "fake_%04ld", files.size() + 1);
+    return buf;
+  }
+
+
     float currentTime = ofGetElapsedTimef();
     string filename = "";
     
@@ -185,4 +168,5 @@ string WebSystemController::getNextScreenShotFilename() {
     return filename;
     
 }
+
 

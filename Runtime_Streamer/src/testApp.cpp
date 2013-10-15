@@ -4,10 +4,8 @@
 void testApp::setup(){
   ofEnableAntiAliasing();
   ofSetVerticalSync( true );
-  ofSetFrameRate( 60 );
-    
-  ofPixels pix;
-    
+  ofSetFrameRate(60);
+  ofSetWindowTitle("Victory Visualizer");
     
 #ifdef DISABLE_STREAMING
   cout << "Disabled streaming: compile with 'Release' to enable" << endl;
@@ -24,7 +22,7 @@ void testApp::setup(){
     
   websystemController.setVideoFX( &vfx );
   websystemController.setOverlay( &overlay );
-  websystemController.init();
+  //websystemController.init();
     
 #if !defined(DISABLE_STREAMING)
   // MULTI STREAMER
@@ -91,9 +89,9 @@ void testApp::setup(){
 
 #endif
 
-  gui.setup();
-  
-}
+  gui.setup("remoteing.xml", false);
+}  
+
 
 void testApp::audioIn(float* input, int nsize, int nchannels) {
 
@@ -178,8 +176,6 @@ void testApp::draw(){
   drawInternal();
 
   takeScreenGrab();
-
-  gui.draw();
 }
 
 void testApp::drawInternal() {
@@ -231,17 +227,19 @@ void testApp::keyPressed(int key) {
     vfx.setColor( colors[colorIndex] );
   }
   else if(key == 's') {
-    gui.save();
+    //gui.save();
   }
   else if(key == 'l') {
-    gui.load();
+    // gui.load();
   }
   else if(key == ',') {
-    gui.toggle();
+    //gui.toggle();
   }
-
   else if(key == 'f') {
     ofToggleFullscreen();
+  }
+  else if (key == 'g') {
+    websystemController.triggerFakeScreenGrab();
   }
 }
 
