@@ -62,28 +62,28 @@ bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
   
   // effects panel
   fx_panel.setup("Effects", "ofxgui/effects.xml");
-  fx_panel.add(fx_khronos_enabled.set("Khronos", false));
-  fx_panel.add(fx_color_map_enabled.setup("Color Map", false));
-  fx_panel.add(fx_bad_tv_enabled.setup("Bad TV", false));
-  fx_panel.add(fx_scanlines_enabled.setup("Scanlines", false));
-  fx_panel.add(fx_rgb_shift_enabled.setup("RGB Shift", false));
-  fx_panel.add(fx_flow_lines_enabled.setup("Flow Lines", false));
-  fx_panel.add(fx_grid_distort_enabled.setup("Grid Distort", false));
+  fx_panel.add(fx_khronos_enabled.set("HYPER Khronos", false));
+  fx_panel.add(fx_color_map_enabled.setup("SPECTRUM Color Map", false));
+  fx_panel.add(fx_bad_tv_enabled.setup("WAVY Bad TV", false));
+  fx_panel.add(fx_scanlines_enabled.setup("SCAN Scan Lines", false));
+  fx_panel.add(fx_rgb_shift_enabled.setup("GLITCH RGB Shift", false));
+  fx_panel.add(fx_flow_lines_enabled.setup("TRAIL Flow Lines", false));
+  fx_panel.add(fx_grid_distort_enabled.setup("DISTORT Grid Distort", false));
   fx_panel.loadFromFile("ofxgui/effects.xml");
 
   // effect: khronos
-  khronos_panel.setup("Effect Khronos", "ofxgui/effect_khronos.xml");
+  khronos_panel.setup("HYPER Khronos", "ofxgui/effect_khronos.xml");
   khronos_panel.add(khronos_amount.setup("Amount", 0.0f, 0.0f, 1.0f));
   khronos_panel.add(khronos_mag_scaler.setup("Mag Scaler", 1.0f, 1.0f, 10.0f));
   khronos_panel.loadFromFile("ofxgui/effect_khronos.xml");
 
   // effect: color map
-  colmap_panel.setup("Effect Color Map", "ofxgui/effect_color_map.xml");
+  colmap_panel.setup("SPECTRUM Color Map", "ofxgui/effect_color_map.xml");
   colmap_panel.add(colmap_amount.setup("Amount", 0.0f, 0.0f, 1.0f));
   colmap_panel.loadFromFile("ofxgui/effect_color_map.xml");
 
   // effect: bad tv
-  btv_panel.setup("Effect Bad TV", "ofxgui/effect_bad_tv.xml");
+  btv_panel.setup("WAVY Bad TV", "ofxgui/effect_bad_tv.xml");
   btv_panel.add(btv_amount.setup("Amount", 0.0f, 0.0f, 1.0f));
   btv_panel.add(btv_thick_distort.setup("Thick Distort", 0.0f, 0.1f, 20.0f));
   btv_panel.add(btv_fine_distort.setup("Fine Distort", 0.0f, 0.1f, 20.0f));
@@ -92,7 +92,7 @@ bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
   btv_panel.loadFromFile("ofxgui/effect_bad_tv.xml");
 
   // effect: scan lines
-  sl_panel.setup("Effect Scan Lines", "ofxgui/effect_scanlines.xml");
+  sl_panel.setup("SCAN Scan Lines", "ofxgui/effect_scanlines.xml");
   sl_panel.add(sl_amount.setup("Amount", 0.0f, 0.0f, 1.0f));
   sl_panel.add(sl_count.setup("Count", 50.0f, 50.0f, 1000.0f));
   sl_panel.add(sl_s_intensity.setup("Intensity: S", 0.0f, 0.0f, 2.0f));
@@ -100,14 +100,14 @@ bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
   sl_panel.loadFromFile("ofxgui/effect_scanlines.xml");
 
   // effect: rgb shift
-  rgb_panel.setup("Effect RGB Shift", "ofxgui/effect_rgb_shift.xml");
+  rgb_panel.setup("GLITCH RGB Shift", "ofxgui/effect_rgb_shift.xml");
   rgb_panel.add(rgb_amount.setup("Amount", 0.0f, 0.0f, 1.0f));
   rgb_panel.add(rgb_rgb_amount.setup("RGB Amount", 0.0f, 0.0f, 0.1f));
   rgb_panel.add(rgb_angle.setup("Angle", 0.0f, 0.0f, 2.0f));
   rgb_panel.loadFromFile("ofxgui/effect_rgb_shift.xml");
 
   // effect: flow lines
-  flow_panel.setup("Effect Flow Lines", "ofxgui/effect_flow_lines.xml");
+  flow_panel.setup("TRAIL Flow Lines", "ofxgui/effect_flow_lines.xml");
   flow_panel.add(flow_amount.setup("Amount", 0.0f, 0.0f, 1.0f));
   flow_panel.add(flow_step_size.setup("Step Size", 2.0f, 2.0f, 20.0f));
   flow_panel.add(flow_line_scale.setup("Line Scale", 1.0f, 1.0f, 20.0f));
@@ -115,7 +115,7 @@ bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
   flow_panel.loadFromFile("ofxgui/effect_flow_lines.xml");
 
   // effect: grid
-  grid_panel.setup("Effect grid", "ofxgui/effect_grid.xml");
+  grid_panel.setup("DISTORT Grid Distort", "ofxgui/effect_grid.xml");
   grid_panel.add(grid_amount.setup("Amount", 0.0f, 0.0f, 1.0f));
   grid_panel.add(grid_step_size.setup("Step Size", 8.0f, 8.0f, 32.0f));
   grid_panel.add(grid_particle_radius.setup("Particle Radius", 2.0f, 2.0f, 16.0f));
