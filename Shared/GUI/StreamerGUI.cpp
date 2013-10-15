@@ -27,6 +27,7 @@ void OverlayImage::onPressed(bool& v) {
       gui->overlay_changed = true;
     }
   }
+
 }
 
 // ----------------------------------------------------------
@@ -35,21 +36,33 @@ StreamerGUI::StreamerGUI()
   :overlay_dx(0)
   ,overlay_changed(false)
   ,is_visible(false)
+  ,is_sync_sender(false)
 {
 
 }
 
 StreamerGUI::~StreamerGUI() {
-  printf("_______________ ERROR:::::::::::::: CLEANUP GUI THREAD ::::::::::::::::\n");
-  printf("@todo - delete ofxToggles ");
   is_visible = false;
+  is_sync_sender = false;
+
+  for(size_t i = 0; i < sync.size(); ++i) {
+    delete sync[i];
+    sync[i] = NULL;
+  }
+  sync.clear();
+
+  for(size_t i = 0; i < overlay_images.size(); ++i) {
+    delete overlay_images[i];
+    overlay_images[i] = NULL;
+  }
+  overlay_images.clear();
 }
 
-bool StreamerGUI::setup() {
-
+bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
+  
   // effects panel
   fx_panel.setup("Effects", "ofxgui/effects.xml");
-  fx_panel.add(fx_khronos_enabled.setup("Khronos", false));
+  fx_panel.add(fx_khronos_enabled.set("Khronos", false));
   fx_panel.add(fx_color_map_enabled.setup("Color Map", false));
   fx_panel.add(fx_bad_tv_enabled.setup("Bad TV", false));
   fx_panel.add(fx_scanlines_enabled.setup("Scanlines", false));
@@ -133,9 +146,12 @@ bool StreamerGUI::setup() {
   /* text panel */
   text_panel.setup("Text overlay", "ofxgui/text.xml");
   text_panel.add(text_enabled.setup("Enabled", false));
+  text_panel.add(text_add_text.setup("Set the text"));
   text_panel.add(text_scale.setup("Scale", 0.5f, 0.5f, 5.0f));
   text_panel.add(text_spacing.setup("Spacing", 0.0f, 0.0f, 100.0f));
   text_panel.loadFromFile("ofxgui/text.xml");
+
+  text_add_text.addListener(this, &StreamerGUI::onSetOverlayText);
 
   // positioning
   int rgb_h = rgb_panel.getHeight();
@@ -164,9 +180,64 @@ bool StreamerGUI::setup() {
   flow_panel.setPosition(web_w + 20,  fx_h + rgb_h + btv_h + kr_h + col_h + sl_h + 70);
   grid_panel.setPosition(web_w + fx_panel.getWidth() + 30, fx_panel.getHeight() + 20);
 
-  receiver.setup(4455);
-
+  // sync
+  is_sync_sender = isSender;
+  setupSync(settingsFile, is_sync_sender);
   return true;
+}
+
+void StreamerGUI::setupSync(std::string settingsFile, bool isSender) {
+
+  ofxXmlSettings xml;
+  if(!xml.loadFile(settingsFile)) {
+    printf("error: cannot load the settings file for the streamer gui. Stopping now.\n");
+    ::exit(EXIT_FAILURE);
+  }
+
+  std::string receiver_ip = xml.getValue("settings:receiver_ip", "");
+  if(!receiver_ip.size()) {
+    printf("error: cannot find the <receiver_ip> in the settings xml. Stopping now.\n");
+    ::exit(EXIT_FAILURE);
+  }
+
+  // setup the panel sync
+  std::vector<ofxPanel*> to_sync;
+  to_sync.push_back(&fx_panel);
+  to_sync.push_back(&khronos_panel);
+  to_sync.push_back(&colmap_panel);
+  to_sync.push_back(&btv_panel);
+  to_sync.push_back(&sl_panel);
+  to_sync.push_back(&flow_panel);
+  to_sync.push_back(&rgb_panel);
+  to_sync.push_back(&grid_panel);
+  to_sync.push_back(&web_panel);
+  to_sync.push_back(&overlay_panel);
+  to_sync.push_back(&crawl_panel);
+  to_sync.push_back(&text_panel);
+  
+  int from_port = 6667;
+  int to_port = 6666;
+
+  if(!isSender) {
+    from_port = 6666;
+    to_port = 6667;
+  }
+
+  for(size_t i = 0; i < to_sync.size(); ++i) {
+    ofxOscParameterSync* s = new ofxOscParameterSync();
+    s->setup((ofParameterGroup&)to_sync[i]->getParameter(), to_port, receiver_ip, from_port);
+    to_port += 2;
+    from_port += 2;
+    sync.push_back(s);
+  }
+
+  // setup text sync
+  if(isSender) {
+    osc_sender.setup(receiver_ip, 4455);
+  }
+  else {
+    osc_receiver.setup(4455);
+  }
 }
 
 void StreamerGUI::setupOverlay() {
@@ -204,17 +275,21 @@ void StreamerGUI::setupOverlay() {
 
 void StreamerGUI::update() {
 
+  for(size_t i = 0; i < sync.size(); ++i) {
+    sync[i]->update();
+  }
+
   // get the osc messages from the remote gui
-  while(receiver.hasWaitingMessages()){
+  if(!is_sync_sender) {
+    while(osc_receiver.hasWaitingMessages()){
+      ofxOscMessage m;
+      osc_receiver.getNextMessage(&m);
+      std::string address = m.getAddress();
 
-		ofxOscMessage m;
-		receiver.getNextMessage(&m);
-    std::string address = m.getAddress();
-
-    if(address == "/overlay/text") {
-      overlay_text = m.getArgAsString(0);
+      if(address == "/overlay/text") {
+        overlay_text = m.getArgAsString(0);
+      }
     }
-
   }
 
   // when overlay has changed we unset the other toggles
@@ -230,9 +305,6 @@ void StreamerGUI::update() {
 // @todo - pass in a controller key (if available) else text inputs fail
 bool StreamerGUI::onKeyPressed(int key) {
 
-  return false;
-
-#if 0  
   switch(key) {
     case '1': { fx_khronos_enabled = !fx_khronos_enabled; return true;  }
     case '2': { fx_color_map_enabled = !fx_color_map_enabled; return true;  }
@@ -243,7 +315,6 @@ bool StreamerGUI::onKeyPressed(int key) {
     case '7': { fx_grid_distort_enabled = !fx_grid_distort_enabled; return true; }
   }
   return false;
-#endif
 
 }
 
@@ -314,4 +385,16 @@ void StreamerGUI::load() {
   web_panel.loadFromFile("ofxgui/websystem.xml");
   crawl_panel.loadFromFile("ofxgui/crawl.xml");
   text_panel.loadFromFile("ofxgui/text.xml");
+}
+
+void StreamerGUI::onSetOverlayText() {
+  if(is_sync_sender) { 
+    overlay_text = ofSystemTextBoxDialog("Please enter the text for overlay 1 (comma creates new lines)");
+
+    ofxOscMessage m;
+    m.setAddress("/overlay/text");
+    m.addStringArg(overlay_text);
+    osc_sender.sendMessage(m);
+
+  }
 }

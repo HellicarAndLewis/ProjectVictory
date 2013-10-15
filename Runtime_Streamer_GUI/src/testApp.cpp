@@ -4,13 +4,17 @@
 void testApp::setup(){
   ofBackground(0x33);
   ofSetWindowPosition(310,190);
-  gui.setup();
+  ofSetWindowTitle("Victory GUI");
+  gui.setup("remoteing.xml", true);
+  gui.show();
+  gui.load();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-  gui.update();
+	gui.update();
 }
+
 
 //--------------------------------------------------------------
 void testApp::draw(){
@@ -20,6 +24,20 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 
+  // handled by gui
+  if(gui.onKeyPressed(key)) {
+    return;
+  }
+
+	if(key == ' ') {
+		gui.toggle();
+	}
+  else if(key == 's') {
+    gui.save();
+  }
+  else if(key == 'l') {
+    gui.load();
+  }
 }
 
 //--------------------------------------------------------------
