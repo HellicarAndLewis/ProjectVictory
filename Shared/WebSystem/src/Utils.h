@@ -55,6 +55,8 @@ namespace WebSystem {
                     if ( diff > 0.0001 || diff > -0.001) {
                         float decayAmount = diff * decayRatePerSecondScalar * timeDelta;
                         currentShaderMap[ *vit ] = currentValue - decayAmount;
+                    } else {
+                        currentValue = defaultValue;
                     }
 
                 }
