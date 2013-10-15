@@ -7,7 +7,7 @@ void testApp::setup(){
   ofSetFrameRate(60);
   ofSetWindowTitle("Victory Visualizer");
     
-#ifdef DISABLE_STREAMING
+#if !USE_STREAMING
   cout << "Disabled streaming: compile with 'Release' to enable" << endl;
 #else
   cout << "Enabled streaming: compile with 'Release NoStream' to disable" << endl;
@@ -22,11 +22,10 @@ void testApp::setup(){
     
   websystemController.setVideoFX( &vfx );
   websystemController.setOverlay( &overlay );
-  //websystemController.init();
+  websystemController.init();
     
-#if !defined(DISABLE_STREAMING)
-  // MULTI STREAMER
-  // --------------------------------------------------
+#if USE_STREAMING
+
   int video_w = 1280;
   int video_h = 720;
   int fps = 25;
@@ -39,7 +38,17 @@ void testApp::setup(){
     printf("error: cannot start the streamer.\n");
     ::exit(EXIT_FAILURE);
   }
-  
+
+  sound_stream.listDevices();
+  sound_stream.setup(this, 0, 2, 44100, 1024, 4);
+#endif
+
+  if(!grab_saver.setup(ofGetWidth(), ofGetHeight(), 20)) {
+    printf("error: cannot start the screen grab saver.\n");
+    ::exit(EXIT_FAILURE);
+  }
+
+#if USE_DECKLINK
   //if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
   if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
     printf("error: cannot get decklink setup.\n");
@@ -62,22 +71,13 @@ void testApp::setup(){
   ldeck_new_img = false;
   ldeck_img.allocate(lw, lh, OF_IMAGE_COLOR);
 
-  sound_stream.listDevices();
-  sound_stream.setup(this, 0, 2, 44100, 1024, 4);
-#endif
-
-  if(!grab_saver.setup(ofGetWidth(), ofGetHeight(), 20)) {
-    printf("error: cannot start the screen grab saver.\n");
-    ::exit(EXIT_FAILURE);
-  }
-
-#if !defined(DISABLE_STREAMING)
   if(!vfx.setVideoSource(&ldeck_img)) {
     printf("error: cannot set video source.\n");
     ::exit(EXIT_FAILURE);
   }
-#else 
+#endif
 
+#if USE_CAM
   video_grabber.setDeviceID(0);
   video_grabber.setDesiredFrameRate(25);
   video_grabber.initGrabber(640,480);
@@ -86,7 +86,6 @@ void testApp::setup(){
     printf("error: cannot set the video source.\n");
     ::exit(EXIT_FAILURE);
   }
-
 #endif
 
   gui.setup("remoteing.xml", false);
@@ -97,13 +96,14 @@ void testApp::audioIn(float* input, int nsize, int nchannels) {
 
   return;
 
-#ifndef DISABLE_STREAMING
+#if USE_STREAMING
   size_t nsamples = nsize * nchannels;
   for(size_t i = 0; i < nsamples; ++i) {
     input[i] *= 32768.0f;
   }
   streamer.addAudio(input, nsize, nchannels);
 #endif
+
 }
 
 //--------------------------------------------------------------
@@ -111,7 +111,11 @@ void testApp::update(){
 
   updateGUI();
   
-#if defined(DISABLE_STREAMING)
+#if USE_STREAMING
+  streamer.update();
+#endif
+
+#if USE_CAM
   video_grabber.update();
     
   if(video_grabber.isFrameNew()) {
@@ -119,15 +123,12 @@ void testApp::update(){
   }
   else {
     vfx.update(false);
-  }
-#else
-  streamer.update();
+  }    
 #endif
-    
+
   websystemController.update();
 
   overlay.update();
-  
 }
 
 //--------------------------------------------------------------
@@ -135,7 +136,7 @@ void testApp::draw(){
 
   screenshot_name = websystemController.getNextScreenShotFilename();
   
-#ifndef DISABLE_STREAMING
+#if USE_DECKLINK
   // get decklink image.
   if(ldeck.hasNewFrame()) {
 
@@ -159,14 +160,15 @@ void testApp::draw(){
   else {
     vfx.update(false);
   }
+#endif
 
+#if USE_STREAMING
   // do we need to stream?
   if(streamer.wantsNewFrame()) {
     streamer.beginGrab();
     drawInternal();
     streamer.endGrab();
   }
-
 #endif
 
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -184,7 +186,6 @@ void testApp::drawInternal() {
 }
 
 void testApp::takeScreenGrab() {
-  // Screen shot saving
   if(screenshot_name.size()) {
     if(!grab_saver.grab(screenshot_name)) {
       printf("error: cannot grab - this may not happen! - allocate a bigger buffer in ScreenGrabSaver.\n");
@@ -225,15 +226,6 @@ void testApp::keyPressed(int key) {
       colorIndex = 0;
     }
     vfx.setColor( colors[colorIndex] );
-  }
-  else if(key == 's') {
-    //gui.save();
-  }
-  else if(key == 'l') {
-    // gui.load();
-  }
-  else if(key == ',') {
-    //gui.toggle();
   }
   else if(key == 'f') {
     ofToggleFullscreen();
