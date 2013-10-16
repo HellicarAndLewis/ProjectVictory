@@ -42,7 +42,6 @@ void CommandOverlayImage::onPressed(bool& v) {
 }
 
 void CommandOverlayImage::decay(float rate) {
-  if (opacity == 0) { return; }
   float currentTime = ofGetElapsedTimef();
   float timeDelta = currentTime - lastDecayTime;
   float decayAmount = opacity * rate * timeDelta;
