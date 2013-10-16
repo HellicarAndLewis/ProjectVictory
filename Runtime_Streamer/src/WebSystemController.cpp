@@ -126,7 +126,16 @@ void WebSystemController::onCommand(Json::Value body) {
                     // Get the tweet id as a string
                     stringstream s;
                     s << body["tweet"]["id"];
-                    string tweetid = s.str();
+
+                    // Strip out all the non decimal values
+                    string tweetid_tmp = s.str();
+                    std::string tweetid = "";
+                    for(size_t i = 0; i < tweetid_tmp.size(); ++i) {
+                      if(isdigit(tweetid_tmp[i])) {
+                        tweetid.push_back(tweetid_tmp[i]);
+                      }
+                    }
+
                     tweetid.erase(tweetid.size() - 1);
                     // Set it up to be saved
                     screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
