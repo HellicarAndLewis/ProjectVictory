@@ -25,6 +25,7 @@ void testApp::setup(){
   websystemController.setVideoFX( &vfx );
   websystemController.setOverlay( &overlay );
   websystemController.init();
+  websystemController.setGui( &gui );
     
 #if USE_STREAMING
 
@@ -91,6 +92,12 @@ void testApp::setup(){
 #endif
 
   gui.setup("remoteing.xml", false);
+
+  // load in all the command overlay images
+  for (size_t i=0; i<gui.command_overlay_images.size(); ++i) {
+    CommandOverlayImage *overlayImage = gui.command_overlay_images[i];
+    overlayImage->image.loadImage( overlayImage->file );
+  }
 }  
 
 
@@ -184,6 +191,17 @@ void testApp::draw(){
 
 void testApp::drawInternal() {
   vfx.draw(0, 0, ofGetWidth(), ofGetHeight());
+  // draw each command overlay image
+  for ( std::vector<CommandOverlayImage*>::iterator it = gui.command_overlay_images.begin(); it != gui.command_overlay_images.end(); ++it ) {
+      ofPushStyle();
+      {
+          ofSetColor(ofColor::white, (*it)->opacity * 255);
+          (*it)->image.draw(0, 0);
+          (*it)->decay(gui.web_decay_speed);
+      }
+      ofPopStyle();
+  }
+  // draw the other overlays, scroller, votes, text
   overlay.draw();
 }
 

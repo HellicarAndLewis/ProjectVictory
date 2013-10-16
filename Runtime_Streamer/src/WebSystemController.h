@@ -4,6 +4,7 @@
 #include "ofxUI.h"
 class VideoFX;
 class Overlay;
+class StreamerGUI;
 
 typedef map<float, string> ScreenShotTriggers;
 typedef map<float, string>::iterator ScreenShotTriggersIt;
@@ -23,7 +24,8 @@ public:
     countHashTags(false),
     commandsAreEnabled(false),
     shouldDecaysEffects(false),
-    shouldTriggerFakeScreenshot(false)
+    shouldTriggerFakeScreenshot(false),
+    gui(0)
     {};
     
     // Config
@@ -38,6 +40,9 @@ public:
     WebSystem::Connection connection;
     ofxUISuperCanvas *websystemGUI;
     void initWebSystemGUI();
+    void setGui(StreamerGUI *g) {
+        gui = g;
+    }
     
  public:
     void setEnabled(bool f);
@@ -48,14 +53,6 @@ public:
     void setDecayRate(float f);
     void setEffectImpact(float f);
     void triggerFakeScreenGrab(); /* this will make sure that "getNextScreenShotFilename()" returns a value so you can test it */
-
- public: // @todo should be made private .... 
-    // State
-    bool webSystemIsEnabled;
-    bool shoutoutsAreEnabled;
-    bool commandsAreEnabled;
-    bool shouldDecaysEffects;
-    bool countHashTags;
 
  public:
     // Web system events
@@ -84,12 +81,23 @@ protected:
     
     VideoFX *videoFX;
     Overlay *overlay;
+    StreamerGUI *gui;
     
     // The precentage of decay per second (e.g. 0.1 == 10%)
     float decayRate;
     float effectImpact;
 
     bool shouldTriggerFakeScreenshot; /* used while testing, calling triggerFakeScreenGrab() will set this to true. */
+    
+    // Command overlay images
+    
+private:
+    // State
+    bool webSystemIsEnabled;
+    bool shoutoutsAreEnabled;
+    bool commandsAreEnabled;
+    bool shouldDecaysEffects;
+    bool countHashTags;
 };
 
 inline void WebSystemController::setEnabled(bool f) {

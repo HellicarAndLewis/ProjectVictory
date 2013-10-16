@@ -1,6 +1,7 @@
 #include "WebSystemController.h"
 #include "Overlay.h"
 #include "Crawl.h"
+#include "StreamerGUI.h"
 
 #pragma mark – Life Cycle
 
@@ -33,25 +34,6 @@ void WebSystemController::update() {
         lastEffectsDecaySecs = currentTime;
     }
 }
-
-#pragma mark - VoteSystem
-  /*
-void WebSystemController::initWebSystemGUI() {
-
-    websystemGUI = new ofxUISuperCanvas( "WEB SYSTEM", 20, 20, 200, 200 );
-    websystemGUI->setColorBack( ofColor(ofColor::green, 125) );
-    websystemGUI->addLabelToggle( "IS ENABLED", &webSystemIsEnabled );
-    websystemGUI->addLabelToggle( "SHOUTOUTS", &shoutoutsAreEnabled );
-    websystemGUI->addLabelToggle( "COMMANDS", &commandsAreEnabled );
-    websystemGUI->addLabelToggle( "COUNT HASH TAGS", &countHashTags );
-    websystemGUI->addSpacer();
-    websystemGUI->addLabelToggle( "DECAYS", &shouldDecaysEffects );
-    websystemGUI->addSlider( "DECAY SPEED", 0.001f, 0.5f, &decayRate);
-    websystemGUI->addSlider( "COMMAND IMPACT", 0.001f, 1.0f, &effectImpact);
-    websystemGUI->autoSizeToFitWidgets();
-
-}
-  */
 
 #pragma mark – Web System Connection
 
@@ -101,20 +83,64 @@ void WebSystemController::onCommand(Json::Value body) {
     
     cout << "@" << screenname << " triggered " << command << endl;
     
-    // Store a trigger to save the image
-    
-    // This is dirty. Want tweet id as string.
-    stringstream s;
-    s << body["tweet"]["id"];
-    string tweetid = s.str();
-    tweetid.erase(tweetid.size() - 1);
-    
-    screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
-    
     // Apply the payload to the videofx. They need to be a decayer somewhere, so this may not be how it works.
     if (videoFX) {
         WebSystem::Utils::applyPayload( videoFX, body["payload"], effectImpact );
-        cout << "should have applied payload" << endl;
+        
+        bool foundActiveEffect = false;
+        
+        // Loop through each effect found in the pay load
+        for (int i = 0;  i<body["payload"]["effects"].size(); ++i) {
+            // Loop though each VideoFX effect
+            for (vector<BaseEffect*>::iterator it = videoFX->effects.begin(); it!= videoFX->effects.end(); ++it) {
+                // See it is matches
+                Json::Value effects;
+                try {
+                    effects = body["payload"]["effects"]; //[i]["name"].asString();
+                } catch (...) {
+                    cout << "unable to parse effects from payload json" << endl;
+                    continue;
+                }
+                // Check to see if there is an effect enabled
+                for (int j = 0; j < effects.size(); ++j) {
+                    if (effects[j]["name"].asString() == (*it)->name) {
+                        if ((*it)->enabled) {
+                            foundActiveEffect = true;
+                        }
+                    }
+                }
+            }
+        }
+        
+        if ( foundActiveEffect ) {
+                // Get the tweet id as a string
+                stringstream s;
+                s << body["tweet"]["id"];
+                string tweetid = s.str();
+                tweetid.erase(tweetid.size() - 1);
+                // Set it up to be saved
+                screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
+            
+            
+            // Bump up the alpha for any commands
+            // If we go back to multiple effetcs per command this
+            // will display effects overlays even if they are now active
+            string payloadName;
+            try {
+                payloadName = body["payload"]["payloadName"].asString();
+            } catch (...) {
+                cout << "unable to parse payload name from json" << endl;
+                return;
+            }
+            if (gui) {
+                for ( std::vector<CommandOverlayImage*>::iterator it = gui->command_overlay_images.begin(); it != gui->command_overlay_images.end(); ++it ) {
+                    if ((*it)->commandName == payloadName) {
+                        (*it)->opacity = 1.0f;
+                    }
+                }
+            }
+        }
+        
     }
     
 }

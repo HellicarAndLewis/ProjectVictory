@@ -27,9 +27,13 @@ namespace WebSystem {
         static const void applyPayload( VideoFX *videoFX, Json::Value payload, float muliplier = 1.0f ) {
             for (int i = 0;  i<payload["effects"].size(); ++i) {
                 for (vector<BaseEffect*>::iterator it = videoFX->effects.begin(); it!= videoFX->effects.end(); ++it) {
-                    if (payload["effects"][i]["name"] == (*it)->name) {
-                        // apply the payload
-                        (*it)->applyShaderMap(payload["effects"][i]["maps"], muliplier);
+                    try {
+                        if (payload["effects"][i]["name"] == (*it)->name) {
+                            // apply the payload
+                            (*it)->applyShaderMap(payload["effects"][i]["maps"], muliplier);
+                        }
+                    } catch (...) {
+                        
                     }
                 }
             }
@@ -56,7 +60,7 @@ namespace WebSystem {
                         float decayAmount = diff * decayRatePerSecondScalar * timeDelta;
                         currentShaderMap[ *vit ] = currentValue - decayAmount;
                     } else {
-                        currentValue = defaultValue;
+                        currentValue = defaultValue; 
                     }
 
                 }

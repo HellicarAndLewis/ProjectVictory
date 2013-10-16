@@ -54,11 +54,23 @@ class StreamerGUI;
 class OverlayImage {
  public:
   OverlayImage(StreamerGUI* gui);
-  void onPressed(bool& v);
+  virtual void onPressed(bool& v);
   
   StreamerGUI* gui;
   ofFile file;
   ofxToggle toggle;
+};
+
+class CommandOverlayImage : public OverlayImage {
+public:
+    CommandOverlayImage(StreamerGUI* gui);
+    void onPressed(bool& v);
+    void decay(float rate);
+    float opacity;
+    // this is needs to be loaded/seto externally
+    ofImage image;
+    float lastDecayTime;
+    string commandName;
 };
 
 // -----------------------------------------------------
@@ -81,6 +93,7 @@ class StreamerGUI {
   void onSetOverlayText(); /* gets called when the button is pressed to set the overlay text, use commas for each line */
  public:
   void setupOverlay(); /* sets up the overlay gui */
+  void setupCommadOverlay(); /* sets up the commands overlay gui */
   void setupSync(std::string ip, bool isSender); /* sets up the syncing */
 
  public:
@@ -162,6 +175,11 @@ class StreamerGUI {
   std::vector<OverlayImage*> overlay_images;
   size_t overlay_dx; 
   bool overlay_changed;
+  
+  /* commands overlays panel */
+  ofxPanel command_overlay_panel;
+  std::vector<CommandOverlayImage*> command_overlay_images;
+  size_t command_overlay_dx;
 
   /* crawl panel */
   ofxPanel crawl_panel;

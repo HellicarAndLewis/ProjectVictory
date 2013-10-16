@@ -32,7 +32,30 @@ void OverlayImage::onPressed(bool& v) {
 
 // ----------------------------------------------------------
 
-StreamerGUI::StreamerGUI() 
+CommandOverlayImage::CommandOverlayImage(StreamerGUI* gui)
+  :OverlayImage(gui),lastDecayTime(0.0f)
+{
+}
+
+void CommandOverlayImage::onPressed(bool& v) {
+  printf("warning: CommandOverlayImage::onPressed not implemented");
+}
+
+void CommandOverlayImage::decay(float rate) {
+  if (opacity == 0) { return; }
+  float currentTime = ofGetElapsedTimef();
+  float timeDelta = currentTime - lastDecayTime;
+  float decayAmount = opacity * rate * timeDelta;
+  opacity -= decayAmount;
+  if ( opacity < 0.001f) {
+    opacity = 0.0f;
+  } 
+  lastDecayTime = currentTime;
+}
+
+// ----------------------------------------------------------
+
+StreamerGUI::StreamerGUI()
   :overlay_dx(0)
   ,overlay_changed(false)
   ,is_visible(false)
@@ -56,6 +79,12 @@ StreamerGUI::~StreamerGUI() {
     overlay_images[i] = NULL;
   }
   overlay_images.clear();
+
+  for(size_t i = 0; i < command_overlay_images.size(); ++i) {
+    delete command_overlay_images[i];
+    command_overlay_images[i] = NULL;
+  }
+  command_overlay_images.clear();
 }
 
 bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
@@ -138,6 +167,9 @@ bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
 
   /* overlay panel - images */
   setupOverlay();
+    
+  /* commnad overlay panel - images */
+  setupCommadOverlay();
 
   /* crawl panel */
   crawl_panel.setup("Crawl", "ofxgui/crawl.xml");
@@ -273,6 +305,38 @@ void StreamerGUI::setupOverlay() {
   }
 
   overlay_panel.loadFromFile("ofxgui/overlay_images.xml");
+
+}
+
+void StreamerGUI::setupCommadOverlay() {
+
+  command_overlay_panel.setup("Command overlay images", "ofxgui/command_overlay_images.xml");
+
+  ofDirectory dir( ofToDataPath("./command_overlays/") );
+  dir.allowExt("png");
+  dir.listDir();
+
+  vector<ofFile> files = dir.getFiles();
+  if(!files.size()) {
+    printf("error: not overlay images found. create a `command_overlays` directory in your data dir and put the overlay images in there. Stopping now.\n");
+    ::exit(EXIT_FAILURE);
+  }
+  
+  ofColor file_color(255,33,33);
+
+  for(vector<ofFile>::iterator it = files.begin(); it != files.end(); ++it) {
+    ofFile& f = *it;
+    CommandOverlayImage* oi = new CommandOverlayImage(this);
+    std::string name = f.getFileName();
+    command_overlay_panel.add(oi->toggle.setup(name, false));
+    oi->file = f;
+    oi->toggle.addListener(oi, &CommandOverlayImage::onPressed);
+    oi->toggle.setFillColor(file_color);
+    oi->commandName = f.getBaseName();
+    command_overlay_images.push_back(oi); 
+  }
+
+  command_overlay_panel.loadFromFile("ofxgui/overlay_images.xml");
 
 }
 
