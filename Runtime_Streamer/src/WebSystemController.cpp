@@ -136,7 +136,6 @@ void WebSystemController::onCommand(Json::Value body) {
                       }
                     }
 
-                    tweetid.erase(tweetid.size() - 1);
                     // Set it up to be saved
                     screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
                 } catch (...) {

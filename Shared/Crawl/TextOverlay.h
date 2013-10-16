@@ -10,7 +10,7 @@ public:
     float lineSpacing = 20.0;
     float textOpacity;
 
-    string text = "test";
+    string text = "roxlu";
     ofVec2f pos;
     ofTrueTypeFont font;
     

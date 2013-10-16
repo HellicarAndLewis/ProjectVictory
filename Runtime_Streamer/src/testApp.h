@@ -17,6 +17,8 @@
 #define USE_CAM 0
 #define USE_STREAMING 1
 #define USE_AUDIO 1
+#define OUTPUT_WIDTH 1280
+#define OUTPUT_HEIGHT 720
 
 #if USE_CAM && USE_DECKLINK
 #  error "No no... don't use both a webcam and decklink. Choose one."

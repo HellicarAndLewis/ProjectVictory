@@ -29,8 +29,8 @@ void testApp::setup(){
     
 #if USE_STREAMING
 
-  int video_w = 1280;
-  int video_h = 720;
+  int video_w = OUTPUT_WIDTH;
+  int video_h = OUTPUT_HEIGHT;
   int fps = 25;
   if(!streamer.setup("streamer.xml", video_w, video_h, fps)) {
     printf("error: cannot setup the streamer.\n");
@@ -46,7 +46,7 @@ void testApp::setup(){
   sound_stream.setup(this, 0, 2, 44100, 1024, 4);
 #endif
 
-  if(!grab_saver.setup(ofGetWidth(), ofGetHeight(), 200)) { // last params is number of preallocated frames
+  if(!grab_saver.setup(OUTPUT_WIDTH, OUTPUT_HEIGHT, 200)) { // last params is number of preallocated frames
     printf("error: cannot start the screen grab saver.\n");
     ::exit(EXIT_FAILURE);
   }
@@ -183,13 +183,14 @@ void testApp::draw(){
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glDrawBuffer(GL_BACK);
   glClear(GL_COLOR_BUFFER_BIT);
-  glViewport(0, 0, ofGetWidth(), ofGetHeight());
+  glViewport(0, 0, OUTPUT_WIDTH, OUTPUT_HEIGHT);
   drawInternal();
 
   takeScreenGrab();
 }
 
 void testApp::drawInternal() {
+
   vfx.draw(0, 0, ofGetWidth(), ofGetHeight());
   // draw each command overlay image
   for ( std::vector<CommandOverlayImage*>::iterator it = gui.command_overlay_images.begin(); it != gui.command_overlay_images.end(); ++it ) {
@@ -201,6 +202,7 @@ void testApp::drawInternal() {
       }
       ofPopStyle();
   }
+
   // draw the other overlays, scroller, votes, text
   overlay.draw();
 }
