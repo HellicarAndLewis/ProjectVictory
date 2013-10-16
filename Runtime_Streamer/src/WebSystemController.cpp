@@ -19,7 +19,11 @@ void WebSystemController::init() {
 }
 
 void WebSystemController::update() {
+    
+    connection.update();
+    
     float currentTime = ofGetElapsedTimef();
+    
     static float lastHashTagUpdate = 0.f;
     if ( lastHashTagUpdate + (float(UPDATE_VOTES_EVERY_MS) / 1000) < currentTime && overlay && webSystemIsEnabled && countHashTags ) {
         connection.requestHashTagCount( overlay->voteDisplay.topic1 );

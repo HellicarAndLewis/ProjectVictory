@@ -14,12 +14,66 @@ void Connection::setHost(string host, unsigned int port) {
 
 void Connection::connect() {
     _shouldBeConnected = true;
-    wsClient.connect(_host, _port, false);
+    try {
+    	wsClient.connect(_host, _port, false);
+    } catch (...) {
+        printf("catched exception in ofxLibwebsockets");
+        _shouldBeConnected = false;
+    }
 }
 
 void Connection::disconnect() {
     _shouldBeConnected = false;
     wsClient.close();
+}
+
+#pragma mark - Life cycle
+
+
+void Connection::update() {
+    
+    // lock here? should just copy
+    wsClient.lock();
+    {
+        std::copy(todo_messages.begin(), todo_messages.end(), std::back_inserter(work_messages));
+        todo_messages.clear();
+    }
+    wsClient.unlock();
+    
+    for (vector<Json::Value>::iterator it = work_messages.begin(); it != work_messages.end(); ++it) {
+        
+        Json::Value json = *it;
+
+        // A new commands message
+        if ( json["resource"] == "/command/new/" ) {
+            // Trigger all the listeners
+            for (CallablesIt it = commandListeners.begin(); it != commandListeners.end(); ++it) {
+                (**it)( json["body"] );
+            }
+        }
+        // A new shoutout message
+        else if ( json["resource"] == "/shoutout/new/" ) {
+            // Trigger all the listeners
+            for (CallablesIt it = shoutoutListeners.begin(); it != shoutoutListeners.end(); ++it) {
+                (**it)( json["body"] );
+            }
+        }
+        // Check for a count
+        else if ( json["resource"] == "/hashtags/count/new/" ) {
+            // See if the count is for us
+            if ( !json["token"] ) { return; }
+            if ( hasToken( json["token"].asString(), true) ) {
+                // Trigger all the listeners
+                for (CallablesIt it = hashTagCountListeners.begin(); it != hashTagCountListeners.end(); ++it) {
+                    (**it)( json["body"] );
+                }
+            }
+        }
+    }
+    
+    work_messages.clear();
+    
+    
 }
 
 #pragma mark - Requests
@@ -93,31 +147,10 @@ void Connection::onIdle( ofxLibwebsockets::Event& args ) {
 
 void Connection::onMessage( ofxLibwebsockets::Event& args ) {
 
-    // A new commands message
-    if ( args.json["resource"] == "/command/new/" ) {
-        // Trigger all the listeners
-        for (CallablesIt it = commandListeners.begin(); it != commandListeners.end(); ++it) {
-            (**it)( args.json["body"] );
-        }
-    }
-    // A new shoutout message
-    else if ( args.json["resource"] == "/shoutout/new/" ) {
-        // Trigger all the listeners
-        for (CallablesIt it = shoutoutListeners.begin(); it != shoutoutListeners.end(); ++it) {
-            (**it)( args.json["body"] );
-        }
-    }
-    // Check for a count
-    else if ( args.json["resource"] == "/hashtags/count/new/" ) {
-        // See if the count is for us
-        if ( !args.json["token"] ) { return; }
-        if ( hasToken( args.json["token"].asString(), true) ) {
-            // Trigger all the listeners
-            for (CallablesIt it = hashTagCountListeners.begin(); it != hashTagCountListeners.end(); ++it) {
-                (**it)( args.json["body"] );
-            }
-        }
-    }    
+    Json::Value json = args.json;
+    
+    todo_messages.push_back(json);
+    
 }
 
 void Connection::onBroadcast( ofxLibwebsockets::Event& args ) {

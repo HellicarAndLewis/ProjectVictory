@@ -24,6 +24,8 @@ namespace WebSystem {
             ofRemoveListener(ofEvents().update, this, &Connection::onUpdate);
         }
         
+        void update();
+        
         // Connection management
         void setHost(string host, unsigned int port = 80);
         void isConnected() { return _isConnected; }
@@ -94,6 +96,10 @@ namespace WebSystem {
         vector<Callable*> hashTagCountListeners;
         vector<Callable*> shoutoutListeners;
         vector<Callable*> commandListeners;
+        
+        // Store messages comming in form ofxLibWebsockets
+        vector<Json::Value> work_messages;
+        vector<Json::Value> todo_messages;
 
     };
 
