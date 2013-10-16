@@ -53,15 +53,12 @@ namespace WebSystem {
                 for ( Json::Value::Members::iterator vit = members.begin();  vit != members.end(); ++vit ) {
 
                     float currentValue = currentShaderMap[ *vit ].asFloat();
-                    float defaultValue = defaultShaderMap[ *vit ].asFloat();
-                    float diff =  currentValue - defaultValue;
-
-                    if ( diff > 0.0001 || diff > -0.001) {
-                        float decayAmount = diff * decayRatePerSecondScalar * timeDelta;
-                        currentShaderMap[ *vit ] = currentValue - decayAmount;
-                    } else {
-                        currentValue = defaultValue; 
+                    float decayAmount = decayRatePerSecondScalar * timeDelta;
+                    float newValue = currentValue - decayAmount;
+                    if (newValue < 0.01) {
+                        newValue = 0;
                     }
+                    currentShaderMap[ *vit ] = newValue;
 
                 }
 
