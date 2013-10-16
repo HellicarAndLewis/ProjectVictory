@@ -117,14 +117,25 @@ void WebSystemController::onCommand(Json::Value body) {
         }
         
         if ( foundActiveEffect ) {
-                // Get the tweet id as a string
-                stringstream s;
-                s << body["tweet"]["id"];
-                string tweetid = s.str();
-                tweetid.erase(tweetid.size() - 1);
-                // Set it up to be saved
-                screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
             
+            float currentTime = ofGetElapsedTimef();
+            
+            if ( currentTime - lastScreenshotSavedAt > (60.0f/MAX_IMAGES_PER_MINUTE) ) {
+                string tweetid;
+                try {
+                    // Get the tweet id as a string
+                    stringstream s;
+                    s << body["tweet"]["id"];
+                    string tweetid = s.str();
+                    tweetid.erase(tweetid.size() - 1);
+                    // Set it up to be saved
+                    screenShotTriggers[ ofGetElapsedTimef() ] = tweetid;
+                } catch (...) {
+                    cout << "error: failed to capture tweet id" << endl;
+                }
+                
+                lastScreenshotSavedAt = currentTime;
+            } 
             
             // Bump up the alpha for any commands
             // If we go back to multiple effetcs per command this

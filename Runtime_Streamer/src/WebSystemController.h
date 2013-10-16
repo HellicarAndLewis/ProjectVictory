@@ -9,6 +9,8 @@ class StreamerGUI;
 typedef map<float, string> ScreenShotTriggers;
 typedef map<float, string>::iterator ScreenShotTriggersIt;
 
+#define MAX_IMAGES_PER_MINUTE 4.0f
+
 // This is the example glue that connects the VideoFX to the WebSystem, and demo's some of the websystem utils.
 // It is not really to be used directly. For example, having to vfx's channels has not been considered (see: `decayVideoFXToDefault` comments)
 
@@ -25,7 +27,8 @@ public:
     commandsAreEnabled(false),
     shouldDecaysEffects(false),
     shouldTriggerFakeScreenshot(false),
-    gui(0)
+    gui(0),
+    lastScreenshotSavedAt(0.0f)
     {};
     
     // Config
@@ -87,6 +90,8 @@ protected:
     float decayRate;
     float effectImpact;
 
+    float lastScreenshotSavedAt;
+    
     bool shouldTriggerFakeScreenshot; /* used while testing, calling triggerFakeScreenGrab() will set this to true. */
     
     // Command overlay images
