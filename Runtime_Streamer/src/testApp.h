@@ -15,7 +15,7 @@
 
 #define USE_DECKLINK 0
 #define USE_CAM 1
-#define USE_STREAMING 1
+#define USE_STREAMING 0
 #define USE_AUDIO 1
 #define OUTPUT_WIDTH 1280
 #define OUTPUT_HEIGHT 720
