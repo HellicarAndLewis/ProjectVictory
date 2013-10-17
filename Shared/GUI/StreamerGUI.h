@@ -45,6 +45,9 @@
 #include "ofxOscParameterSync.h"
 #include "ofxXmlSettings.h"
 
+#define GUI_STATE_NONE 0
+#define GUI_STATE_INIT 1 /* sets the state to the correct initialization values that should be used when we start */
+
 // -----------------------------------------------------
 
 void streamer_gui_cleanup_name(std::string& fix); /* ofxGui has a bug with names that have certain characters ...*/
@@ -91,6 +94,7 @@ class StreamerGUI {
   bool didOverlayImageChange(); /* returns true when the overlay image should be drawn/updated - call resetOverlayImageChanged() after handling this */
   void resetOverlayImageChanged(); /* after  you've checked which overlay image should be should you need to call this */
   void onSetOverlayText(); /* gets called when the button is pressed to set the overlay text, use commas for each line */
+  void setState(int state);
  public:
   void setupOverlay(); /* sets up the overlay gui */
   void setupCommadOverlay(); /* sets up the commands overlay gui */
@@ -103,7 +107,7 @@ class StreamerGUI {
 
   /* fx panel */
   ofxPanel fx_panel;
-  ofParameter<bool> fx_khronos_enabled;
+  ofxToggle fx_khronos_enabled;
   ofxToggle fx_color_map_enabled;
   ofxToggle fx_bad_tv_enabled;
   ofxToggle fx_scanlines_enabled;
