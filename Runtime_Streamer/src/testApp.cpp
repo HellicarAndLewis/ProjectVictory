@@ -25,6 +25,7 @@ void testApp::setup(){
   websystemController.setVideoFX( &vfx );
   websystemController.setOverlay( &overlay );
   websystemController.init();
+
   websystemController.setGui( &gui );
     
 #if USE_STREAMING

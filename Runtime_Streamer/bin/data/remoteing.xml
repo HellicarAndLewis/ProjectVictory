@@ -1,3 +1,6 @@
 <settings>
+  <!--
   <receiver_ip>192.168.0.10</receiver_ip>
+  -->
+  <receiver_ip>127.0.0.1</receiver_ip>
 </settings>

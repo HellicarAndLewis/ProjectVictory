@@ -13,8 +13,8 @@
 #include "ScreenGrabSaver.h"
 #include "StreamerGUI.h"
 
-#define USE_DECKLINK 1
-#define USE_CAM 0
+#define USE_DECKLINK 0
+#define USE_CAM 1
 #define USE_STREAMING 1
 #define USE_AUDIO 1
 #define OUTPUT_WIDTH 1280

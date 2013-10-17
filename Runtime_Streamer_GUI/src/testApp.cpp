@@ -38,6 +38,9 @@ void testApp::keyPressed(int key){
   else if(key == 'l') {
     gui.load();
   }
+  else if(key == 'i') {
+    gui.setState(GUI_STATE_INIT);
+  }
 }
 
 //--------------------------------------------------------------

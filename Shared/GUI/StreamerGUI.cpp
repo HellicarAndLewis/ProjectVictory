@@ -90,7 +90,7 @@ bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
   
   // effects panel
   fx_panel.setup("Effects", "ofxgui/effects.xml");
-  fx_panel.add(fx_khronos_enabled.set("HYPER Khronos", false));
+  fx_panel.add(fx_khronos_enabled.setup("HYPER Khronos", false));
   fx_panel.add(fx_color_map_enabled.setup("SPECTRUM Color Map", false));
   fx_panel.add(fx_bad_tv_enabled.setup("WAVY Bad TV", false));
   fx_panel.add(fx_scanlines_enabled.setup("SCAN Scan Lines", false));
@@ -218,6 +218,87 @@ bool StreamerGUI::setup(std::string settingsFile, bool isSender) {
   is_sync_sender = isSender;
   setupSync(settingsFile, is_sync_sender);
   return true;
+}
+
+void StreamerGUI::setState(int state) {
+  switch(state) {
+    case GUI_STATE_INIT: {
+      /* web */
+      web_is_enabled = true;
+      web_commands_enabled = false;
+      web_shoutouts_enabled = true;
+      web_decay_effects = true;
+      web_decay_speed = 0.01f;
+      web_command_impact = 1.0f;
+      
+      /* overlay images */
+      overlay_image_enabled = true;
+      overlay_image_opacity = 1.0f;
+      overlay_dx = 0;
+
+      /* crawl */
+      crawl_enabled = true;
+      crawl_speed = 2.15f;
+
+      /* text overlay */
+      text_enabled = true;
+      text_scale = 1.55f;
+      text_spacing = 45.0f;
+      text_opacity = 1.0f;
+      overlay_text = "";
+
+      /* fx */
+      fx_khronos_enabled = true;
+      fx_color_map_enabled = true;
+      fx_bad_tv_enabled = true;
+      fx_scanlines_enabled = true;
+      fx_rgb_shift_enabled = true;
+      fx_flow_lines_enabled = true;
+      fx_grid_distort_enabled = true;
+
+      /* fx: khronos */
+      khronos_amount = 0.815f;
+      khronos_mag_scaler = 4.15f;
+
+      /* fx: color map */
+      colmap_amount = 0.61f;
+
+      /* fx: bad tv */
+      btv_amount = 0.175f;
+      btv_thick_distort = 16.20f;
+      btv_fine_distort = 6.66f;
+      btv_distort_speed = 0.284f;
+      btv_roll_speed = 0.35f;
+
+      /* fx: scan lines */
+      sl_amount = 1.0f;
+      sl_count = 415.0f;
+      sl_s_intensity = 1.05f;
+      sl_n_intensity = 0.50f;
+
+      /* fx: glitch/rgb */
+      rgb_amount = 0.435f;
+      rgb_rgb_amount = 0.049f;
+      rgb_angle = 1.32f;
+
+      /* fx: flow lines */
+      flow_amount = 1.0f;
+      flow_step_size = 2.63f;
+      flow_line_scale = 7.0f;
+      flow_threshold = 0.24f;
+
+      /* fx: grid */
+      grid_amount = 0.935f;
+      grid_step_size = 32.0f;
+      grid_particle_radius = 4.75f;
+      grid_force_scale = 52.0f;
+      grid_spring_strength = 0.088f;
+      grid_drag = 0.365f;
+      grid_show_grid = true;
+      break;
+    };
+    default:break;
+  };
 }
 
 void StreamerGUI::setupSync(std::string settingsFile, bool isSender) {
