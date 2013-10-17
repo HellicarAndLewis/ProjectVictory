@@ -52,8 +52,10 @@ bool VideoFX::setVideoSource( ofBaseImage *source ) {
   circularTexture.allocate( w, h, 20 );
 
   // allocate a downsampled texture to run through optical flow
+
   //downsampledFrame.allocate( w/4, h/4, OF_IMAGE_COLOR );
-  downsampledFrame.allocate(320, 240, OF_IMAGE_COLOR );
+  downsampledFrame.allocate(160, 120, OF_IMAGE_COLOR );
+  //downsampledFrame.allocate(320, 240, OF_IMAGE_COLOR );
   //downsampledFrame.allocate(320, 140, OF_IMAGE_COLOR );
   //downsampledFrame.allocate(240, 140, OF_IMAGE_COLOR );
   //downsampledFrame.allocate(240, 140, OF_IMAGE_COLOR );
@@ -64,6 +66,21 @@ bool VideoFX::setVideoSource( ofBaseImage *source ) {
       effects[i]->allocate( w, h );
     }
   }
+
+#if USE_FLOW
+  flow.setup(downsampledFrame.getWidth(), downsampledFrame.getHeight(), 
+             0.5, 3, 10, 1, 7, 1.5, false, false);
+#else
+
+  // @todo - roxlu added this as mega quickfix - test
+  farneback.setNumLevels(3);
+  farneback.setWindowSize(10);
+  farneback.setNumIterations(1);
+  farneback.setPolyN(7);
+  farneback.setPolySigma(1.5);
+  farneback.setUseGaussian(false);
+  farneback.setPyramidScale(0.5f);
+#endif
 
   return true;
 }
@@ -77,7 +94,7 @@ void VideoFX::update( bool isFrameNew ) {
   // if the video source has a new frame, run it through optical flow and add it to the circularTexture
 
   if(isFrameNew) { 
-
+    
 #if !defined(NDEBUG)
     int w = videoSource->getWidth();
     int h = videoSource->getHeight();
@@ -87,13 +104,20 @@ void VideoFX::update( bool isFrameNew ) {
     }
 #endif  
 
-
     // resample for optical flow
     if(opticalFlowEnabled) {
+
       ofxCv::resize(*videoSource, downsampledFrame);
       downsampledFrame.update();
+  
+#if USE_FLOW
+      flow.update(downsampledFrame);
+      farneback.flow = flow.flow;
+#else 
       farneback.calcOpticalFlow(downsampledFrame);
       farneback.updateVectorFieldTexture();
+#endif
+
     }
 
     // pack into circular texture
@@ -166,6 +190,10 @@ void VideoFX::draw( float posX, float posY, float width, float height ) {
   else {
     videoSource->draw( posX, posY, width, height );
   }
+
+#if USE_FLOW
+  //  flow.drawColored(ofGetWidth(), ofGetHeight(), 10, 3);
+#endif
     
 }
 

@@ -13,9 +13,9 @@
 #include "ScreenGrabSaver.h"
 #include "StreamerGUI.h"
 
-#define USE_DECKLINK 0
-#define USE_CAM 1
-#define USE_STREAMING 0
+#define USE_DECKLINK 1
+#define USE_CAM 0
+#define USE_STREAMING 1
 #define USE_AUDIO 1
 #define OUTPUT_WIDTH 1280
 #define OUTPUT_HEIGHT 720
@@ -26,11 +26,18 @@
 
 #if USE_STREAMING
 #  include <ofxVideoStreamer/ofxMultiVideoStreamer.h>
+#endif
+
+#if USE_DECKLINK
 #  include <ofxLinkDeck/ofxLinkDeck.h>
 #endif
 
+#include "ofxOpticalFlowFarneback.h"
+
 class testApp : public ofBaseApp{
 public:
+  //  ofxOpticalFlowFarneback flow;
+
     void setup();
     void update();
     void updateGUI();
@@ -70,6 +77,9 @@ public:
 
 #if USE_DECKLINK
     ofxLinkDeck ldeck;    
+    bool ldeck_started;
+    bool ldeck_new_img;
+    ofImage ldeck_img;
 #endif
 
 #if USE_CAM
@@ -77,9 +87,6 @@ public:
 #endif
 
 #if USE_STREAMING
-    bool ldeck_started;
-    bool ldeck_new_img;
-    ofImage ldeck_img;
     ofxMultiVideoStreamer streamer; /* this is handling the video streaming */
     ofSoundStream sound_stream; /* we use a sound stream to get audio into the video stream */
 #endif

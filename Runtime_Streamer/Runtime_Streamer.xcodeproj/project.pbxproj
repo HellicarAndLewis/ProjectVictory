@@ -56,6 +56,25 @@
 		422CEDC9180C3605003657C2 /* ofxOscReceiver.h in Sources */ = {isa = PBXBuildFile; fileRef = 422CED34180C2FCA003657C2 /* ofxOscReceiver.h */; };
 		422CEDCA180C3605003657C2 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 422CED35180C2FCA003657C2 /* ofxOscSender.cpp */; };
 		422CEDCB180C3605003657C2 /* ofxOscSender.h in Sources */ = {isa = PBXBuildFile; fileRef = 422CED36180C2FCA003657C2 /* ofxOscSender.h */; };
+		423608F6180FE030002E8406 /* ofxOpticalFlowFarneback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 423608F4180FE030002E8406 /* ofxOpticalFlowFarneback.cpp */; };
+		423608F7180FE0A9002E8406 /* ofxCvBlob.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397A9917E2A1910012EAE3 /* ofxCvBlob.h */; };
+		423608F8180FE0A9002E8406 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397A9A17E2A1910012EAE3 /* ofxCvColorImage.cpp */; };
+		423608F9180FE0A9002E8406 /* ofxCvColorImage.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397A9B17E2A1910012EAE3 /* ofxCvColorImage.h */; };
+		423608FA180FE0A9002E8406 /* ofxCvConstants.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397A9C17E2A1910012EAE3 /* ofxCvConstants.h */; };
+		423608FB180FE0A9002E8406 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397A9D17E2A1910012EAE3 /* ofxCvContourFinder.cpp */; };
+		423608FC180FE0A9002E8406 /* ofxCvContourFinder.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397A9E17E2A1910012EAE3 /* ofxCvContourFinder.h */; };
+		423608FD180FE0A9002E8406 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397A9F17E2A1910012EAE3 /* ofxCvFloatImage.cpp */; };
+		423608FE180FE0A9002E8406 /* ofxCvFloatImage.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA017E2A1910012EAE3 /* ofxCvFloatImage.h */; };
+		423608FF180FE0A9002E8406 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA117E2A1910012EAE3 /* ofxCvGrayscaleImage.cpp */; };
+		42360900180FE0A9002E8406 /* ofxCvGrayscaleImage.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA217E2A1910012EAE3 /* ofxCvGrayscaleImage.h */; };
+		42360901180FE0A9002E8406 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA317E2A1910012EAE3 /* ofxCvHaarFinder.cpp */; };
+		42360902180FE0A9002E8406 /* ofxCvHaarFinder.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA417E2A1910012EAE3 /* ofxCvHaarFinder.h */; };
+		42360903180FE0A9002E8406 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA517E2A1910012EAE3 /* ofxCvImage.cpp */; };
+		42360904180FE0A9002E8406 /* ofxCvImage.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA617E2A1910012EAE3 /* ofxCvImage.h */; };
+		42360905180FE0A9002E8406 /* ofxCvMain.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA717E2A1910012EAE3 /* ofxCvMain.h */; };
+		42360906180FE0A9002E8406 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA817E2A1910012EAE3 /* ofxCvShortImage.cpp */; };
+		42360907180FE0A9002E8406 /* ofxCvShortImage.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397AA917E2A1910012EAE3 /* ofxCvShortImage.h */; };
+		42360908180FE0A9002E8406 /* ofxOpenCv.h in Sources */ = {isa = PBXBuildFile; fileRef = 93397AAA17E2A1910012EAE3 /* ofxOpenCv.h */; };
 		4291A7D718089CAC0004A319 /* DeckLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D218089CAC0004A319 /* DeckLink.cpp */; };
 		4291A7D918089CAC0004A319 /* DeckLinkCaptureCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D418089CAC0004A319 /* DeckLinkCaptureCallback.cpp */; };
 		4291A7DA18089CAC0004A319 /* DeckLinkCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4291A7D518089CAC0004A319 /* DeckLinkCard.cpp */; };
@@ -280,6 +299,8 @@
 		422CED34180C2FCA003657C2 /* ofxOscReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOscReceiver.h; sourceTree = "<group>"; };
 		422CED35180C2FCA003657C2 /* ofxOscSender.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		422CED36180C2FCA003657C2 /* ofxOscSender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
+		423608F4180FE030002E8406 /* ofxOpticalFlowFarneback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxOpticalFlowFarneback.cpp; path = ../../../addons/ofxOpticalFlowFarneback/src/ofxOpticalFlowFarneback.cpp; sourceTree = "<group>"; };
+		423608F5180FE030002E8406 /* ofxOpticalFlowFarneback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxOpticalFlowFarneback.h; path = ../../../addons/ofxOpticalFlowFarneback/src/ofxOpticalFlowFarneback.h; sourceTree = "<group>"; };
 		4291A7D218089CAC0004A319 /* DeckLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeckLink.cpp; sourceTree = "<group>"; };
 		4291A7D418089CAC0004A319 /* DeckLinkCaptureCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeckLinkCaptureCallback.cpp; sourceTree = "<group>"; };
 		4291A7D518089CAC0004A319 /* DeckLinkCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeckLinkCard.cpp; sourceTree = "<group>"; };
@@ -891,6 +912,15 @@
 			);
 			name = src;
 			path = ../../../addons/ofxOsc/src;
+			sourceTree = "<group>";
+		};
+		423608F3180FE022002E8406 /* ofxOpticalFlowFarneback */ = {
+			isa = PBXGroup;
+			children = (
+				423608F4180FE030002E8406 /* ofxOpticalFlowFarneback.cpp */,
+				423608F5180FE030002E8406 /* ofxOpticalFlowFarneback.h */,
+			);
+			name = ofxOpticalFlowFarneback;
 			sourceTree = "<group>";
 		};
 		4291A7D018089C5B0004A319 /* ofxLinkDeck */ = {
@@ -1976,6 +2006,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				423608F3180FE022002E8406 /* ofxOpticalFlowFarneback */,
 				422CED0C180C2FB7003657C2 /* ofxOsc */,
 				422CECE8180BFDDE003657C2 /* ofxGui */,
 				4291A7D018089C5B0004A319 /* ofxLinkDeck */,
@@ -2238,6 +2269,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423608F7180FE0A9002E8406 /* ofxCvBlob.h in Sources */,
+				423608F8180FE0A9002E8406 /* ofxCvColorImage.cpp in Sources */,
+				423608F9180FE0A9002E8406 /* ofxCvColorImage.h in Sources */,
+				423608FA180FE0A9002E8406 /* ofxCvConstants.h in Sources */,
+				423608FB180FE0A9002E8406 /* ofxCvContourFinder.cpp in Sources */,
+				423608FC180FE0A9002E8406 /* ofxCvContourFinder.h in Sources */,
+				423608FD180FE0A9002E8406 /* ofxCvFloatImage.cpp in Sources */,
+				423608FE180FE0A9002E8406 /* ofxCvFloatImage.h in Sources */,
+				423608FF180FE0A9002E8406 /* ofxCvGrayscaleImage.cpp in Sources */,
+				42360900180FE0A9002E8406 /* ofxCvGrayscaleImage.h in Sources */,
+				42360901180FE0A9002E8406 /* ofxCvHaarFinder.cpp in Sources */,
+				42360902180FE0A9002E8406 /* ofxCvHaarFinder.h in Sources */,
+				42360903180FE0A9002E8406 /* ofxCvImage.cpp in Sources */,
+				42360904180FE0A9002E8406 /* ofxCvImage.h in Sources */,
+				42360905180FE0A9002E8406 /* ofxCvMain.h in Sources */,
+				42360906180FE0A9002E8406 /* ofxCvShortImage.cpp in Sources */,
+				42360907180FE0A9002E8406 /* ofxCvShortImage.h in Sources */,
+				42360908180FE0A9002E8406 /* ofxOpenCv.h in Sources */,
 				48E9A4C7180CB48B00120E24 /* StreamerGUI.cpp in Sources */,
 				48E9A4C8180CB48B00120E24 /* StreamerGUI.h in Sources */,
 				422CEDAC180C3605003657C2 /* IpEndpointName.cpp in Sources */,
@@ -2358,6 +2407,7 @@
 				484B8AD41801C2FB0000D7F9 /* ofxBox2dPolygon.cpp in Sources */,
 				484B8AD51801C2FB0000D7F9 /* ofxBox2dRect.cpp in Sources */,
 				484B8B2C1801C3090000D7F9 /* b2CircleShape.cpp in Sources */,
+				423608F6180FE030002E8406 /* ofxOpticalFlowFarneback.cpp in Sources */,
 				484B8B2D1801C3090000D7F9 /* b2PolygonShape.cpp in Sources */,
 				484B8B2E1801C3090000D7F9 /* b2BroadPhase.cpp in Sources */,
 				484B8B2F1801C3090000D7F9 /* b2CollideCircle.cpp in Sources */,

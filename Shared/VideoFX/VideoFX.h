@@ -18,6 +18,11 @@
 #include "PhysBallEffect.h"
 #include "GridDistortEffect.h"
 
+#define USE_FLOW 1
+
+#if USE_FLOW
+#  include "ofxOpticalFlowFarneback.h"
+#endif
 
 /*
     VideoFX is a manager class that owns all the different video effects
@@ -42,6 +47,10 @@ public:
     ofBaseImage *videoSource;  // current video source
     ofImage downsampledFrame;  // an image to store a downsampled version of the curent frame
     FarnebackPlus farneback;    // does optical flow and provides a floating point vector field texture for use in shaders
+
+#if USE_FLOW
+    ofxOpticalFlowFarneback flow; 
+#endif
 
     CircularTexture circularTexture;  // a circular texture buffer that successive frames from the video source are read into
     ofxFluid fluid;     // some fluid

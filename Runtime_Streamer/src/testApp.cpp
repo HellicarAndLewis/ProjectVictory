@@ -53,8 +53,9 @@ void testApp::setup(){
   }
 
 #if USE_DECKLINK
+  //bmdModeHD720p50
   if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModeHD1080p24)) {
-    //if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
+  //if(!ldeck.setup(0, bmdFormat8BitYUV, bmdModePAL)) {
     printf("error: cannot get decklink setup.\n");
     ::exit(EXIT_FAILURE);
   }
@@ -79,6 +80,7 @@ void testApp::setup(){
     printf("error: cannot set video source.\n");
     ::exit(EXIT_FAILURE);
   }
+
 #endif
 
 #if USE_CAM
@@ -164,11 +166,13 @@ void testApp::draw(){
     ldeck.resetHasNewFrame();
 
     vfx.update(true);
+
     ldeck_new_img = true;
   }
   else {
     vfx.update(false);
   }
+
 
 #endif
 
@@ -188,6 +192,8 @@ void testApp::draw(){
   drawInternal();
 
   takeScreenGrab();
+
+  gui.draw();
 }
 
 void testApp::drawInternal() {
@@ -270,6 +276,20 @@ void testApp::keyPressed(int key) {
   else if (key == 'g') {
     websystemController.triggerFakeScreenGrab();
   }
+#if 0
+  else if(key == 't') {
+    gui.show();
+  }
+  else if(key == 'i') {
+    gui.setState(GUI_STATE_INIT);
+  }
+  else if(key == 's') {
+    gui.save();
+  }
+  else if(key == 'l') {
+    gui.load();
+  }
+#endif
 }
 
 //--------------------------------------------------------------

@@ -83,10 +83,11 @@ public:
                 mesh.addTexCoord(ofVec2f(x * xStepSize, y * yStepSize));
                 
                 ofVec2f position(x * xStepSize, y * yStepSize);
+
                 Particle2D *particle = physics.makeParticle( position );
                 particle->moveBy( ofVec2f( ofRandom(-10.0,10.0), ofRandom(-10.0,10.0 ) ) );
 
-                Particle2D *tether      = physics.makeParticle( ofVec2f( x * xStepSize, y * yStepSize ) );
+                Particle2D *tether = physics.makeParticle( ofVec2f( x * xStepSize, y * yStepSize ) );
 
                 // tether is fixed
                 tether->makeFixed();
