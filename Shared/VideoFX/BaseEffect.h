@@ -51,7 +51,7 @@ public:
         compileCode();
     }
     
-    float amount;
+    float amount = 1.0f     ;
     void setAmount( float v ) {
         amount = v;
     }
